@@ -4,7 +4,7 @@
   "description": "Create markdown API documentation from swagger file",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "eslint .",
     "prepublish": "babel app --out-dir lib"
   },
   "repository": {
