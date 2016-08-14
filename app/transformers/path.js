@@ -18,6 +18,17 @@ module.exports = (path, data) => {
       if (inArray(method, ALLOWED_METHODS)) {
         // Set method as a subheader
         res.push(`##### ***${method.toUpperCase()}***`);
+        const pathInfo = data[method];
+
+        // Build responses
+        if ('responses' in pathInfo) {
+          res.push('**Responses**');
+          res.push('| Code | Description |');
+          res.push('| ---- | ----------- |');
+          Object.keys(pathInfo.responses).map(response => {
+            res.push(`| ${response} | ${pathInfo.responses[response].description || ''} |`);
+          });
+        }
       }
     });
   }
