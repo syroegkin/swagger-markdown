@@ -1,7 +1,7 @@
 /**
  * Prepare page header
  * Leave description with no changes
- * @param info
+ * @param {Object} info
  * @returns {String}
  */
 module.exports = info => {

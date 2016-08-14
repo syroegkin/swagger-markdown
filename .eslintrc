@@ -2,6 +2,8 @@
   "extends": "airbnb-base",
   "rules": {
     "comma-dangle": 0,
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "no-console": 0,
+    "array-callback-return": 0
   }
 }
