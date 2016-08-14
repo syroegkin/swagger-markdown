@@ -16,10 +16,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | body | body | Pet object that needs to be added to the store | No | undefined |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 405 | Invalid input |
@@ -29,10 +31,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | body | body | Pet object that needs to be added to the store | No | undefined |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 400 | Invalid ID supplied |
@@ -46,10 +50,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** Multiple status values can be provided with comma seperated strings
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | status | query | Status values that need to be considered for filter | No | array |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | successful operation |
@@ -62,10 +68,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 for testing.
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | tags | query | Tags to filter by | No | array |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | successful operation |
@@ -78,10 +86,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** Returns a pet when ID < 10.  ID > 10 or nonintegers will simulate API error conditions
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | petId | path | ID of pet that needs to be fetched | Yes | integer |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | successful operation |
@@ -93,12 +103,14 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | petId | path | ID of pet that needs to be updated | Yes | string |
 | name | formData | Updated name of the pet | Yes | string |
 | status | formData | Updated status of the pet | Yes | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 405 | Invalid input |
@@ -108,11 +120,13 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | api_key | header |  | Yes | string |
 | petId | path | Pet id to delete | Yes | integer |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 400 | Invalid pet value |
@@ -124,10 +138,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | body | body | order placed for purchasing the pet | No | undefined |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | successful operation |
@@ -140,10 +156,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** For valid response try integer IDs with value <= 5 or > 10. Other values will generated exceptions
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | orderId | path | ID of pet that needs to be fetched | Yes | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | successful operation |
@@ -155,10 +173,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | orderId | path | ID of the order that needs to be deleted | Yes | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 400 | Invalid ID supplied |
@@ -171,10 +191,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** This can only be done by the logged in user.
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | body | body | Created user object | No | undefined |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | default | successful operation |
@@ -186,10 +208,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | body | body | List of user object | No | undefined |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | default | successful operation |
@@ -201,10 +225,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | body | body | List of user object | No | undefined |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | default | successful operation |
@@ -216,11 +242,13 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | username | query | The user name for login | No | string |
 | password | query | The password for login in clear text | No | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | successful operation |
@@ -233,6 +261,7 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** 
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | default | successful operation |
@@ -244,10 +273,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | username | path | The name that needs to be fetched. Use user1 for testing. | Yes | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | successful operation |
@@ -259,11 +290,13 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** This can only be done by the logged in user.
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | username | path | name that need to be deleted | Yes | string |
 | body | body | Updated user object | No | undefined |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 400 | Invalid user supplied |
@@ -274,10 +307,12 @@ For this sample, you can use the api key `special-key` to test the authorization
 **Description:** This can only be done by the logged in user.
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | username | path | The name that needs to be deleted | Yes | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 400 | Invalid username supplied |

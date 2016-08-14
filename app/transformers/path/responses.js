@@ -6,7 +6,7 @@
  */
 module.exports = responses => {
   const res = [];
-  res.push('**Responses**');
+  res.push(`**Responses**\n`);
   res.push('| Code | Description |');
   res.push('| ---- | ----------- |');
   Object.keys(responses).map(response => {

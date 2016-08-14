@@ -12,28 +12,34 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 ---
 ##### ***GET***
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | limit | query | number of pets to return | No | integer |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | List all pets |
 ##### ***POST***
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | pet | body | The pet JSON you want to post | Yes | undefined |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | Make a new pet |
 ##### ***PUT***
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | pet | body | The pet JSON you want to post | Yes | undefined |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | Updates the pet |
@@ -41,10 +47,12 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 ---
 ##### ***GET***
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | petId | path | ID of the pet | Yes | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | Sends the pet with pet Id |

@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha \"tests/**/*.spec.js\" && eslint .",
-    "prepublish": "babel app --out-dir bin"
+    "prepublish": "babel app --out-dir bin",
+    "examples": "node ./bin/index.js -i examples/basic-auth.yaml && node ./bin/index.js -i examples/default.yaml && node ./bin/index.js -i examples/echo.yaml && node ./bin/index.js -i examples/heroku-pets.yaml && node ./bin/index.js -i examples/instagram.yaml && node ./bin/index.js -i examples/minimal.yaml && node ./bin/index.js -i examples/petstore_full.yaml && node ./bin/index.js -i examples/petstore_simple.yaml && node ./bin/index.js -i examples/security.yaml"
   },
   "bin": {
     "swagger-markdown": "app/index.js"

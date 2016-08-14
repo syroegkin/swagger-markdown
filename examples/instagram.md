@@ -124,6 +124,7 @@ callbackFunction({
 **Description:** Get basic information about a user.
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | The user object |
@@ -133,12 +134,14 @@ callbackFunction({
 **Description:** See the authenticated user's feed.
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | count | query | Count of media to return. | No | integer |
 | max_id | query | Return media earlier than this max_id.s | No | integer |
 | min_id | query | Return media later than this min_id. | No | integer |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -146,6 +149,7 @@ callbackFunction({
 ---
 ##### ***GET***
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | count | query | Count of media to return. | No | integer |
@@ -154,6 +158,7 @@ callbackFunction({
 | min_id | query | Return media later than this min_id. | No | string |
 | max_id | query | Return media earlier than this max_id. | No | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | Get the most recent media published by a user. To get the most recent
@@ -170,11 +175,13 @@ available for the currently authenticated user.
 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | count | query | Count of media to return. | No | integer |
 | max_like_id | query | Return media liked before this id. | No | integer |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -184,11 +191,13 @@ available for the currently authenticated user.
 **Description:** Search for a user by name.
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | q | query | A query string | Yes | string |
 | count | query | Number of users to return. | No | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -198,6 +207,7 @@ available for the currently authenticated user.
 **Description:** Get the list of users this user follows.
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -207,6 +217,7 @@ available for the currently authenticated user.
 **Description:** Get the list of users this user is followed by.
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -217,6 +228,7 @@ available for the currently authenticated user.
 
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -227,10 +239,12 @@ available for the currently authenticated user.
 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | action | body | One of follow/unfollow/block/unblock/approve/ignore. | No | undefined |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -247,6 +261,7 @@ has liked this media item.
 
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -261,6 +276,7 @@ Its corresponding shortcode is D.
 
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -273,6 +289,7 @@ the last 5 days. Can return mix of image and video types.
 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | LAT | query | Latitude of the center search coordinate. If used, lng is required.
@@ -287,6 +304,7 @@ timestamp.
  | No | integer |
 | DISTANCE | query | Default is 1km (distance=1000), max distance is 5km. | No | integer |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -298,6 +316,7 @@ Can return mix of image and video types.
 
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -308,6 +327,7 @@ Can return mix of image and video types.
 
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -321,12 +341,14 @@ Can return mix of image and video types.
 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | TEXT | body | Text to post as a comment on the media object as specified in
 media-id.
  | No | undefined |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -336,6 +358,7 @@ authored by the authenticated user.
 
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -346,6 +369,7 @@ authored by the authenticated user.
 
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -353,6 +377,7 @@ authored by the authenticated user.
 **Description:** Set a like on this media by the currently authenticated user.
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -361,6 +386,7 @@ authored by the authenticated user.
 
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -370,6 +396,7 @@ authored by the authenticated user.
 **Description:** Get information about a tag object.
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -382,6 +409,7 @@ these objects.
 
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -389,11 +417,13 @@ these objects.
 ---
 ##### ***GET***
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | q | query | A valid tag name without a leading #. (eg. snowy, nofilter)
  | No | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -403,6 +433,7 @@ these objects.
 **Description:** Get information about a location.
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -412,6 +443,7 @@ these objects.
 **Description:** Get a list of recent media objects from a given location.
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | max_timestamp | query | Return media before this UNIX timestamp. | No | integer |
@@ -419,6 +451,7 @@ these objects.
 | min_id | query | Return media later than this min_id. | No | string |
 | max_id | query | Return media earlier than this max_id. | No | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -428,6 +461,7 @@ these objects.
 **Description:** Search for a location by geographic coordinate.
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | distance | query | Default is 1000m (distance=1000), max distance is 5000. | No | integer |
@@ -447,6 +481,7 @@ of their API.
 used, you are not required to use lat and lng.
  | No | integer |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
@@ -465,11 +500,13 @@ geography, use the [media search endpoint
 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | count | query | Max number of media to return. | No | integer |
 | min_id | query | Return media before this `min_id`. | No | integer |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |

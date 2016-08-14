@@ -24,12 +24,12 @@ describe('Path responses transformer', () => {
   });
 
   it('should build the table header', () => {
-    expect(res[1]).to.be.equal(results[1]);
-    expect(res[2]).to.be.equal(results[2]);
+    expect(res[2]).to.be.equal(results[1]);
+    expect(res[3]).to.be.equal(results[2]);
   });
 
   it('should build the table body', () => {
-    expect(res[3]).to.be.equal(results[3]);
-    expect(res[4]).to.be.equal(results[4]);
+    expect(res[4]).to.be.equal(results[3]);
+    expect(res[5]).to.be.equal(results[4]);
   });
 });

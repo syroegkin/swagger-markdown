@@ -10,16 +10,19 @@ render back everything.
 ---
 ##### ***GET***
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | Echo GET |
 ##### ***POST***
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | name | formData | name | No | string |
 | year | formData | year | No | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | Echo POST |
@@ -27,6 +30,7 @@ render back everything.
 ---
 ##### ***GET***
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | Echo test-path |

@@ -5,6 +5,7 @@ Simple API
 ---
 ##### ***GET***
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |

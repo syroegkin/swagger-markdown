@@ -15,11 +15,13 @@ proper display order.
 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | latitude | query | Latitude component of location. | Yes | number |
 | longitude | query | Longitude component of location. | Yes | number |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | An array of products |
@@ -40,6 +42,7 @@ already factors in this multiplier.
 
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | start_latitude | query | Latitude component of start location. | Yes | number |
@@ -47,6 +50,7 @@ already factors in this multiplier.
 | end_latitude | query | Latitude component of end location. | Yes | number |
 | end_longitude | query | Longitude component of end location. | Yes | number |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | An array of price estimates by product |
@@ -59,6 +63,7 @@ already factors in this multiplier.
 **Description:** The Time Estimates endpoint returns ETAs for all products offered at a given location, with the responses expressed as integers in seconds. We recommend that this endpoint be called every minute to provide the most accurate, up-to-date ETAs.
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | start_latitude | query | Latitude component of start location. | Yes | number |
@@ -66,6 +71,7 @@ already factors in this multiplier.
 | customer_uuid | query | Unique customer identifier to be used for experience customization. | No | string |
 | product_id | query | Unique identifier representing a specific product for a given latitude & longitude. | No | string |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | An array of products |
@@ -78,6 +84,7 @@ already factors in this multiplier.
 **Description:** The User Profile endpoint returns information about the Uber user that has authorized with the application.
 
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | Profile information for a user |
@@ -90,11 +97,13 @@ already factors in this multiplier.
 **Description:** The User Activity endpoint returns data about a user's lifetime activity with Uber. The response will include pickup locations and times, dropoff locations and times, the distance of past requests, and information about which products were requested.<br><br>The history array in the response will have a maximum length based on the limit parameter. The response value count may exceed limit, therefore subsequent API requests may be necessary.
 
 **Parameters**
+
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | offset | query | Offset the list of returned results by this amount. Default is zero. | No | integer |
 | limit | query | Number of items to retrieve. Default is 5, maximum is 100. | No | integer |
 **Responses**
+
 | Code | Description |
 | ---- | ----------- |
 | 200 | History information for the given user |
