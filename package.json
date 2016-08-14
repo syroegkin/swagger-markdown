@@ -1,11 +1,15 @@
 {
   "name": "swagger-markdown",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Create markdown API documentation from swagger file",
   "main": "index.js",
   "scripts": {
-    "test": "eslint .",
-    "prepublish": "babel app --out-dir lib"
+    "test": "mocha \"tests/**/*.spec.js\" && eslint .",
+    "prepublish": "babel app --out-dir bin",
+    "examples": "node ./bin/index.js -i examples/basic-auth.yaml && node ./bin/index.js -i examples/default.yaml && node ./bin/index.js -i examples/echo.yaml && node ./bin/index.js -i examples/heroku-pets.yaml && node ./bin/index.js -i examples/instagram.yaml && node ./bin/index.js -i examples/minimal.yaml && node ./bin/index.js -i examples/petstore_full.yaml && node ./bin/index.js -i examples/petstore_simple.yaml && node ./bin/index.js -i examples/security.yaml"
+  },
+  "bin": {
+    "swagger-markdown": "bin/index.js"
   },
   "repository": {
     "type": "git",
@@ -31,8 +35,14 @@
     "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",
     "babel-preset-es2015": "^6.13.2",
-    "eslint": "^3.2.2",
-    "eslint-config-airbnb-base": "^5.0.1",
-    "eslint-plugin-import": "^1.13.0"
+    "chai": "^3.5.0",
+    "eslint": "^3.3.0",
+    "eslint-config-airbnb-base": "^5.0.2",
+    "eslint-plugin-import": "^1.13.0",
+    "mocha": "^3.0.2"
+  },
+  "dependencies": {
+    "argparse": "^1.0.7",
+    "js-yaml": "^3.6.1"
   }
 }
