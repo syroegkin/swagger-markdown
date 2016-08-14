@@ -26,7 +26,7 @@ describe('Info transformer', () => {
       description: 'Here is a description'
     };
     const res = transformInfo(fixture);
-    expect(res).to.be.equal(fixture.description);
+    expect(res).to.be.equal(`${fixture.description}\n`);
   });
 
   it('should return proper doc generated for the title and description', () => {
@@ -37,7 +37,7 @@ describe('Info transformer', () => {
     };
     const result = 'Document title\n' +
       '==============\n' +
-      'Document description\n' +
+      'Document description\n\n' +
       '**Version** 1.0.1';
     const res = transformInfo(fixture);
     expect(res).to.be.equal(result);

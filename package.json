@@ -1,10 +1,10 @@
 {
   "name": "swagger-markdown",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Create markdown API documentation from swagger file",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/**/*.spec.js && eslint .",
+    "test": "mocha \"tests/**/*.spec.js\" && eslint .",
     "prepublish": "babel app --out-dir bin"
   },
   "bin": {

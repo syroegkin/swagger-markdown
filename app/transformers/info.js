@@ -11,7 +11,7 @@ module.exports = info => {
       res.push(`${info.title}\n${Array(info.title.length + 1).join('=')}`);
     }
     if ('description' in info) {
-      res.push(info.description);
+      res.push(`${info.description}\n`);
     }
     if ('version' in info) {
       res.push(`**Version** ${info.version}`);

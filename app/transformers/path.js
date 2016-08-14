@@ -1,4 +1,6 @@
 const inArray = require('../lib/inArray');
+const responses = require('./path/responses');
+const parameters = require('./path/parameters');
 
 /**
  * Allowed methods
@@ -20,14 +22,24 @@ module.exports = (path, data) => {
         res.push(`##### ***${method.toUpperCase()}***`);
         const pathInfo = data[method];
 
+        // Set summary
+        if ('summary' in pathInfo) {
+          res.push(`**Summary:** ${pathInfo.summary}\n`);
+        }
+
+        // Set description
+        if ('description' in pathInfo) {
+          res.push(`**Description:** ${pathInfo.description}\n`);
+        }
+
+        // // Build parameters
+        if ('parameters' in pathInfo) {
+          res.push(parameters(pathInfo.parameters));
+        }
+
         // Build responses
         if ('responses' in pathInfo) {
-          res.push('**Responses**');
-          res.push('| Code | Description |');
-          res.push('| ---- | ----------- |');
-          Object.keys(pathInfo.responses).map(response => {
-            res.push(`| ${response} | ${pathInfo.responses[response].description || ''} |`);
-          });
+          res.push(responses(pathInfo.responses));
         }
       }
     });
