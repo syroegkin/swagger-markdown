@@ -5,7 +5,7 @@ module.exports = parameters => {
   res.push('| ---- | ---------- | ----------- | -------- | ---- |');
   parameters.map(keys => {
     res.push(
-      `| ${keys.name} | ${keys.in} | ${keys.description} | ` +
+      `| ${keys.name} | ${keys.in} | ${keys.description.replace(/[\r\n]/g, ' ')} | ` +
       `${keys.required ? 'Yes' : 'No'} | ${keys.type} |`
     );
   });

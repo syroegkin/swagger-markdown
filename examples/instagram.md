@@ -292,16 +292,10 @@ the last 5 days. Can return mix of image and video types.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| LAT | query | Latitude of the center search coordinate. If used, lng is required.
- | No | number |
-| MIN_TIMESTAMP | query | A unix timestamp. All media returned will be taken later than
-this timestamp.
- | No | integer |
-| LNG | query | Longitude of the center search coordinate. If used, lat is required.
- | No | number |
-| MAX_TIMESTAMP | query | A unix timestamp. All media returned will be taken earlier than this
-timestamp.
- | No | integer |
+| LAT | query | Latitude of the center search coordinate. If used, lng is required.  | No | number |
+| MIN_TIMESTAMP | query | A unix timestamp. All media returned will be taken later than this timestamp.  | No | integer |
+| LNG | query | Longitude of the center search coordinate. If used, lat is required.  | No | number |
+| MAX_TIMESTAMP | query | A unix timestamp. All media returned will be taken earlier than this timestamp.  | No | integer |
 | DISTANCE | query | Default is 1km (distance=1000), max distance is 5km. | No | integer |
 **Responses**
 
@@ -344,9 +338,7 @@ Can return mix of image and video types.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| TEXT | body | Text to post as a comment on the media object as specified in
-media-id.
- | No | undefined |
+| TEXT | body | Text to post as a comment on the media object as specified in media-id.  | No | undefined |
 **Responses**
 
 | Code | Description |
@@ -420,8 +412,7 @@ these objects.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| q | query | A valid tag name without a leading #. (eg. snowy, nofilter)
- | No | string |
+| q | query | A valid tag name without a leading #. (eg. snowy, nofilter)  | No | string |
 **Responses**
 
 | Code | Description |
@@ -465,21 +456,11 @@ these objects.
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | distance | query | Default is 1000m (distance=1000), max distance is 5000. | No | integer |
-| facebook_places_id | query | Returns a location mapped off of a Facebook places id. If used, a
-Foursquare id and lat, lng are not required.
- | No | integer |
-| foursquare_id | query | returns a location mapped off of a foursquare v1 api location id.
-If used, you are not required to use lat and lng. Note that this
-method is deprecated; you should use the new foursquare IDs with V2
-of their API.
- | No | integer |
-| lat | query | atitude of the center search coordinate. If used, lng is required.
- | No | number |
-| lng | query | ongitude of the center search coordinate. If used, lat is required.
- | No | number |
-| foursquare_v2_id | query | Returns a location mapped off of a foursquare v2 api location id. If
-used, you are not required to use lat and lng.
- | No | integer |
+| facebook_places_id | query | Returns a location mapped off of a Facebook places id. If used, a Foursquare id and lat, lng are not required.  | No | integer |
+| foursquare_id | query | returns a location mapped off of a foursquare v1 api location id. If used, you are not required to use lat and lng. Note that this method is deprecated; you should use the new foursquare IDs with V2 of their API.  | No | integer |
+| lat | query | atitude of the center search coordinate. If used, lng is required.  | No | number |
+| lng | query | ongitude of the center search coordinate. If used, lat is required.  | No | number |
+| foursquare_v2_id | query | Returns a location mapped off of a foursquare v2 api location id. If used, you are not required to use lat and lng.  | No | integer |
 **Responses**
 
 | Code | Description |
