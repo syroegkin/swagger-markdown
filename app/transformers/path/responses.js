@@ -10,7 +10,7 @@ module.exports = responses => {
   res.push('| Code | Description |');
   res.push('| ---- | ----------- |');
   Object.keys(responses).map(response => {
-    res.push(`| ${response} | ${responses[response].description || ''} |`);
+    res.push(`| ${response} | ${responses[response].description.replace(/[\r\n]/g, ' ') || ''} |`);
   });
   return res.join('\n');
 };
