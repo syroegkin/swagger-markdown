@@ -161,10 +161,7 @@ callbackFunction({
 
 | Code | Description |
 | ---- | ----------- |
-| 200 | Get the most recent media published by a user. To get the most recent
-media published by the owner of the access token, you can use `self`
-instead of the `user-id`.
- |
+| 200 | Get the most recent media published by a user. To get the most recent media published by the owner of the access token, you can use `self` instead of the `user-id`.  |
 ### /users/self/media/liked
 ---
 ##### ***GET***
