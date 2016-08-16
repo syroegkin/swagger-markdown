@@ -1,42 +1,110 @@
 const expect = require('chai').expect;
 const parameters = require('../../../app/transformers/path/parameters');
 
+const tableFixture = [
+  '**Parameters**',
+  '| Name | Located in | Description | Required | Type |',
+  '| ---- | ---------- | ----------- | -------- | ---- |'
+];
+
 describe('Path parameters transormer', () => {
-  const fixture = [
-    {
-      name: 'name',
-      in: 'formData',
-      description: 'name',
-      type: 'string'
-    }, {
-      name: 'year',
-      in: 'formData',
-      description: 'year',
-      type: 'string',
-      required: true
-    }
-  ];
+  describe('Method parameters', () => {
+    const fixture = [
+      {
+        name: 'name',
+        in: 'formData',
+        description: 'name',
+        type: 'string'
+      }, {
+        name: 'year',
+        in: 'formData',
+        description: 'year',
+        type: 'string',
+        required: true
+      }
+    ];
 
-  const results = [
-    '**Parameters**',
-    '| Name | Located in | Description | Required | Type |',
-    '| ---- | ---------- | ----------- | -------- | ---- |',
-    '| name | formData | name | No | string |',
-    '| year | formData | year | Yes | string |'
-  ];
-  const res = parameters(fixture).split('\n');
+    const results = [].concat(tableFixture, [
 
-  it('Should create parameters header', () => {
-    expect(res[0]).to.be.equal(results[0]);
+      '| name | formData | name | No | string |',
+      '| year | formData | year | Yes | string |'
+    ]);
+    const res = parameters(fixture).split('\n');
+
+    it('Should create parameters header', () => {
+      expect(res[0]).to.be.equal(results[0]);
+    });
+
+    it('Should create table header', () => {
+      expect(res[2]).to.be.equal(results[1]);
+      expect(res[3]).to.be.equal(results[2]);
+    });
+
+    it('Should create table body', () => {
+      expect(res[4]).to.be.equal(results[3]);
+      expect(res[5]).to.be.equal(results[4]);
+    });
+  });
+  describe('Path parameters', () => {
+    it('Should build parameters from path parameters', () => {
+      const fixture = [{
+        name: 'name',
+        in: 'formData',
+        description: 'name',
+        type: 'string'
+      }];
+      const results = [].concat(tableFixture, [
+        '| name | formData | name | No | string |'
+      ]);
+      const res = parameters(undefined, fixture).split('\n');
+
+      it('Should create parameters header', () => {
+        expect(res[0]).to.be.equal(results[0]);
+      });
+
+      it('Should create table header', () => {
+        expect(res[2]).to.be.equal(results[1]);
+        expect(res[3]).to.be.equal(results[2]);
+      });
+
+      it('Should create table body', () => {
+        expect(res[4]).to.be.equal(results[3]);
+      });
+    });
   });
 
-  it('Should create table header', () => {
-    expect(res[2]).to.be.equal(results[1]);
-    expect(res[3]).to.be.equal(results[2]);
-  });
+  describe('Path and method parameters', () => {
+    it('Should build parameters from path and method parameters', () => {
+      const pathFixture = [{
+        name: 'path name',
+        in: 'formData',
+        description: 'name',
+        type: 'string'
+      }];
+      const methodFixture = [{
+        name: 'method name',
+        in: 'formData',
+        description: 'name',
+        type: 'string'
+      }];
+      const results = [].concat(tableFixture, [
+        '| path name | formData | name | No | string |',
+        '| method name | formData | name | No | string |'
+      ]);
+      const res = parameters(methodFixture, pathFixture).split('\n');
+      it('Should create parameters header', () => {
+        expect(res[0]).to.be.equal(results[0]);
+      });
 
-  it('Should create table body', () => {
-    expect(res[4]).to.be.equal(results[3]);
-    expect(res[5]).to.be.equal(results[4]);
+      it('Should create table header', () => {
+        expect(res[2]).to.be.equal(results[1]);
+        expect(res[3]).to.be.equal(results[2]);
+      });
+
+      it('Should create table body', () => {
+        expect(res[4]).to.be.equal(results[3]);
+        expect(res[5]).to.be.equal(results[4]);
+      });
+    });
   });
 });

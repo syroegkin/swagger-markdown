@@ -10,10 +10,17 @@ const ALLOWED_METHODS = ['get', 'post', 'put', 'patch', 'delete', 'options'];
 
 module.exports = (path, data) => {
   const res = [];
+  let pathParameters = null;
+
   if (path && data) {
     // Make path as a header
     res.push(`### ${path}`);
     res.push('---');
+
+    // Check if parameter for path are in the place
+    if ('parameters' in data) {
+      pathParameters = data.parameters;
+    }
 
     // Go further method by methods
     Object.keys(data).map(method => {
@@ -32,9 +39,9 @@ module.exports = (path, data) => {
           res.push(`**Description:** ${pathInfo.description}\n`);
         }
 
-        // // Build parameters
-        if ('parameters' in pathInfo) {
-          res.push(`${parameters(pathInfo.parameters)}\n`);
+        // Build parameters
+        if ('parameters' in pathInfo || pathParameters) {
+          res.push(`${parameters(pathInfo.parameters, pathParameters)}\n`);
         }
 
         // Build responses
