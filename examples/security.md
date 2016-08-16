@@ -15,6 +15,7 @@ A sample API that uses a petstore as an example to demonstrate features in the s
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | id | path | ID of pet to use | Yes | array |
+
 **Responses**
 
 | Code | Description |

@@ -128,6 +128,7 @@ callbackFunction({
 | Code | Description |
 | ---- | ----------- |
 | 200 | The user object |
+
 ### /users/self/feed
 ---
 ##### ***GET***
@@ -140,11 +141,13 @@ callbackFunction({
 | count | query | Count of media to return. | No | integer |
 | max_id | query | Return media earlier than this max_id.s | No | integer |
 | min_id | query | Return media later than this min_id. | No | integer |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /users/{user-id}/media/recent
 ---
 ##### ***GET***
@@ -157,11 +160,13 @@ callbackFunction({
 | min_timestamp | query | Return media after this UNIX timestamp. | No | integer |
 | min_id | query | Return media later than this min_id. | No | string |
 | max_id | query | Return media earlier than this max_id. | No | string |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | Get the most recent media published by a user. To get the most recent media published by the owner of the access token, you can use `self` instead of the `user-id`.  |
+
 ### /users/self/media/liked
 ---
 ##### ***GET***
@@ -177,11 +182,13 @@ available for the currently authenticated user.
 | ---- | ---------- | ----------- | -------- | ---- |
 | count | query | Count of media to return. | No | integer |
 | max_like_id | query | Return media liked before this id. | No | integer |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /users/search
 ---
 ##### ***GET***
@@ -193,11 +200,13 @@ available for the currently authenticated user.
 | ---- | ---------- | ----------- | -------- | ---- |
 | q | query | A query string | Yes | string |
 | count | query | Number of users to return. | No | string |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /users/{user-id}/follows
 ---
 ##### ***GET***
@@ -208,6 +217,7 @@ available for the currently authenticated user.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /users/{user-id}/followed-by
 ---
 ##### ***GET***
@@ -218,6 +228,7 @@ available for the currently authenticated user.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /users/self/requested-by
 ---
 ##### ***GET***
@@ -229,6 +240,7 @@ available for the currently authenticated user.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /users/{user-id}/relationship
 ---
 ##### ***POST***
@@ -240,11 +252,13 @@ available for the currently authenticated user.
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | action | body | One of follow/unfollow/block/unblock/approve/ignore. | No | undefined |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /media/{media-id}
 ---
 ##### ***GET***
@@ -262,6 +276,7 @@ has liked this media item.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /media1/{shortcode}
 ---
 ##### ***GET***
@@ -277,6 +292,7 @@ Its corresponding shortcode is D.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /media/search
 ---
 ##### ***GET***
@@ -294,11 +310,13 @@ the last 5 days. Can return mix of image and video types.
 | LNG | query | Longitude of the center search coordinate. If used, lat is required.  | No | number |
 | MAX_TIMESTAMP | query | A unix timestamp. All media returned will be taken earlier than this timestamp.  | No | integer |
 | DISTANCE | query | Default is 1km (distance=1000), max distance is 5km. | No | integer |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /media/popular
 ---
 ##### ***GET***
@@ -311,6 +329,7 @@ Can return mix of image and video types.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /media/{media-id}/comments
 ---
 ##### ***GET***
@@ -322,6 +341,7 @@ Can return mix of image and video types.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ##### ***POST***
 **Description:** Create a comment on a media object with the following rules:
 
@@ -336,11 +356,13 @@ Can return mix of image and video types.
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | TEXT | body | Text to post as a comment on the media object as specified in media-id.  | No | undefined |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ##### ***DELETE***
 **Description:** Remove a comment either on the authenticated user's media object or
 authored by the authenticated user.
@@ -351,6 +373,7 @@ authored by the authenticated user.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /media/{media-id}/likes
 ---
 ##### ***GET***
@@ -362,6 +385,7 @@ authored by the authenticated user.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ##### ***POST***
 **Description:** Set a like on this media by the currently authenticated user.
 
@@ -370,6 +394,7 @@ authored by the authenticated user.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ##### ***DELETE***
 **Description:** Remove a like on this media by the currently authenticated user.
 
@@ -379,6 +404,7 @@ authored by the authenticated user.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /tags/{tag-name}
 ---
 ##### ***GET***
@@ -389,6 +415,7 @@ authored by the authenticated user.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /tags/{tag-name}/media/recent
 ---
 ##### ***GET***
@@ -402,6 +429,7 @@ these objects.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /tags/search
 ---
 ##### ***GET***
@@ -410,11 +438,13 @@ these objects.
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | q | query | A valid tag name without a leading #. (eg. snowy, nofilter)  | No | string |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /locations/{location-id}
 ---
 ##### ***GET***
@@ -425,6 +455,7 @@ these objects.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /locations/{location-id}/media/recent
 ---
 ##### ***GET***
@@ -438,11 +469,13 @@ these objects.
 | min_timestamp | query | Return media after this UNIX timestamp. | No | integer |
 | min_id | query | Return media later than this min_id. | No | string |
 | max_id | query | Return media earlier than this max_id. | No | string |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /locations/search
 ---
 ##### ***GET***
@@ -458,11 +491,13 @@ these objects.
 | lat | query | atitude of the center search coordinate. If used, lng is required.  | No | number |
 | lng | query | ongitude of the center search coordinate. If used, lat is required.  | No | number |
 | foursquare_v2_id | query | Returns a location mapped off of a foursquare v2 api location id. If used, you are not required to use lat and lng.  | No | integer |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
 ### /geographies/{geo-id}/media/recent
 ---
 ##### ***GET***
@@ -483,6 +518,7 @@ geography, use the [media search endpoint
 | ---- | ---------- | ----------- | -------- | ---- |
 | count | query | Max number of media to return. | No | integer |
 | min_id | query | Return media before this `min_id`. | No | integer |
+
 **Responses**
 
 | Code | Description |

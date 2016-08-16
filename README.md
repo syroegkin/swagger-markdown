@@ -24,10 +24,9 @@ You can also use it as a npm script in your package.json:
     
 ```json
 {
-    ...
-    scripts: {
+    "scripts": {
+        "md-docs": "swagger-markdown -i path/to/swagger.yaml",
         ...
-        "md-docs": "swagger-markdown -i path/to/swagger.yaml"
     }
 }
 ```
