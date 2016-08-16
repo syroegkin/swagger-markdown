@@ -1,7 +1,7 @@
 swagger-markdown
 ================
 
-[![CircleCI](https://circleci.com/gh/syroegkin/swagger-markdown/tree/master.svg?style=svg)](https://circleci.com/gh/syroegkin/swagger-markdown/tree/master)
+[![npm][npm-image]][npm-url] [![dependencies][david-image]][david-url] [![circle ci][circleci-image]][circleci-url]
 
 CLI script to turn swagger yaml into markdown files
 
@@ -35,3 +35,12 @@ You can also use it as a npm script in your package.json:
 
 ***in development***
 
+
+[npm-url]: https://www.npmjs.com/package/swagger-markdown
+[npm-image]: https://img.shields.io/npm/v/swagger-markdown.svg
+
+[david-url]: https://david-dm.org/syroegkin/swagger-markdown
+[david-image]: https://img.shields.io/david/syroegkin/swagger-markdown.svg
+
+[circleci-url]: https://circleci.com/gh/syroegkin/swagger-markdown/tree/master
+[circleci-image]: https://img.shields.io/circleci/project/syroegkin/swagger-markdown.svg

@@ -32,6 +32,12 @@ render back everything.
 ### /test-path/{id}
 ---
 ##### ***GET***
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| id | path | ID | Yes | string |
+
 **Responses**
 
 | Code | Description |

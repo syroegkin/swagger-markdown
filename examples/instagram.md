@@ -123,6 +123,12 @@ callbackFunction({
 ##### ***GET***
 **Description:** Get basic information about a user.
 
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| undefined | undefined | undefined | No | undefined |
+
 **Responses**
 
 | Code | Description |
@@ -155,6 +161,7 @@ callbackFunction({
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
+| undefined | undefined | undefined | No | undefined |
 | count | query | Count of media to return. | No | integer |
 | max_timestamp | query | Return media before this UNIX timestamp. | No | integer |
 | min_timestamp | query | Return media after this UNIX timestamp. | No | integer |
@@ -212,6 +219,12 @@ available for the currently authenticated user.
 ##### ***GET***
 **Description:** Get the list of users this user follows.
 
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| undefined | undefined | undefined | No | undefined |
+
 **Responses**
 
 | Code | Description |
@@ -222,6 +235,12 @@ available for the currently authenticated user.
 ---
 ##### ***GET***
 **Description:** Get the list of users this user is followed by.
+
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| undefined | undefined | undefined | No | undefined |
 
 **Responses**
 
@@ -251,6 +270,7 @@ available for the currently authenticated user.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
+| undefined | undefined | undefined | No | undefined |
 | action | body | One of follow/unfollow/block/unblock/approve/ignore. | No | undefined |
 
 **Responses**
@@ -271,6 +291,12 @@ Note: if you authenticate with an OAuth Token, you will receive the
 has liked this media item.
 
 
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| media-id | path | The media ID | Yes | integer |
+
 **Responses**
 
 | Code | Description |
@@ -286,6 +312,12 @@ A media object's shortcode can be found in its shortlink URL.
 An example shortlink is `http://instagram.com/p/D/`
 Its corresponding shortcode is D.
 
+
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| shortcode | path | The media shortcode | Yes | string |
 
 **Responses**
 
@@ -336,6 +368,12 @@ Can return mix of image and video types.
 **Description:** Get a list of recent comments on a media object.
 
 
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| media-id | path | Media ID | Yes | integer |
+
 **Responses**
 
 | Code | Description |
@@ -355,6 +393,7 @@ Can return mix of image and video types.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
+| media-id | path | Media ID | Yes | integer |
 | TEXT | body | Text to post as a comment on the media object as specified in media-id.  | No | undefined |
 
 **Responses**
@@ -368,6 +407,12 @@ Can return mix of image and video types.
 authored by the authenticated user.
 
 
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| media-id | path | Media ID | Yes | integer |
+
 **Responses**
 
 | Code | Description |
@@ -380,6 +425,12 @@ authored by the authenticated user.
 **Description:** Get a list of users who have liked this media.
 
 
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| media-id | path | Media ID | Yes | integer |
+
 **Responses**
 
 | Code | Description |
@@ -388,6 +439,12 @@ authored by the authenticated user.
 
 ##### ***POST***
 **Description:** Set a like on this media by the currently authenticated user.
+
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| media-id | path | Media ID | Yes | integer |
 
 **Responses**
 
@@ -399,6 +456,12 @@ authored by the authenticated user.
 **Description:** Remove a like on this media by the currently authenticated user.
 
 
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| media-id | path | Media ID | Yes | integer |
+
 **Responses**
 
 | Code | Description |
@@ -409,6 +472,12 @@ authored by the authenticated user.
 ---
 ##### ***GET***
 **Description:** Get information about a tag object.
+
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| undefined | undefined | undefined | No | undefined |
 
 **Responses**
 
@@ -423,6 +492,12 @@ authored by the authenticated user.
 `min_tag_id` parameters in the pagination response to paginate through
 these objects.
 
+
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| undefined | undefined | undefined | No | undefined |
 
 **Responses**
 
@@ -450,6 +525,12 @@ these objects.
 ##### ***GET***
 **Description:** Get information about a location.
 
+**Parameters**
+
+| Name | Located in | Description | Required | Type |
+| ---- | ---------- | ----------- | -------- | ---- |
+| location-id | path | Location ID | Yes | integer |
+
 **Responses**
 
 | Code | Description |
@@ -465,6 +546,7 @@ these objects.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
+| location-id | path | Location ID | Yes | integer |
 | max_timestamp | query | Return media before this UNIX timestamp. | No | integer |
 | min_timestamp | query | Return media after this UNIX timestamp. | No | integer |
 | min_id | query | Return media later than this min_id. | No | string |
@@ -516,6 +598,7 @@ geography, use the [media search endpoint
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
+| geo-id | path | Geolocation ID | Yes | integer |
 | count | query | Max number of media to return. | No | integer |
 | min_id | query | Return media before this `min_id`. | No | integer |
 
