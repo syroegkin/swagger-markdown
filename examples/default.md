@@ -20,12 +20,14 @@ proper display order.
 | ---- | ---------- | ----------- | -------- | ---- |
 | latitude | query | Latitude component of location. | Yes | number |
 | longitude | query | Longitude component of location. | Yes | number |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | An array of products |
 | default | Unexpected error |
+
 ### /estimates/price
 ---
 ##### ***GET***
@@ -49,12 +51,14 @@ already factors in this multiplier.
 | start_longitude | query | Longitude component of start location. | Yes | number |
 | end_latitude | query | Latitude component of end location. | Yes | number |
 | end_longitude | query | Longitude component of end location. | Yes | number |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | An array of price estimates by product |
 | default | Unexpected error |
+
 ### /estimates/time
 ---
 ##### ***GET***
@@ -70,12 +74,14 @@ already factors in this multiplier.
 | start_longitude | query | Longitude component of start location. | Yes | number |
 | customer_uuid | query | Unique customer identifier to be used for experience customization. | No | string |
 | product_id | query | Unique identifier representing a specific product for a given latitude & longitude. | No | string |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | An array of products |
 | default | Unexpected error |
+
 ### /me
 ---
 ##### ***GET***
@@ -89,6 +95,7 @@ already factors in this multiplier.
 | ---- | ----------- |
 | 200 | Profile information for a user |
 | default | Unexpected error |
+
 ### /history
 ---
 ##### ***GET***
@@ -102,6 +109,7 @@ already factors in this multiplier.
 | ---- | ---------- | ----------- | -------- | ---- |
 | offset | query | Offset the list of returned results by this amount. Default is zero. | No | integer |
 | limit | query | Number of items to retrieve. Default is 5, maximum is 100. | No | integer |
+
 **Responses**
 
 | Code | Description |

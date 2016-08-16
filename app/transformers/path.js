@@ -34,12 +34,12 @@ module.exports = (path, data) => {
 
         // // Build parameters
         if ('parameters' in pathInfo) {
-          res.push(parameters(pathInfo.parameters));
+          res.push(`${parameters(pathInfo.parameters)}\n`);
         }
 
         // Build responses
         if ('responses' in pathInfo) {
-          res.push(responses(pathInfo.responses));
+          res.push(`${responses(pathInfo.responses)}\n`);
         }
       }
     });

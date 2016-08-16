@@ -14,12 +14,14 @@ A sample API that uses a petstore as an example to demonstrate features in the s
 | ---- | ---------- | ----------- | -------- | ---- |
 | tags | query | tags to filter by | No | array |
 | limit | query | maximum number of results to return | No | integer |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | pet response |
 | default | unexpected error |
+
 ##### ***POST***
 **Description:** Creates a new pet in the store.  Duplicates are allowed
 
@@ -28,12 +30,14 @@ A sample API that uses a petstore as an example to demonstrate features in the s
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | pet | body | Pet to add to the store | Yes | undefined |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | pet response |
 | default | unexpected error |
+
 ### /pets/{id}
 ---
 ##### ***GET***
@@ -44,12 +48,14 @@ A sample API that uses a petstore as an example to demonstrate features in the s
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | id | path | ID of pet to fetch | Yes | integer |
+
 **Responses**
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | pet response |
 | default | unexpected error |
+
 ##### ***DELETE***
 **Description:** deletes a single pet based on the ID supplied
 
@@ -58,6 +64,7 @@ A sample API that uses a petstore as an example to demonstrate features in the s
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | id | path | ID of pet to delete | Yes | integer |
+
 **Responses**
 
 | Code | Description |
