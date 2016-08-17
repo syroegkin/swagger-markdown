@@ -6,3 +6,4 @@ circle.yml
 .idea
 .eslintignore
 .eslintrc
+.npmignore
