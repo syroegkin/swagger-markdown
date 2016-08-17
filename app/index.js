@@ -5,41 +5,50 @@ const fs = require('fs');
 const ArgumentParser = require('argparse').ArgumentParser;
 const transformInfo = require('./transformers/info');
 const transformPath = require('./transformers/path');
+const packageInfo = require('../package.json');
 
 const parser = new ArgumentParser({
   addHelp: true,
-  description: 'swagger-markdown'
+  description: 'swagger-markdown',
+  version: packageInfo.version
 });
 
 parser.addArgument(
-  ['-i'], {
-    help: 'Path to the swagger yaml file'
+  ['-i', '--input'], {
+    required: true,
+    help: 'Path to the swagger yaml file',
+    metavar: '',
+    dest: 'input'
+  });
+parser.addArgument(
+  ['-o', '--output'], {
+    help: 'Path to the resulting md file',
+    metavar: '',
+    dest: 'output'
   }
 );
-// parser.addArgument(
-//   ['-o'], {
-//     help: 'Path to the result markdown file.'
-//   }
-// );
 const args = parser.parseArgs();
 
-if (args.i) {
+if (args.input) {
   const document = [];
 
   try {
-    const doc = yaml.safeLoad(fs.readFileSync(args.i, 'utf8'));
+    const inputDoc = yaml.safeLoad(fs.readFileSync(args.input, 'utf8'));
+    const outputFile = args.output || args.input.replace(/yaml$/, 'md');
 
     // Process info
-    if ('info' in doc) {
-      document.push(transformInfo(doc.info));
+    if ('info' in inputDoc) {
+      document.push(transformInfo(inputDoc.info));
     }
 
     // Process Paths
-    if ('paths' in doc) {
-      Object.keys(doc.paths).map(path => document.push(transformPath(path, doc.paths[path])));
+    if ('paths' in inputDoc) {
+      Object.keys(inputDoc.paths).map(
+        path => document.push(transformPath(path, inputDoc.paths[path]))
+      );
     }
 
-    fs.writeFile(args.i.replace(/yaml$/, 'md'), document.join('\n'), err => {
+    fs.writeFile(outputFile, document.join('\n'), err => {
       if (err) {
         console.log(err);
       }

@@ -1,9 +1,10 @@
 swagger-markdown
 ================
 
-[![npm][npm-image]][npm-url] [![dependencies][david-image]][david-url] [![circle ci][circleci-image]][circleci-url]
+[![npm][npm-image]][npm-url] [![dependencies][david-image]][david-url] [![circle ci][circleci-image]][circleci-url] [![bitHound Overall Score](https://www.bithound.io/github/syroegkin/swagger-markdown/badges/score.svg)](https://www.bithound.io/github/syroegkin/swagger-markdown)
 
-CLI script to turn swagger yaml into markdown files
+CLI script to turn swagger yaml into markdown files.
+Supports swagger 2.0 format only
 
 see [examples](https://github.com/syroegkin/swagger-markdown/tree/master/examples) folder
 
@@ -12,6 +13,18 @@ see [examples](https://github.com/syroegkin/swagger-markdown/tree/master/example
     npm install -g swagger-markdown
 
 ###Usage
+
+```bash
+swagger-markdown [-h] [-v] -i  [-o]
+
+Options:
+  -h, --help      Show this help message and exit.
+  -v, --version   Show program's version number and exit.
+  -i , --input    Path to the swagger yaml file
+  -o , --output   Path to the resulting md file
+
+```
+
 ```javascript
 swagger-markdown -i path/to/swagger/file.yaml
 ```
