@@ -14,7 +14,7 @@ see [examples](https://github.com/syroegkin/swagger-markdown/tree/master/example
 
 ###Usage
 
-```bash
+```
 swagger-markdown [-h] [-v] -i  [-o]
 
 Options:
@@ -24,6 +24,8 @@ Options:
   -o , --output   Path to the resulting md file
 
 ```
+
+####Example:
 
 ```javascript
 swagger-markdown -i path/to/swagger/file.yaml
