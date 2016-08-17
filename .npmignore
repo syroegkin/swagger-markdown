@@ -2,3 +2,7 @@ app
 tests
 examples
 examples.sh
+circle.yml
+.idea
+.eslintignore
+.eslintrc
