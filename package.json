@@ -41,7 +41,7 @@
     "mocha": "^3.0.2"
   },
   "dependencies": {
-    "argparse": "^1.0.7",
+    "argparse": "^1.0.8",
     "js-yaml": "^3.6.1"
   }
 }
