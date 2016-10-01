@@ -7,3 +7,4 @@ circle.yml
 .eslintignore
 .eslintrc
 .npmignore
+make-examples.js
