@@ -38,7 +38,7 @@ describe('Info transformer', () => {
     const result = 'Document title\n' +
       '==============\n' +
       'Document description\n\n' +
-      '**Version** 1.0.1';
+      '**Version** 1.0.1\n';
     const res = transformInfo(fixture);
     expect(res).to.be.equal(result);
   });
@@ -47,7 +47,7 @@ describe('Info transformer', () => {
     const fixture = {
       termsOfService: 'Terms of service'
     };
-    const result = `**Terms of service**\n${fixture.termsOfService}`;
+    const result = `**Terms of service**  \n${fixture.termsOfService}\n`;
     const res = transformInfo(fixture);
     expect(res).to.be.equal(result);
   });
@@ -62,10 +62,10 @@ describe('Info transformer', () => {
         }
       };
       const res = transformInfo(fixture);
-      const result = '**Contact information**\n'
-        + `${fixture.contact.name}\n`
-        + `${fixture.contact.url}\n`
-        + `${fixture.contact.email}`;
+      const result = '**Contact information**  \n'
+        + `${fixture.contact.name}  \n`
+        + `${fixture.contact.url}  \n`
+        + `${fixture.contact.email}  `;
       expect(res).to.be.equal(result);
     });
     it('should create only these fields which are provided', () => {
@@ -75,8 +75,8 @@ describe('Info transformer', () => {
         }
       };
       const res = transformInfo(fixture);
-      const result = '**Contact information**\n'
-        + `${fixture.contact.url}`;
+      const result = '**Contact information**  \n'
+        + `${fixture.contact.url}  `;
       expect(res).to.be.equal(result);
     });
     it('should not create header if information is not provided', () => {

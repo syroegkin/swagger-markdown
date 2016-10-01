@@ -3,11 +3,13 @@ Swagger Sample API
 A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification
 
 **Version** 1.0.9-abcd
-**Terms of service**
+
+**Terms of service**  
 http://helloreverb.com/terms/
-**Contact information**
-swagger api team
-http://swagger.io
+
+**Contact information**  
+swagger api team  
+http://swagger.io  
 ### /pets/{id}
 ---
 ##### ***GET***

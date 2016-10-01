@@ -14,10 +14,10 @@ module.exports = info => {
       res.push(`${info.description}\n`);
     }
     if ('version' in info) {
-      res.push(`**Version** ${info.version}`);
+      res.push(`**Version** ${info.version}\n`);
     }
     if ('termsOfService' in info) {
-      res.push(`**Terms of service**\n${info.termsOfService}`);
+      res.push(`**Terms of service**  \n${info.termsOfService}\n`);
     }
     if ('contact' in info) {
       const contact = [];
@@ -25,8 +25,8 @@ module.exports = info => {
         contact.push(info.contact[key]);
       });
       if (contact.length > 0) {
-        res.push('**Contact information**');
-        contact.map(line => res.push(line));
+        res.push('**Contact information**  ');
+        contact.map(line => res.push(`${line}  `));
       }
     }
   }
