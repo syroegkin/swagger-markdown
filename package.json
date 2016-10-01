@@ -1,6 +1,6 @@
 {
   "name": "swagger-markdown",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Create markdown API documentation from swagger file",
   "main": "index.js",
   "scripts": {
@@ -37,7 +37,7 @@
     "chai": "^3.5.0",
     "eslint": "^3.3.0",
     "eslint-config-airbnb-base": "8.0.0",
-    "eslint-plugin-import": "^1.13.0",
+    "eslint-plugin-import": "^2.0.0",
     "mocha": "^3.0.2"
   },
   "dependencies": {

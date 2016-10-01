@@ -10,11 +10,45 @@ module.exports = info => {
     if ('title' in info) {
       res.push(`${info.title}\n${Array(info.title.length + 1).join('=')}`);
     }
+
     if ('description' in info) {
       res.push(`${info.description}\n`);
     }
+
     if ('version' in info) {
-      res.push(`**Version** ${info.version}`);
+      res.push(`**Version:** ${info.version}\n`);
+    }
+
+    if ('termsOfService' in info) {
+      res.push(`**Terms of service:**  \n${info.termsOfService}\n`);
+    }
+
+    if ('contact' in info) {
+      const contact = [];
+      Object.keys(info.contact).map(key => {
+        contact.push(info.contact[key]);
+      });
+      if (contact.length > 0) {
+        res.push('**Contact information:**  ');
+        contact.map(line => res.push(`${line}  `));
+        res.push('');
+      }
+    }
+
+    if ('license' in info) {
+      const license = [];
+      if (info.license.url || info.license.name) {
+        license.push('**License:** ');
+        if (info.license.url && info.license.name) {
+          license.push(`[${info.license.name}](${info.license.url})`);
+        } else {
+          license.push(info.license.name || info.license.url);
+        }
+        license.push('\n');
+      }
+      if (license.length > 0) {
+        res.push(license.join(''));
+      }
     }
   }
   return res.length ? res.join('\n') : null;
