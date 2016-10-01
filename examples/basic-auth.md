@@ -8,7 +8,7 @@ Server code is available [here](https://github.com/mohsen1/basic-auth-server). I
 * Password: `pass`
 
 
-**Version** 1.0.0
+**Version:** 1.0.0
 
 ### /
 ---

@@ -117,9 +117,9 @@ callbackFunction({
 ```
 
 
-**Version** v1
+**Version:** v1
 
-**Terms of service**  
+**Terms of service:**  
 http://instagram.com/about/legal/terms/api
 
 ### /users/{user-id}

@@ -7,14 +7,16 @@ This is a sample server Petstore server.
 For this sample, you can use the api key `special-key` to test the authorization filters
 
 
-**Version** 1.0.0
+**Version:** 1.0.0
 
-**Terms of service**  
+**Terms of service:**  
 http://helloreverb.com/terms/
 
-**Contact information**  
+**Contact information:**  
 apiteam@swagger.io  
-**License** [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
+
+**License:** [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
+
 ### /pets
 ---
 ##### ***POST***

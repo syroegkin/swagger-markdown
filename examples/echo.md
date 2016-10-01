@@ -5,7 +5,7 @@ Feel free to make a path or an operation and use **Try Operation** to test it. T
 render back everything.
 
 
-**Version** 1.0.0
+**Version:** 1.0.0
 
 ### /
 ---
