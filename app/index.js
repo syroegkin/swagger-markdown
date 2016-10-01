@@ -41,6 +41,11 @@ if (args.input) {
       document.push(transformInfo(inputDoc.info));
     }
 
+    // Security definitions
+    if ('securityDefinitions' in inputDoc) {
+      document.push(transformSecurityDefinitions(inputDoc.securityDefinitions));
+    }
+
     // Process Paths
     if ('paths' in inputDoc) {
       Object.keys(inputDoc.paths).map(
