@@ -29,6 +29,20 @@ module.exports = info => {
         contact.map(line => res.push(`${line}  `));
       }
     }
+    if ('license' in info) {
+      const license = [];
+      if (info.license.url || info.license.name) {
+        license.push('**License** ');
+        if (info.license.url && info.license.name) {
+          license.push(`[${info.license.name}](${info.license.url})`);
+        } else {
+          license.push(info.license.name || info.license.url);
+        }
+      }
+      if (license.length > 0) {
+        res.push(license.join(''));
+      }
+    }
   }
   return res.length ? res.join('\n') : null;
 };

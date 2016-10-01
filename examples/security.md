@@ -10,6 +10,7 @@ http://helloreverb.com/terms/
 **Contact information**  
 swagger api team  
 http://swagger.io  
+**License** [Creative Commons 4.0 International](http://creativecommons.org/licenses/by/4.0/)
 ### /pets/{id}
 ---
 ##### ***GET***

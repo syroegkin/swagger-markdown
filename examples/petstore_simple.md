@@ -11,6 +11,7 @@ http://helloreverb.com/terms/
 Swagger API team  
 foo@example.com  
 http://swagger.io  
+**License** [MIT](http://opensource.org/licenses/MIT)
 ### /pets
 ---
 ##### ***GET***
