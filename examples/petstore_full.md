@@ -8,6 +8,10 @@ For this sample, you can use the api key `special-key` to test the authorization
 
 
 **Version** 1.0.0
+**Terms of service**
+http://helloreverb.com/terms/
+**Contact information**
+apiteam@swagger.io
 ### /pets
 ---
 ##### ***POST***

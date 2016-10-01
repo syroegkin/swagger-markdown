@@ -118,6 +118,8 @@ callbackFunction({
 
 
 **Version** v1
+**Terms of service**
+http://instagram.com/about/legal/terms/api
 ### /users/{user-id}
 ---
 ##### ***GET***

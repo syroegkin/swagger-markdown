@@ -3,6 +3,12 @@ Swagger Petstore (Simple)
 A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification
 
 **Version** 1.0.0
+**Terms of service**
+http://helloreverb.com/terms/
+**Contact information**
+Swagger API team
+foo@example.com
+http://swagger.io
 ### /pets
 ---
 ##### ***GET***

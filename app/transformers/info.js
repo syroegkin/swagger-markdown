@@ -16,6 +16,19 @@ module.exports = info => {
     if ('version' in info) {
       res.push(`**Version** ${info.version}`);
     }
+    if ('termsOfService' in info) {
+      res.push(`**Terms of service**\n${info.termsOfService}`);
+    }
+    if ('contact' in info) {
+      const contact = [];
+      Object.keys(info.contact).map(key => {
+        contact.push(info.contact[key]);
+      });
+      if (contact.length > 0) {
+        res.push('**Contact information**');
+        contact.map(line => res.push(line));
+      }
+    }
   }
   return res.length ? res.join('\n') : null;
 };
