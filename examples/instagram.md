@@ -126,9 +126,9 @@ http://instagram.com/about/legal/terms/api
 ---
 |oauth2|*OAuth 2.0*|
 |---|---|
-|flow|implicit|
-|authorizationUrl|https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token|
-|**Scopes**|
+|Flow|implicit|
+|Authorization URL|https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token|
+|**Scopes**||
 |basic|to read any and all data related to a user (e.g. following/followed-by  lists, photos, etc.) (granted by default) |
 |comments|to create or delete comments on a user’s behalf|
 |relationships|to follow and unfollow users on a user’s behalf|
@@ -136,8 +136,8 @@ http://instagram.com/about/legal/terms/api
 
 |apiKey|*API Key*|
 |---|---|
-|in|query|
-|name|access_token|
+|In|query|
+|Name|access_token|
 
 ### /users/{user-id}
 ---

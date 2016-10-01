@@ -21,14 +21,14 @@ apiteam@swagger.io
 ---
 |apiKey|*API Key*|
 |---|---|
-|name|api_key|
-|in|header|
+|Name|api_key|
+|In|header|
 
 |oauth2|*OAuth 2.0*|
 |---|---|
-|authorizationUrl|http://petstore.swagger.io/api/oauth/dialog|
-|flow|implicit|
-|**Scopes**|
+|Authorization URL|http://petstore.swagger.io/api/oauth/dialog|
+|Flow|implicit|
+|**Scopes**||
 |write_pets|modify pets in your account|
 |read_pets|read your pets|
 

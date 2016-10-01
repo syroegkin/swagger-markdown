@@ -14,7 +14,7 @@ Server code is available [here](https://github.com/mohsen1/basic-auth-server). I
 ---
 |basic|*Basic*|
 |---|---|
-|description|HTTP Basic Authentication. Works over `HTTP` and `HTTPS`|
+|Description|HTTP Basic Authentication. Works over `HTTP` and `HTTPS`|
 
 ### /
 ---

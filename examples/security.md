@@ -17,7 +17,7 @@ http://swagger.io
 ---
 |oauth2|*OAuth 2.0*|
 |---|---|
-|**Scopes**|
+|**Scopes**||
 |user|Grants read/write access to profile info only. Note that this scope includes user:email and user:follow.|
 |user:email|Grants read access to a user’s email addresses.|
 |user:follow|Grants access to follow or unfollow other users.|
@@ -37,13 +37,13 @@ http://swagger.io
 |read:public_key|List and view details for public keys.|
 |write:public_key|Create, list, and view details for public keys.|
 |admin:public_key|Fully manage public keys.|
-|flow|accessCode|
-|authorizationUrl|https://github.com/login/oauth/authorize|
-|tokenUrl|https://github.com/login/oauth/access_token|
+|Flow|accessCode|
+|Authorization URL|https://github.com/login/oauth/authorize|
+|Token URL|https://github.com/login/oauth/access_token|
 
 |oauth2|*OAuth 2.0*|
 |---|---|
-|**Scopes**|
+|**Scopes**||
 |user|Grants read/write access to profile info only. Note that this scope includes user:email and user:follow.|
 |user:email|Grants read access to a user’s email addresses.|
 |user:follow|Grants access to follow or unfollow other users.|
@@ -63,13 +63,13 @@ http://swagger.io
 |read:public_key|List and view details for public keys.|
 |write:public_key|Create, list, and view details for public keys.|
 |admin:public_key|Fully manage public keys.|
-|flow|implicit|
-|authorizationUrl|http://petstore.swagger.io/oauth/dialog|
+|Flow|implicit|
+|Authorization URL|http://petstore.swagger.io/oauth/dialog|
 
 |apiKey|*API Key*|
 |---|---|
-|in|header|
-|name|api_key|
+|In|header|
+|Name|api_key|
 
 ### /pets/{id}
 ---
