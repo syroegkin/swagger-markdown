@@ -5,6 +5,7 @@ const fs = require('fs');
 const ArgumentParser = require('argparse').ArgumentParser;
 const transformInfo = require('./transformers/info');
 const transformPath = require('./transformers/path');
+const transformSecurityDefinitions = require('./transformers/securityDefinitions');
 const packageInfo = require('../package.json');
 
 const parser = new ArgumentParser({
