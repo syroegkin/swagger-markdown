@@ -17,6 +17,21 @@ apiteam@swagger.io
 
 **License:** [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
 
+### Security
+---
+|apiKey|*API Key*|
+|---|---|
+|Name|api_key|
+|In|header|
+
+|oauth2|*OAuth 2.0*|
+|---|---|
+|Authorization URL|http://petstore.swagger.io/api/oauth/dialog|
+|Flow|implicit|
+|**Scopes**||
+|write_pets|modify pets in your account|
+|read_pets|read your pets|
+
 ### /pets
 ---
 ##### ***POST***
