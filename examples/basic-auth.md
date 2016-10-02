@@ -10,6 +10,12 @@ Server code is available [here](https://github.com/mohsen1/basic-auth-server). I
 
 **Version:** 1.0.0
 
+### Security
+---
+|basic|*Basic*|
+|---|---|
+|Description|HTTP Basic Authentication. Works over `HTTP` and `HTTPS`|
+
 ### /
 ---
 ##### ***GET***
