@@ -1,6 +1,6 @@
 const expect = require('chai').expect;
 const transformSecurituDefinitions = require('../../app/transformers/securityDefinitions');
-// const nameResolver = require('../../app/transformers/securityDefinitions').nameResolver;
+const nameResolver = require('../../app/transformers/securityDefinitions').nameResolver;
 const typeResolver = require('../../app/transformers/securityDefinitions').typeResolver;
 
 describe('Security definitions', () => {
@@ -17,6 +17,15 @@ describe('Security definitions', () => {
         + `|${type}|*${typeResolver[type]}*|\n`
         + '|---|---|\n';
       expect(result).to.be.equal(res);
+    });
+  });
+  it('Should resolve names', () => {
+    Object.keys(nameResolver).map(key => {
+      const fixture = { auth: { type: 'basic' } };
+      fixture.auth[key] = 'value';
+      const res = transformSecurituDefinitions(fixture);
+      const result = `|${nameResolver[key]}|value|\n`;
+      expect(res).to.include(result);
     });
   });
 });
