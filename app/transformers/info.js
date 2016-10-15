@@ -1,4 +1,7 @@
+const transformContact = require('./contact');
+
 /**
+ * http://swagger.io/specification/#infoObject
  * Prepare page header
  * Leave description with no changes
  * @param {Object} info
@@ -24,15 +27,7 @@ module.exports = info => {
     }
 
     if ('contact' in info) {
-      const contact = [];
-      Object.keys(info.contact).map(key => {
-        contact.push(info.contact[key]);
-      });
-      if (contact.length > 0) {
-        res.push('**Contact information:**  ');
-        contact.map(line => res.push(`${line}  `));
-        res.push('');
-      }
+      res.push(transformContact(info.contact));
     }
 
     if ('license' in info) {

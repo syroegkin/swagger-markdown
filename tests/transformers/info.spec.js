@@ -52,42 +52,6 @@ describe('Info transformer', () => {
     expect(res).to.be.equal(result);
   });
 
-  describe('Contact info', () => {
-    it('should create contact info with all fields', () => {
-      const fixture = {
-        contact: {
-          name: 'API Support',
-          url: 'http://www.swagger.io/support',
-          email: 'support@swagger.io'
-        }
-      };
-      const res = transformInfo(fixture);
-      const result = '**Contact information:**  \n'
-        + `${fixture.contact.name}  \n`
-        + `${fixture.contact.url}  \n`
-        + `${fixture.contact.email}  \n`;
-      expect(res).to.be.equal(result);
-    });
-    it('should create only these fields which are provided', () => {
-      const fixture = {
-        contact: {
-          url: 'http://www.swagger.io/support'
-        }
-      };
-      const res = transformInfo(fixture);
-      const result = '**Contact information:**  \n'
-        + `${fixture.contact.url}  \n`;
-      expect(res).to.be.equal(result);
-    });
-    it('should not create header if information is not provided', () => {
-      const fixture = {
-        contact: {}
-      };
-      const res = transformInfo(fixture);
-      expect(res).to.be.equal(null);
-    });
-  });
-
   describe('License field', () => {
     it('should not create header if information is not provided', () => {
       const fixture = {
