@@ -1,4 +1,5 @@
 const transformContact = require('./contact');
+const transformLicense = require('./license');
 
 /**
  * http://swagger.io/specification/#infoObject
@@ -31,19 +32,7 @@ module.exports = info => {
     }
 
     if ('license' in info) {
-      const license = [];
-      if (info.license.url || info.license.name) {
-        license.push('**License:** ');
-        if (info.license.url && info.license.name) {
-          license.push(`[${info.license.name}](${info.license.url})`);
-        } else {
-          license.push(info.license.name || info.license.url);
-        }
-        license.push('\n');
-      }
-      if (license.length > 0) {
-        res.push(license.join(''));
-      }
+      res.push(transformLicense(info.license));
     }
   }
   return res.length ? res.join('\n') : null;
