@@ -9,8 +9,8 @@ http://helloreverb.com/terms/
 
 **Contact information:**  
 Swagger API team  
-foo@example.com  
 http://swagger.io  
+foo@example.com  
 
 **License:** [MIT](http://opensource.org/licenses/MIT)
 
