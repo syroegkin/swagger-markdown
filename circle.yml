@@ -10,3 +10,5 @@ dependencies:
     - sudo apt-get install -y -qq yarn
   cache_directories:
     - "~/.yarn-cache"
+  override:
+    - yarn install --no-lockfile 
