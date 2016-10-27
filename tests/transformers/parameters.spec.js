@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const parameters = require('../../../app/transformers/path/parameters');
+const parameters = require('../../app/transformers/parameters');
 
 const tableFixture = [
   '**Parameters**',
@@ -21,13 +21,17 @@ describe('Path parameters transormer', () => {
         description: 'year',
         type: 'string',
         required: true
-      }
+      }, {
+        in: 'formData',
+        type: 'string'
+      }, {}
     ];
 
     const results = [].concat(tableFixture, [
-
       '| name | formData | name | No | string |',
-      '| year | formData | year | Yes | string |'
+      '| year | formData | year | Yes | string |',
+      '|  | formData |  | No | string |',
+      '|  |  |  | No |  |'
     ]);
     const res = parameters(fixture).split('\n');
 
@@ -43,6 +47,8 @@ describe('Path parameters transormer', () => {
     it('Should create table body', () => {
       expect(res[4]).to.be.equal(results[3]);
       expect(res[5]).to.be.equal(results[4]);
+      expect(res[6]).to.be.equal(results[5]);
+      expect(res[7]).to.be.equal(results[6]);
     });
   });
   describe('Path parameters', () => {
