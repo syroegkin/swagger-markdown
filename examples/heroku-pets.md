@@ -29,7 +29,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| pet | body | The pet JSON you want to post | Yes | undefined |
+| pet | body | The pet JSON you want to post | Yes |  |
 
 **Responses**
 
@@ -42,7 +42,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| pet | body | The pet JSON you want to post | Yes | undefined |
+| pet | body | The pet JSON you want to post | Yes |  |
 
 **Responses**
 

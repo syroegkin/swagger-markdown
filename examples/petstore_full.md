@@ -43,7 +43,7 @@ apiteam@swagger.io
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| body | body | Pet object that needs to be added to the store | No | undefined |
+| body | body | Pet object that needs to be added to the store | No |  |
 
 **Responses**
 
@@ -60,7 +60,7 @@ apiteam@swagger.io
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| body | body | Pet object that needs to be added to the store | No | undefined |
+| body | body | Pet object that needs to be added to the store | No |  |
 
 **Responses**
 
@@ -179,7 +179,7 @@ apiteam@swagger.io
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| body | body | order placed for purchasing the pet | No | undefined |
+| body | body | order placed for purchasing the pet | No |  |
 
 **Responses**
 
@@ -238,7 +238,7 @@ apiteam@swagger.io
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| body | body | Created user object | No | undefined |
+| body | body | Created user object | No |  |
 
 **Responses**
 
@@ -257,7 +257,7 @@ apiteam@swagger.io
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| body | body | List of user object | No | undefined |
+| body | body | List of user object | No |  |
 
 **Responses**
 
@@ -276,7 +276,7 @@ apiteam@swagger.io
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| body | body | List of user object | No | undefined |
+| body | body | List of user object | No |  |
 
 **Responses**
 
@@ -349,7 +349,7 @@ apiteam@swagger.io
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | username | path | name that need to be deleted | Yes | string |
-| body | body | Updated user object | No | undefined |
+| body | body | Updated user object | No |  |
 
 **Responses**
 

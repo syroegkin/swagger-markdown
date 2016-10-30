@@ -40,7 +40,7 @@ foo@example.com
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| pet | body | Pet to add to the store | Yes | undefined |
+| pet | body | Pet to add to the store | Yes |  |
 
 **Responses**
 

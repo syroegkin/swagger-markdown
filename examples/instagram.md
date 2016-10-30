@@ -148,7 +148,7 @@ http://instagram.com/about/legal/terms/api
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| undefined | undefined | undefined | No | undefined |
+|  |  |  | No |  |
 
 **Responses**
 
@@ -182,7 +182,7 @@ http://instagram.com/about/legal/terms/api
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| undefined | undefined | undefined | No | undefined |
+|  |  |  | No |  |
 | count | query | Count of media to return. | No | integer |
 | max_timestamp | query | Return media before this UNIX timestamp. | No | integer |
 | min_timestamp | query | Return media after this UNIX timestamp. | No | integer |
@@ -244,7 +244,7 @@ available for the currently authenticated user.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| undefined | undefined | undefined | No | undefined |
+|  |  |  | No |  |
 
 **Responses**
 
@@ -261,7 +261,7 @@ available for the currently authenticated user.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| undefined | undefined | undefined | No | undefined |
+|  |  |  | No |  |
 
 **Responses**
 
@@ -291,8 +291,8 @@ available for the currently authenticated user.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| undefined | undefined | undefined | No | undefined |
-| action | body | One of follow/unfollow/block/unblock/approve/ignore. | No | undefined |
+|  |  |  | No |  |
+| action | body | One of follow/unfollow/block/unblock/approve/ignore. | No |  |
 
 **Responses**
 
@@ -415,7 +415,7 @@ Can return mix of image and video types.
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
-| TEXT | body | Text to post as a comment on the media object as specified in media-id.  | No | undefined |
+| TEXT | body | Text to post as a comment on the media object as specified in media-id.  | No |  |
 
 **Responses**
 
@@ -498,7 +498,7 @@ authored by the authenticated user.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| undefined | undefined | undefined | No | undefined |
+|  |  |  | No |  |
 
 **Responses**
 
@@ -518,7 +518,7 @@ these objects.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| undefined | undefined | undefined | No | undefined |
+|  |  |  | No |  |
 
 **Responses**
 

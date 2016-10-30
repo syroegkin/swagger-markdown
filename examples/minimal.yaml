@@ -3,6 +3,9 @@ swagger: '2.0'
 info:
   version: 0.0.0
   title: Simple API
+externalDocs:
+  url: http://google.com
+  description: 'RTFM'
 paths:
   /:
     get:
