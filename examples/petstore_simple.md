@@ -9,8 +9,8 @@ http://helloreverb.com/terms/
 
 **Contact information:**  
 Swagger API team  
-foo@example.com  
 http://swagger.io  
+foo@example.com  
 
 **License:** [MIT](http://opensource.org/licenses/MIT)
 
@@ -40,7 +40,7 @@ http://swagger.io
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| pet | body | Pet to add to the store | Yes | undefined |
+| pet | body | Pet to add to the store | Yes |  |
 
 **Responses**
 

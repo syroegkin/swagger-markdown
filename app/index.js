@@ -6,6 +6,7 @@ const ArgumentParser = require('argparse').ArgumentParser;
 const transformInfo = require('./transformers/info');
 const transformPath = require('./transformers/path');
 const transformSecurityDefinitions = require('./transformers/securityDefinitions');
+const transformExternalDocs = require('./transformers/externalDocs');
 const packageInfo = require('../package.json');
 
 const parser = new ArgumentParser({
@@ -40,6 +41,10 @@ if (args.input) {
     // Process info
     if ('info' in inputDoc) {
       document.push(transformInfo(inputDoc.info));
+    }
+
+    if ('externalDocs' in inputDoc) {
+      document.push(transformExternalDocs(inputDoc.externalDocs));
     }
 
     // Security definitions
