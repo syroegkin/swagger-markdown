@@ -58,7 +58,7 @@ foo@example.com
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| id | path | ID of pet to fetch | Yes | integer |
+| id | path | ID of pet to fetch | Yes | long |
 
 **Responses**
 
@@ -74,7 +74,7 @@ foo@example.com
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| id | path | ID of pet to delete | Yes | integer |
+| id | path | ID of pet to delete | Yes | long |
 
 **Responses**
 

@@ -121,7 +121,7 @@ apiteam@swagger.io
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| petId | path | ID of pet that needs to be fetched | Yes | integer |
+| petId | path | ID of pet that needs to be fetched | Yes | long |
 
 **Responses**
 
@@ -160,7 +160,7 @@ apiteam@swagger.io
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
 | api_key | header |  | Yes | string |
-| petId | path | Pet id to delete | Yes | integer |
+| petId | path | Pet id to delete | Yes | long |
 
 **Responses**
 

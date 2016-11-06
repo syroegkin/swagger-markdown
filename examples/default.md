@@ -19,8 +19,8 @@ proper display order.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| latitude | query | Latitude component of location. | Yes | number |
-| longitude | query | Longitude component of location. | Yes | number |
+| latitude | query | Latitude component of location. | Yes | double |
+| longitude | query | Longitude component of location. | Yes | double |
 
 **Responses**
 
@@ -48,10 +48,10 @@ already factors in this multiplier.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| start_latitude | query | Latitude component of start location. | Yes | number |
-| start_longitude | query | Longitude component of start location. | Yes | number |
-| end_latitude | query | Latitude component of end location. | Yes | number |
-| end_longitude | query | Longitude component of end location. | Yes | number |
+| start_latitude | query | Latitude component of start location. | Yes | double |
+| start_longitude | query | Longitude component of start location. | Yes | double |
+| end_latitude | query | Latitude component of end location. | Yes | double |
+| end_longitude | query | Longitude component of end location. | Yes | double |
 
 **Responses**
 
@@ -71,9 +71,9 @@ already factors in this multiplier.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| start_latitude | query | Latitude component of start location. | Yes | number |
-| start_longitude | query | Longitude component of start location. | Yes | number |
-| customer_uuid | query | Unique customer identifier to be used for experience customization. | No | string |
+| start_latitude | query | Latitude component of start location. | Yes | double |
+| start_longitude | query | Longitude component of start location. | Yes | double |
+| customer_uuid | query | Unique customer identifier to be used for experience customization. | No | string (uuid) |
 | product_id | query | Unique identifier representing a specific product for a given latitude & longitude. | No | string |
 
 **Responses**
