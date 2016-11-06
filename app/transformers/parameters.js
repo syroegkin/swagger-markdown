@@ -1,3 +1,5 @@
+const transformDataTypes = require('./dataTypes');
+
 module.exports = (parameters, pathParameters) => {
   const res = [];
   res.push(`**Parameters**\n`);
@@ -17,7 +19,9 @@ module.exports = (parameters, pathParameters) => {
         line.push('');
       }
       line.push(keys.required ? 'Yes' : 'No');
-      line.push(keys.type || '');
+      line.push('type' in keys
+        ? transformDataTypes(keys.type, keys.format || null)
+        : '');
       // Add spaces and glue with pipeline
       res.push(`|${line.map(el => ` ${el} `).join('|')}|`);
     }
