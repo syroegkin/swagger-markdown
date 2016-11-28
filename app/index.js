@@ -36,7 +36,7 @@ if (args.input) {
 
   try {
     const inputDoc = yaml.safeLoad(fs.readFileSync(args.input, 'utf8'));
-    const outputFile = args.output || args.input.replace(/yaml$/, 'md');
+    const outputFile = args.output || args.input.replace(/(yaml|json)$/i, 'md');
 
     // Process info
     if ('info' in inputDoc) {
