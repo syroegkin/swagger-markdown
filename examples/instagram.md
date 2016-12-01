@@ -630,7 +630,7 @@ geography, use the [media search endpoint
 | 200 | OK |
 
 <a name="user"></a>User  
-```
+```JSON
 {
 	id: integer
 	username: string
@@ -642,7 +642,7 @@ geography, use the [media search endpoint
 }
 ```
 <a name="media"></a>Media  
-```
+```JSON
 {
 	created_time: integer
 	type: string
@@ -659,7 +659,7 @@ geography, use the [media search endpoint
 }
 ```
 <a name="location"></a>Location  
-```
+```JSON
 {
 	id: string
 	name: string
@@ -668,7 +668,7 @@ geography, use the [media search endpoint
 }
 ```
 <a name="comment"></a>Comment  
-```
+```JSON
 {
 	id: string
 	created_time: string
@@ -677,7 +677,7 @@ geography, use the [media search endpoint
 }
 ```
 <a name="like"></a>Like  
-```
+```JSON
 {
 	user_name: string
 	first_name: string
@@ -687,14 +687,14 @@ geography, use the [media search endpoint
 }
 ```
 <a name="tag"></a>Tag  
-```
+```JSON
 {
 	media_count: integer
 	name: string
 }
 ```
 <a name="image"></a>Image  
-```
+```JSON
 {
 	width: integer
 	height: integer
@@ -702,7 +702,7 @@ geography, use the [media search endpoint
 }
 ```
 <a name="miniProfile"></a>MiniProfile  
-```
+```JSON
 {
 	user_name: string
 	full_name: string

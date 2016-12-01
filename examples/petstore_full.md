@@ -377,7 +377,7 @@ apiteam@swagger.io
 | 404 | User not found |
 
 <a name="user"></a>User  
-```
+```JSON
 {
 	id: long
 	username: string
@@ -390,14 +390,14 @@ apiteam@swagger.io
 }
 ```
 <a name="category"></a>Category  
-```
+```JSON
 {
 	id: long
 	name: string
 }
 ```
 <a name="pet"></a>Pet  
-```
+```JSON
 {
 	id: long
 	category: undefined
@@ -408,14 +408,14 @@ apiteam@swagger.io
 }
 ```
 <a name="tag"></a>Tag  
-```
+```JSON
 {
 	id: long
 	name: string
 }
 ```
 <a name="order"></a>Order  
-```
+```JSON
 {
 	id: long
 	petId: long

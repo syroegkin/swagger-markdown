@@ -92,14 +92,14 @@ http://swagger.io
 | default | error payload |
 
 <a name="pet"></a>Pet  
-```
+```JSON
 {
 	name: string*
 	tag: string
 }
 ```
 <a name="errorModel"></a>ErrorModel  
-```
+```JSON
 {
 	code: integer*
 	message: string*

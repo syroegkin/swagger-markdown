@@ -119,7 +119,7 @@ already factors in this multiplier.
 | default | Unexpected error |
 
 <a name="product"></a>Product  
-```
+```JSON
 {
 	product_id: string
 	description: string
@@ -129,7 +129,7 @@ already factors in this multiplier.
 }
 ```
 <a name="priceEstimate"></a>PriceEstimate  
-```
+```JSON
 {
 	product_id: string
 	currency_code: string
@@ -141,7 +141,7 @@ already factors in this multiplier.
 }
 ```
 <a name="profile"></a>Profile  
-```
+```JSON
 {
 	first_name: string
 	last_name: string
@@ -151,13 +151,13 @@ already factors in this multiplier.
 }
 ```
 <a name="activity"></a>Activity  
-```
+```JSON
 {
 	uuid: string
 }
 ```
 <a name="activities"></a>Activities  
-```
+```JSON
 {
 	offset: integer
 	limit: integer
@@ -166,7 +166,7 @@ already factors in this multiplier.
 }
 ```
 <a name="error"></a>Error  
-```
+```JSON
 {
 	code: integer
 	message: string

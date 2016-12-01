@@ -66,7 +66,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 | 200 | Sends the pet with pet Id |
 
 <a name="pet"></a>Pet  
-```
+```JSON
 {
 	name: string
 	birthday: integer

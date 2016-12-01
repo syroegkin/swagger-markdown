@@ -84,7 +84,7 @@ foo@example.com
 | default | unexpected error |
 
 <a name="pet"></a>pet  
-```
+```JSON
 {
 	id: long*
 	name: string*
@@ -92,7 +92,7 @@ foo@example.com
 }
 ```
 <a name="newPet"></a>newPet  
-```
+```JSON
 {
 	id: long
 	name: string*
@@ -100,7 +100,7 @@ foo@example.com
 }
 ```
 <a name="errorModel"></a>errorModel  
-```
+```JSON
 {
 	code: integer*
 	message: string*

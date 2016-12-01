@@ -9,7 +9,7 @@ module.exports = (name, definition) => {
 
   // Add anchor with name
   res.push(`<a name="${linkAnchor}"></a>${name}  `);
-  res.push('```');
+  res.push('```JSON');
   res.push('{');
   const member = [];
   Object.keys(definition.properties).map(propName => {
