@@ -91,4 +91,17 @@ http://swagger.io
 | 200 | pet response |
 | default | error payload |
 
-
+<a name="pet"></a>Pet  
+```
+{
+	name: string*
+	tag: string
+}
+```
+<a name="errorModel"></a>ErrorModel  
+```
+{
+	code: integer*
+	message: string*
+}
+```

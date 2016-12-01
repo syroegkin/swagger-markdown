@@ -1,3 +1,6 @@
+/**
+ * Make camel case format
+*/
 module.exports = input => input
   .replace(/[^\b\w\s]/ig, '')
   .replace(/^\s*/ig, '')
