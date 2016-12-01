@@ -64,3 +64,11 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 | Code | Description |
 | ---- | ----------- |
 | 200 | Sends the pet with pet Id |
+
+<a name="pet"></a>Pet  
+```
+{
+	name: string
+	birthday: integer
+}
+```

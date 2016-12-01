@@ -628,3 +628,85 @@ geography, use the [media search endpoint
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
+<a name="user"></a>User  
+```
+{
+	id: integer
+	username: string
+	full_name: string
+	profile_picture: string
+	bio: string
+	website: string
+	counts: object
+}
+```
+<a name="media"></a>Media  
+```
+{
+	created_time: integer
+	type: string
+	filter: string
+	tags: array
+	id: integer
+	user: undefined
+	users_in_photo: array
+	location: undefined
+	comments:: object
+	likes: object
+	images: undefined
+	videos: undefined
+}
+```
+<a name="location"></a>Location  
+```
+{
+	id: string
+	name: string
+	latitude: number
+	longitude: number
+}
+```
+<a name="comment"></a>Comment  
+```
+{
+	id: string
+	created_time: string
+	text: string
+	from: undefined
+}
+```
+<a name="like"></a>Like  
+```
+{
+	user_name: string
+	first_name: string
+	last_name: string
+	type: string
+	id: string
+}
+```
+<a name="tag"></a>Tag  
+```
+{
+	media_count: integer
+	name: string
+}
+```
+<a name="image"></a>Image  
+```
+{
+	width: integer
+	height: integer
+	url: string
+}
+```
+<a name="miniProfile"></a>MiniProfile  
+```
+{
+	user_name: string
+	full_name: string
+	id: integer
+	profile_picture: string
+}
+```

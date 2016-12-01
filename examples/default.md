@@ -117,3 +117,59 @@ already factors in this multiplier.
 | ---- | ----------- |
 | 200 | History information for the given user |
 | default | Unexpected error |
+
+<a name="product"></a>Product  
+```
+{
+	product_id: string
+	description: string
+	display_name: string
+	capacity: string
+	image: string
+}
+```
+<a name="priceEstimate"></a>PriceEstimate  
+```
+{
+	product_id: string
+	currency_code: string
+	display_name: string
+	estimate: string
+	low_estimate: number
+	high_estimate: number
+	surge_multiplier: number
+}
+```
+<a name="profile"></a>Profile  
+```
+{
+	first_name: string
+	last_name: string
+	email: string
+	picture: string
+	promo_code: string
+}
+```
+<a name="activity"></a>Activity  
+```
+{
+	uuid: string
+}
+```
+<a name="activities"></a>Activities  
+```
+{
+	offset: integer
+	limit: integer
+	count: integer
+	history: array
+}
+```
+<a name="error"></a>Error  
+```
+{
+	code: integer
+	message: string
+	fields: string
+}
+```

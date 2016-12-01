@@ -375,3 +375,53 @@ apiteam@swagger.io
 | ---- | ----------- |
 | 400 | Invalid username supplied |
 | 404 | User not found |
+
+<a name="user"></a>User  
+```
+{
+	id: long
+	username: string
+	firstName: string
+	lastName: string
+	email: string
+	password: string
+	phone: string
+	userStatus: integer
+}
+```
+<a name="category"></a>Category  
+```
+{
+	id: long
+	name: string
+}
+```
+<a name="pet"></a>Pet  
+```
+{
+	id: long
+	category: undefined
+	name: string*
+	photoUrls: array*
+	tags: array
+	status: string
+}
+```
+<a name="tag"></a>Tag  
+```
+{
+	id: long
+	name: string
+}
+```
+<a name="order"></a>Order  
+```
+{
+	id: long
+	petId: long
+	quantity: integer
+	shipDate: dateTime
+	status: string
+	complete: boolean
+}
+```

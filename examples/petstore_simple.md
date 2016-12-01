@@ -82,3 +82,27 @@ foo@example.com
 | ---- | ----------- |
 | 204 | pet deleted |
 | default | unexpected error |
+
+<a name="pet"></a>pet  
+```
+{
+	id: long*
+	name: string*
+	tag: string
+}
+```
+<a name="newPet"></a>newPet  
+```
+{
+	id: long
+	name: string*
+	tag: string
+}
+```
+<a name="errorModel"></a>errorModel  
+```
+{
+	code: integer*
+	message: string*
+}
+```
