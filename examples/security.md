@@ -86,11 +86,13 @@ http://swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | pet response |
-| default | error payload |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | pet response | array |
+| default | error payload | [ErrorModel](#errorModel) |
 
+### Models
+---
 <a name="pet"></a>Pet  
 ```
 {

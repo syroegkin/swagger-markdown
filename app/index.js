@@ -61,10 +61,8 @@ if (args.input) {
     }
 
     if ('definitions' in inputDoc) {
-      Object.keys(inputDoc.definitions).map(
-        definitionName => document.push(
-          transformDefinition(definitionName, inputDoc.definitions[definitionName])
-        )
+      document.push(
+        transformDefinition(inputDoc.definitions)
       );
     }
 
