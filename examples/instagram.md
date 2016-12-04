@@ -625,9 +625,9 @@ geography, use the [media search endpoint
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | OK |  |
+| Code | Description |
+| ---- | ----------- |
+| 200 | OK |
 
 ### Models
 ---

@@ -33,9 +33,9 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Make a new pet |  |
+| Code | Description |
+| ---- | ----------- |
+| 200 | Make a new pet |
 
 ##### ***PUT***
 **Parameters**
@@ -46,9 +46,9 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Updates the pet |  |
+| Code | Description |
+| ---- | ----------- |
+| 200 | Updates the pet |
 
 ### /{petId}
 ---
@@ -61,9 +61,9 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 200 | Sends the pet with pet Id |  |
+| Code | Description |
+| ---- | ----------- |
+| 200 | Sends the pet with pet Id |
 
 ### Models
 ---

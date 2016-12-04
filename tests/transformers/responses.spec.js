@@ -12,10 +12,10 @@ describe('Path responses transformer', () => {
   };
   const results = [
     '**Responses**',
-    '| Code | Description | Schema |',
-    '| ---- | ----------- | ------ |',
-    '| 200 | Echo GET |  |',
-    '| 404 | Not Found |  |'
+    '| Code | Description |',
+    '| ---- | ----------- |',
+    '| 200 | Echo GET |',
+    '| 404 | Not Found |'
   ];
   const res = respones(fixture).split('\n');
 

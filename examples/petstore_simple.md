@@ -80,7 +80,7 @@ foo@example.com
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 204 | pet deleted |  |
+| 204 | pet deleted |
 | default | unexpected error | [errorModel](#errorModel) |
 
 ### Models

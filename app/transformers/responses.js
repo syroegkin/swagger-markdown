@@ -9,9 +9,7 @@ const transformDataTypes = require('./dataTypes');
  */
 module.exports = responses => {
   const res = [];
-  res.push('**Responses**\n');
-  res.push('| Code | Description | Schema |');
-  res.push('| ---- | ----------- | ------ |');
+  let schemas = false;
   Object.keys(responses).map(response => {
     const line = [];
     // Response
@@ -24,11 +22,15 @@ module.exports = responses => {
     if ('schema' in responses[response]) {
       const schema = new Schema(responses[response].schema);
       line.push(transformDataTypes(schema));
-    } else {
-      line.push('');
+      schemas = true;
     }
     // Combine all together
     res.push(`|${line.map(el => ` ${el} `).join('|')}|`);
   });
+
+  res.unshift(`| ---- | ----------- |${schemas ? ' ------ |' : ''}`);
+  res.unshift(`| Code | Description |${schemas ? ' Schema |' : ''}`);
+  res.unshift('**Responses**\n');
+
   return res.join('\n');
 };

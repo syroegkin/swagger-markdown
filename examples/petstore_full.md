@@ -47,9 +47,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 405 | Invalid input |  |
+| Code | Description |
+| ---- | ----------- |
+| 405 | Invalid input |
 
 ##### ***PUT***
 **Summary:** Update an existing pet
@@ -64,11 +64,11 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 400 | Invalid ID supplied |  |
-| 404 | Pet not found |  |
-| 405 | Validation exception |  |
+| Code | Description |
+| ---- | ----------- |
+| 400 | Invalid ID supplied |
+| 404 | Pet not found |
+| 405 | Validation exception |
 
 ### /pets/findByStatus
 ---
@@ -88,7 +88,7 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | array |
-| 400 | Invalid status value |  |
+| 400 | Invalid status value |
 
 ### /pets/findByTags
 ---
@@ -108,7 +108,7 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | array |
-| 400 | Invalid tag value |  |
+| 400 | Invalid tag value |
 
 ### /pets/{petId}
 ---
@@ -128,8 +128,8 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | [Pet](#pet) |
-| 400 | Invalid ID supplied |  |
-| 404 | Pet not found |  |
+| 400 | Invalid ID supplied |
+| 404 | Pet not found |
 
 ##### ***POST***
 **Summary:** Updates a pet in the store with form data
@@ -146,9 +146,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 405 | Invalid input |  |
+| Code | Description |
+| ---- | ----------- |
+| 405 | Invalid input |
 
 ##### ***DELETE***
 **Summary:** Deletes a pet
@@ -164,9 +164,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 400 | Invalid pet value |  |
+| Code | Description |
+| ---- | ----------- |
+| 400 | Invalid pet value |
 
 ### /stores/order
 ---
@@ -186,7 +186,7 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | [Order](#order) |
-| 400 | Invalid Order |  |
+| 400 | Invalid Order |
 
 ### /stores/order/{orderId}
 ---
@@ -206,8 +206,8 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | [Order](#order) |
-| 400 | Invalid ID supplied |  |
-| 404 | Order not found |  |
+| 400 | Invalid ID supplied |
+| 404 | Order not found |
 
 ##### ***DELETE***
 **Summary:** Delete purchase order by ID
@@ -222,10 +222,10 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 400 | Invalid ID supplied |  |
-| 404 | Order not found |  |
+| Code | Description |
+| ---- | ----------- |
+| 400 | Invalid ID supplied |
+| 404 | Order not found |
 
 ### /users
 ---
@@ -242,9 +242,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| default | successful operation |  |
+| Code | Description |
+| ---- | ----------- |
+| default | successful operation |
 
 ### /users/createWithArray
 ---
@@ -261,9 +261,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| default | successful operation |  |
+| Code | Description |
+| ---- | ----------- |
+| default | successful operation |
 
 ### /users/createWithList
 ---
@@ -280,9 +280,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| default | successful operation |  |
+| Code | Description |
+| ---- | ----------- |
+| default | successful operation |
 
 ### /users/login
 ---
@@ -303,7 +303,7 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | string |
-| 400 | Invalid username/password supplied |  |
+| 400 | Invalid username/password supplied |
 
 ### /users/logout
 ---
@@ -314,9 +314,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| default | successful operation |  |
+| Code | Description |
+| ---- | ----------- |
+| default | successful operation |
 
 ### /users/{username}
 ---
@@ -336,8 +336,8 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | [User](#user) |
-| 400 | Invalid username supplied |  |
-| 404 | User not found |  |
+| 400 | Invalid username supplied |
+| 404 | User not found |
 
 ##### ***PUT***
 **Summary:** Updated user
@@ -353,10 +353,10 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 400 | Invalid user supplied |  |
-| 404 | User not found |  |
+| Code | Description |
+| ---- | ----------- |
+| 400 | Invalid user supplied |
+| 404 | User not found |
 
 ##### ***DELETE***
 **Summary:** Delete user
@@ -371,10 +371,10 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description | Schema |
-| ---- | ----------- | ------ |
-| 400 | Invalid username supplied |  |
-| 404 | User not found |  |
+| Code | Description |
+| ---- | ----------- |
+| 400 | Invalid username supplied |
+| 404 | User not found |
 
 ### Models
 ---
