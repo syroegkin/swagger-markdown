@@ -148,13 +148,13 @@ http://instagram.com/about/legal/terms/api
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No |  |
+|  |  |  | No | [user-id](#userid) |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | The user object |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | The user object | object |
 
 ### /users/self/feed
 ---
@@ -171,9 +171,9 @@ http://instagram.com/about/legal/terms/api
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ### /users/{user-id}/media/recent
 ---
@@ -182,7 +182,7 @@ http://instagram.com/about/legal/terms/api
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No |  |
+|  |  |  | No | [user-id](#userid) |
 | count | query | Count of media to return. | No | integer |
 | max_timestamp | query | Return media before this UNIX timestamp. | No | integer |
 | min_timestamp | query | Return media after this UNIX timestamp. | No | integer |
@@ -191,9 +191,9 @@ http://instagram.com/about/legal/terms/api
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | Get the most recent media published by a user. To get the most recent media published by the owner of the access token, you can use `self` instead of the `user-id`.  |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Get the most recent media published by a user. To get the most recent media published by the owner of the access token, you can use `self` instead of the `user-id`.  | object |
 
 ### /users/self/media/liked
 ---
@@ -213,9 +213,9 @@ available for the currently authenticated user.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ### /users/search
 ---
@@ -231,9 +231,9 @@ available for the currently authenticated user.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ### /users/{user-id}/follows
 ---
@@ -244,13 +244,13 @@ available for the currently authenticated user.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No |  |
+|  |  |  | No | [user-id](#userid) |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK |  |
 
 ### /users/{user-id}/followed-by
 ---
@@ -261,13 +261,13 @@ available for the currently authenticated user.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No |  |
+|  |  |  | No | [user-id](#userid) |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK |  |
 
 ### /users/self/requested-by
 ---
@@ -277,9 +277,9 @@ available for the currently authenticated user.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK |  |
 
 ### /users/{user-id}/relationship
 ---
@@ -291,14 +291,14 @@ available for the currently authenticated user.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No |  |
+|  |  |  | No | [user-id](#userid) |
 | action | body | One of follow/unfollow/block/unblock/approve/ignore. | No |  |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK |  |
 
 ### /media/{media-id}
 ---
@@ -320,9 +320,9 @@ has liked this media item.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [Media](#media) |
 
 ### /media1/{shortcode}
 ---
@@ -342,9 +342,9 @@ Its corresponding shortcode is D.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [Media](#media) |
 
 ### /media/search
 ---
@@ -366,9 +366,9 @@ the last 5 days. Can return mix of image and video types.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ### /media/popular
 ---
@@ -379,9 +379,9 @@ Can return mix of image and video types.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ### /media/{media-id}/comments
 ---
@@ -397,9 +397,9 @@ Can return mix of image and video types.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK |  |
 
 ##### ***POST***
 **Description:** Create a comment on a media object with the following rules:
@@ -419,9 +419,9 @@ Can return mix of image and video types.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ##### ***DELETE***
 **Description:** Remove a comment either on the authenticated user's media object or
@@ -436,9 +436,9 @@ authored by the authenticated user.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ### /media/{media-id}/likes
 ---
@@ -454,9 +454,9 @@ authored by the authenticated user.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK |  |
 
 ##### ***POST***
 **Description:** Set a like on this media by the currently authenticated user.
@@ -469,9 +469,9 @@ authored by the authenticated user.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ##### ***DELETE***
 **Description:** Remove a like on this media by the currently authenticated user.
@@ -485,9 +485,9 @@ authored by the authenticated user.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ### /tags/{tag-name}
 ---
@@ -498,13 +498,13 @@ authored by the authenticated user.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No |  |
+|  |  |  | No | [tag-name](#tagname) |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | [Tag](#tag) |
 
 ### /tags/{tag-name}/media/recent
 ---
@@ -518,13 +518,13 @@ these objects.
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No |  |
+|  |  |  | No | [tag-name](#tagname) |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK |  |
 
 ### /tags/search
 ---
@@ -537,9 +537,9 @@ these objects.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ### /locations/{location-id}
 ---
@@ -554,9 +554,9 @@ these objects.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ### /locations/{location-id}/media/recent
 ---
@@ -575,9 +575,9 @@ these objects.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ### /locations/search
 ---
@@ -597,9 +597,9 @@ these objects.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | object |
 
 ### /geographies/{geo-id}/media/recent
 ---
@@ -625,11 +625,13 @@ geography, use the [media search endpoint
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | OK |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK |  |
 
-<a name="user"></a>User  
+### Models
+---
+<a name="user"></a>**User**  
 ```
 {
 	id: integer
@@ -641,7 +643,7 @@ geography, use the [media search endpoint
 	counts: object
 }
 ```
-<a name="media"></a>Media  
+<a name="media"></a>**Media**  
 ```
 {
 	created_time: integer
@@ -649,16 +651,16 @@ geography, use the [media search endpoint
 	filter: string
 	tags: array
 	id: integer
-	user: undefined
+	user: [MiniProfile](#miniProfile)
 	users_in_photo: array
-	location: undefined
+	location: [Location](#location)
 	comments:: object
 	likes: object
-	images: undefined
-	videos: undefined
+	images: 
+	videos: 
 }
 ```
-<a name="location"></a>Location  
+<a name="location"></a>**Location**  
 ```
 {
 	id: string
@@ -667,16 +669,16 @@ geography, use the [media search endpoint
 	longitude: number
 }
 ```
-<a name="comment"></a>Comment  
+<a name="comment"></a>**Comment**  
 ```
 {
 	id: string
 	created_time: string
 	text: string
-	from: undefined
+	from: [MiniProfile](#miniProfile)
 }
 ```
-<a name="like"></a>Like  
+<a name="like"></a>**Like**  
 ```
 {
 	user_name: string
@@ -686,14 +688,14 @@ geography, use the [media search endpoint
 	id: string
 }
 ```
-<a name="tag"></a>Tag  
+<a name="tag"></a>**Tag**  
 ```
 {
 	media_count: integer
 	name: string
 }
 ```
-<a name="image"></a>Image  
+<a name="image"></a>**Image**  
 ```
 {
 	width: integer
@@ -701,7 +703,7 @@ geography, use the [media search endpoint
 	url: string
 }
 ```
-<a name="miniProfile"></a>MiniProfile  
+<a name="miniProfile"></a>**MiniProfile**  
 ```
 {
 	user_name: string

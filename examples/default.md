@@ -24,10 +24,10 @@ proper display order.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | An array of products |
-| default | Unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | An array of products | array |
+| default | Unexpected error | [Error](#error) |
 
 ### /estimates/price
 ---
@@ -55,10 +55,10 @@ already factors in this multiplier.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | An array of price estimates by product |
-| default | Unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | An array of price estimates by product | array |
+| default | Unexpected error | [Error](#error) |
 
 ### /estimates/time
 ---
@@ -78,10 +78,10 @@ already factors in this multiplier.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | An array of products |
-| default | Unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | An array of products | array |
+| default | Unexpected error | [Error](#error) |
 
 ### /me
 ---
@@ -92,10 +92,10 @@ already factors in this multiplier.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | Profile information for a user |
-| default | Unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Profile information for a user | [Profile](#profile) |
+| default | Unexpected error | [Error](#error) |
 
 ### /history
 ---
@@ -113,12 +113,14 @@ already factors in this multiplier.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | History information for the given user |
-| default | Unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | History information for the given user | [Activities](#activities) |
+| default | Unexpected error | [Error](#error) |
 
-<a name="product"></a>Product  
+### Models
+---
+<a name="product"></a>**Product**  
 ```
 {
 	product_id: string
@@ -128,7 +130,7 @@ already factors in this multiplier.
 	image: string
 }
 ```
-<a name="priceEstimate"></a>PriceEstimate  
+<a name="priceEstimate"></a>**PriceEstimate**  
 ```
 {
 	product_id: string
@@ -140,7 +142,7 @@ already factors in this multiplier.
 	surge_multiplier: number
 }
 ```
-<a name="profile"></a>Profile  
+<a name="profile"></a>**Profile**  
 ```
 {
 	first_name: string
@@ -150,13 +152,13 @@ already factors in this multiplier.
 	promo_code: string
 }
 ```
-<a name="activity"></a>Activity  
+<a name="activity"></a>**Activity**  
 ```
 {
 	uuid: string
 }
 ```
-<a name="activities"></a>Activities  
+<a name="activities"></a>**Activities**  
 ```
 {
 	offset: integer
@@ -165,7 +167,7 @@ already factors in this multiplier.
 	history: array
 }
 ```
-<a name="error"></a>Error  
+<a name="error"></a>**Error**  
 ```
 {
 	code: integer

@@ -93,14 +93,14 @@ http://swagger.io
 
 ### Models
 ---
-<a name="pet"></a>Pet  
+<a name="pet"></a>**Pet**  
 ```
 {
 	name: string*
 	tag: string
 }
 ```
-<a name="errorModel"></a>ErrorModel  
+<a name="errorModel"></a>**ErrorModel**  
 ```
 {
 	code: integer*

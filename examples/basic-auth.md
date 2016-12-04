@@ -21,6 +21,6 @@ Server code is available [here](https://github.com/mohsen1/basic-auth-server). I
 ##### ***GET***
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | Will send `Authenticated` if authentication is succesful, otherwise it will send `Unauthorized` |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Will send `Authenticated` if authentication is succesful, otherwise it will send `Unauthorized` |  |

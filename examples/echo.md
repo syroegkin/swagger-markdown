@@ -12,9 +12,9 @@ render back everything.
 ##### ***GET***
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | Echo GET |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Echo GET |  |
 
 ##### ***POST***
 **Parameters**
@@ -26,9 +26,9 @@ render back everything.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | Echo POST |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Echo POST |  |
 
 ### /test-path/{id}
 ---
@@ -41,6 +41,6 @@ render back everything.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | Echo test-path |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Echo test-path |  |

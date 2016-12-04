@@ -28,10 +28,10 @@ foo@example.com
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | pet response |
-| default | unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | pet response | array |
+| default | unexpected error | [errorModel](#errorModel) |
 
 ##### ***POST***
 **Description:** Creates a new pet in the store.  Duplicates are allowed
@@ -44,10 +44,10 @@ foo@example.com
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | pet response |
-| default | unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | pet response | [pet](#pet) |
+| default | unexpected error | [errorModel](#errorModel) |
 
 ### /pets/{id}
 ---
@@ -62,10 +62,10 @@ foo@example.com
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | pet response |
-| default | unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | pet response | [pet](#pet) |
+| default | unexpected error | [errorModel](#errorModel) |
 
 ##### ***DELETE***
 **Description:** deletes a single pet based on the ID supplied
@@ -78,12 +78,14 @@ foo@example.com
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 204 | pet deleted |
-| default | unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 204 | pet deleted |  |
+| default | unexpected error | [errorModel](#errorModel) |
 
-<a name="pet"></a>pet  
+### Models
+---
+<a name="pet"></a>**pet**  
 ```
 {
 	id: long*
@@ -91,7 +93,7 @@ foo@example.com
 	tag: string
 }
 ```
-<a name="newPet"></a>newPet  
+<a name="newPet"></a>**newPet**  
 ```
 {
 	id: long
@@ -99,7 +101,7 @@ foo@example.com
 	tag: string
 }
 ```
-<a name="errorModel"></a>errorModel  
+<a name="errorModel"></a>**errorModel**  
 ```
 {
 	code: integer*

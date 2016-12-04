@@ -47,9 +47,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 405 | Invalid input |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 405 | Invalid input |  |
 
 ##### ***PUT***
 **Summary:** Update an existing pet
@@ -64,11 +64,11 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 400 | Invalid ID supplied |
-| 404 | Pet not found |
-| 405 | Validation exception |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 400 | Invalid ID supplied |  |
+| 404 | Pet not found |  |
+| 405 | Validation exception |  |
 
 ### /pets/findByStatus
 ---
@@ -85,10 +85,10 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid status value |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | array |
+| 400 | Invalid status value |  |
 
 ### /pets/findByTags
 ---
@@ -105,10 +105,10 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid tag value |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | array |
+| 400 | Invalid tag value |  |
 
 ### /pets/{petId}
 ---
@@ -125,11 +125,11 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid ID supplied |
-| 404 | Pet not found |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | [Pet](#pet) |
+| 400 | Invalid ID supplied |  |
+| 404 | Pet not found |  |
 
 ##### ***POST***
 **Summary:** Updates a pet in the store with form data
@@ -146,9 +146,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 405 | Invalid input |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 405 | Invalid input |  |
 
 ##### ***DELETE***
 **Summary:** Deletes a pet
@@ -164,9 +164,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 400 | Invalid pet value |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 400 | Invalid pet value |  |
 
 ### /stores/order
 ---
@@ -183,10 +183,10 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid Order |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | [Order](#order) |
+| 400 | Invalid Order |  |
 
 ### /stores/order/{orderId}
 ---
@@ -203,11 +203,11 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid ID supplied |
-| 404 | Order not found |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | [Order](#order) |
+| 400 | Invalid ID supplied |  |
+| 404 | Order not found |  |
 
 ##### ***DELETE***
 **Summary:** Delete purchase order by ID
@@ -222,10 +222,10 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 400 | Invalid ID supplied |
-| 404 | Order not found |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 400 | Invalid ID supplied |  |
+| 404 | Order not found |  |
 
 ### /users
 ---
@@ -242,9 +242,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| default | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| default | successful operation |  |
 
 ### /users/createWithArray
 ---
@@ -261,9 +261,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| default | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| default | successful operation |  |
 
 ### /users/createWithList
 ---
@@ -280,9 +280,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| default | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| default | successful operation |  |
 
 ### /users/login
 ---
@@ -300,10 +300,10 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid username/password supplied |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | string |
+| 400 | Invalid username/password supplied |  |
 
 ### /users/logout
 ---
@@ -314,9 +314,9 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| default | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| default | successful operation |  |
 
 ### /users/{username}
 ---
@@ -333,11 +333,11 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid username supplied |
-| 404 | User not found |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | [User](#user) |
+| 400 | Invalid username supplied |  |
+| 404 | User not found |  |
 
 ##### ***PUT***
 **Summary:** Updated user
@@ -353,10 +353,10 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 400 | Invalid user supplied |
-| 404 | User not found |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 400 | Invalid user supplied |  |
+| 404 | User not found |  |
 
 ##### ***DELETE***
 **Summary:** Delete user
@@ -371,12 +371,14 @@ apiteam@swagger.io
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 400 | Invalid username supplied |
-| 404 | User not found |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 400 | Invalid username supplied |  |
+| 404 | User not found |  |
 
-<a name="user"></a>User  
+### Models
+---
+<a name="user"></a>**User**  
 ```
 {
 	id: long
@@ -389,32 +391,32 @@ apiteam@swagger.io
 	userStatus: integer
 }
 ```
-<a name="category"></a>Category  
+<a name="category"></a>**Category**  
 ```
 {
 	id: long
 	name: string
 }
 ```
-<a name="pet"></a>Pet  
+<a name="pet"></a>**Pet**  
 ```
 {
 	id: long
-	category: undefined
+	category: [Category](#category)
 	name: string*
 	photoUrls: array*
 	tags: array
 	status: string
 }
 ```
-<a name="tag"></a>Tag  
+<a name="tag"></a>**Tag**  
 ```
 {
 	id: long
 	name: string
 }
 ```
-<a name="order"></a>Order  
+<a name="order"></a>**Order**  
 ```
 {
 	id: long
