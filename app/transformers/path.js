@@ -1,6 +1,7 @@
 const inArray = require('../lib/inArray');
-const responses = require('./path/responses');
+const responses = require('./responses');
 const parameters = require('./parameters');
+const security = require('./security');
 
 /**
  * Allowed methods
@@ -47,6 +48,11 @@ module.exports = (path, data) => {
         // Build responses
         if ('responses' in pathInfo) {
           res.push(`${responses(pathInfo.responses)}\n`);
+        }
+
+        // Build security
+        if ('security' in pathInfo) {
+          res.push(`${security(pathInfo.security)}\n`);
         }
       }
     });

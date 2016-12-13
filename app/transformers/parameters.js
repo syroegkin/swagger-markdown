@@ -2,7 +2,7 @@ const transformDataTypes = require('./dataTypes');
 
 module.exports = (parameters, pathParameters) => {
   const res = [];
-  res.push(`**Parameters**\n`);
+  res.push('**Parameters**\n');
   res.push('| Name | Located in | Description | Required | Type |');
   res.push('| ---- | ---------- | ----------- | -------- | ---- |');
   [].concat(pathParameters, parameters).map(keys => {
