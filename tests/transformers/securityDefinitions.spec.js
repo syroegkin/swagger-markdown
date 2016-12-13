@@ -14,6 +14,7 @@ describe('Security definitions', () => {
       const fixture = { auth: { type } };
       const res = transformSecurituDefinitions(fixture);
       const result = '### Security\n---\n'
+        + '**auth**  \n'
         + `|${type}|*${typeResolver[type]}*|\n`
         + '|---|---|\n';
       expect(result).to.be.equal(res);

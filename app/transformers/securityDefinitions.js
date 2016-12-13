@@ -16,6 +16,7 @@ module.exports = securityDefinitions => {
   // Base block
   const res = [];
   Object.keys(securityDefinitions).map(type => {
+    res.push(`**${type}**  `);
     res.push(`|${securityDefinitions[type].type}|*${typeResolver[securityDefinitions[type].type]}*|`);
     res.push('|---|---|');
     Object.keys(securityDefinitions[type]).map(value => {

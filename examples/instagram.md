@@ -124,6 +124,7 @@ http://instagram.com/about/legal/terms/api
 
 ### Security
 ---
+**oauth**  
 |oauth2|*OAuth 2.0*|
 |---|---|
 |Flow|implicit|
@@ -134,6 +135,7 @@ http://instagram.com/about/legal/terms/api
 |relationships|to follow and unfollow users on a user’s behalf|
 |likes|to like and unlike items on a user’s behalf|
 
+**key**  
 |apiKey|*API Key*|
 |---|---|
 |In|query|
@@ -155,6 +157,13 @@ http://instagram.com/about/legal/terms/api
 | Code | Description |
 | ---- | ----------- |
 | 200 | The user object |
+
+**Security**
+
+| Security Schema | Scopes |
+| --- | --- |
+| key | |
+| oauth | basic |
 
 ### /users/self/feed
 ---
@@ -300,6 +309,12 @@ available for the currently authenticated user.
 | ---- | ----------- |
 | 200 | OK |
 
+**Security**
+
+| Security Schema | Scopes |
+| --- | --- |
+| oauth | relationships |
+
 ### /media/{media-id}
 ---
 ##### ***GET***
@@ -423,6 +438,12 @@ Can return mix of image and video types.
 | ---- | ----------- |
 | 200 | OK |
 
+**Security**
+
+| Security Schema | Scopes |
+| --- | --- |
+| oauth | comments |
+
 ##### ***DELETE***
 **Description:** Remove a comment either on the authenticated user's media object or
 authored by the authenticated user.
@@ -472,6 +493,12 @@ authored by the authenticated user.
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
+
+**Security**
+
+| Security Schema | Scopes |
+| --- | --- |
+| oauth | comments |
 
 ##### ***DELETE***
 **Description:** Remove a like on this media by the currently authenticated user.
