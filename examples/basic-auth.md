@@ -12,6 +12,8 @@ Server code is available [here](https://github.com/mohsen1/basic-auth-server). I
 
 ### Security
 ---
+**basicAuth**  
+
 |basic|*Basic*|
 |---|---|
 |Description|HTTP Basic Authentication. Works over `HTTP` and `HTTPS`|
@@ -24,3 +26,9 @@ Server code is available [here](https://github.com/mohsen1/basic-auth-server). I
 | Code | Description |
 | ---- | ----------- |
 | 200 | Will send `Authenticated` if authentication is succesful, otherwise it will send `Unauthorized` |
+
+**Security**
+
+| Security Schema | Scopes |
+| --- | --- |
+| basicAuth | |
