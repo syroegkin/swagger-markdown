@@ -16,6 +16,7 @@ http://swagger.io
 ### Security
 ---
 **githubAccessCode**  
+
 |oauth2|*OAuth 2.0*|
 |---|---|
 |**Scopes**||
@@ -43,6 +44,7 @@ http://swagger.io
 |Token URL|https://github.com/login/oauth/access_token|
 
 **petstoreImplicit**  
+
 |oauth2|*OAuth 2.0*|
 |---|---|
 |**Scopes**||
@@ -69,6 +71,7 @@ http://swagger.io
 |Authorization URL|http://petstore.swagger.io/oauth/dialog|
 
 **internalApiKey**  
+
 |apiKey|*API Key*|
 |---|---|
 |In|header|

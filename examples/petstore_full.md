@@ -20,12 +20,14 @@ apiteam@swagger.io
 ### Security
 ---
 **api_key**  
+
 |apiKey|*API Key*|
 |---|---|
 |Name|api_key|
 |In|header|
 
 **petstore_auth**  
+
 |oauth2|*OAuth 2.0*|
 |---|---|
 |Authorization URL|http://petstore.swagger.io/api/oauth/dialog|

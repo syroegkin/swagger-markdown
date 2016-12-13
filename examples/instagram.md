@@ -125,6 +125,7 @@ http://instagram.com/about/legal/terms/api
 ### Security
 ---
 **oauth**  
+
 |oauth2|*OAuth 2.0*|
 |---|---|
 |Flow|implicit|
@@ -136,6 +137,7 @@ http://instagram.com/about/legal/terms/api
 |likes|to like and unlike items on a user’s behalf|
 
 **key**  
+
 |apiKey|*API Key*|
 |---|---|
 |In|query|
