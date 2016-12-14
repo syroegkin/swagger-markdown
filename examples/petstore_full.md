@@ -19,10 +19,14 @@ apiteam@swagger.io
 
 ### Security
 ---
+**api_key**  
+
 |apiKey|*API Key*|
 |---|---|
 |Name|api_key|
 |In|header|
+
+**petstore_auth**  
 
 |oauth2|*OAuth 2.0*|
 |---|---|
@@ -51,6 +55,12 @@ apiteam@swagger.io
 | ---- | ----------- |
 | 405 | Invalid input |
 
+**Security**
+
+| Security Schema | Scopes | |
+| --- | --- | --- |
+| petstore_auth | write_pets | read_pets |
+
 ##### ***PUT***
 **Summary:** Update an existing pet
 
@@ -69,6 +79,12 @@ apiteam@swagger.io
 | 400 | Invalid ID supplied |
 | 404 | Pet not found |
 | 405 | Validation exception |
+
+**Security**
+
+| Security Schema | Scopes | |
+| --- | --- | --- |
+| petstore_auth | write_pets | read_pets |
 
 ### /pets/findByStatus
 ---
@@ -90,6 +106,12 @@ apiteam@swagger.io
 | 200 | successful operation | array |
 | 400 | Invalid status value |
 
+**Security**
+
+| Security Schema | Scopes | |
+| --- | --- | --- |
+| petstore_auth | write_pets | read_pets |
+
 ### /pets/findByTags
 ---
 ##### ***GET***
@@ -109,6 +131,12 @@ apiteam@swagger.io
 | ---- | ----------- | ------ |
 | 200 | successful operation | array |
 | 400 | Invalid tag value |
+
+**Security**
+
+| Security Schema | Scopes | |
+| --- | --- | --- |
+| petstore_auth | write_pets | read_pets |
 
 ### /pets/{petId}
 ---
@@ -131,6 +159,13 @@ apiteam@swagger.io
 | 400 | Invalid ID supplied |
 | 404 | Pet not found |
 
+**Security**
+
+| Security Schema | Scopes | |
+| --- | --- | --- |
+| api_key | | |
+| petstore_auth | write_pets | read_pets |
+
 ##### ***POST***
 **Summary:** Updates a pet in the store with form data
 
@@ -150,6 +185,12 @@ apiteam@swagger.io
 | ---- | ----------- |
 | 405 | Invalid input |
 
+**Security**
+
+| Security Schema | Scopes | |
+| --- | --- | --- |
+| petstore_auth | write_pets | read_pets |
+
 ##### ***DELETE***
 **Summary:** Deletes a pet
 
@@ -167,6 +208,12 @@ apiteam@swagger.io
 | Code | Description |
 | ---- | ----------- |
 | 400 | Invalid pet value |
+
+**Security**
+
+| Security Schema | Scopes | |
+| --- | --- | --- |
+| petstore_auth | write_pets | read_pets |
 
 ### /stores/order
 ---

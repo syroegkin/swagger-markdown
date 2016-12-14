@@ -15,6 +15,8 @@ http://swagger.io
 
 ### Security
 ---
+**githubAccessCode**  
+
 |oauth2|*OAuth 2.0*|
 |---|---|
 |**Scopes**||
@@ -41,6 +43,8 @@ http://swagger.io
 |Authorization URL|https://github.com/login/oauth/authorize|
 |Token URL|https://github.com/login/oauth/access_token|
 
+**petstoreImplicit**  
+
 |oauth2|*OAuth 2.0*|
 |---|---|
 |**Scopes**||
@@ -65,6 +69,8 @@ http://swagger.io
 |admin:public_key|Fully manage public keys.|
 |Flow|implicit|
 |Authorization URL|http://petstore.swagger.io/oauth/dialog|
+
+**internalApiKey**  
 
 |apiKey|*API Key*|
 |---|---|
@@ -91,6 +97,13 @@ http://swagger.io
 | 200 | pet response | array |
 | default | error payload | [ErrorModel](#errorModel) |
 
+**Security**
+
+| Security Schema | Scopes |
+| --- | --- |
+| githubAccessCode | user |
+| internalApiKey | |
+
 ### Models
 ---
 <a name="pet"></a>**Pet**  
@@ -107,3 +120,8 @@ http://swagger.io
 	message: string*
 }
 ```
+=======
+| Code | Description |
+| ---- | ----------- |
+| 200 | pet response |
+| default | error payload |
