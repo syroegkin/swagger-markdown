@@ -120,8 +120,3 @@ http://swagger.io
 	message: string*
 }
 ```
-=======
-| Code | Description |
-| ---- | ----------- |
-| 200 | pet response |
-| default | error payload |
