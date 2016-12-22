@@ -57,8 +57,8 @@ const fixture = {
   result2: [
     '| category | [Category](#category) |  |  |',
     '| name | string | pet category in the store | Yes |',
-    '| photoUrls | array[string] |  | Yes |',
-    '| tags | array[[Category](#category)] |  |  |'
+    '| photoUrls | [ string ] |  | Yes |',
+    '| tags | [ [Category](#category) ] |  |  |'
   ]
 };
 fixture.defHeader1 = `<a name="${anchor('Tag')}"></a>**Tag**  `;

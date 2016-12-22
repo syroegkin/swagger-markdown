@@ -3,7 +3,7 @@ const parameters = require('../../app/transformers/parameters');
 
 const tableFixture = [
   '**Parameters**',
-  '| Name | Located in | Description | Required | Type |',
+  '| Name | Located in | Description | Required | Schema |',
   '| ---- | ---------- | ----------- | -------- | ---- |'
 ];
 

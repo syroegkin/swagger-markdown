@@ -28,12 +28,12 @@ const fixture = [
     new Schema({
       type: 'array',
       items: new Schema({ type: 'string' })
-    }), 'array[string]'
+    }), '[ string ]'
   ], [
     new Schema({
       type: 'array',
       items: { $ref: '#/definitions/ErrorModel' }
-    }), `array[[ErrorModel](#${anchor('ErrorModel')})]`],
+    }), `[ [ErrorModel](#${anchor('ErrorModel')}) ]`],
   // Weird usecases
   [new Schema({ type: 'random', format: 'number' }), 'random (number)'],
   [new Schema({ type: 'integer', format: 'int128' }), 'integer (int128)'],
