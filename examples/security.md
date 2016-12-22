@@ -86,15 +86,15 @@ http://swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| id | path | ID of pet to use | Yes | array[string] |
+| id | path | ID of pet to use | Yes | [ string ] |
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | pet response | array[[Pet](#pet)] |
+| 200 | pet response | [ [Pet](#pet) ] |
 | default | error payload | [ErrorModel](#errorModel) |
 
 **Security**

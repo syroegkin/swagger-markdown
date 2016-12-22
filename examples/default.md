@@ -17,7 +17,7 @@ proper display order.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | latitude | query | Latitude component of location. | Yes | double |
 | longitude | query | Longitude component of location. | Yes | double |
@@ -26,7 +26,7 @@ proper display order.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | An array of products | array[[Product](#product)] |
+| 200 | An array of products | [ [Product](#product) ] |
 | default | Unexpected error | [Error](#error) |
 
 ### /estimates/price
@@ -46,7 +46,7 @@ already factors in this multiplier.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | start_latitude | query | Latitude component of start location. | Yes | double |
 | start_longitude | query | Longitude component of start location. | Yes | double |
@@ -57,7 +57,7 @@ already factors in this multiplier.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | An array of price estimates by product | array[[PriceEstimate](#priceEstimate)] |
+| 200 | An array of price estimates by product | [ [PriceEstimate](#priceEstimate) ] |
 | default | Unexpected error | [Error](#error) |
 
 ### /estimates/time
@@ -69,7 +69,7 @@ already factors in this multiplier.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | start_latitude | query | Latitude component of start location. | Yes | double |
 | start_longitude | query | Longitude component of start location. | Yes | double |
@@ -80,7 +80,7 @@ already factors in this multiplier.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | An array of products | array[[Product](#product)] |
+| 200 | An array of products | [ [Product](#product) ] |
 | default | Unexpected error | [Error](#error) |
 
 ### /me
@@ -106,7 +106,7 @@ already factors in this multiplier.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | offset | query | Offset the list of returned results by this amount. Default is zero. | No | integer |
 | limit | query | Number of items to retrieve. Default is 5, maximum is 100. | No | integer |
@@ -161,7 +161,7 @@ already factors in this multiplier.
 | offset | integer | Position in pagination. |  |
 | limit | integer | Number of items to retrieve (100 max). |  |
 | count | integer | Total number of items available. |  |
-| history | array[[Activity](#activity)] |  |  |
+| history | [ [Activity](#activity) ] |  |  |
 <a name="error"></a>**Error**  
 
 | Name | Type | Description | Required |

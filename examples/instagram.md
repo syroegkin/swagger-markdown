@@ -150,7 +150,7 @@ http://instagram.com/about/legal/terms/api
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 |  |  |  | No | [user-id](#userid) |
 
@@ -174,7 +174,7 @@ http://instagram.com/about/legal/terms/api
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | count | query | Count of media to return. | No | integer |
 | max_id | query | Return media earlier than this max_id.s | No | integer |
@@ -191,7 +191,7 @@ http://instagram.com/about/legal/terms/api
 ##### ***GET***
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 |  |  |  | No | [user-id](#userid) |
 | count | query | Count of media to return. | No | integer |
@@ -217,7 +217,7 @@ available for the currently authenticated user.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | count | query | Count of media to return. | No | integer |
 | max_like_id | query | Return media liked before this id. | No | integer |
@@ -235,7 +235,7 @@ available for the currently authenticated user.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | q | query | A query string | Yes | string |
 | count | query | Number of users to return. | No | string |
@@ -253,7 +253,7 @@ available for the currently authenticated user.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 |  |  |  | No | [user-id](#userid) |
 
@@ -270,7 +270,7 @@ available for the currently authenticated user.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 |  |  |  | No | [user-id](#userid) |
 
@@ -300,10 +300,10 @@ available for the currently authenticated user.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 |  |  |  | No | [user-id](#userid) |
-| action | body | One of follow/unfollow/block/unblock/approve/ignore. | No |  |
+| action | body | One of follow/unfollow/block/unblock/approve/ignore. | No | string |
 
 **Responses**
 
@@ -331,7 +331,7 @@ has liked this media item.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | The media ID | Yes | integer |
 
@@ -353,7 +353,7 @@ Its corresponding shortcode is D.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | shortcode | path | The media shortcode | Yes | string |
 
@@ -373,7 +373,7 @@ the last 5 days. Can return mix of image and video types.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | LAT | query | Latitude of the center search coordinate. If used, lng is required.  | No | number |
 | MIN_TIMESTAMP | query | A unix timestamp. All media returned will be taken later than this timestamp.  | No | integer |
@@ -408,7 +408,7 @@ Can return mix of image and video types.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
 
@@ -429,10 +429,10 @@ Can return mix of image and video types.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
-| TEXT | body | Text to post as a comment on the media object as specified in media-id.  | No |  |
+| TEXT | body | Text to post as a comment on the media object as specified in media-id.  | No | number |
 
 **Responses**
 
@@ -453,7 +453,7 @@ authored by the authenticated user.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
 
@@ -471,7 +471,7 @@ authored by the authenticated user.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
 
@@ -486,7 +486,7 @@ authored by the authenticated user.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
 
@@ -508,7 +508,7 @@ authored by the authenticated user.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
 
@@ -525,7 +525,7 @@ authored by the authenticated user.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 |  |  |  | No | [tag-name](#tagname) |
 
@@ -545,7 +545,7 @@ these objects.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 |  |  |  | No | [tag-name](#tagname) |
 
@@ -560,7 +560,7 @@ these objects.
 ##### ***GET***
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | q | query | A valid tag name without a leading #. (eg. snowy, nofilter)  | No | string |
 
@@ -577,7 +577,7 @@ these objects.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | location-id | path | Location ID | Yes | integer |
 
@@ -594,7 +594,7 @@ these objects.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | location-id | path | Location ID | Yes | integer |
 | max_timestamp | query | Return media before this UNIX timestamp. | No | integer |
@@ -615,7 +615,7 @@ these objects.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | distance | query | Default is 1000m (distance=1000), max distance is 5000. | No | integer |
 | facebook_places_id | query | Returns a location mapped off of a Facebook places id. If used, a Foursquare id and lat, lng are not required.  | No | integer |
@@ -646,7 +646,7 @@ geography, use the [media search endpoint
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | geo-id | path | Geolocation ID | Yes | integer |
 | count | query | Max number of media to return. | No | integer |
@@ -678,10 +678,10 @@ geography, use the [media search endpoint
 | created_time | integer | Epoc time (ms) |  |
 | type | string |  |  |
 | filter | string |  |  |
-| tags | array[[Tag](#tag)] |  |  |
+| tags | [ [Tag](#tag) ] |  |  |
 | id | integer |  |  |
 | user | [MiniProfile](#miniProfile) |  |  |
-| users_in_photo | array[[MiniProfile](#miniProfile)] |  |  |
+| users_in_photo | [ [MiniProfile](#miniProfile) ] |  |  |
 | location | [Location](#location) |  |  |
 | comments: | object |  |  |
 | likes | object |  |  |

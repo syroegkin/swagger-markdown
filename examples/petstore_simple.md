@@ -21,16 +21,16 @@ foo@example.com
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| tags | query | tags to filter by | No | array[string] |
+| tags | query | tags to filter by | No | [ string ] |
 | limit | query | maximum number of results to return | No | integer |
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | pet response | array[[pet](#pet)] |
+| 200 | pet response | [ [pet](#pet) ] |
 | default | unexpected error | [errorModel](#errorModel) |
 
 ##### ***POST***
@@ -38,9 +38,9 @@ foo@example.com
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| pet | body | Pet to add to the store | Yes |  |
+| pet | body | Pet to add to the store | Yes | [newPet](#newPet) |
 
 **Responses**
 
@@ -56,7 +56,7 @@ foo@example.com
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | id | path | ID of pet to fetch | Yes | long |
 
@@ -72,7 +72,7 @@ foo@example.com
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | id | path | ID of pet to delete | Yes | long |
 
