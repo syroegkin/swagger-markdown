@@ -23,8 +23,8 @@ const fixture = {
     }
   },
   result1: [
-    '| id | long |  |  |',
-    '| name | string |  |  |'
+    '| id | long |  | No |',
+    '| name | string |  | No |'
   ],
   data2: {
     Pet: {
@@ -55,10 +55,10 @@ const fixture = {
     }
   },
   result2: [
-    '| category | [Category](#category) |  |  |',
+    '| category | [Category](#category) |  | No |',
     '| name | string | pet category in the store | Yes |',
     '| photoUrls | [ string ] |  | Yes |',
-    '| tags | [ [Category](#category) ] |  |  |'
+    '| tags | [ [Category](#category) ] |  | No |'
   ]
 };
 fixture.defHeader1 = `<a name="${anchor('Tag')}"></a>**Tag**  `;

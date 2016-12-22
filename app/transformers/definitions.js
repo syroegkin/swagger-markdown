@@ -22,7 +22,7 @@ const processDefinition = (name, definition) => {
     const prop = definition.properties[propName];
     const typeCell = dataTypeTransformer(new Schema(prop));
     const descriptionCell = 'description' in prop ? prop.description : '';
-    const requiredCell = inArray(propName, required) ? 'Yes' : '';
+    const requiredCell = inArray(propName, required) ? 'Yes' : 'No';
     res.push(`| ${propName} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
   });
 

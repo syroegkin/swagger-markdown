@@ -664,72 +664,72 @@ geography, use the [media search endpoint
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | integer |  |  |
-| username | string |  |  |
-| full_name | string |  |  |
-| profile_picture | string |  |  |
-| bio | string |  |  |
-| website | string |  |  |
-| counts | object |  |  |
+| id | integer |  | No |
+| username | string |  | No |
+| full_name | string |  | No |
+| profile_picture | string |  | No |
+| bio | string |  | No |
+| website | string |  | No |
+| counts | object |  | No |
 <a name="media"></a>**Media**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| created_time | integer | Epoc time (ms) |  |
-| type | string |  |  |
-| filter | string |  |  |
-| tags | [ [Tag](#tag) ] |  |  |
-| id | integer |  |  |
-| user | [MiniProfile](#miniProfile) |  |  |
-| users_in_photo | [ [MiniProfile](#miniProfile) ] |  |  |
-| location | [Location](#location) |  |  |
-| comments: | object |  |  |
-| likes | object |  |  |
-| images |  |  |  |
-| videos |  |  |  |
+| created_time | integer | Epoc time (ms) | No |
+| type | string |  | No |
+| filter | string |  | No |
+| tags | [ [Tag](#tag) ] |  | No |
+| id | integer |  | No |
+| user | [MiniProfile](#miniProfile) |  | No |
+| users_in_photo | [ [MiniProfile](#miniProfile) ] |  | No |
+| location | [Location](#location) |  | No |
+| comments: | object |  | No |
+| likes | object |  | No |
+| images |  |  | No |
+| videos |  |  | No |
 <a name="location"></a>**Location**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | string |  |  |
-| name | string |  |  |
-| latitude | number |  |  |
-| longitude | number |  |  |
+| id | string |  | No |
+| name | string |  | No |
+| latitude | number |  | No |
+| longitude | number |  | No |
 <a name="comment"></a>**Comment**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | string |  |  |
-| created_time | string |  |  |
-| text | string |  |  |
-| from | [MiniProfile](#miniProfile) |  |  |
+| id | string |  | No |
+| created_time | string |  | No |
+| text | string |  | No |
+| from | [MiniProfile](#miniProfile) |  | No |
 <a name="like"></a>**Like**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| user_name | string |  |  |
-| first_name | string |  |  |
-| last_name | string |  |  |
-| type | string |  |  |
-| id | string |  |  |
+| user_name | string |  | No |
+| first_name | string |  | No |
+| last_name | string |  | No |
+| type | string |  | No |
+| id | string |  | No |
 <a name="tag"></a>**Tag**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| media_count | integer |  |  |
-| name | string |  |  |
+| media_count | integer |  | No |
+| name | string |  | No |
 <a name="image"></a>**Image**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| width | integer |  |  |
-| height | integer |  |  |
-| url | string |  |  |
+| width | integer |  | No |
+| height | integer |  | No |
+| url | string |  | No |
 <a name="miniProfile"></a>**MiniProfile**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| user_name | string |  |  |
-| full_name | string |  |  |
-| id | integer |  |  |
-| profile_picture | string |  |  |
+| user_name | string |  | No |
+| full_name | string |  | No |
+| id | integer |  | No |
+| profile_picture | string |  | No |
