@@ -1,6 +1,6 @@
 const inArray = require('../lib/inArray');
-const responses = require('./responses');
-const parameters = require('./parameters');
+const responses = require('./pathResponses');
+const parameters = require('./pathParameters');
 const security = require('./security');
 
 /**

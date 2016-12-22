@@ -36,7 +36,7 @@ So, if swagger file is placed in `project/api-doc/swagger.yaml` the new file wil
 You can also use it as a npm script in your package.json:
 
     npm i --save-dev swagger-markdown
-    
+
 ```json
 {
     "scripts": {
@@ -47,9 +47,6 @@ You can also use it as a npm script in your package.json:
 ```
 
     npm run md-docs
-
-***in development***
-
 
 [npm-url]: https://www.npmjs.com/package/swagger-markdown
 [npm-image]: https://img.shields.io/npm/v/swagger-markdown.svg

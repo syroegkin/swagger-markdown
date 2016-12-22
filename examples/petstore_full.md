@@ -45,9 +45,9 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| body | body | Pet object that needs to be added to the store | No |  |
+| body | body | Pet object that needs to be added to the store | No | [Pet](#pet) |
 
 **Responses**
 
@@ -68,9 +68,9 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| body | body | Pet object that needs to be added to the store | No |  |
+| body | body | Pet object that needs to be added to the store | No | [Pet](#pet) |
 
 **Responses**
 
@@ -95,15 +95,15 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| status | query | Status values that need to be considered for filter | No | array |
+| status | query | Status values that need to be considered for filter | No | [ string ] |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | [ [Pet](#pet) ] |
 | 400 | Invalid status value |
 
 **Security**
@@ -121,15 +121,15 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| tags | query | Tags to filter by | No | array |
+| tags | query | Tags to filter by | No | [ string ] |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | [ [Pet](#pet) ] |
 | 400 | Invalid tag value |
 
 **Security**
@@ -147,15 +147,15 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | petId | path | ID of pet that needs to be fetched | Yes | long |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | [Pet](#pet) |
 | 400 | Invalid ID supplied |
 | 404 | Pet not found |
 
@@ -173,7 +173,7 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | petId | path | ID of pet that needs to be updated | Yes | string |
 | name | formData | Updated name of the pet | Yes | string |
@@ -198,7 +198,7 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | api_key | header |  | Yes | string |
 | petId | path | Pet id to delete | Yes | long |
@@ -224,15 +224,15 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| body | body | order placed for purchasing the pet | No |  |
+| body | body | order placed for purchasing the pet | No | [Order](#order) |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | [Order](#order) |
 | 400 | Invalid Order |
 
 ### /stores/order/{orderId}
@@ -244,15 +244,15 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | orderId | path | ID of pet that needs to be fetched | Yes | string |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | [Order](#order) |
 | 400 | Invalid ID supplied |
 | 404 | Order not found |
 
@@ -263,7 +263,7 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | orderId | path | ID of the order that needs to be deleted | Yes | string |
 
@@ -283,9 +283,9 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| body | body | Created user object | No |  |
+| body | body | Created user object | No | [User](#user) |
 
 **Responses**
 
@@ -302,9 +302,9 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| body | body | List of user object | No |  |
+| body | body | List of user object | No | [ [User](#user) ] |
 
 **Responses**
 
@@ -321,9 +321,9 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| body | body | List of user object | No |  |
+| body | body | List of user object | No | [ [User](#user) ] |
 
 **Responses**
 
@@ -340,16 +340,16 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | username | query | The user name for login | No | string |
 | password | query | The password for login in clear text | No | string |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | string |
 | 400 | Invalid username/password supplied |
 
 ### /users/logout
@@ -374,15 +374,15 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | username | path | The name that needs to be fetched. Use user1 for testing. | Yes | string |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | [User](#user) |
 | 400 | Invalid username supplied |
 | 404 | User not found |
 
@@ -393,10 +393,10 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | username | path | name that need to be deleted | Yes | string |
-| body | body | Updated user object | No |  |
+| body | body | Updated user object | No | [User](#user) |
 
 **Responses**
 
@@ -412,7 +412,7 @@ apiteam@swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | username | path | The name that needs to be deleted | Yes | string |
 
@@ -422,3 +422,50 @@ apiteam@swagger.io
 | ---- | ----------- |
 | 400 | Invalid username supplied |
 | 404 | User not found |
+
+### Models
+---
+<a name="user"></a>**User**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  | No |
+| username | string |  | No |
+| firstName | string |  | No |
+| lastName | string |  | No |
+| email | string |  | No |
+| password | string |  | No |
+| phone | string |  | No |
+| userStatus | integer | User Status | No |
+<a name="category"></a>**Category**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  | No |
+| name | string |  | No |
+<a name="pet"></a>**Pet**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  | No |
+| category | [Category](#category) |  | No |
+| name | string |  | Yes |
+| photoUrls | [ string ] |  | Yes |
+| tags | [ [Tag](#tag) ] |  | No |
+| status | string | pet status in the store | No |
+<a name="tag"></a>**Tag**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  | No |
+| name | string |  | No |
+<a name="order"></a>**Order**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  | No |
+| petId | long |  | No |
+| quantity | integer |  | No |
+| shipDate | dateTime |  | No |
+| status | string | Order Status | No |
+| complete | boolean |  | No |
