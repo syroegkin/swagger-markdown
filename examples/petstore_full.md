@@ -97,13 +97,13 @@ apiteam@swagger.io
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| status | query | Status values that need to be considered for filter | No | array |
+| status | query | Status values that need to be considered for filter | No | array[string] |
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | array |
+| 200 | successful operation | array[[Pet](#pet)] |
 | 400 | Invalid status value |
 
 **Security**
@@ -123,13 +123,13 @@ apiteam@swagger.io
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| tags | query | Tags to filter by | No | array |
+| tags | query | Tags to filter by | No | array[string] |
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | array |
+| 200 | successful operation | array[[Pet](#pet)] |
 | 400 | Invalid tag value |
 
 **Security**
@@ -426,51 +426,46 @@ apiteam@swagger.io
 ### Models
 ---
 <a name="user"></a>**User**  
-```
-{
-	id: long
-	username: string
-	firstName: string
-	lastName: string
-	email: string
-	password: string
-	phone: string
-	userStatus: integer
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  |  |
+| username | string |  |  |
+| firstName | string |  |  |
+| lastName | string |  |  |
+| email | string |  |  |
+| password | string |  |  |
+| phone | string |  |  |
+| userStatus | integer | User Status |  |
 <a name="category"></a>**Category**  
-```
-{
-	id: long
-	name: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  |  |
+| name | string |  |  |
 <a name="pet"></a>**Pet**  
-```
-{
-	id: long
-	category: [Category](#category)
-	name: string*
-	photoUrls: array*
-	tags: array
-	status: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  |  |
+| category | [Category](#category) |  |  |
+| name | string |  | Yes |
+| photoUrls | array[string] |  | Yes |
+| tags | array[[Tag](#tag)] |  |  |
+| status | string | pet status in the store |  |
 <a name="tag"></a>**Tag**  
-```
-{
-	id: long
-	name: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  |  |
+| name | string |  |  |
 <a name="order"></a>**Order**  
-```
-{
-	id: long
-	petId: long
-	quantity: integer
-	shipDate: dateTime
-	status: string
-	complete: boolean
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  |  |
+| petId | long |  |  |
+| quantity | integer |  |  |
+| shipDate | dateTime |  |  |
+| status | string | Order Status |  |
+| complete | boolean |  |  |

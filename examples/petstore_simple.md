@@ -23,14 +23,14 @@ foo@example.com
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| tags | query | tags to filter by | No | array |
+| tags | query | tags to filter by | No | array[string] |
 | limit | query | maximum number of results to return | No | integer |
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | pet response | array |
+| 200 | pet response | array[[pet](#pet)] |
 | default | unexpected error | [errorModel](#errorModel) |
 
 ##### ***POST***
@@ -86,25 +86,22 @@ foo@example.com
 ### Models
 ---
 <a name="pet"></a>**pet**  
-```
-{
-	id: long*
-	name: string*
-	tag: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  | Yes |
+| name | string |  | Yes |
+| tag | string |  |  |
 <a name="newPet"></a>**newPet**  
-```
-{
-	id: long
-	name: string*
-	tag: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  |  |
+| name | string |  | Yes |
+| tag | string |  |  |
 <a name="errorModel"></a>**errorModel**  
-```
-{
-	code: integer*
-	message: string*
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| code | integer |  | Yes |
+| message | string |  | Yes |

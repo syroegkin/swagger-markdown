@@ -88,13 +88,13 @@ http://swagger.io
 
 | Name | Located in | Description | Required | Type |
 | ---- | ---------- | ----------- | -------- | ---- |
-| id | path | ID of pet to use | Yes | array |
+| id | path | ID of pet to use | Yes | array[string] |
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | pet response | array |
+| 200 | pet response | array[[Pet](#pet)] |
 | default | error payload | [ErrorModel](#errorModel) |
 
 **Security**
@@ -107,16 +107,14 @@ http://swagger.io
 ### Models
 ---
 <a name="pet"></a>**Pet**  
-```
-{
-	name: string*
-	tag: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| name | string |  | Yes |
+| tag | string |  |  |
 <a name="errorModel"></a>**ErrorModel**  
-```
-{
-	code: integer*
-	message: string*
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| code | integer |  | Yes |
+| message | string |  | Yes |

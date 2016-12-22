@@ -22,7 +22,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | List all pets | array |
+| 200 | List all pets | array[[Pet](#pet)] |
 
 ##### ***POST***
 **Parameters**
@@ -68,9 +68,8 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 ### Models
 ---
 <a name="pet"></a>**Pet**  
-```
-{
-	name: string
-	birthday: integer
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| name | string |  |  |
+| birthday | integer |  |  |

@@ -15,17 +15,16 @@ const processDefinition = (name, definition) => {
 
   // Add anchor with name
   res.push(`<a name="${linkAnchor}"></a>**${name}**  `);
-  res.push('```');
-  res.push('{');
-  const member = [];
+  res.push('');
+  res.push('| Name | Type | Description | Required |');
+  res.push('| ---- | ---- | ----------- | -------- |');
   Object.keys(definition.properties).map(propName => {
     const prop = definition.properties[propName];
-    const type = dataTypeTransformer(new Schema(prop));
-    member.push(`\t${propName}: ${type}${inArray(propName, required) ? '*' : ''}`);
+    const typeCell = dataTypeTransformer(new Schema(prop));
+    const descriptionCell = 'description' in prop ? prop.description : '';
+    const requiredCell = inArray(propName, required) ? 'Yes' : '';
+    res.push(`| ${propName} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
   });
-  res.push(member.join('\n'));
-  res.push('}');
-  res.push('```');
 
   return res.length ? res.join('\n') : null;
 };

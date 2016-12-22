@@ -661,83 +661,75 @@ geography, use the [media search endpoint
 ### Models
 ---
 <a name="user"></a>**User**  
-```
-{
-	id: integer
-	username: string
-	full_name: string
-	profile_picture: string
-	bio: string
-	website: string
-	counts: object
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | integer |  |  |
+| username | string |  |  |
+| full_name | string |  |  |
+| profile_picture | string |  |  |
+| bio | string |  |  |
+| website | string |  |  |
+| counts | object |  |  |
 <a name="media"></a>**Media**  
-```
-{
-	created_time: integer
-	type: string
-	filter: string
-	tags: array
-	id: integer
-	user: [MiniProfile](#miniProfile)
-	users_in_photo: array
-	location: [Location](#location)
-	comments:: object
-	likes: object
-	images: 
-	videos: 
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| created_time | integer | Epoc time (ms) |  |
+| type | string |  |  |
+| filter | string |  |  |
+| tags | array[[Tag](#tag)] |  |  |
+| id | integer |  |  |
+| user | [MiniProfile](#miniProfile) |  |  |
+| users_in_photo | array[[MiniProfile](#miniProfile)] |  |  |
+| location | [Location](#location) |  |  |
+| comments: | object |  |  |
+| likes | object |  |  |
+| images |  |  |  |
+| videos |  |  |  |
 <a name="location"></a>**Location**  
-```
-{
-	id: string
-	name: string
-	latitude: number
-	longitude: number
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | string |  |  |
+| name | string |  |  |
+| latitude | number |  |  |
+| longitude | number |  |  |
 <a name="comment"></a>**Comment**  
-```
-{
-	id: string
-	created_time: string
-	text: string
-	from: [MiniProfile](#miniProfile)
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | string |  |  |
+| created_time | string |  |  |
+| text | string |  |  |
+| from | [MiniProfile](#miniProfile) |  |  |
 <a name="like"></a>**Like**  
-```
-{
-	user_name: string
-	first_name: string
-	last_name: string
-	type: string
-	id: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| user_name | string |  |  |
+| first_name | string |  |  |
+| last_name | string |  |  |
+| type | string |  |  |
+| id | string |  |  |
 <a name="tag"></a>**Tag**  
-```
-{
-	media_count: integer
-	name: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| media_count | integer |  |  |
+| name | string |  |  |
 <a name="image"></a>**Image**  
-```
-{
-	width: integer
-	height: integer
-	url: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| width | integer |  |  |
+| height | integer |  |  |
+| url | string |  |  |
 <a name="miniProfile"></a>**MiniProfile**  
-```
-{
-	user_name: string
-	full_name: string
-	id: integer
-	profile_picture: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| user_name | string |  |  |
+| full_name | string |  |  |
+| id | integer |  |  |
+| profile_picture | string |  |  |

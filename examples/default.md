@@ -26,7 +26,7 @@ proper display order.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | An array of products | array |
+| 200 | An array of products | array[[Product](#product)] |
 | default | Unexpected error | [Error](#error) |
 
 ### /estimates/price
@@ -57,7 +57,7 @@ already factors in this multiplier.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | An array of price estimates by product | array |
+| 200 | An array of price estimates by product | array[[PriceEstimate](#priceEstimate)] |
 | default | Unexpected error | [Error](#error) |
 
 ### /estimates/time
@@ -80,7 +80,7 @@ already factors in this multiplier.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | An array of products | array |
+| 200 | An array of products | array[[Product](#product)] |
 | default | Unexpected error | [Error](#error) |
 
 ### /me
@@ -121,57 +121,51 @@ already factors in this multiplier.
 ### Models
 ---
 <a name="product"></a>**Product**  
-```
-{
-	product_id: string
-	description: string
-	display_name: string
-	capacity: string
-	image: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| product_id | string | Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles. |  |
+| description | string | Description of product. |  |
+| display_name | string | Display name of product. |  |
+| capacity | string | Capacity of product. For example, 4 people. |  |
+| image | string | Image URL representing the product. |  |
 <a name="priceEstimate"></a>**PriceEstimate**  
-```
-{
-	product_id: string
-	currency_code: string
-	display_name: string
-	estimate: string
-	low_estimate: number
-	high_estimate: number
-	surge_multiplier: number
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| product_id | string | Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles |  |
+| currency_code | string | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) currency code. |  |
+| display_name | string | Display name of product. |  |
+| estimate | string | Formatted string of estimate in local currency of the start location. Estimate could be a range, a single number (flat rate) or "Metered" for TAXI. |  |
+| low_estimate | number | Lower bound of the estimated price. |  |
+| high_estimate | number | Upper bound of the estimated price. |  |
+| surge_multiplier | number | Expected surge multiplier. Surge is active if surge_multiplier is greater than 1. Price estimate already factors in the surge multiplier. |  |
 <a name="profile"></a>**Profile**  
-```
-{
-	first_name: string
-	last_name: string
-	email: string
-	picture: string
-	promo_code: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| first_name | string | First name of the Uber user. |  |
+| last_name | string | Last name of the Uber user. |  |
+| email | string | Email address of the Uber user |  |
+| picture | string | Image URL of the Uber user. |  |
+| promo_code | string | Promo code of the Uber user. |  |
 <a name="activity"></a>**Activity**  
-```
-{
-	uuid: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| uuid | string | Unique identifier for the activity |  |
 <a name="activities"></a>**Activities**  
-```
-{
-	offset: integer
-	limit: integer
-	count: integer
-	history: array
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| offset | integer | Position in pagination. |  |
+| limit | integer | Number of items to retrieve (100 max). |  |
+| count | integer | Total number of items available. |  |
+| history | array[[Activity](#activity)] |  |  |
 <a name="error"></a>**Error**  
-```
-{
-	code: integer
-	message: string
-	fields: string
-}
-```
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| code | integer |  |  |
+| message | string |  |  |
+| fields | string |  |  |

@@ -40,6 +40,10 @@ const dataTypeResoler = schema => {
   if (schema.getFormat()) {
     return `${schema.getType()} (${schema.getFormat()})`;
   }
+  if (schema.getType() === 'array') {
+    const subType = dataTypeResoler(schema.getItems());
+    return `array[${subType}]`;
+  }
   if (schema.getType()) {
     return schema.getType();
   }

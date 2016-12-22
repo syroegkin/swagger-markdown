@@ -23,6 +23,17 @@ const fixture = [
   [new Schema({ type: 'string', format: 'date' }), 'date'],
   [new Schema({ type: 'string', format: 'date-time' }), 'dateTime'],
   [new Schema({ type: 'string', format: 'password' }), 'password'],
+  // Arrays
+  [
+    new Schema({
+      type: 'array',
+      items: new Schema({ type: 'string' })
+    }), 'array[string]'
+  ], [
+    new Schema({
+      type: 'array',
+      items: { $ref: '#/definitions/ErrorModel' }
+    }), `array[[ErrorModel](#${anchor('ErrorModel')})]`],
   // Weird usecases
   [new Schema({ type: 'random', format: 'number' }), 'random (number)'],
   [new Schema({ type: 'integer', format: 'int128' }), 'integer (int128)'],
