@@ -60,6 +60,7 @@ if (args.input) {
       );
     }
 
+    // Models (definitions)
     if ('definitions' in inputDoc) {
       document.push(
         transformDefinition(inputDoc.definitions)

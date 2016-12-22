@@ -5,7 +5,6 @@ const transformDataTypes = require('./dataTypes');
  * Build responses table
  * @param {object} responses
  * @returns {null|string}
- * @todo: implement schemas, items, refs
  */
 module.exports = responses => {
   const res = [];
