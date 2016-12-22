@@ -17,17 +17,17 @@ proper display order.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | latitude | query | Latitude component of location. | Yes | double |
 | longitude | query | Longitude component of location. | Yes | double |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | An array of products |
-| default | Unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | An array of products | [ [Product](#product) ] |
+| default | Unexpected error | [Error](#error) |
 
 ### /estimates/price
 ---
@@ -46,7 +46,7 @@ already factors in this multiplier.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | start_latitude | query | Latitude component of start location. | Yes | double |
 | start_longitude | query | Longitude component of start location. | Yes | double |
@@ -55,10 +55,10 @@ already factors in this multiplier.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | An array of price estimates by product |
-| default | Unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | An array of price estimates by product | [ [PriceEstimate](#priceEstimate) ] |
+| default | Unexpected error | [Error](#error) |
 
 ### /estimates/time
 ---
@@ -69,7 +69,7 @@ already factors in this multiplier.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | start_latitude | query | Latitude component of start location. | Yes | double |
 | start_longitude | query | Longitude component of start location. | Yes | double |
@@ -78,10 +78,10 @@ already factors in this multiplier.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | An array of products |
-| default | Unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | An array of products | [ [Product](#product) ] |
+| default | Unexpected error | [Error](#error) |
 
 ### /me
 ---
@@ -92,10 +92,10 @@ already factors in this multiplier.
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | Profile information for a user |
-| default | Unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Profile information for a user | [Profile](#profile) |
+| default | Unexpected error | [Error](#error) |
 
 ### /history
 ---
@@ -106,14 +106,66 @@ already factors in this multiplier.
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | offset | query | Offset the list of returned results by this amount. Default is zero. | No | integer |
 | limit | query | Number of items to retrieve. Default is 5, maximum is 100. | No | integer |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | History information for the given user |
-| default | Unexpected error |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | History information for the given user | [Activities](#activities) |
+| default | Unexpected error | [Error](#error) |
+
+### Models
+---
+<a name="product"></a>**Product**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| product_id | string | Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles. |  |
+| description | string | Description of product. |  |
+| display_name | string | Display name of product. |  |
+| capacity | string | Capacity of product. For example, 4 people. |  |
+| image | string | Image URL representing the product. |  |
+<a name="priceEstimate"></a>**PriceEstimate**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| product_id | string | Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles |  |
+| currency_code | string | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) currency code. |  |
+| display_name | string | Display name of product. |  |
+| estimate | string | Formatted string of estimate in local currency of the start location. Estimate could be a range, a single number (flat rate) or "Metered" for TAXI. |  |
+| low_estimate | number | Lower bound of the estimated price. |  |
+| high_estimate | number | Upper bound of the estimated price. |  |
+| surge_multiplier | number | Expected surge multiplier. Surge is active if surge_multiplier is greater than 1. Price estimate already factors in the surge multiplier. |  |
+<a name="profile"></a>**Profile**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| first_name | string | First name of the Uber user. |  |
+| last_name | string | Last name of the Uber user. |  |
+| email | string | Email address of the Uber user |  |
+| picture | string | Image URL of the Uber user. |  |
+| promo_code | string | Promo code of the Uber user. |  |
+<a name="activity"></a>**Activity**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| uuid | string | Unique identifier for the activity |  |
+<a name="activities"></a>**Activities**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| offset | integer | Position in pagination. |  |
+| limit | integer | Number of items to retrieve (100 max). |  |
+| count | integer | Total number of items available. |  |
+| history | [ [Activity](#activity) ] |  |  |
+<a name="error"></a>**Error**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| code | integer |  |  |
+| message | string |  |  |
+| fields | string |  |  |

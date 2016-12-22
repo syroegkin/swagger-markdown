@@ -86,16 +86,16 @@ http://swagger.io
 
 **Parameters**
 
-| Name | Located in | Description | Required | Type |
+| Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| id | path | ID of pet to use | Yes | array |
+| id | path | ID of pet to use | Yes | [ string ] |
 
 **Responses**
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | pet response |
-| default | error payload |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | pet response | [ [Pet](#pet) ] |
+| default | error payload | [ErrorModel](#errorModel) |
 
 **Security**
 
@@ -103,3 +103,18 @@ http://swagger.io
 | --- | --- |
 | githubAccessCode | user |
 | internalApiKey | |
+
+### Models
+---
+<a name="pet"></a>**Pet**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| name | string |  | Yes |
+| tag | string |  |  |
+<a name="errorModel"></a>**ErrorModel**  
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| code | integer |  | Yes |
+| message | string |  | Yes |

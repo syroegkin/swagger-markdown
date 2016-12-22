@@ -1,3 +1,5 @@
+const anchor = require('../lib/anchor');
+
 const resolver = {
   integer: {
     int32: 'integer',
@@ -18,20 +20,34 @@ const resolver = {
 
 /**
  * Transform data types into common names
- * @param {String} type
- * @param {mixed} format
+ * @param {Schema} schema
+ * @return {String}
  */
-module.exports = (type, format = null) => {
-  if (type in resolver) {
-    if (format) {
-      return format in resolver[type]
-        ? resolver[type][format]
-        : `${type} (${format})`;
+const dataTypeResoler = schema => {
+  if (schema.getReference()) {
+    const name = schema.getReference().match(/\/([^/]*)$/i)[1];
+    const link = anchor(name);
+    return `[${name}](#${link})`;
+  }
+  if (schema.getType() in resolver) {
+    if (schema.getFormat()) {
+      return schema.getFormat() in resolver[schema.getType()]
+        ? resolver[schema.getType()][schema.getFormat()]
+        : `${schema.getType()} (${schema.getFormat()})`;
     }
-    return type;
+    return schema.getType();
   }
-  if (format) {
-    return `${type} (${format})`;
+  if (schema.getFormat()) {
+    return `${schema.getType()} (${schema.getFormat()})`;
   }
-  return type;
+  if (schema.getType() === 'array') {
+    const subType = dataTypeResoler(schema.getItems());
+    return `[ ${subType} ]`;
+  }
+  if (schema.getType()) {
+    return schema.getType();
+  }
+  return '';
 };
+
+module.exports = dataTypeResoler;

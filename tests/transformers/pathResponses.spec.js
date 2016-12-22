@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const respones = require('../../app/transformers/responses');
+const respones = require('../../app/transformers/pathResponses');
 
 describe('Path responses transformer', () => {
   const fixture = {
