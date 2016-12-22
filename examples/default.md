@@ -124,48 +124,48 @@ already factors in this multiplier.
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| product_id | string | Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles. |  |
-| description | string | Description of product. |  |
-| display_name | string | Display name of product. |  |
-| capacity | string | Capacity of product. For example, 4 people. |  |
-| image | string | Image URL representing the product. |  |
+| product_id | string | Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles. | No |
+| description | string | Description of product. | No |
+| display_name | string | Display name of product. | No |
+| capacity | string | Capacity of product. For example, 4 people. | No |
+| image | string | Image URL representing the product. | No |
 <a name="priceEstimate"></a>**PriceEstimate**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| product_id | string | Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles |  |
-| currency_code | string | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) currency code. |  |
-| display_name | string | Display name of product. |  |
-| estimate | string | Formatted string of estimate in local currency of the start location. Estimate could be a range, a single number (flat rate) or "Metered" for TAXI. |  |
-| low_estimate | number | Lower bound of the estimated price. |  |
-| high_estimate | number | Upper bound of the estimated price. |  |
-| surge_multiplier | number | Expected surge multiplier. Surge is active if surge_multiplier is greater than 1. Price estimate already factors in the surge multiplier. |  |
+| product_id | string | Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles | No |
+| currency_code | string | [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) currency code. | No |
+| display_name | string | Display name of product. | No |
+| estimate | string | Formatted string of estimate in local currency of the start location. Estimate could be a range, a single number (flat rate) or "Metered" for TAXI. | No |
+| low_estimate | number | Lower bound of the estimated price. | No |
+| high_estimate | number | Upper bound of the estimated price. | No |
+| surge_multiplier | number | Expected surge multiplier. Surge is active if surge_multiplier is greater than 1. Price estimate already factors in the surge multiplier. | No |
 <a name="profile"></a>**Profile**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| first_name | string | First name of the Uber user. |  |
-| last_name | string | Last name of the Uber user. |  |
-| email | string | Email address of the Uber user |  |
-| picture | string | Image URL of the Uber user. |  |
-| promo_code | string | Promo code of the Uber user. |  |
+| first_name | string | First name of the Uber user. | No |
+| last_name | string | Last name of the Uber user. | No |
+| email | string | Email address of the Uber user | No |
+| picture | string | Image URL of the Uber user. | No |
+| promo_code | string | Promo code of the Uber user. | No |
 <a name="activity"></a>**Activity**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| uuid | string | Unique identifier for the activity |  |
+| uuid | string | Unique identifier for the activity | No |
 <a name="activities"></a>**Activities**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| offset | integer | Position in pagination. |  |
-| limit | integer | Number of items to retrieve (100 max). |  |
-| count | integer | Total number of items available. |  |
-| history | [ [Activity](#activity) ] |  |  |
+| offset | integer | Position in pagination. | No |
+| limit | integer | Number of items to retrieve (100 max). | No |
+| count | integer | Total number of items available. | No |
+| history | [ [Activity](#activity) ] |  | No |
 <a name="error"></a>**Error**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| code | integer |  |  |
-| message | string |  |  |
-| fields | string |  |  |
+| code | integer |  | No |
+| message | string |  | No |
+| fields | string |  | No |

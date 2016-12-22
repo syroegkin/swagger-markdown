@@ -429,43 +429,43 @@ apiteam@swagger.io
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long |  |  |
-| username | string |  |  |
-| firstName | string |  |  |
-| lastName | string |  |  |
-| email | string |  |  |
-| password | string |  |  |
-| phone | string |  |  |
-| userStatus | integer | User Status |  |
+| id | long |  | No |
+| username | string |  | No |
+| firstName | string |  | No |
+| lastName | string |  | No |
+| email | string |  | No |
+| password | string |  | No |
+| phone | string |  | No |
+| userStatus | integer | User Status | No |
 <a name="category"></a>**Category**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long |  |  |
-| name | string |  |  |
+| id | long |  | No |
+| name | string |  | No |
 <a name="pet"></a>**Pet**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long |  |  |
-| category | [Category](#category) |  |  |
+| id | long |  | No |
+| category | [Category](#category) |  | No |
 | name | string |  | Yes |
 | photoUrls | [ string ] |  | Yes |
-| tags | [ [Tag](#tag) ] |  |  |
-| status | string | pet status in the store |  |
+| tags | [ [Tag](#tag) ] |  | No |
+| status | string | pet status in the store | No |
 <a name="tag"></a>**Tag**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long |  |  |
-| name | string |  |  |
+| id | long |  | No |
+| name | string |  | No |
 <a name="order"></a>**Order**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long |  |  |
-| petId | long |  |  |
-| quantity | integer |  |  |
-| shipDate | dateTime |  |  |
-| status | string | Order Status |  |
-| complete | boolean |  |  |
+| id | long |  | No |
+| petId | long |  | No |
+| quantity | integer |  | No |
+| shipDate | dateTime |  | No |
+| status | string | Order Status | No |
+| complete | boolean |  | No |

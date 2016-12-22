@@ -111,7 +111,7 @@ http://swagger.io
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | name | string |  | Yes |
-| tag | string |  |  |
+| tag | string |  | No |
 <a name="errorModel"></a>**ErrorModel**  
 
 | Name | Type | Description | Required |

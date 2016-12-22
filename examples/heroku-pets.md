@@ -71,5 +71,5 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| name | string |  |  |
-| birthday | integer |  |  |
+| name | string |  | No |
+| birthday | integer |  | No |

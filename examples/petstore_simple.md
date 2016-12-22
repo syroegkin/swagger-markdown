@@ -91,14 +91,14 @@ foo@example.com
 | ---- | ---- | ----------- | -------- |
 | id | long |  | Yes |
 | name | string |  | Yes |
-| tag | string |  |  |
+| tag | string |  | No |
 <a name="newPet"></a>**newPet**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long |  |  |
+| id | long |  | No |
 | name | string |  | Yes |
-| tag | string |  |  |
+| tag | string |  | No |
 <a name="errorModel"></a>**errorModel**  
 
 | Name | Type | Description | Required |
