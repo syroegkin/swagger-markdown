@@ -39,6 +39,9 @@ if (args.input) {
     const inputDoc = yaml.safeLoad(fs.readFileSync(args.input, 'utf8'));
     const outputFile = args.output || args.input.replace(/(yaml|json)$/i, 'md');
 
+    // Collect parameters
+    const parameters = ('parameters' in inputDoc) ? inputDoc.parameters : {};
+
     // Process info
     if ('info' in inputDoc) {
       document.push(transformInfo(inputDoc.info));
@@ -56,7 +59,7 @@ if (args.input) {
     // Process Paths
     if ('paths' in inputDoc) {
       Object.keys(inputDoc.paths).map(
-        path => document.push(transformPath(path, inputDoc.paths[path]))
+        path => document.push(transformPath(path, inputDoc.paths[path], parameters))
       );
     }
 
