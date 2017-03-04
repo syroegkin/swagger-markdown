@@ -152,7 +152,7 @@ http://instagram.com/about/legal/terms/api
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No | [user-id](#userid) |
+| user-id | path | The user identifier number | Yes | number |
 
 **Responses**
 
@@ -193,7 +193,7 @@ http://instagram.com/about/legal/terms/api
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No | [user-id](#userid) |
+| user-id | path | The user identifier number | Yes | number |
 | count | query | Count of media to return. | No | integer |
 | max_timestamp | query | Return media before this UNIX timestamp. | No | integer |
 | min_timestamp | query | Return media after this UNIX timestamp. | No | integer |
@@ -255,7 +255,7 @@ available for the currently authenticated user.
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No | [user-id](#userid) |
+| user-id | path | The user identifier number | Yes | number |
 
 **Responses**
 
@@ -272,7 +272,7 @@ available for the currently authenticated user.
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No | [user-id](#userid) |
+| user-id | path | The user identifier number | Yes | number |
 
 **Responses**
 
@@ -302,7 +302,7 @@ available for the currently authenticated user.
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No | [user-id](#userid) |
+| user-id | path | The user identifier number | Yes | number |
 | action | body | One of follow/unfollow/block/unblock/approve/ignore. | No | string |
 
 **Responses**
@@ -527,7 +527,7 @@ authored by the authenticated user.
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No | [tag-name](#tagname) |
+| tag-name | path | Tag name | Yes | string |
 
 **Responses**
 
@@ -547,7 +547,7 @@ these objects.
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-|  |  |  | No | [tag-name](#tagname) |
+| tag-name | path | Tag name | Yes | string |
 
 **Responses**
 

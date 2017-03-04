@@ -1,6 +1,6 @@
 const inArray = require('../lib/inArray');
-const responses = require('./pathResponses');
-const parameters = require('./pathParameters');
+const transformResponses = require('./pathResponses');
+const transformParameters = require('./pathParameters');
 const security = require('./security');
 
 /**
@@ -9,7 +9,7 @@ const security = require('./security');
  */
 const ALLOWED_METHODS = ['get', 'post', 'put', 'patch', 'delete', 'options'];
 
-module.exports = (path, data) => {
+module.exports = (path, data, parameters) => {
   const res = [];
   let pathParameters = null;
 
@@ -42,12 +42,12 @@ module.exports = (path, data) => {
 
         // Build parameters
         if ('parameters' in pathInfo || pathParameters) {
-          res.push(`${parameters(pathInfo.parameters, pathParameters)}\n`);
+          res.push(`${transformParameters(pathInfo.parameters, pathParameters, parameters)}\n`);
         }
 
         // Build responses
         if ('responses' in pathInfo) {
-          res.push(`${responses(pathInfo.responses)}\n`);
+          res.push(`${transformResponses(pathInfo.responses)}\n`);
         }
 
         // Build security
