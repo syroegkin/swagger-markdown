@@ -18,36 +18,36 @@ describe('Definitions', () => {
   });
 
   it('should create proper header', () => {
-    expect(fixture.defHeader1).to.be.equal(res1[2]);
-    expect(fixture.defHeader2).to.be.equal(res2[2]);
+    expect(fixture.defHeader1).to.be.equal(res1[3]);
+    expect(fixture.defHeader2).to.be.equal(res2[3]);
   });
 
   it('should create table headers', () => {
-    expect(fixture.tableHeader[0]).to.be.equal(res1[4]);
-    expect(fixture.tableHeader[1]).to.be.equal(res1[5]);
-    expect(fixture.tableHeader[0]).to.be.equal(res2[4]);
-    expect(fixture.tableHeader[1]).to.be.equal(res2[5]);
+    expect(fixture.tableHeader[0]).to.be.equal(res1[5]);
+    expect(fixture.tableHeader[1]).to.be.equal(res1[6]);
+    expect(fixture.tableHeader[0]).to.be.equal(res2[5]);
+    expect(fixture.tableHeader[1]).to.be.equal(res2[6]);
   });
 
   describe('Simple data', () => {
     it('should create simple valid table', () => {
-      expect(res11[0]).to.be.equal(fixture.result1[0]);
-      expect(res11[1]).to.be.equal(fixture.result1[1]);
+      expect(res11[1]).to.be.equal(fixture.result1[0]);
+      expect(res11[2]).to.be.equal(fixture.result1[1]);
     });
   });
 
   describe('Complex data', () => {
     it('should add reference to other definition', () => {
-      expect(res12[0]).to.be.equal(fixture.result2[0]);
+      expect(res12[1]).to.be.equal(fixture.result2[0]);
     });
     it('should add description', () => {
-      expect(res12[1]).to.be.equal(fixture.result2[1]);
+      expect(res12[2]).to.be.equal(fixture.result2[1]);
     });
     it('should render types as an array', () => {
-      expect(res12[2]).to.be.equal(fixture.result2[2]);
+      expect(res12[3]).to.be.equal(fixture.result2[2]);
     });
     it('should render array of references', () => {
-      expect(res12[3]).to.be.equal(fixture.result2[3]);
+      expect(res12[4]).to.be.equal(fixture.result2[3]);
     });
   });
 });

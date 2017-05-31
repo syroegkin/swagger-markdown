@@ -660,6 +660,7 @@ geography, use the [media search endpoint
 
 ### Models
 ---
+
 <a name="user"></a>**User**  
 
 | Name | Type | Description | Required |
@@ -671,6 +672,7 @@ geography, use the [media search endpoint
 | bio | string |  | No |
 | website | string |  | No |
 | counts | object |  | No |
+
 <a name="media"></a>**Media**  
 
 | Name | Type | Description | Required |
@@ -687,6 +689,7 @@ geography, use the [media search endpoint
 | likes | object |  | No |
 | images |  |  | No |
 | videos |  |  | No |
+
 <a name="location"></a>**Location**  
 
 | Name | Type | Description | Required |
@@ -695,6 +698,7 @@ geography, use the [media search endpoint
 | name | string |  | No |
 | latitude | number |  | No |
 | longitude | number |  | No |
+
 <a name="comment"></a>**Comment**  
 
 | Name | Type | Description | Required |
@@ -703,6 +707,7 @@ geography, use the [media search endpoint
 | created_time | string |  | No |
 | text | string |  | No |
 | from | [MiniProfile](#miniProfile) |  | No |
+
 <a name="like"></a>**Like**  
 
 | Name | Type | Description | Required |
@@ -712,12 +717,14 @@ geography, use the [media search endpoint
 | last_name | string |  | No |
 | type | string |  | No |
 | id | string |  | No |
+
 <a name="tag"></a>**Tag**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | media_count | integer |  | No |
 | name | string |  | No |
+
 <a name="image"></a>**Image**  
 
 | Name | Type | Description | Required |
@@ -725,6 +732,7 @@ geography, use the [media search endpoint
 | width | integer |  | No |
 | height | integer |  | No |
 | url | string |  | No |
+
 <a name="miniProfile"></a>**MiniProfile**  
 
 | Name | Type | Description | Required |
