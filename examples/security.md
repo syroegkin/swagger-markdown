@@ -106,12 +106,14 @@ http://swagger.io
 
 ### Models
 ---
+
 <a name="pet"></a>**Pet**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | name | string |  | Yes |
 | tag | string |  | No |
+
 <a name="errorModel"></a>**ErrorModel**  
 
 | Name | Type | Description | Required |

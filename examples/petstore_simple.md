@@ -85,6 +85,7 @@ foo@example.com
 
 ### Models
 ---
+
 <a name="pet"></a>**pet**  
 
 | Name | Type | Description | Required |
@@ -92,6 +93,7 @@ foo@example.com
 | id | long |  | Yes |
 | name | string |  | Yes |
 | tag | string |  | No |
+
 <a name="newPet"></a>**newPet**  
 
 | Name | Type | Description | Required |
@@ -99,6 +101,7 @@ foo@example.com
 | id | long |  | No |
 | name | string |  | Yes |
 | tag | string |  | No |
+
 <a name="errorModel"></a>**errorModel**  
 
 | Name | Type | Description | Required |
