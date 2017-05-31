@@ -38,7 +38,7 @@
     "eslint": "^3.12.1",
     "eslint-config-airbnb-base": "11.0.0",
     "eslint-plugin-import": "^2.3.0",
-    "mocha": "^3.0.2"
+    "mocha": "^3.4.1"
   },
   "dependencies": {
     "argparse": "^1.0.7",
