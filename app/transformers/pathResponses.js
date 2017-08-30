@@ -14,9 +14,11 @@ module.exports = responses => {
     // Response
     line.push(response);
     // Description
-    const description =
-      responses[response].description.replace(/[\r\n]/g, ' ');
-    line.push(description);
+    if (responses[response].description != undefined) {
+      const description =
+        responses[response].description.replace(/[\r\n]/g, ' ');
+      line.push(description);
+    }
     // Schema
     if ('schema' in responses[response]) {
       const schema = new Schema(responses[response].schema);
