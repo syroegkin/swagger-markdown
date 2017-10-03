@@ -17,6 +17,10 @@ const processDefinition = (name, definition) => {
   res.push('');
   res.push(`<a name="${linkAnchor}"></a>**${name}**  `);
   res.push('');
+  if (definition.description) {
+    res.push(definition.description);
+  }
+  res.push('');
   res.push('| Name | Type | Description | Required |');
   res.push('| ---- | ---- | ----------- | -------- |');
   Object.keys(definition.properties).map(propName => {
