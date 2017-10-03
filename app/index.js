@@ -65,20 +65,6 @@ if (args.input) {
 
     // Models (definitions)
     if ('definitions' in inputDoc) {
-
-      // Extend definitions that inherit a locally defined model
-      const defs = inputDoc.definitions;
-      Object.keys(inputDoc.definitions).forEach(k => {
-        if (defs[k].allOf) {
-          defs[k].allOf.some(obj => {
-            if (obj.$ref) {
-              var ref = obj.$ref.replace('#/definitions/', '');
-              defs[k].properties = Object.assign(defs[ref].properties, obj.properties || {});
-            }
-          })
-        }
-      });
-
       document.push(
         transformDefinition(inputDoc.definitions)
       );

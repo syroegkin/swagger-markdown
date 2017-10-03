@@ -42,6 +42,21 @@ module.exports.processDefinition = processDefinition;
  */
 module.exports = definitions => {
   const res = [];
+
+  // Extend definitions that inherit a locally defined model
+  Object.keys(definitions).forEach(k => {
+    if (definitions[k].allOf) {
+      definitions[k].allOf.some(obj => {
+        if (obj.$ref) {
+          // Assumes the reference is local (see https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#reference-object)
+          // TODO: check if external file is referenced + fetch + apply
+          var ref = obj.$ref.replace('#/definitions/', '');
+          definitions[k].properties = Object.assign(definitions[ref].properties, obj.properties || {});
+        }
+      });
+    }
+  });
+
   Object.keys(definitions).map(
     definitionName => res.push(
       processDefinition(definitionName, definitions[definitionName])
