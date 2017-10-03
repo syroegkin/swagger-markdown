@@ -8,11 +8,11 @@ Supports swagger 2.0 format only
 
 see [examples](https://github.com/syroegkin/swagger-markdown/tree/master/examples) folder
 
-###Installation
+### Installation
 
     npm install -g swagger-markdown
 
-###Usage
+### Usage
 
 ```
 swagger-markdown [-h] [-v] -i  [-o]
@@ -25,7 +25,7 @@ Options:
 
 ```
 
-####Example:
+#### Example:
 
 ```javascript
 swagger-markdown -i path/to/swagger/file.yaml
