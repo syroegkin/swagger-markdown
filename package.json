@@ -7,9 +7,6 @@
     "test": "mocha \"tests/**/*.spec.js\" && eslint .",
     "prepublish": "babel app --out-dir bin"
   },
-  "bin": {
-    "swagger-markdown": "bin/index.js"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/syroegkin/swagger-markdown.git"
