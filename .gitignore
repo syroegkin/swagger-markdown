@@ -40,7 +40,8 @@ jspm_packages
 .idea
 
 # build
-bin
+#bin
+
 
 # development tasks
 examples.sh
