@@ -57,7 +57,7 @@ already factors in this multiplier.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | An array of price estimates by product | [ [PriceEstimate](#priceEstimate) ] |
+| 200 | An array of price estimates by product | [ [PriceEstimate](#priceestimate) ] |
 | default | Unexpected error | [Error](#error) |
 
 ### /estimates/time
@@ -121,7 +121,7 @@ already factors in this multiplier.
 ### Models
 ---
 
-<a name="product"></a>**Product**  
+**(Product)[product]**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -131,7 +131,7 @@ already factors in this multiplier.
 | capacity | string | Capacity of product. For example, 4 people. | No |
 | image | string | Image URL representing the product. | No |
 
-<a name="priceEstimate"></a>**PriceEstimate**  
+**(PriceEstimate)[priceestimate]**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -143,7 +143,7 @@ already factors in this multiplier.
 | high_estimate | number | Upper bound of the estimated price. | No |
 | surge_multiplier | number | Expected surge multiplier. Surge is active if surge_multiplier is greater than 1. Price estimate already factors in the surge multiplier. | No |
 
-<a name="profile"></a>**Profile**  
+**(Profile)[profile]**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -153,13 +153,13 @@ already factors in this multiplier.
 | picture | string | Image URL of the Uber user. | No |
 | promo_code | string | Promo code of the Uber user. | No |
 
-<a name="activity"></a>**Activity**  
+**(Activity)[activity]**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | uuid | string | Unique identifier for the activity | No |
 
-<a name="activities"></a>**Activities**  
+**(Activities)[activities]**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -168,7 +168,7 @@ already factors in this multiplier.
 | count | integer | Total number of items available. | No |
 | history | [ [Activity](#activity) ] |  | No |
 
-<a name="error"></a>**Error**  
+**(Error)[error]**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

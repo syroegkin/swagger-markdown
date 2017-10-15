@@ -95,7 +95,7 @@ http://swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | pet response | [ [Pet](#pet) ] |
-| default | error payload | [ErrorModel](#errorModel) |
+| default | error payload | [ErrorModel](#errormodel) |
 
 **Security**
 
@@ -107,14 +107,14 @@ http://swagger.io
 ### Models
 ---
 
-<a name="pet"></a>**Pet**  
+**(Pet)[pet]**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | name | string |  | Yes |
 | tag | string |  | No |
 
-<a name="errorModel"></a>**ErrorModel**  
+**(ErrorModel)[errormodel]**  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

@@ -2,15 +2,15 @@ const expect = require('chai').expect;
 const anchor = require('../../app/lib/anchor');
 
 const fixture = [
-  ['any string', 'anyString'],
-  ['!_@ pe', '_Pe'],
+  ['any string', 'any-string'],
+  ['!_@ pe', '!_@-pe'],
   ['123', '123'],
-  ['123may be 321', '123mayBe321'],
-  [' look at /me', 'lookAtMe'],
+  ['123may be 321', '123may-be-321'],
+  [' look at /me', 'look-at-/me'],
   ['', ''],
   ['       ', ''],
   ['1234', '1234'],
-  ['12 34', '1234']
+  ['12 34', '12-34']
 ];
 
 describe('anchor function', () => {

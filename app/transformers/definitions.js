@@ -15,7 +15,7 @@ const processDefinition = (name, definition) => {
 
   // Add anchor with name
   res.push('');
-  res.push(`<a name="${linkAnchor}"></a>**${name}**  `);
+  res.push(`**(${name})[${linkAnchor}]**  `);
   res.push('');
   res.push('| Name | Type | Description | Required |');
   res.push('| ---- | ---- | ----------- | -------- |');
