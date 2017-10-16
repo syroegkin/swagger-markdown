@@ -168,7 +168,7 @@ already factors in this multiplier.
 | count | integer | Total number of items available. | No |
 | history | [ [Activity](#activity) ] |  | No |
 
-**(Error)[error]**  
+### Error  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
