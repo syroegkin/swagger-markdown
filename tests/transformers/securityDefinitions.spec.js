@@ -1,7 +1,7 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const transformSecurituDefinitions = require('../../app/transformers/securityDefinitions');
-const nameResolver = require('../../app/transformers/securityDefinitions').nameResolver;
-const typeResolver = require('../../app/transformers/securityDefinitions').typeResolver;
+const { nameResolver } = require('../../app/transformers/securityDefinitions');
+const { typeResolver } = require('../../app/transformers/securityDefinitions');
 
 describe('Security definitions', () => {
   it('Should not create any data if definitions is empty', () => {

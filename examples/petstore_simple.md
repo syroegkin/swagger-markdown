@@ -31,7 +31,7 @@ foo@example.com
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | pet response | [ [pet](#pet) ] |
-| default | unexpected error | [errorModel](#errorModel) |
+| default | unexpected error | [errorModel](#errormodel) |
 
 ##### ***POST***
 **Description:** Creates a new pet in the store.  Duplicates are allowed
@@ -40,14 +40,14 @@ foo@example.com
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
-| pet | body | Pet to add to the store | Yes | [newPet](#newPet) |
+| pet | body | Pet to add to the store | Yes | [newPet](#newpet) |
 
 **Responses**
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | pet response | [pet](#pet) |
-| default | unexpected error | [errorModel](#errorModel) |
+| default | unexpected error | [errorModel](#errormodel) |
 
 ### /pets/{id}
 ---
@@ -65,7 +65,7 @@ foo@example.com
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | pet response | [pet](#pet) |
-| default | unexpected error | [errorModel](#errorModel) |
+| default | unexpected error | [errorModel](#errormodel) |
 
 ##### ***DELETE***
 **Description:** deletes a single pet based on the ID supplied
@@ -81,12 +81,12 @@ foo@example.com
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 204 | pet deleted |
-| default | unexpected error | [errorModel](#errorModel) |
+| default | unexpected error | [errorModel](#errormodel) |
 
 ### Models
 ---
 
-<a name="pet"></a>**pet**  
+### pet  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -94,7 +94,7 @@ foo@example.com
 | name | string |  | Yes |
 | tag | string |  | No |
 
-<a name="newPet"></a>**newPet**  
+### newPet  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -102,7 +102,7 @@ foo@example.com
 | name | string |  | Yes |
 | tag | string |  | No |
 
-<a name="errorModel"></a>**errorModel**  
+### errorModel  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

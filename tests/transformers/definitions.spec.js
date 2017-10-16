@@ -1,6 +1,5 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const transformDefinitions = require('../../app/transformers/definitions');
-// const dataTypeTransformer = require('../../app/transformers/dataTypes');
 const fixture = require('./definitionsFixture');
 
 describe('Definitions', () => {

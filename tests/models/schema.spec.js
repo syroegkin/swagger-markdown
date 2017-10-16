@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const Schema = require('../../app/models/schema');
 
 const fixture = {

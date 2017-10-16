@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const inArray = require('../../app/lib/inArray');
 
 describe('InArray function', () => {
@@ -9,7 +9,8 @@ describe('InArray function', () => {
   it('should found element in the haystack', () => {
     expect(inArray('a', ['a', 'b'])).to.be.equal(true);
     expect(inArray('a', ['a'])).to.be.equal(true);
-    expect(inArray('cdscksdcksdcposdkcosdpcksdpockscsdockspdo',
+    expect(inArray(
+      'cdscksdcksdcposdkcosdpcksdpockscsdockspdo',
       ['asd', 'asdsa', 'cdscksdcksdcposdkcosdpcksdpockscsdockspdo']
     )).to.be.equal(true);
   });

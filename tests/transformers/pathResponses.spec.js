@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const respones = require('../../app/transformers/pathResponses');
 
 describe('Path responses transformer', () => {

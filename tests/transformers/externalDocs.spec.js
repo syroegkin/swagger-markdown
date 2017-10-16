@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const transformExternalDocs = require('../../app/transformers/externalDocs');
 
 const fixture = {
