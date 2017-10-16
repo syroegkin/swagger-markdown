@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const transformContact = require('../../app/transformers/contact');
 
 describe('Contact info', () => {

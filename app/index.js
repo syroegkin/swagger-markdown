@@ -2,7 +2,7 @@
 
 const yaml = require('js-yaml');
 const fs = require('fs');
-const ArgumentParser = require('argparse').ArgumentParser;
+const { ArgumentParser } = require('argparse');
 const transformInfo = require('./transformers/info');
 const transformPath = require('./transformers/path');
 const transformSecurityDefinitions = require('./transformers/securityDefinitions');
@@ -16,20 +16,17 @@ const parser = new ArgumentParser({
   version: packageInfo.version
 });
 
-parser.addArgument(
-  ['-i', '--input'], {
-    required: true,
-    help: 'Path to the swagger yaml file',
-    metavar: '',
-    dest: 'input'
-  });
-parser.addArgument(
-  ['-o', '--output'], {
-    help: 'Path to the resulting md file',
-    metavar: '',
-    dest: 'output'
-  }
-);
+parser.addArgument(['-i', '--input'], {
+  required: true,
+  help: 'Path to the swagger yaml file',
+  metavar: '',
+  dest: 'input'
+});
+parser.addArgument(['-o', '--output'], {
+  help: 'Path to the resulting md file',
+  metavar: '',
+  dest: 'output'
+});
 const args = parser.parseArgs();
 
 if (args.input) {
@@ -58,16 +55,16 @@ if (args.input) {
 
     // Process Paths
     if ('paths' in inputDoc) {
-      Object.keys(inputDoc.paths).map(
-        path => document.push(transformPath(path, inputDoc.paths[path], parameters))
-      );
+      Object.keys(inputDoc.paths).map(path => document.push(transformPath(
+        path,
+        inputDoc.paths[path],
+        parameters
+      )));
     }
 
     // Models (definitions)
     if ('definitions' in inputDoc) {
-      document.push(
-        transformDefinition(inputDoc.definitions)
-      );
+      document.push(transformDefinition(inputDoc.definitions));
     }
 
     fs.writeFile(outputFile, document.join('\n'), err => {

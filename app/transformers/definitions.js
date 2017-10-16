@@ -36,11 +36,10 @@ module.exports.processDefinition = processDefinition;
  */
 module.exports = definitions => {
   const res = [];
-  Object.keys(definitions).map(
-    definitionName => res.push(
-      processDefinition(definitionName, definitions[definitionName])
-    )
-  );
+  Object.keys(definitions).map(definitionName => res.push(processDefinition(
+    definitionName,
+    definitions[definitionName]
+  )));
   if (res.length > 0) {
     res.unshift('---');
     res.unshift('### Models');

@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const transformDataTypes = require('../../app/transformers/dataTypes');
 const Schema = require('../../app/models/schema');
 const anchor = require('../../app/lib/anchor');
