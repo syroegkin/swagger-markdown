@@ -86,7 +86,7 @@ foo@example.com
 ### Models
 ---
 
-**(pet)[pet]**  
+### pet  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -94,7 +94,7 @@ foo@example.com
 | name | string |  | Yes |
 | tag | string |  | No |
 
-**(newPet)[newpet]**  
+### newPet  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -102,7 +102,7 @@ foo@example.com
 | name | string |  | Yes |
 | tag | string |  | No |
 
-**(errorModel)[errormodel]**  
+### errorModel  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

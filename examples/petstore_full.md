@@ -426,7 +426,7 @@ apiteam@swagger.io
 ### Models
 ---
 
-**(User)[user]**  
+### User  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -439,14 +439,14 @@ apiteam@swagger.io
 | phone | string |  | No |
 | userStatus | integer | User Status | No |
 
-**(Category)[category]**  
+### Category  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
 | name | string |  | No |
 
-**(Pet)[pet]**  
+### Pet  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -457,14 +457,14 @@ apiteam@swagger.io
 | tags | [ [Tag](#tag) ] |  | No |
 | status | string | pet status in the store | No |
 
-**(Tag)[tag]**  
+### Tag  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
 | name | string |  | No |
 
-**(Order)[order]**  
+### Order  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

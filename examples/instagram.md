@@ -661,7 +661,7 @@ geography, use the [media search endpoint
 ### Models
 ---
 
-**(User)[user]**  
+### User  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -673,7 +673,7 @@ geography, use the [media search endpoint
 | website | string |  | No |
 | counts | object |  | No |
 
-**(Media)[media]**  
+### Media  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -690,7 +690,7 @@ geography, use the [media search endpoint
 | images |  |  | No |
 | videos |  |  | No |
 
-**(Location)[location]**  
+### Location  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -699,7 +699,7 @@ geography, use the [media search endpoint
 | latitude | number |  | No |
 | longitude | number |  | No |
 
-**(Comment)[comment]**  
+### Comment  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -708,7 +708,7 @@ geography, use the [media search endpoint
 | text | string |  | No |
 | from | [MiniProfile](#miniprofile) |  | No |
 
-**(Like)[like]**  
+### Like  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -718,14 +718,14 @@ geography, use the [media search endpoint
 | type | string |  | No |
 | id | string |  | No |
 
-**(Tag)[tag]**  
+### Tag  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | media_count | integer |  | No |
 | name | string |  | No |
 
-**(Image)[image]**  
+### Image  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -733,7 +733,7 @@ geography, use the [media search endpoint
 | height | integer |  | No |
 | url | string |  | No |
 
-**(MiniProfile)[miniprofile]**  
+### MiniProfile  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

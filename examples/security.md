@@ -107,14 +107,14 @@ http://swagger.io
 ### Models
 ---
 
-**(Pet)[pet]**  
+### Pet  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | name | string |  | Yes |
 | tag | string |  | No |
 
-**(ErrorModel)[errormodel]**  
+### ErrorModel  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
