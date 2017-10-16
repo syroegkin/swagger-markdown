@@ -1,4 +1,3 @@
-const anchor = require('../lib/anchor');
 const dataTypeTransformer = require('./dataTypes');
 const inArray = require('../lib/inArray');
 const Schema = require('../models/schema');
@@ -11,11 +10,10 @@ const Schema = require('../models/schema');
 const processDefinition = (name, definition) => {
   const res = [];
   const required = 'required' in definition ? definition.required : [];
-  const linkAnchor = anchor(name);
 
   // Add anchor with name
   res.push('');
-  res.push(`<a name="${linkAnchor}"></a>**${name}**  `);
+  res.push(`### ${name}  `);
   res.push('');
   res.push('| Name | Type | Description | Required |');
   res.push('| ---- | ---- | ----------- | -------- |');
@@ -38,11 +36,10 @@ module.exports.processDefinition = processDefinition;
  */
 module.exports = definitions => {
   const res = [];
-  Object.keys(definitions).map(
-    definitionName => res.push(
-      processDefinition(definitionName, definitions[definitionName])
-    )
-  );
+  Object.keys(definitions).map(definitionName => res.push(processDefinition(
+    definitionName,
+    definitions[definitionName]
+  )));
   if (res.length > 0) {
     res.unshift('---');
     res.unshift('### Models');

@@ -68,7 +68,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 ### Models
 ---
 
-<a name="pet"></a>**Pet**  
+### Pet  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

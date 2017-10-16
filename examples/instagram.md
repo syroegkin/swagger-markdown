@@ -661,7 +661,7 @@ geography, use the [media search endpoint
 ### Models
 ---
 
-<a name="user"></a>**User**  
+### User  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -673,7 +673,7 @@ geography, use the [media search endpoint
 | website | string |  | No |
 | counts | object |  | No |
 
-<a name="media"></a>**Media**  
+### Media  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -682,15 +682,15 @@ geography, use the [media search endpoint
 | filter | string |  | No |
 | tags | [ [Tag](#tag) ] |  | No |
 | id | integer |  | No |
-| user | [MiniProfile](#miniProfile) |  | No |
-| users_in_photo | [ [MiniProfile](#miniProfile) ] |  | No |
+| user | [MiniProfile](#miniprofile) |  | No |
+| users_in_photo | [ [MiniProfile](#miniprofile) ] |  | No |
 | location | [Location](#location) |  | No |
 | comments: | object |  | No |
 | likes | object |  | No |
 | images |  |  | No |
 | videos |  |  | No |
 
-<a name="location"></a>**Location**  
+### Location  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -699,16 +699,16 @@ geography, use the [media search endpoint
 | latitude | number |  | No |
 | longitude | number |  | No |
 
-<a name="comment"></a>**Comment**  
+### Comment  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | string |  | No |
 | created_time | string |  | No |
 | text | string |  | No |
-| from | [MiniProfile](#miniProfile) |  | No |
+| from | [MiniProfile](#miniprofile) |  | No |
 
-<a name="like"></a>**Like**  
+### Like  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -718,14 +718,14 @@ geography, use the [media search endpoint
 | type | string |  | No |
 | id | string |  | No |
 
-<a name="tag"></a>**Tag**  
+### Tag  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | media_count | integer |  | No |
 | name | string |  | No |
 
-<a name="image"></a>**Image**  
+### Image  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -733,7 +733,7 @@ geography, use the [media search endpoint
 | height | integer |  | No |
 | url | string |  | No |
 
-<a name="miniProfile"></a>**MiniProfile**  
+### MiniProfile  
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

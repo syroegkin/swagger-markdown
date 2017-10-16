@@ -1,5 +1,3 @@
-const anchor = require('../../app/lib/anchor');
-
 const fixture = {
   definitionsHeader: [
     '### Models', '---'
@@ -61,7 +59,7 @@ const fixture = {
     '| tags | [ [Category](#category) ] |  | No |'
   ]
 };
-fixture.defHeader1 = `<a name="${anchor('Tag')}"></a>**Tag**  `;
-fixture.defHeader2 = `<a name="${anchor('Pet')}"></a>**Pet**  `;
+fixture.defHeader1 = '### Tag  ';
+fixture.defHeader2 = '### Pet  ';
 
 module.exports = fixture;

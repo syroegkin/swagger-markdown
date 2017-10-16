@@ -1,4 +1,4 @@
-const expect = require('chai').expect;
+const { expect } = require('chai');
 const parameters = require('../../app/transformers/pathParameters');
 
 const tableFixture = [
