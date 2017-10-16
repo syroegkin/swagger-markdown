@@ -1,4 +1,3 @@
-// const anchor = require('../lib/anchor');
 const dataTypeTransformer = require('./dataTypes');
 const inArray = require('../lib/inArray');
 const Schema = require('../models/schema');
@@ -11,7 +10,6 @@ const Schema = require('../models/schema');
 const processDefinition = (name, definition) => {
   const res = [];
   const required = 'required' in definition ? definition.required : [];
-  // const linkAnchor = anchor(name);
 
   // Add anchor with name
   res.push('');
