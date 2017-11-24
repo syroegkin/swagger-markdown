@@ -29,7 +29,7 @@ const parsePrimitive = (name, definition) => {
   const res = [];
   const typeCell = 'type' in definition ? definition.type : '';
   const descriptionCell = 'description' in definition ? definition.description : '';
-  const requiredCell = 'required' in definition ? definition.required : '';
+  const requiredCell = '';
   res.push(`| ${name} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
   return res;
 };
