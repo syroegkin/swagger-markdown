@@ -2,6 +2,7 @@
 
 const yaml = require('js-yaml');
 const fs = require('fs');
+const replaceExt = require('replace-ext');
 const { ArgumentParser } = require('argparse');
 const transformInfo = require('./transformers/info');
 const transformPath = require('./transformers/path');
@@ -34,7 +35,7 @@ if (args.input) {
 
   try {
     const inputDoc = yaml.safeLoad(fs.readFileSync(args.input, 'utf8'));
-    const outputFile = args.output || args.input.replace(/(yaml|json)$/i, 'md');
+    const outputFile = args.output || replaceExt(args.input, '.md');
 
     // Collect parameters
     const parameters = ('parameters' in inputDoc) ? inputDoc.parameters : {};
