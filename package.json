@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "argparse": "^1.0.7",
-    "js-yaml": "^3.8.4"
+    "js-yaml": "^3.8.4",
+    "replace-ext": "^1.0.0"
   }
 }

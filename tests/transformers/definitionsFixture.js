@@ -35,7 +35,7 @@ const fixture = {
         name: {
           type: 'string',
           example: 'doggie',
-          description: 'pet category in the store'
+          description: 'pet category in\nthe store'
         },
         photoUrls: {
           type: 'array',
