@@ -34,7 +34,7 @@ if (args.input) {
 
   try {
     const inputDoc = yaml.safeLoad(fs.readFileSync(args.input, 'utf8'));
-    const outputFile = args.output || args.input.replace(/(yaml|json)$/i, 'md');
+    const outputFile = args.output || args.input.replace(/(yaml|yml|json)$/i, 'md');
 
     // Collect parameters
     const parameters = ('parameters' in inputDoc) ? inputDoc.parameters : {};
