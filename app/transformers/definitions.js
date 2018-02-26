@@ -3,15 +3,45 @@ const inArray = require('../lib/inArray');
 const Schema = require('../models/schema');
 
 /**
+ * If Property field is present parse them.
+ * @param name of the definition
+ * @param definition definition object
+ */
+const parseProperties = (name, definition) => {
+  const required = 'required' in definition ? definition.required : [];
+  const res = [];
+  Object.keys(definition.properties).map(propName => {
+    const prop = definition.properties[propName];
+    const typeCell = dataTypeTransformer(new Schema(prop));
+    const descriptionCell = 'description' in prop ? prop.description : '';
+    const requiredCell = inArray(propName, required) ? 'Yes' : 'No';
+    res.push(`| ${propName} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
+  });
+  return res;
+};
+
+/**
+ * Parse allOf defintion
+ * @param name of the definition
+ * @param definition definition object
+ */
+const parsePrimitive = (name, definition) => {
+  const res = [];
+  const typeCell = 'type' in definition ? definition.type : '';
+  const descriptionCell = 'description' in definition ? definition.description : '';
+  const requiredCell = '';
+  res.push(`| ${name} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
+  return res;
+};
+
+/**
  * @param {type} name
  * @param {type} definition
  * @return {type} Description
  */
 const processDefinition = (name, definition) => {
-  const res = [];
-  const required = 'required' in definition ? definition.required : [];
-
-  // Add anchor with name
+  let res = [];
+  let parsedDef = [];
   res.push('');
   res.push(`### ${name}  `);
   res.push('');
@@ -21,18 +51,17 @@ const processDefinition = (name, definition) => {
   }
   res.push('| Name | Type | Description | Required |');
   res.push('| ---- | ---- | ----------- | -------- |');
-  Object.keys(definition.properties).map(propName => {
-    const prop = definition.properties[propName];
-    const typeCell = dataTypeTransformer(new Schema(prop));
-    const descriptionCell = 'description' in prop ? prop.description : '';
-    const requiredCell = inArray(propName, required) ? 'Yes' : 'No';
-    res.push(`| ${propName} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
-  });
+
+  if ('properties' in definition) {
+    parsedDef = parseProperties(name, definition);
+  } else {
+    parsedDef = parsePrimitive(name, definition);
+  }
+  res = res.concat(parsedDef);
 
   return res.length ? res.join('\n') : null;
 };
 module.exports.processDefinition = processDefinition;
-
 
 /**
  * @param {type} definitions

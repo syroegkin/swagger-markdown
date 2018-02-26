@@ -57,9 +57,20 @@ const fixture = {
     '| name | string | pet category in the store | Yes |',
     '| photoUrls | [ string ] |  | Yes |',
     '| tags | [ [Category](#category) ] |  | No |'
+  ],
+  data3: {
+    deviceid: {
+      type: 'integer',
+      format: 'int32',
+      description: 'DeviceID'
+    }
+  },
+  result3: [
+    '| deviceid | integer | DeviceID |  |'
   ]
 };
 fixture.defHeader1 = '### Tag  ';
 fixture.defHeader2 = '### Pet  ';
+fixture.defHeader3 = '### deviceid  ';
 
 module.exports = fixture;
