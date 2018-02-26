@@ -1,0 +1,32 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/svc
+    docker:
+      - image: circleci/node:8.9.1
+    steps:
+      - checkout
+      - run: yarn
+      - run: yarn test
+  deploy:
+    docker:
+      - image: circleci/node:8.9.1
+    working_directory: ~/svc
+    steps:
+      - checkout
+      - deploy:
+          name: Deploy to npm
+          command: |
+            echo "$NPM_REGISTRY" > ~/.npmrc
+            npm publish
+workflows:
+  version: 2
+  test_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          filters:
+            branches:
+              only: master
+          requires:
+            - build
