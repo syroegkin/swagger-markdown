@@ -735,6 +735,8 @@ geography, use the [media search endpoint
 
 ### MiniProfile  
 
+A shorter version of User for likes array
+
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | user_name | string |  | No |

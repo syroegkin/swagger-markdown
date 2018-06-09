@@ -31,8 +31,12 @@ describe('Definitions', () => {
     expect(fixture.tableHeader[1]).to.be.equal(res1[6]);
     expect(fixture.tableHeader[0]).to.be.equal(res2[5]);
     expect(fixture.tableHeader[1]).to.be.equal(res2[6]);
-    expect(fixture.tableHeader[0]).to.be.equal(res3[5]);
-    expect(fixture.tableHeader[1]).to.be.equal(res3[6]);
+    expect(fixture.tableHeader[0]).to.be.equal(res3[7]);
+    expect(fixture.tableHeader[1]).to.be.equal(res3[8]);
+  });
+
+  it('should also create description', () => {
+    expect(fixture.data3.deviceid.description).to.be.equal(res3[5]);
   });
 
   describe('Simple data', () => {
@@ -58,7 +62,7 @@ describe('Definitions', () => {
   });
   describe('Primitive data', () => {
     it('should create simple valid primitive table', () => {
-      expect(res13[1]).to.be.equal(fixture.result3[0]);
+      expect(res13[3]).to.be.equal(fixture.result3[0]);
     });
   });
 });
