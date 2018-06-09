@@ -5,20 +5,25 @@ const fixture = require('./definitionsFixture');
 describe('Definitions', () => {
   const res1 = transformDefinitions(fixture.data1).split('\n');
   const res2 = transformDefinitions(fixture.data2).split('\n');
+  const res3 = transformDefinitions(fixture.data3).split('\n');
   // Slice off header
   const res11 = res1.slice(6);
   const res12 = res2.slice(6);
+  const res13 = res3.slice(6);
 
   it('should create model header', () => {
     expect(fixture.definitionsHeader[0]).to.be.equal(res1[0]);
     expect(fixture.definitionsHeader[1]).to.be.equal(res1[1]);
     expect(fixture.definitionsHeader[0]).to.be.equal(res2[0]);
     expect(fixture.definitionsHeader[1]).to.be.equal(res2[1]);
+    expect(fixture.definitionsHeader[0]).to.be.equal(res3[0]);
+    expect(fixture.definitionsHeader[1]).to.be.equal(res3[1]);
   });
 
   it('should create proper header', () => {
     expect(fixture.defHeader1).to.be.equal(res1[3]);
     expect(fixture.defHeader2).to.be.equal(res2[3]);
+    expect(fixture.defHeader3).to.be.equal(res3[3]);
   });
 
   it('should create table headers', () => {
@@ -26,6 +31,12 @@ describe('Definitions', () => {
     expect(fixture.tableHeader[1]).to.be.equal(res1[6]);
     expect(fixture.tableHeader[0]).to.be.equal(res2[5]);
     expect(fixture.tableHeader[1]).to.be.equal(res2[6]);
+    expect(fixture.tableHeader[0]).to.be.equal(res3[7]);
+    expect(fixture.tableHeader[1]).to.be.equal(res3[8]);
+  });
+
+  it('should also create description', () => {
+    expect(fixture.data3.deviceid.description).to.be.equal(res3[5]);
   });
 
   describe('Simple data', () => {
@@ -47,6 +58,11 @@ describe('Definitions', () => {
     });
     it('should render array of references', () => {
       expect(res12[4]).to.be.equal(fixture.result2[3]);
+    });
+  });
+  describe('Primitive data', () => {
+    it('should create simple valid primitive table', () => {
+      expect(res13[3]).to.be.equal(fixture.result3[0]);
     });
   });
 });

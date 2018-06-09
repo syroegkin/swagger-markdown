@@ -1,11 +1,14 @@
 {
   "name": "swagger-markdown",
-  "version": "1.1.3",
+  "version": "1.1.5",
   "description": "Create markdown API documentation from swagger file",
   "main": "index.js",
   "scripts": {
-    "test": "mocha \"tests/**/*.spec.js\" && eslint .",
-    "prepublish": "babel app --out-dir bin"
+    "test": "npm run test:app && npm run test:lint",
+    "test:app": "mocha \"tests/**/*.spec.js\"",
+    "test:lint": "eslint .",
+    "build": "babel app --out-dir bin",
+    "prepublish": "npm run build"
   },
   "bin": {
     "swagger-markdown": "bin/index.js"
@@ -32,16 +35,16 @@
   ],
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
     "chai": "^4.1.2",
-    "eslint": "^4.18.1",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "12.1.0",
-    "eslint-plugin-import": "^2.9.0",
-    "mocha": "^5.0.1"
+    "eslint-plugin-import": "^2.12.0",
+    "mocha": "^5.2.0"
   },
   "dependencies": {
     "argparse": "^1.0.10",
-    "js-yaml": "^3.10.0"
+    "js-yaml": "^3.12.0"
   }
 }
