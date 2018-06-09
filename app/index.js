@@ -55,7 +55,7 @@ if (args.input) {
 
     // Process Paths
     if ('paths' in inputDoc) {
-      Object.keys(inputDoc.paths).map(path => document.push(transformPath(
+      Object.keys(inputDoc.paths).forEach(path => document.push(transformPath(
         path,
         inputDoc.paths[path],
         parameters

@@ -4,7 +4,10 @@ const respones = require('../../app/transformers/pathResponses');
 describe('Path responses transformer', () => {
   const fixture = {
     200: {
-      description: 'Echo GET'
+      description: 'Echo GET',
+      schema: {
+        $ref: '#/definitions/Foo'
+      }
     },
     404: {
       description: 'Not Found'
@@ -13,9 +16,9 @@ describe('Path responses transformer', () => {
   };
   const results = [
     '**Responses**',
-    '| Code | Description |',
-    '| ---- | ----------- |',
-    '| 200 | Echo GET |',
+    '| Code | Description | Schema |',
+    '| ---- | ----------- | ------ |',
+    '| 200 | Echo GET | [Foo](#foo) |',
     '| 404 | Not Found |',
     '| 500 | |'
   ];
