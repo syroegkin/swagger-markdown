@@ -8,14 +8,16 @@ describe('Path responses transformer', () => {
     },
     404: {
       description: 'Not Found'
-    }
+    },
+    500: {}
   };
   const results = [
     '**Responses**',
     '| Code | Description |',
     '| ---- | ----------- |',
     '| 200 | Echo GET |',
-    '| 404 | Not Found |'
+    '| 404 | Not Found |',
+    '| 500 | |'
   ];
   const res = respones(fixture).split('\n');
 

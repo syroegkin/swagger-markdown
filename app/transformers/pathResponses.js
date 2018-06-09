@@ -13,10 +13,13 @@ module.exports = responses => {
     const line = [];
     // Response
     line.push(response);
+
     // Description
-    const description =
-      responses[response].description.replace(/[\r\n]/g, ' ');
-    line.push(description);
+    if ('description' in responses[response]) {
+      const description =
+        responses[response].description.replace(/[\r\n]/g, ' ');
+      line.push(description);
+    }
     // Schema
     if ('schema' in responses[response]) {
       const schema = new Schema(responses[response].schema);
