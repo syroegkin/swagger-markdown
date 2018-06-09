@@ -1,7 +1,7 @@
 swagger-markdown
 ================
 
-[![npm][npm-image]][npm-url] [![dependencies][david-image]][david-url] [![circle ci][circleci-image]][circleci-url] [![bitHound Overall Score](https://www.bithound.io/github/syroegkin/swagger-markdown/badges/score.svg)](https://www.bithound.io/github/syroegkin/swagger-markdown)
+[![npm][npm-image]][npm-url] [![dependencies][david-image]][david-url] [![circle ci][circleci-image]][circleci-url]
 
 CLI script to turn swagger yaml into markdown files.
 Supports swagger 2.0 format only
