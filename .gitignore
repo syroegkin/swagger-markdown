@@ -44,3 +44,5 @@ bin
 
 # development tasks
 examples.sh
+
+tmp

@@ -104,7 +104,7 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | [ [Pet](#pet) ] |
-| 400 | Invalid status value |
+| 400 | Invalid status value |  |
 
 **Security**
 
@@ -130,7 +130,7 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | [ [Pet](#pet) ] |
-| 400 | Invalid tag value |
+| 400 | Invalid tag value |  |
 
 **Security**
 
@@ -156,8 +156,8 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | [Pet](#pet) |
-| 400 | Invalid ID supplied |
-| 404 | Pet not found |
+| 400 | Invalid ID supplied |  |
+| 404 | Pet not found |  |
 
 **Security**
 
@@ -233,7 +233,7 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | [Order](#order) |
-| 400 | Invalid Order |
+| 400 | Invalid Order |  |
 
 ### /stores/order/{orderId}
 ---
@@ -253,8 +253,8 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | [Order](#order) |
-| 400 | Invalid ID supplied |
-| 404 | Order not found |
+| 400 | Invalid ID supplied |  |
+| 404 | Order not found |  |
 
 ##### ***DELETE***
 **Summary:** Delete purchase order by ID
@@ -350,7 +350,7 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | string |
-| 400 | Invalid username/password supplied |
+| 400 | Invalid username/password supplied |  |
 
 ### /users/logout
 ---
@@ -383,8 +383,8 @@ apiteam@swagger.io
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | [User](#user) |
-| 400 | Invalid username supplied |
-| 404 | User not found |
+| 400 | Invalid username supplied |  |
+| 404 | User not found |  |
 
 ##### ***PUT***
 **Summary:** Updated user
