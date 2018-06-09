@@ -8,8 +8,12 @@ const transformDataTypes = require('./dataTypes');
  */
 module.exports = responses => {
   const res = [];
-  let schemas = false;
-  Object.keys(responses).map(response => {
+  // Check if schema somewhere
+  const schemas = Object.keys(responses).reduce(
+    (acc, response) => acc || 'schema' in responses[response],
+    false
+  );
+  Object.keys(responses).forEach(response => {
     const line = [];
     // Response
     line.push(response);
@@ -19,17 +23,19 @@ module.exports = responses => {
       const description =
         responses[response].description.replace(/[\r\n]/g, ' ');
       line.push(description);
+    } else {
+      line.push('');
     }
     // Schema
     if ('schema' in responses[response]) {
       const schema = new Schema(responses[response].schema);
       line.push(transformDataTypes(schema));
-      schemas = true;
+    } else if (schemas) {
+      line.push('');
     }
     // Combine all together
     res.push(`|${line.map(el => ` ${el} `).join('|')}|`);
   });
-
   res.unshift(`| ---- | ----------- |${schemas ? ' ------ |' : ''}`);
   res.unshift(`| Code | Description |${schemas ? ' Schema |' : ''}`);
   res.unshift('**Responses**\n');
