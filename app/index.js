@@ -2,7 +2,7 @@
 
 const yaml = require('js-yaml');
 const fs = require('fs');
-const { ArgumentParser } = require('argparse');
+const { ArgumentParser, Action } = require('argparse');
 const transformInfo = require('./transformers/info');
 const transformPath = require('./transformers/path');
 const transformSecurityDefinitions = require('./transformers/securityDefinitions');
@@ -27,6 +27,13 @@ parser.addArgument(['-o', '--output'], {
   metavar: '',
   dest: 'output'
 });
+parser.addArgument(['--skip-info'], {
+  action: Action.storeTrue,
+  nargs: 0,
+  help: 'Skip the title, description, version etc, whatever is in the info block.',
+  metavar: '',
+  dest: 'skipInfo'
+});
 const args = parser.parseArgs();
 
 if (args.input) {
@@ -40,7 +47,7 @@ if (args.input) {
     const parameters = ('parameters' in inputDoc) ? inputDoc.parameters : {};
 
     // Process info
-    if ('info' in inputDoc) {
+    if (!args.skipInfo && ('info' in inputDoc)) {
       document.push(transformInfo(inputDoc.info));
     }
 
