@@ -38,7 +38,7 @@ module.exports = responses => {
   });
   res.unshift(`| ---- | ----------- |${schemas ? ' ------ |' : ''}`);
   res.unshift(`| Code | Description |${schemas ? ' Schema |' : ''}`);
-  res.unshift('**Responses**\n');
+  res.unshift('##### Responses\n');
 
   return res.join('\n');
 };

@@ -31,7 +31,7 @@ module.exports = security => {
       line.push(' ');
     }
     res.unshift(`|${line.join('|')}|`);
-    res.unshift('**Security**\n');
+    res.unshift('##### Security\n');
     return res.join('\n');
   }
   return null;
