@@ -13,11 +13,8 @@ describe('Definitions', () => {
 
   it('should create model header', () => {
     expect(fixture.definitionsHeader[0]).to.be.equal(res1[0]);
-    expect(fixture.definitionsHeader[1]).to.be.equal(res1[1]);
     expect(fixture.definitionsHeader[0]).to.be.equal(res2[0]);
-    expect(fixture.definitionsHeader[1]).to.be.equal(res2[1]);
     expect(fixture.definitionsHeader[0]).to.be.equal(res3[0]);
-    expect(fixture.definitionsHeader[1]).to.be.equal(res3[1]);
   });
 
   it('should create proper header', () => {

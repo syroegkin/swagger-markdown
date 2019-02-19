@@ -16,9 +16,9 @@ describe('Info transformer', () => {
     };
 
     const res = transformInfo(fixture).split('\n');
-    expect(res[0]).to.be.equal(fixture.title);
+    expect(res[0]).to.be.equal(`# ${fixture.title}`);
     // Underline is same length as a title
-    expect(res[1]).to.be.equal(results.underline);
+    expect(res[1]).to.be.not.equal(results.underline);
   });
 
   it('should return description as is', () => {
@@ -35,10 +35,9 @@ describe('Info transformer', () => {
       description: 'Document description',
       version: '1.0.1'
     };
-    const result = 'Document title\n' +
-      '==============\n' +
+    const result = '# Document title\n' +
       'Document description\n\n' +
-      '**Version:** 1.0.1\n';
+      '## Version: 1.0.1\n';
     const res = transformInfo(fixture);
     expect(res).to.be.equal(result);
   });
@@ -47,7 +46,7 @@ describe('Info transformer', () => {
     const fixture = {
       termsOfService: 'Terms of service'
     };
-    const result = `**Terms of service:**  \n${fixture.termsOfService}\n`;
+    const result = `### Terms of service\n${fixture.termsOfService}\n`;
     const res = transformInfo(fixture);
     expect(res).to.be.equal(result);
   });

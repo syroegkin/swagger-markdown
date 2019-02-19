@@ -15,8 +15,7 @@ module.exports = (path, data, parameters) => {
 
   if (path && data) {
     // Make path as a header
-    res.push(`### ${path}`);
-    res.push('---');
+    res.push(`### ${path}\n`);
 
     // Check if parameter for path are in the place
     if ('parameters' in data) {
@@ -27,17 +26,17 @@ module.exports = (path, data, parameters) => {
     Object.keys(data).map(method => {
       if (inArray(method, ALLOWED_METHODS)) {
         // Set method as a subheader
-        res.push(`##### ***${method.toUpperCase()}***`);
+        res.push(`#### ${method.toUpperCase()}`);
         const pathInfo = data[method];
 
         // Set summary
         if ('summary' in pathInfo) {
-          res.push(`**Summary:** ${pathInfo.summary}\n`);
+          res.push(`##### Summary:\n\n${pathInfo.summary}\n`);
         }
 
         // Set description
         if ('description' in pathInfo) {
-          res.push(`**Description:** ${pathInfo.description}\n`);
+          res.push(`##### Description:\n\n${pathInfo.description}\n`);
         }
 
         // Build parameters

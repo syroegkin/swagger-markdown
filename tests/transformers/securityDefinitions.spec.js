@@ -13,7 +13,7 @@ describe('Security definitions', () => {
     Object.keys(typeResolver).map(type => {
       const fixture = { auth: { type } };
       const res = transformSecurituDefinitions(fixture);
-      const result = '### Security\n---\n'
+      const result = '### Security\n'
         + '**auth**  \n\n'
         + `|${type}|*${typeResolver[type]}*|\n`
         + '|---|---|\n';
