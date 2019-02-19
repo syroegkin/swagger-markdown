@@ -1,5 +1,4 @@
-PetStore on Heroku
-==================
+# PetStore on Heroku
 **This example has a working backend hosted in Heroku**
 
 You can try all HTTP operation described in this Swagger spec.
@@ -7,68 +6,68 @@ You can try all HTTP operation described in this Swagger spec.
 Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
 
-**Version:** 1.0.0
+## Version: 1.0.0
 
 ### /
----
-##### ***GET***
-**Parameters**
+
+#### GET
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | limit | query | number of pets to return | No | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | List all pets | [ [Pet](#pet) ] |
 
-##### ***POST***
-**Parameters**
+#### POST
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | pet | body | The pet JSON you want to post | Yes | [Pet](#pet) |
 
-**Responses**
+##### Responses
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | Make a new pet |
 
-##### ***PUT***
-**Parameters**
+#### PUT
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | pet | body | The pet JSON you want to post | Yes | [Pet](#pet) |
 
-**Responses**
+##### Responses
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | Updates the pet |
 
 ### /{petId}
----
-##### ***GET***
-**Parameters**
+
+#### GET
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | petId | path | ID of the pet | Yes | string |
 
-**Responses**
+##### Responses
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | Sends the pet with pet Id |
 
 ### Models
----
 
-### Pet  
+
+#### Pet
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

@@ -1,5 +1,4 @@
-Instagram API
-=============
+# Instagram API
 The first version of the Instagram API is an exciting step forward towards
 making it easier for users to have open access to their data. We created it
 so that you can surface the amazing content Instagram users share every
@@ -117,13 +116,12 @@ callbackFunction({
 ```
 
 
-**Version:** v1
+## Version: v1
 
-**Terms of service:**  
+### Terms of service
 http://instagram.com/about/legal/terms/api
 
 ### Security
----
 **oauth**  
 
 |oauth2|*OAuth 2.0*|
@@ -144,23 +142,25 @@ http://instagram.com/about/legal/terms/api
 |Name|access_token|
 
 ### /users/{user-id}
----
-##### ***GET***
-**Description:** Get basic information about a user.
 
-**Parameters**
+#### GET
+##### Description:
+
+Get basic information about a user.
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | user-id | path | The user identifier number | Yes | number |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | The user object | object |
 
-**Security**
+##### Security
 
 | Security Schema | Scopes |
 | --- | --- |
@@ -168,11 +168,13 @@ http://instagram.com/about/legal/terms/api
 | oauth | basic |
 
 ### /users/self/feed
----
-##### ***GET***
-**Description:** See the authenticated user's feed.
 
-**Parameters**
+#### GET
+##### Description:
+
+See the authenticated user's feed.
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -180,16 +182,16 @@ http://instagram.com/about/legal/terms/api
 | max_id | query | Return media earlier than this max_id.s | No | integer |
 | min_id | query | Return media later than this min_id. | No | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
 ### /users/{user-id}/media/recent
----
-##### ***GET***
-**Parameters**
+
+#### GET
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -200,127 +202,141 @@ http://instagram.com/about/legal/terms/api
 | min_id | query | Return media later than this min_id. | No | string |
 | max_id | query | Return media earlier than this max_id. | No | string |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | Get the most recent media published by a user. To get the most recent media published by the owner of the access token, you can use `self` instead of the `user-id`.  | object |
 
 ### /users/self/media/liked
----
-##### ***GET***
-**Description:** See the list of media liked by the authenticated user.
+
+#### GET
+##### Description:
+
+See the list of media liked by the authenticated user.
 Private media is returned as long as the authenticated user
 has permissionto view that media. Liked media lists are only
 available for the currently authenticated user.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | count | query | Count of media to return. | No | integer |
 | max_like_id | query | Return media liked before this id. | No | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
 ### /users/search
----
-##### ***GET***
-**Description:** Search for a user by name.
 
-**Parameters**
+#### GET
+##### Description:
+
+Search for a user by name.
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | q | query | A query string | Yes | string |
 | count | query | Number of users to return. | No | string |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
 ### /users/{user-id}/follows
----
-##### ***GET***
-**Description:** Get the list of users this user follows.
 
-**Parameters**
+#### GET
+##### Description:
+
+Get the list of users this user follows.
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | user-id | path | The user identifier number | Yes | number |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK |  |
 
 ### /users/{user-id}/followed-by
----
-##### ***GET***
-**Description:** Get the list of users this user is followed by.
 
-**Parameters**
+#### GET
+##### Description:
+
+Get the list of users this user is followed by.
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | user-id | path | The user identifier number | Yes | number |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK |  |
 
 ### /users/self/requested-by
----
-##### ***GET***
-**Description:** List the users who have requested this user's permission to follow.
+
+#### GET
+##### Description:
+
+List the users who have requested this user's permission to follow.
 
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK |  |
 
 ### /users/{user-id}/relationship
----
-##### ***POST***
-**Description:** Modify the relationship between the current user and thetarget user.
+
+#### POST
+##### Description:
+
+Modify the relationship between the current user and thetarget user.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | user-id | path | The user identifier number | Yes | number |
 | action | body | One of follow/unfollow/block/unblock/approve/ignore. | No | string |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK |  |
 
-**Security**
+##### Security
 
 | Security Schema | Scopes |
 | --- | --- |
 | oauth | relationships |
 
 ### /media/{media-id}
----
-##### ***GET***
-**Description:** Get information about a media object.
+
+#### GET
+##### Description:
+
+Get information about a media object.
 The returned type key will allow you to differentiate between `image`
 and `video` media.
 
@@ -329,49 +345,53 @@ Note: if you authenticate with an OAuth Token, you will receive the
 has liked this media item.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | The media ID | Yes | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | [Media](#media) |
 
 ### /media1/{shortcode}
----
-##### ***GET***
-**Description:** This endpoint returns the same response as **GET** `/media/media-id`.
+
+#### GET
+##### Description:
+
+This endpoint returns the same response as **GET** `/media/media-id`.
 
 A media object's shortcode can be found in its shortlink URL.
 An example shortlink is `http://instagram.com/p/D/`
 Its corresponding shortcode is D.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | shortcode | path | The media shortcode | Yes | string |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | [Media](#media) |
 
 ### /media/search
----
-##### ***GET***
-**Description:** Search for media in a given area. The default time span is set to 5
+
+#### GET
+##### Description:
+
+Search for media in a given area. The default time span is set to 5
 days. The time span must not exceed 7 days. Defaults time stamps cover
 the last 5 days. Can return mix of image and video types.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -381,45 +401,51 @@ the last 5 days. Can return mix of image and video types.
 | MAX_TIMESTAMP | query | A unix timestamp. All media returned will be taken earlier than this timestamp.  | No | integer |
 | DISTANCE | query | Default is 1km (distance=1000), max distance is 5km. | No | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
 ### /media/popular
----
-##### ***GET***
-**Description:** Get a list of what media is most popular at the moment.
+
+#### GET
+##### Description:
+
+Get a list of what media is most popular at the moment.
 Can return mix of image and video types.
 
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
 ### /media/{media-id}/comments
----
-##### ***GET***
-**Description:** Get a list of recent comments on a media object.
+
+#### GET
+##### Description:
+
+Get a list of recent comments on a media object.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK |  |
 
-##### ***POST***
-**Description:** Create a comment on a media object with the following rules:
+#### POST
+##### Description:
+
+Create a comment on a media object with the following rules:
 
 * The total length of the comment cannot exceed 300 characters.
 * The comment cannot contain more than 4 hashtags.
@@ -427,172 +453,188 @@ Can return mix of image and video types.
 * The comment cannot consist of all capital letters.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
 | TEXT | body | Text to post as a comment on the media object as specified in media-id.  | No | number |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
-**Security**
+##### Security
 
 | Security Schema | Scopes |
 | --- | --- |
 | oauth | comments |
 
-##### ***DELETE***
-**Description:** Remove a comment either on the authenticated user's media object or
+#### DELETE
+##### Description:
+
+Remove a comment either on the authenticated user's media object or
 authored by the authenticated user.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
 ### /media/{media-id}/likes
----
-##### ***GET***
-**Description:** Get a list of users who have liked this media.
+
+#### GET
+##### Description:
+
+Get a list of users who have liked this media.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK |  |
 
-##### ***POST***
-**Description:** Set a like on this media by the currently authenticated user.
+#### POST
+##### Description:
 
-**Parameters**
+Set a like on this media by the currently authenticated user.
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
-**Security**
+##### Security
 
 | Security Schema | Scopes |
 | --- | --- |
 | oauth | comments |
 
-##### ***DELETE***
-**Description:** Remove a like on this media by the currently authenticated user.
+#### DELETE
+##### Description:
+
+Remove a like on this media by the currently authenticated user.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | media-id | path | Media ID | Yes | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
 ### /tags/{tag-name}
----
-##### ***GET***
-**Description:** Get information about a tag object.
 
-**Parameters**
+#### GET
+##### Description:
+
+Get information about a tag object.
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | tag-name | path | Tag name | Yes | string |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | [Tag](#tag) |
 
 ### /tags/{tag-name}/media/recent
----
-##### ***GET***
-**Description:** Get a list of recently tagged media. Use the `max_tag_id` and
+
+#### GET
+##### Description:
+
+Get a list of recently tagged media. Use the `max_tag_id` and
 `min_tag_id` parameters in the pagination response to paginate through
 these objects.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | tag-name | path | Tag name | Yes | string |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK |  |
 
 ### /tags/search
----
-##### ***GET***
-**Parameters**
+
+#### GET
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | q | query | A valid tag name without a leading #. (eg. snowy, nofilter)  | No | string |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
 ### /locations/{location-id}
----
-##### ***GET***
-**Description:** Get information about a location.
 
-**Parameters**
+#### GET
+##### Description:
+
+Get information about a location.
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | location-id | path | Location ID | Yes | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
 ### /locations/{location-id}/media/recent
----
-##### ***GET***
-**Description:** Get a list of recent media objects from a given location.
 
-**Parameters**
+#### GET
+##### Description:
+
+Get a list of recent media objects from a given location.
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -602,18 +644,20 @@ these objects.
 | min_id | query | Return media later than this min_id. | No | string |
 | max_id | query | Return media earlier than this max_id. | No | string |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
 ### /locations/search
----
-##### ***GET***
-**Description:** Search for a location by geographic coordinate.
 
-**Parameters**
+#### GET
+##### Description:
+
+Search for a location by geographic coordinate.
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -624,16 +668,18 @@ these objects.
 | lng | query | ongitude of the center search coordinate. If used, lat is required.  | No | number |
 | foursquare_v2_id | query | Returns a location mapped off of a foursquare v2 api location id. If used, you are not required to use lat and lng.  | No | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | object |
 
 ### /geographies/{geo-id}/media/recent
----
-##### ***GET***
-**Description:** Get recent media from a geography subscription that you created.
+
+#### GET
+##### Description:
+
+Get recent media from a geography subscription that you created.
 **Note**: You can only access Geographies that were explicitly created
 by your OAuth client. Check the Geography Subscriptions section of the
 [real-time updates page](https://instagram.com/developer/realtime/).
@@ -644,7 +690,7 @@ geography, use the [media search endpoint
 ](https://instagram.com/developer/endpoints/media/).
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -652,16 +698,16 @@ geography, use the [media search endpoint
 | count | query | Max number of media to return. | No | integer |
 | min_id | query | Return media before this `min_id`. | No | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description |
 | ---- | ----------- |
 | 200 | OK |
 
 ### Models
----
 
-### User  
+
+#### User
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -673,7 +719,7 @@ geography, use the [media search endpoint
 | website | string |  | No |
 | counts | object |  | No |
 
-### Media  
+#### Media
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -690,7 +736,7 @@ geography, use the [media search endpoint
 | images |  |  | No |
 | videos |  |  | No |
 
-### Location  
+#### Location
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -699,7 +745,7 @@ geography, use the [media search endpoint
 | latitude | number |  | No |
 | longitude | number |  | No |
 
-### Comment  
+#### Comment
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -708,7 +754,7 @@ geography, use the [media search endpoint
 | text | string |  | No |
 | from | [MiniProfile](#miniprofile) |  | No |
 
-### Like  
+#### Like
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -718,14 +764,14 @@ geography, use the [media search endpoint
 | type | string |  | No |
 | id | string |  | No |
 
-### Tag  
+#### Tag
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | media_count | integer |  | No |
 | name | string |  | No |
 
-### Image  
+#### Image
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -733,7 +779,7 @@ geography, use the [media search endpoint
 | height | integer |  | No |
 | url | string |  | No |
 
-### MiniProfile  
+#### MiniProfile
 
 A shorter version of User for likes array
 

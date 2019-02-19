@@ -1,6 +1,6 @@
 const fixture = {
   definitionsHeader: [
-    '### Models', '---'
+    '### Models'
   ],
   tableHeader: [
     '| Name | Type | Description | Required |',
@@ -69,8 +69,8 @@ const fixture = {
     '| deviceid | integer | DeviceID |  |'
   ]
 };
-fixture.defHeader1 = '### Tag  ';
-fixture.defHeader2 = '### Pet  ';
-fixture.defHeader3 = '### deviceid  ';
+fixture.defHeader1 = '#### Tag';
+fixture.defHeader2 = '#### Pet';
+fixture.defHeader3 = '#### deviceid';
 
 module.exports = fixture;

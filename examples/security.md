@@ -1,10 +1,9 @@
-Swagger Sample API
-==================
+# Swagger Sample API
 A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification
 
-**Version:** 1.0.9-abcd
+## Version: 1.0.9-abcd
 
-**Terms of service:**  
+### Terms of service
 http://helloreverb.com/terms/
 
 **Contact information:**  
@@ -14,7 +13,6 @@ http://swagger.io
 **License:** [Creative Commons 4.0 International](http://creativecommons.org/licenses/by/4.0/)
 
 ### Security
----
 **githubAccessCode**  
 
 |oauth2|*OAuth 2.0*|
@@ -78,26 +76,30 @@ http://swagger.io
 |Name|api_key|
 
 ### /pets/{id}
----
-##### ***GET***
-**Summary:** Find pets by ID
 
-**Description:** Returns pets based on ID
+#### GET
+##### Summary:
 
-**Parameters**
+Find pets by ID
+
+##### Description:
+
+Returns pets based on ID
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | id | path | ID of pet to use | Yes | [ string ] |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | pet response | [ [Pet](#pet) ] |
 | default | error payload | [ErrorModel](#errormodel) |
 
-**Security**
+##### Security
 
 | Security Schema | Scopes |
 | --- | --- |
@@ -105,16 +107,16 @@ http://swagger.io
 | internalApiKey | |
 
 ### Models
----
 
-### Pet  
+
+#### Pet
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | name | string |  | Yes |
 | tag | string |  | No |
 
-### ErrorModel  
+#### ErrorModel
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

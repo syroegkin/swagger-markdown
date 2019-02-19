@@ -3,7 +3,7 @@ const Schema = require('../models/schema');
 
 module.exports = (parameters, pathParameters, globalParameters = {}) => {
   const res = [];
-  res.push('**Parameters**\n');
+  res.push('##### Parameters\n');
   res.push('| Name | Located in | Description | Required | Schema |');
   res.push('| ---- | ---------- | ----------- | -------- | ---- |');
   [].concat(pathParameters, parameters).map(keys => {

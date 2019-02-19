@@ -12,7 +12,7 @@ module.exports = info => {
   const res = [];
   if (info !== null && typeof info === 'object') {
     if ('title' in info) {
-      res.push(`${info.title}\n${Array(info.title.length + 1).join('=')}`);
+      res.push(`# ${info.title}`);
     }
 
     if ('description' in info) {
@@ -20,11 +20,11 @@ module.exports = info => {
     }
 
     if ('version' in info) {
-      res.push(`**Version:** ${info.version}\n`);
+      res.push(`## Version: ${info.version}\n`);
     }
 
     if ('termsOfService' in info) {
-      res.push(`**Terms of service:**  \n${info.termsOfService}\n`);
+      res.push(`### Terms of service\n${info.termsOfService}\n`);
     }
 
     if ('contact' in info) {

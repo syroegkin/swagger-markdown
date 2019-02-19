@@ -8,7 +8,7 @@ describe('Path responses transformer', () => {
       404: {}
     };
     const results = [
-      '**Responses**',
+      '##### Responses',
       '| Code | Description |',
       '| ---- | ----------- |',
       '| 200 | 200 |',
@@ -44,7 +44,7 @@ describe('Path responses transformer', () => {
       500: {}
     };
     const results = [
-      '**Responses**',
+      '##### Responses',
       '| Code | Description | Schema |',
       '| ---- | ----------- | ------ |',
       '| 200 | Echo GET | [Foo](#foo) |',
@@ -76,7 +76,7 @@ describe('Path responses transformer', () => {
       }
     };
     const results = [
-      '**Responses**',
+      '##### Responses',
       '| Code | Description | Schema |',
       '| ---- | ----------- | ------ |',
       '| 200 |  |  |',

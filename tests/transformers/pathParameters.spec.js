@@ -2,7 +2,7 @@ const { expect } = require('chai');
 const parameters = require('../../app/transformers/pathParameters');
 
 const tableFixture = [
-  '**Parameters**',
+  '##### Parameters',
   '| Name | Located in | Description | Required | Schema |',
   '| ---- | ---------- | ----------- | -------- | ---- |'
 ];
