@@ -1,10 +1,9 @@
-Swagger Petstore (Simple)
-=========================
+# Swagger Petstore (Simple)
 A sample API that uses a petstore as an example to demonstrate features in the swagger-2.0 specification
 
-**Version:** 1.0.0
+## Version: 1.0.0
 
-**Terms of service:**  
+### Terms of service
 http://helloreverb.com/terms/
 
 **Contact information:**  
@@ -15,34 +14,38 @@ foo@example.com
 **License:** [MIT](http://opensource.org/licenses/MIT)
 
 ### /pets
----
-##### ***GET***
-**Description:** Returns all pets from the system that the user has access to
 
-**Parameters**
+#### GET
+##### Description:
+
+Returns all pets from the system that the user has access to
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | tags | query | tags to filter by | No | [ string ] |
 | limit | query | maximum number of results to return | No | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | pet response | [ [pet](#pet) ] |
 | default | unexpected error | [errorModel](#errormodel) |
 
-##### ***POST***
-**Description:** Creates a new pet in the store.  Duplicates are allowed
+#### POST
+##### Description:
 
-**Parameters**
+Creates a new pet in the store.  Duplicates are allowed
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | pet | body | Pet to add to the store | Yes | [newPet](#newpet) |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -50,33 +53,37 @@ foo@example.com
 | default | unexpected error | [errorModel](#errormodel) |
 
 ### /pets/{id}
----
-##### ***GET***
-**Description:** Returns a user based on a single ID, if the user does not have access to the pet
 
-**Parameters**
+#### GET
+##### Description:
+
+Returns a user based on a single ID, if the user does not have access to the pet
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | id | path | ID of pet to fetch | Yes | long |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | pet response | [pet](#pet) |
 | default | unexpected error | [errorModel](#errormodel) |
 
-##### ***DELETE***
-**Description:** deletes a single pet based on the ID supplied
+#### DELETE
+##### Description:
 
-**Parameters**
+deletes a single pet based on the ID supplied
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | id | path | ID of pet to delete | Yes | long |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -84,9 +91,9 @@ foo@example.com
 | default | unexpected error | [errorModel](#errormodel) |
 
 ### Models
----
 
-### pet  
+
+#### pet
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -94,7 +101,7 @@ foo@example.com
 | name | string |  | Yes |
 | tag | string |  | No |
 
-### newPet  
+#### newPet
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -102,7 +109,7 @@ foo@example.com
 | name | string |  | Yes |
 | tag | string |  | No |
 
-### errorModel  
+#### errorModel
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

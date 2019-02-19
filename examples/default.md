@@ -1,28 +1,31 @@
-Uber API
-========
+# Uber API
 Move your app forward with the Uber API
 
-**Version:** 1.0.0
+## Version: 1.0.0
 
 ### /products
----
-##### ***GET***
-**Summary:** Product Types
 
-**Description:** The Products endpoint returns information about the *Uber* products
+#### GET
+##### Summary:
+
+Product Types
+
+##### Description:
+
+The Products endpoint returns information about the *Uber* products
 offered at a given location. The response includes the display name
 and other details about each product, and lists the products in the
 proper display order.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | latitude | query | Latitude component of location. | Yes | double |
 | longitude | query | Longitude component of location. | Yes | double |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -30,11 +33,15 @@ proper display order.
 | default | Unexpected error | [Error](#error) |
 
 ### /estimates/price
----
-##### ***GET***
-**Summary:** Price Estimates
 
-**Description:** The Price Estimates endpoint returns an estimated price range
+#### GET
+##### Summary:
+
+Price Estimates
+
+##### Description:
+
+The Price Estimates endpoint returns an estimated price range
 for each product offered at a given location. The price estimate is
 provided as a formatted string with the full price range and the localized
 currency symbol.<br><br>The response also includes low and high estimates,
@@ -44,7 +51,7 @@ product, its surge_multiplier will be greater than 1, but the price estimate
 already factors in this multiplier.
 
 
-**Parameters**
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -53,7 +60,7 @@ already factors in this multiplier.
 | end_latitude | query | Latitude component of end location. | Yes | double |
 | end_longitude | query | Longitude component of end location. | Yes | double |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -61,13 +68,17 @@ already factors in this multiplier.
 | default | Unexpected error | [Error](#error) |
 
 ### /estimates/time
----
-##### ***GET***
-**Summary:** Time Estimates
 
-**Description:** The Time Estimates endpoint returns ETAs for all products offered at a given location, with the responses expressed as integers in seconds. We recommend that this endpoint be called every minute to provide the most accurate, up-to-date ETAs.
+#### GET
+##### Summary:
 
-**Parameters**
+Time Estimates
+
+##### Description:
+
+The Time Estimates endpoint returns ETAs for all products offered at a given location, with the responses expressed as integers in seconds. We recommend that this endpoint be called every minute to provide the most accurate, up-to-date ETAs.
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
@@ -76,7 +87,7 @@ already factors in this multiplier.
 | customer_uuid | query | Unique customer identifier to be used for experience customization. | No | string (uuid) |
 | product_id | query | Unique identifier representing a specific product for a given latitude & longitude. | No | string |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -84,13 +95,17 @@ already factors in this multiplier.
 | default | Unexpected error | [Error](#error) |
 
 ### /me
----
-##### ***GET***
-**Summary:** User Profile
 
-**Description:** The User Profile endpoint returns information about the Uber user that has authorized with the application.
+#### GET
+##### Summary:
 
-**Responses**
+User Profile
+
+##### Description:
+
+The User Profile endpoint returns information about the Uber user that has authorized with the application.
+
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -98,20 +113,24 @@ already factors in this multiplier.
 | default | Unexpected error | [Error](#error) |
 
 ### /history
----
-##### ***GET***
-**Summary:** User Activity
 
-**Description:** The User Activity endpoint returns data about a user's lifetime activity with Uber. The response will include pickup locations and times, dropoff locations and times, the distance of past requests, and information about which products were requested.<br><br>The history array in the response will have a maximum length based on the limit parameter. The response value count may exceed limit, therefore subsequent API requests may be necessary.
+#### GET
+##### Summary:
 
-**Parameters**
+User Activity
+
+##### Description:
+
+The User Activity endpoint returns data about a user's lifetime activity with Uber. The response will include pickup locations and times, dropoff locations and times, the distance of past requests, and information about which products were requested.<br><br>The history array in the response will have a maximum length based on the limit parameter. The response value count may exceed limit, therefore subsequent API requests may be necessary.
+
+##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ---- |
 | offset | query | Offset the list of returned results by this amount. Default is zero. | No | integer |
 | limit | query | Number of items to retrieve. Default is 5, maximum is 100. | No | integer |
 
-**Responses**
+##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
@@ -119,9 +138,9 @@ already factors in this multiplier.
 | default | Unexpected error | [Error](#error) |
 
 ### Models
----
 
-### Product  
+
+#### Product
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -131,7 +150,7 @@ already factors in this multiplier.
 | capacity | string | Capacity of product. For example, 4 people. | No |
 | image | string | Image URL representing the product. | No |
 
-### PriceEstimate  
+#### PriceEstimate
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -143,7 +162,7 @@ already factors in this multiplier.
 | high_estimate | number | Upper bound of the estimated price. | No |
 | surge_multiplier | number | Expected surge multiplier. Surge is active if surge_multiplier is greater than 1. Price estimate already factors in the surge multiplier. | No |
 
-### Profile  
+#### Profile
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -153,13 +172,13 @@ already factors in this multiplier.
 | picture | string | Image URL of the Uber user. | No |
 | promo_code | string | Promo code of the Uber user. | No |
 
-### Activity  
+#### Activity
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | uuid | string | Unique identifier for the activity | No |
 
-### Activities  
+#### Activities
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -168,7 +187,7 @@ already factors in this multiplier.
 | count | integer | Total number of items available. | No |
 | history | [ [Activity](#activity) ] |  | No |
 
-### Error  
+#### Error
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
