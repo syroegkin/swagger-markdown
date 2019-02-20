@@ -46,3 +46,4 @@ bin
 examples.sh
 
 tmp
+.vscode

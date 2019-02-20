@@ -8,3 +8,4 @@ circle.yml
 .eslintrc
 .npmignore
 make-examples.js
+.vscode
