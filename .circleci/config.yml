@@ -17,9 +17,7 @@ jobs:
       - run: yarn
       - deploy:
           name: Deploy to npm
-          command: |
-            echo "$NPM_REGISTRY" > ~/.npmrc
-            npm publish
+          command: npm run semantic-release
 workflows:
   version: 2
   test_and_deploy:

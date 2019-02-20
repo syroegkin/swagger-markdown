@@ -25,6 +25,11 @@ Options:
 
 ```
 
+### Npx (requires no installation)
+```
+npx swagger-markdown -i ./basic-auth.yaml
+```
+
 #### Example:
 
 ```javascript

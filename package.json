@@ -8,14 +8,48 @@
     "test:app": "mocha \"tests/**/*.spec.js\"",
     "test:lint": "eslint .",
     "build": "babel app --out-dir bin",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "commit": "git-cz",
+    "semantic-release": "semantic-release"
   },
   "bin": {
     "swagger-markdown": "bin/index.js"
   },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "lint-staged": {
+    "{src,test}/**/*.js": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/syroegkin/swagger-markdown.git"
+    "url": "https://github.com/syroegkin/swagger-markdown.git"
   },
   "author": "Sergii Skorokhodov",
   "license": "MIT",
@@ -34,14 +68,27 @@
     "markdown"
   ],
   "devDependencies": {
+    "@commitlint/cli": "^7.5.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "@semantic-release/changelog": "^3.0.2",
+    "@semantic-release/commit-analyzer": "^6.1.0",
+    "@semantic-release/git": "^7.0.8",
+    "@semantic-release/github": "^5.2.10",
+    "@semantic-release/npm": "^5.1.4",
+    "@semantic-release/release-notes-generator": "^7.1.4",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "chai": "^4.1.2",
+    "commitizen": "^3.0.5",
+    "cz-conventional-changelog": "^2.1.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "12.1.0",
     "eslint-plugin-import": "^2.12.0",
-    "mocha": "^5.2.0"
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.4",
+    "mocha": "^5.2.0",
+    "semantic-release": "^15.13.3"
   },
   "dependencies": {
     "argparse": "^1.0.10",
