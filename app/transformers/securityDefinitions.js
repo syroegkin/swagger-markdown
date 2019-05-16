@@ -26,7 +26,7 @@ module.exports = securityDefinitions => {
           res.push(`|${scope}|`
             + `${securityDefinitions[type][value][scope].replace(/[\r\n]/g, ' ')}|`);
         });
-      } else if (value !== 'type') {
+      } else if (value !== 'type' && securityDefinitions[type][value].replace) {
         res.push(`|${nameResolver[value]}|`
           + `${securityDefinitions[type][value].replace(/[\r\n]/g, ' ')}|`);
       }
