@@ -13,7 +13,7 @@ const parseProperties = (name, definition) => {
   Object.keys(definition.properties).map(propName => {
     const prop = definition.properties[propName];
     const typeCell = dataTypeTransformer(new Schema(prop));
-    const descriptionCell = 'description' in prop ? prop.description : '';
+    const descriptionCell = ('description' in prop ? prop.description : '').replace(/[\r\n]/g, ' ');
     const requiredCell = inArray(propName, required) ? 'Yes' : 'No';
     res.push(`| ${propName} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
   });
@@ -21,14 +21,14 @@ const parseProperties = (name, definition) => {
 };
 
 /**
- * Parse allOf defintion
+ * Parse allOf definition
  * @param name of the definition
  * @param definition definition object
  */
 const parsePrimitive = (name, definition) => {
   const res = [];
   const typeCell = 'type' in definition ? definition.type : '';
-  const descriptionCell = 'description' in definition ? definition.description : '';
+  const descriptionCell = ('description' in definition ? definition.description : '').replace(/[\r\n]/g, ' ');
   const requiredCell = '';
   res.push(`| ${name} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
   return res;

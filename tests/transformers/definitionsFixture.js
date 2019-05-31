@@ -67,6 +67,15 @@ const fixture = {
   },
   result3: [
     '| deviceid | integer | DeviceID |  |'
+  ],
+  data4: {
+    Pet: {
+      description: 'This\nis\na\nvery\nlong\ndescription',
+      type: 'string',
+    }
+  },
+  result4: [
+    '| Pet | string | This is a very long description |  |'
   ]
 };
 fixture.defHeader1 = '#### Tag';
