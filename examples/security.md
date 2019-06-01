@@ -81,7 +81,7 @@ http://swagger.io
 |---|---|
 |Name|Authorization|
 |In|header|
-|undefined|oauth2|
+|x-amazon-apigateway-authtype|oauth2|
 
 ### /pets/{id}
 
