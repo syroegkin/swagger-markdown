@@ -42,4 +42,17 @@ describe('Security definitions', () => {
     const res = transformSecurituDefinitions(fixture);
     expect(res).to.exist;
   });
+  it('Should ignore undefined keys unless it is prefixed with x-', () => {
+    const fixture = {
+      'complex-structure': {
+        type: 'apiKey',
+        name: 'Name',
+        'x-special-key': 'Special key',
+        'unknown-key': 'Uknown key',
+      }
+    };
+    const result = transformSecurituDefinitions(fixture);
+    expect(result.match(/undefined/ig)).to.be.null;
+    expect(result.match(/x-special-key/ig)).to.be.not.null;
+  });
 });

@@ -27,8 +27,15 @@ module.exports = securityDefinitions => {
             + `${securityDefinitions[type][value][scope].replace(/[\r\n]/g, ' ')}|`);
         });
       } else if (value !== 'type' && securityDefinitions[type][value].replace) {
-        res.push(`|${nameResolver[value]}|`
-          + `${securityDefinitions[type][value].replace(/[\r\n]/g, ' ')}|`);
+        let key = nameResolver[value];
+        if (key === undefined) {
+          if (value.match(/^x-/i)) {
+            key = value;
+          } else {
+            return;
+          }
+        }
+        res.push(`|${key}|${securityDefinitions[type][value].replace(/[\r\n]/g, ' ')}|`);
       }
     });
     res.push('');
