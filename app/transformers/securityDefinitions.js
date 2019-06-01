@@ -26,16 +26,23 @@ module.exports = securityDefinitions => {
           res.push(`|${scope}|`
             + `${securityDefinitions[type][value][scope].replace(/[\r\n]/g, ' ')}|`);
         });
-      } else if (value !== 'type') {
-        res.push(`|${nameResolver[value]}|`
-          + `${securityDefinitions[type][value].replace(/[\r\n]/g, ' ')}|`);
+      } else if (value !== 'type' && securityDefinitions[type][value].replace) {
+        let key = nameResolver[value];
+        if (key === undefined) {
+          if (value.match(/^x-/i)) {
+            key = value;
+          } else {
+            return;
+          }
+        }
+        res.push(`|${key}|${securityDefinitions[type][value].replace(/[\r\n]/g, ' ')}|`);
       }
     });
     res.push('');
   });
 
   // Create header
-  // Only in case if there is some data
+  // Only in case if there is any data
   if (res.length > 0) {
     res.unshift('### Security');
   }

@@ -6,10 +6,12 @@ describe('Definitions', () => {
   const res1 = transformDefinitions(fixture.data1).split('\n');
   const res2 = transformDefinitions(fixture.data2).split('\n');
   const res3 = transformDefinitions(fixture.data3).split('\n');
+  const res4 = transformDefinitions(fixture.data4).split('\n');
   // Slice off header
   const res11 = res1.slice(6);
   const res12 = res2.slice(6);
   const res13 = res3.slice(6);
+  const res41 = res4.slice(-1);
 
   it('should create model header', () => {
     expect(fixture.definitionsHeader[0]).to.be.equal(res1[0]);
@@ -36,6 +38,10 @@ describe('Definitions', () => {
     expect(fixture.data3.deviceid.description).to.be.equal(res3[5]);
   });
 
+  it('should create a single description line', () => {
+    expect(res41[0]).to.be.equal(fixture.result4[0]);
+  });
+
   describe('Simple data', () => {
     it('should create simple valid table', () => {
       expect(res11[1]).to.be.equal(fixture.result1[0]);
@@ -57,6 +63,7 @@ describe('Definitions', () => {
       expect(res12[4]).to.be.equal(fixture.result2[3]);
     });
   });
+
   describe('Primitive data', () => {
     it('should create simple valid primitive table', () => {
       expect(res13[3]).to.be.equal(fixture.result3[0]);

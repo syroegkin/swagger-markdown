@@ -6,20 +6,18 @@ jobs:
       - image: circleci/node:8.9.1
     steps:
       - checkout
-      - run: yarn
-      - run: yarn test
+      - run: npm install
+      - run: npm run test
   deploy:
     docker:
       - image: circleci/node:8.9.1
     working_directory: ~/svc
     steps:
       - checkout
-      - run: yarn
+      - run: npm install
       - deploy:
           name: Deploy to npm
-          command: |
-            echo "$NPM_REGISTRY" > ~/.npmrc
-            npm publish
+          command: npm run semantic-release
 workflows:
   version: 2
   test_and_deploy:

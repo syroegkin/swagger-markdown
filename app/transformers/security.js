@@ -15,8 +15,7 @@ module.exports = security => {
       while (line.length < maxLength) {
         line.push('');
       }
-      let lineReduced =
-        line.reduce((prev, curr) => `${prev} ${curr || ''} |`, '|');
+      let lineReduced = line.reduce((prev, curr) => `${prev} ${curr || ''} |`, '|');
       lineReduced = lineReduced.replace(/\s{2,}/g, ' ');
       res.push(lineReduced);
     });

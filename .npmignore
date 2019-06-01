@@ -1,10 +1,11 @@
 app
 tests
 examples
-examples.sh
-circle.yml
 .idea
 .eslintignore
 .eslintrc
 .npmignore
+.gitignore
 make-examples.js
+.vscode
+.circleci

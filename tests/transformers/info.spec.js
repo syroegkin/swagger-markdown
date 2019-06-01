@@ -35,9 +35,9 @@ describe('Info transformer', () => {
       description: 'Document description',
       version: '1.0.1'
     };
-    const result = '# Document title\n' +
-      'Document description\n\n' +
-      '## Version: 1.0.1\n';
+    const result = '# Document title\n'
+      + 'Document description\n\n'
+      + '## Version: 1.0.1\n';
     const res = transformInfo(fixture);
     expect(res).to.be.equal(result);
   });
