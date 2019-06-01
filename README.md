@@ -22,6 +22,7 @@ Options:
   -v, --version   Show program's version number and exit.
   -i , --input    Path to the swagger yaml file
   -o , --output   Path to the resulting md file
+  --skip-info     Skip the title, description, version etc, whatever is in the info block.
 
 ```
 
