@@ -20,8 +20,7 @@ module.exports = responses => {
 
     // Description
     if ('description' in responses[response]) {
-      const description =
-        responses[response].description.replace(/[\r\n]/g, ' ');
+      const description = responses[response].description.replace(/[\r\n]/g, ' ');
       line.push(description);
     } else {
       line.push('');
