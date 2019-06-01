@@ -62,3 +62,4 @@ You can also use it as a npm script in your package.json:
 
 [circleci-url]: https://circleci.com/gh/syroegkin/swagger-markdown/tree/master
 [circleci-image]: https://img.shields.io/circleci/project/syroegkin/swagger-markdown.svg
+
