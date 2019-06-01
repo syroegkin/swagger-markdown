@@ -35,7 +35,7 @@ module.exports = securityDefinitions => {
   });
 
   // Create header
-  // Only in case if there is some data
+  // Only in case if there is any data
   if (res.length > 0) {
     res.unshift('### Security');
   }

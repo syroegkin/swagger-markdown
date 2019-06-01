@@ -75,6 +75,14 @@ http://swagger.io
 |In|header|
 |Name|api_key|
 
+**test-authorizer**  
+
+|apiKey|*API Key*|
+|---|---|
+|Name|Authorization|
+|In|header|
+|undefined|oauth2|
+
 ### /pets/{id}
 
 #### GET

@@ -29,4 +29,17 @@ describe('Security definitions', () => {
       expect(res).to.include(result);
     });
   });
+  it('Should transform complex types with objects', () => {
+    const fixture = {
+      'complex-structure': {
+        type: 'apiKey',
+        name: 'Name',
+        'x-amazon-apigateway-authorizer': {
+          type: 'token'
+        }
+      }
+    };
+    const res = transformSecurituDefinitions(fixture);
+    expect(res).to.exist;
+  });
 });
