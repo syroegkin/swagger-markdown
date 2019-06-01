@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/syroegkin/swagger-markdown/compare/v1.0.0...v1.0.1) (2019-06-01)
+
+
+### Bug Fixes
+
+* force release (hack) ([ae48f63](https://github.com/syroegkin/swagger-markdown/commit/ae48f63))
+
 # 1.1.6 (2019-06-01)
 
 
