@@ -15,7 +15,7 @@ see [examples](https://github.com/syroegkin/swagger-markdown/tree/master/example
 ### Usage
 
 ```
-swagger-markdown [-h] [-v] -i  [-o]
+swagger-markdown [-h] [-v] -i [-o] [--skip-info]
 
 Options:
   -h, --help      Show this help message and exit.
