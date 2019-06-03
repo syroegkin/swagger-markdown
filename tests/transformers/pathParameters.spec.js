@@ -7,7 +7,7 @@ const tableFixture = [
   '| ---- | ---------- | ----------- | -------- | ---- |'
 ];
 
-describe('Path parameters transormer', () => {
+describe('Path parameters transformer', () => {
   describe('Method parameters', () => {
     const fixture = [
       {

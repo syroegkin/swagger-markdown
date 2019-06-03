@@ -43,11 +43,11 @@ You can also use it as a npm script in your package.json:
 
     npm i --save-dev swagger-markdown
 
-```json
+```jsonc
 {
     "scripts": {
         "md-docs": "swagger-markdown -i path/to/swagger.yaml",
-        ...
+        //...
     }
 }
 ```
