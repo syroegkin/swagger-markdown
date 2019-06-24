@@ -23,7 +23,13 @@ const resolver = {
  * @param {Schema} schema
  * @return {String}
  */
-const dataTypeResoler = schema => {
+const dataTypeResolver = schema => {
+  if (schema.getAllOf()) {
+    return schema.getAllOf()
+      .map(subSchema => dataTypeResolver(subSchema))
+      .filter(type => type !== '')
+      .join(' & ');
+  }
   if (schema.getReference()) {
     const name = schema.getReference().match(/\/([^/]*)$/i)[1];
     const link = anchor(name);
@@ -41,7 +47,7 @@ const dataTypeResoler = schema => {
     return `${schema.getType()} (${schema.getFormat()})`;
   }
   if (schema.getType() === 'array') {
-    const subType = dataTypeResoler(schema.getItems());
+    const subType = dataTypeResolver(schema.getItems());
     return `[ ${subType} ]`;
   }
   if (schema.getType()) {
@@ -50,4 +56,4 @@ const dataTypeResoler = schema => {
   return '';
 };
 
-module.exports = dataTypeResoler;
+module.exports = dataTypeResolver;

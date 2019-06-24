@@ -18,6 +18,9 @@ class Schema {
       if ('items' in schema) {
         this.setItems(schema.items);
       }
+      if ('allOf' in schema) {
+        this.setAllOf(schema.allOf);
+      }
     }
   }
 
@@ -26,6 +29,14 @@ class Schema {
    */
   setType(type) {
     this.type = type;
+    return this;
+  }
+
+  /**
+   * @param {Array<Object>} allOf
+   */
+  setAllOf(allOf) {
+    this.allOf = allOf.map(schema => new Schema(schema));
     return this;
   }
 
@@ -79,6 +90,13 @@ class Schema {
    */
   getReference() {
     return this.ref;
+  }
+
+  /**
+   * @return {Array<Schema>}
+   */
+  getAllOf() {
+    return this.allOf;
   }
 }
 
