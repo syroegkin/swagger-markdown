@@ -75,7 +75,7 @@
     "@semantic-release/commit-analyzer": "^6.1.0",
     "@semantic-release/git": "^7.0.8",
     "@semantic-release/github": "^5.2.10",
-    "@semantic-release/npm": "^5.1.9",
+    "@semantic-release/npm": "^5.1.10",
     "@semantic-release/release-notes-generator": "^7.1.4",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
@@ -89,7 +89,7 @@
     "husky": "^2.3.0",
     "lint-staged": "^8.1.7",
     "mocha": "^6.1.4",
-    "semantic-release": "^15.13.14"
+    "semantic-release": "^15.13.16"
   },
   "dependencies": {
     "argparse": "^1.0.10",
