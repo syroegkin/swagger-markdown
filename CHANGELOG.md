@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/syroegkin/swagger-markdown/compare/v1.1.7...v1.2.0) (2019-06-24)
+
+
+### Features
+
+* resolve multiple properties with allOf ([9fae4dc](https://github.com/syroegkin/swagger-markdown/commit/9fae4dc))
+
 ## [1.0.1](https://github.com/syroegkin/swagger-markdown/compare/v1.0.0...v1.0.1) (2019-06-01)
 
 
