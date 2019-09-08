@@ -59,6 +59,9 @@ if (args.input) {
     if ('securityDefinitions' in inputDoc) {
       document.push(transformSecurityDefinitions(inputDoc.securityDefinitions));
     }
+    else if(inputDoc.components && inputDoc.components.securitySchemas) {
+      document.push(transformSecurityDefinitions(inputDoc.components.securityDefinitions));
+    }
 
     // Process Paths
     if ('paths' in inputDoc) {
@@ -72,6 +75,8 @@ if (args.input) {
     // Models (definitions)
     if ('definitions' in inputDoc) {
       document.push(transformDefinition(inputDoc.definitions));
+    } else if(inputDoc.components && inputDoc.components.schemas) {
+      document.push(transformDefinition(inputDoc.components.schemas));
     }
 
     fs.writeFile(outputFile, document.join('\n'), err => {
