@@ -8,6 +8,11 @@
     "no-unused-expressions": 0,
     "no-plusplus": 0,
     "arrow-parens": 0,
-    "no-confusing-arrow": 0
+    "no-confusing-arrow": 0,
+    "no-restricted-syntax": [
+      "error",
+      "LabeledStatement",
+      "WithStatement"
+    ]
   }
 }

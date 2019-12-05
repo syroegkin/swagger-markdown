@@ -93,6 +93,6 @@
   },
   "dependencies": {
     "argparse": "^1.0.10",
-    "js-yaml": "^3.13.1"
+    "swagger-parser": "^8.0.3"
   }
 }
