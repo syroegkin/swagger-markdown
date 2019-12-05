@@ -522,7 +522,7 @@ This can only be done by the logged in user.
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
 | category | [Category](#category) |  | No |
-| name | string |  | Yes |
+| name | string | _Example:_ `"doggie"` | Yes |
 | photoUrls | [ string ] |  | Yes |
 | tags | [ [Tag](#tag) ] |  | No |
 | status | string | pet status in the store | No |

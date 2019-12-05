@@ -13,7 +13,18 @@ const parseProperties = (name, definition) => {
   Object.keys(definition.properties).map(propName => {
     const prop = definition.properties[propName];
     const typeCell = dataTypeTransformer(new Schema(prop));
-    const descriptionCell = ('description' in prop ? prop.description : '').replace(/[\r\n]/g, ' ');
+    const descriptionParts = [];
+    if ('description' in prop) {
+      descriptionParts.push(prop.description.replace(/[\r\n]/g, ' '));
+    }
+    if ('enum' in prop) {
+      const enumValues = prop.enum.map(val => `\`${JSON.stringify(val)}\``).join(', ');
+      descriptionParts.push(`_Enum:_ ${enumValues}`);
+    }
+    if ('example' in prop) {
+      descriptionParts.push(`_Example:_ \`${JSON.stringify(prop.example)}\``);
+    }
+    const descriptionCell = descriptionParts.join('<br>');
     const requiredCell = inArray(propName, required) ? 'Yes' : 'No';
     res.push(`| ${propName} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
   });
