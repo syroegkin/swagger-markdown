@@ -59,6 +59,16 @@ const processDefinition = (name, definition) => {
   }
   res = res.concat(parsedDef);
 
+  if (definition.example) {
+    const formattedExample =
+      typeof definition.example === 'string'
+        ? definition.example
+        : JSON.stringify(definition.example, null, '  ');
+    res.push('');
+    res.push('**Example**');
+    res.push(`<pre>${formattedExample}</pre>`);
+  }
+
   return res.length ? res.join('\n') : null;
 };
 module.exports.processDefinition = processDefinition;

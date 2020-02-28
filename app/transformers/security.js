@@ -1,7 +1,7 @@
 module.exports = security => {
   const res = [];
   let maxLength = 0;
-  security.map(rules => {
+  security.forEach(rules => {
     Object.keys(rules).map(key => {
       maxLength = rules[key].length > maxLength ? rules[key].length : maxLength;
     });
@@ -9,7 +9,7 @@ module.exports = security => {
   maxLength++;
   if (maxLength < 2) maxLength = 2;
 
-  security.map(rules => {
+  security.forEach(rules => {
     Object.keys(rules).map(key => {
       const line = [key].concat(rules[key]);
       while (line.length < maxLength) {
@@ -33,5 +33,5 @@ module.exports = security => {
     res.unshift('##### Security\n');
     return res.join('\n');
   }
-  return null;
+  return '';
 };
