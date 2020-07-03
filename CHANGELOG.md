@@ -1,3 +1,19 @@
+# [1.3.0](https://github.com/syroegkin/swagger-markdown/compare/v1.2.0...v1.3.0) (2020-07-03)
+
+
+### Features
+
+* append schema example and enum values to description ([766f20f](https://github.com/syroegkin/swagger-markdown/commit/766f20fab2bcb314249e01c6ccca84d19032968e))
+* show examples for path and model definitions ([37d62b5](https://github.com/syroegkin/swagger-markdown/commit/37d62b565ce7b95ebefd3f4f0aefb58db67b7f60))
+* use swagger-parser to resolve $refs ([6dfc6cc](https://github.com/syroegkin/swagger-markdown/commit/6dfc6ccc90bca22f314f5feae97522711ddc5a54))
+
+# [1.2.0](https://github.com/syroegkin/swagger-markdown/compare/v1.1.7...v1.2.0) (2019-06-24)
+
+
+### Features
+
+* resolve multiple properties with allOf ([9fae4dc](https://github.com/syroegkin/swagger-markdown/commit/9fae4dc))
+
 ## [1.0.1](https://github.com/syroegkin/swagger-markdown/compare/v1.0.0...v1.0.1) (2019-06-01)
 
 
