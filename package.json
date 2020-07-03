@@ -11,7 +11,8 @@
     "build": "babel app --out-dir bin",
     "prepublish": "npm run build",
     "commit": "git-cz",
-    "semantic-release": "semantic-release"
+    "semantic-release": "semantic-release",
+    "make:examples": "node make-examples.js"
   },
   "bin": {
     "swagger-markdown": "bin/index.js"
@@ -69,30 +70,31 @@
     "markdown"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^8.0.0",
-    "@commitlint/config-conventional": "^8.0.0",
-    "@semantic-release/changelog": "^3.0.2",
-    "@semantic-release/commit-analyzer": "^6.1.0",
-    "@semantic-release/git": "^7.0.8",
-    "@semantic-release/github": "^5.2.10",
-    "@semantic-release/npm": "^5.1.9",
-    "@semantic-release/release-notes-generator": "^7.1.4",
+    "@commitlint/cli": "^9.0.1",
+    "@commitlint/config-conventional": "^9.0.1",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.0.7",
+    "@semantic-release/npm": "^7.0.5",
+    "@semantic-release/release-notes-generator": "^9.0.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "chai": "^4.2.0",
-    "commitizen": "^3.1.1",
-    "cz-conventional-changelog": "^2.1.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "^2.17.3",
-    "husky": "^2.3.0",
-    "lint-staged": "^8.1.7",
-    "mocha": "^6.1.4",
-    "semantic-release": "^15.13.14"
+    "commitizen": "^4.1.2",
+    "cz-conventional-changelog": "^3.2.0",
+    "eslint": "^7.3.1",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.22.0",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
+    "mocha": "^8.0.1",
+    "semantic-release": "^17.1.1"
   },
   "dependencies": {
     "argparse": "^1.0.10",
-    "js-yaml": "^3.13.1"
+    "swagger-parser": "^8.0.3"
   }
 }

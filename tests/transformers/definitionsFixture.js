@@ -48,15 +48,20 @@ const fixture = {
           items: {
             $ref: '#/definitions/Category'
           }
-        }
+        },
+        gender: {
+          type: 'string',
+          enum: ['male', 'female']
+        },
       }
     }
   },
   result2: [
     '| category | [Category](#category) |  | No |',
-    '| name | string | pet category in the store | Yes |',
+    '| name | string | pet category in the store<br>_Example:_ `"doggie"` | Yes |',
     '| photoUrls | [ string ] |  | Yes |',
-    '| tags | [ [Category](#category) ] |  | No |'
+    '| tags | [ [Category](#category) ] |  | No |',
+    '| gender | string | _Enum:_ `"male"`, `"female"` | No |'
   ],
   data3: {
     deviceid: {

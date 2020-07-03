@@ -113,45 +113,4 @@ describe('Path parameters transformer', () => {
       });
     });
   });
-
-  describe('Path and references', () => {
-    const methodFixture = [{
-      name: 'method name',
-      in: 'formData',
-      description: 'name',
-      type: 'string'
-    }];
-    const pathFixture = [{
-      $ref: '#/parameters/test'
-    }];
-    const globalFixture = {
-      test: {
-        name: 'path name',
-        in: 'formData',
-        description: 'name',
-        type: 'string'
-      }
-    };
-    const results = [].concat(tableFixture, [
-      '| path name | formData | name | No | string |',
-      '| method name | formData | name | No | string |'
-    ]);
-
-    const res = parameters(methodFixture, pathFixture, globalFixture)
-      .split('\n');
-
-    it('Should create parameters header', () => {
-      expect(res[0]).to.be.equal(results[0]);
-    });
-
-    it('Should create table header', () => {
-      expect(res[2]).to.be.equal(results[1]);
-      expect(res[3]).to.be.equal(results[2]);
-    });
-
-    it('Should create table body', () => {
-      expect(res[4]).to.be.equal(results[3]);
-      expect(res[5]).to.be.equal(results[4]);
-    });
-  });
 });

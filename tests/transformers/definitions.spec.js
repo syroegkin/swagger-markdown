@@ -14,28 +14,28 @@ describe('Definitions', () => {
   const res41 = res4.slice(-1);
 
   it('should create model header', () => {
-    expect(fixture.definitionsHeader[0]).to.be.equal(res1[0]);
-    expect(fixture.definitionsHeader[0]).to.be.equal(res2[0]);
-    expect(fixture.definitionsHeader[0]).to.be.equal(res3[0]);
+    expect(res1[0]).to.be.equal(fixture.definitionsHeader[0]);
+    expect(res2[0]).to.be.equal(fixture.definitionsHeader[0]);
+    expect(res3[0]).to.be.equal(fixture.definitionsHeader[0]);
   });
 
   it('should create proper header', () => {
-    expect(fixture.defHeader1).to.be.equal(res1[3]);
-    expect(fixture.defHeader2).to.be.equal(res2[3]);
-    expect(fixture.defHeader3).to.be.equal(res3[3]);
+    expect(res1[3]).to.be.equal(fixture.defHeader1);
+    expect(res2[3]).to.be.equal(fixture.defHeader2);
+    expect(res3[3]).to.be.equal(fixture.defHeader3);
   });
 
   it('should create table headers', () => {
-    expect(fixture.tableHeader[0]).to.be.equal(res1[5]);
-    expect(fixture.tableHeader[1]).to.be.equal(res1[6]);
-    expect(fixture.tableHeader[0]).to.be.equal(res2[5]);
-    expect(fixture.tableHeader[1]).to.be.equal(res2[6]);
-    expect(fixture.tableHeader[0]).to.be.equal(res3[7]);
-    expect(fixture.tableHeader[1]).to.be.equal(res3[8]);
+    expect(res1[5]).to.be.equal(fixture.tableHeader[0]);
+    expect(res1[6]).to.be.equal(fixture.tableHeader[1]);
+    expect(res2[5]).to.be.equal(fixture.tableHeader[0]);
+    expect(res2[6]).to.be.equal(fixture.tableHeader[1]);
+    expect(res3[7]).to.be.equal(fixture.tableHeader[0]);
+    expect(res3[8]).to.be.equal(fixture.tableHeader[1]);
   });
 
   it('should also create description', () => {
-    expect(fixture.data3.deviceid.description).to.be.equal(res3[5]);
+    expect(res3[5]).to.be.equal(fixture.data3.deviceid.description);
   });
 
   it('should create a single description line', () => {
@@ -53,7 +53,7 @@ describe('Definitions', () => {
     it('should add reference to other definition', () => {
       expect(res12[1]).to.be.equal(fixture.result2[0]);
     });
-    it('should add description', () => {
+    it('should add description and example', () => {
       expect(res12[2]).to.be.equal(fixture.result2[1]);
     });
     it('should render types as an array', () => {
@@ -61,6 +61,9 @@ describe('Definitions', () => {
     });
     it('should render array of references', () => {
       expect(res12[4]).to.be.equal(fixture.result2[3]);
+    });
+    it('should add enum values', () => {
+      expect(res12[5]).to.be.equal(fixture.result2[4]);
     });
   });
 

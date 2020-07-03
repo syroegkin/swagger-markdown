@@ -1,44 +1,36 @@
 const transformDataTypes = require('./dataTypes');
 const Schema = require('../models/schema');
 
-module.exports = (parameters, pathParameters, globalParameters = {}) => {
+module.exports = (parameters, pathParameters) => {
   const res = [];
   res.push('##### Parameters\n');
   res.push('| Name | Located in | Description | Required | Schema |');
   res.push('| ---- | ---------- | ----------- | -------- | ---- |');
   [].concat(pathParameters, parameters).map(keys => {
     if (keys) {
-      let parametersKeys = keys;
-      // Check it for the reference
-      if ('$ref' in keys) {
-        const ref = (keys.$ref).replace(/^#\/parameters\//, '');
-        if (ref in globalParameters) {
-          parametersKeys = globalParameters[ref];
-        }
-      }
       const line = [];
       // Name first
-      line.push(parametersKeys.name || '');
+      line.push(keys.name || '');
       // Scope (in)
-      line.push(parametersKeys.in || '');
+      line.push(keys.in || '');
       // description
-      if ('description' in parametersKeys) {
-        line.push(parametersKeys.description.replace(/[\r\n]/g, ' '));
+      if ('description' in keys) {
+        line.push(keys.description.replace(/[\r\n]/g, ' '));
       } else {
         line.push('');
       }
-      line.push(parametersKeys.required ? 'Yes' : 'No');
+      line.push(keys.required ? 'Yes' : 'No');
 
       // Prepare schema to be transformed
       let schema = null;
-      if ('schema' in parametersKeys) {
-        schema = new Schema(parametersKeys.schema);
+      if ('schema' in keys) {
+        schema = new Schema(keys.schema);
       } else {
         schema = new Schema();
-        schema.setType('type' in parametersKeys ? parametersKeys.type : null);
-        schema.setFormat('format' in parametersKeys ? parametersKeys.format : null);
-        schema.setReference('$ref' in parametersKeys ? parametersKeys.$ref : null);
-        schema.setItems('items' in parametersKeys ? parametersKeys.items : null);
+        schema.setType('type' in keys ? keys.type : null);
+        schema.setFormat('format' in keys ? keys.format : null);
+        schema.setReference('$ref' in keys ? keys.$ref : null);
+        schema.setItems('items' in keys ? keys.items : null);
       }
 
       line.push(transformDataTypes(schema));
