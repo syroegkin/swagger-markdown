@@ -106,7 +106,7 @@ deletes a single pet based on the ID supplied
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
-| name | string |  | Yes |
+| name | string | Pet name<br>_Example:_ `"doggie dog"` | Yes |
 | tag | string |  | No |
 
 #### errorModel
