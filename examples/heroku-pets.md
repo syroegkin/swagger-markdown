@@ -5,7 +5,6 @@ You can try all HTTP operation described in this Swagger spec.
 
 Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
-
 ## Version: 1.0.0
 
 ### /
@@ -65,7 +64,6 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 | 200 | Sends the pet with pet Id |
 
 ### Models
-
 
 #### Pet
 

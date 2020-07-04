@@ -14,15 +14,16 @@ All endpoints are only accessible via https and are located at
 `api.instagram.com`. For instance: you can grab the most popular photos at
 the moment by accessing the following URL with your client ID
 (replace CLIENT-ID with your own):
+
 ```
   https://api.instagram.com/v1/media/popular?client_id=CLIENT-ID
 ```
+
 You're best off using an access_token for the authenticated user for each
 endpoint, though many endpoints don't require it.
 In some cases an access_token will give you more access to information, and
 in all cases, it means that you are operating under a per-access_token limit
 vs. the same limit for your single client_id.
-
 
 ## Limits
 Be nice. If you're sending too many requests too quickly, we'll send back a
@@ -49,6 +50,7 @@ DELETE respectively.
 ### The Envelope
 Every response is contained by an envelope. That is, each response has a
 predictable set of keys with which you can expect to interact:
+
 ```json
 {
     "meta": {
@@ -69,6 +71,7 @@ The meta key is used to communicate extra information about the response to
 the developer. If all goes well, you'll only ever see a code key with value
 200. However, sometimes things go wrong, and in that case you might see a
 response like:
+
 ```json
 {
     "meta": {
@@ -87,6 +90,7 @@ Sometimes you just can't get enough. For this reason, we've provided a
 convenient way to access more data in any request for sequential data.
 Simply call the url in the next_url parameter and we'll respond with the
 next set of data.
+
 ```json
 {
     ...
@@ -96,6 +100,7 @@ next set of data.
     }
 }
 ```
+
 On views where pagination is present, we also support the "count" parameter.
 Simply set this to the number of items you'd like to receive. Note that the
 default values should be fine for most applications - but if you decide to
@@ -105,21 +110,23 @@ increase this number there is a maximum value defined on each endpoint.
 If you're writing an AJAX application, and you'd like to wrap our response
 with a callback, all you have to do is specify a callback parameter with
 any API call:
+
 ```
 https://api.instagram.com/v1/tags/coffee/media/recent?access_token=fb2e77d.47a0479900504cb3ab4a1f626d174d2d&callback=callbackFunction
 ```
+
 Would respond with:
+
 ```js
 callbackFunction({
     ...
 });
 ```
 
-
 ## Version: v1
 
 ### Terms of service
-http://instagram.com/about/legal/terms/api
+<http://instagram.com/about/legal/terms/api>
 
 ### Security
 **oauth**  
@@ -127,7 +134,7 @@ http://instagram.com/about/legal/terms/api
 |oauth2|*OAuth 2.0*|
 |---|---|
 |Flow|implicit|
-|Authorization URL|https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token|
+|Authorization URL|<https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token>|
 |**Scopes**||
 |basic|to read any and all data related to a user (e.g. following/followed-by  lists, photos, etc.) (granted by default) |
 |comments|to create or delete comments on a user’s behalf|
@@ -144,7 +151,7 @@ http://instagram.com/about/legal/terms/api
 ### /users/{user-id}
 
 #### GET
-##### Description:
+##### Description
 
 Get basic information about a user.
 
@@ -170,7 +177,7 @@ Get basic information about a user.
 ### /users/self/feed
 
 #### GET
-##### Description:
+##### Description
 
 See the authenticated user's feed.
 
@@ -211,13 +218,12 @@ See the authenticated user's feed.
 ### /users/self/media/liked
 
 #### GET
-##### Description:
+##### Description
 
 See the list of media liked by the authenticated user.
 Private media is returned as long as the authenticated user
 has permissionto view that media. Liked media lists are only
 available for the currently authenticated user.
-
 
 ##### Parameters
 
@@ -235,7 +241,7 @@ available for the currently authenticated user.
 ### /users/search
 
 #### GET
-##### Description:
+##### Description
 
 Search for a user by name.
 
@@ -255,7 +261,7 @@ Search for a user by name.
 ### /users/{user-id}/follows
 
 #### GET
-##### Description:
+##### Description
 
 Get the list of users this user follows.
 
@@ -274,7 +280,7 @@ Get the list of users this user follows.
 ### /users/{user-id}/followed-by
 
 #### GET
-##### Description:
+##### Description
 
 Get the list of users this user is followed by.
 
@@ -293,10 +299,9 @@ Get the list of users this user is followed by.
 ### /users/self/requested-by
 
 #### GET
-##### Description:
+##### Description
 
 List the users who have requested this user's permission to follow.
-
 
 ##### Responses
 
@@ -307,10 +312,9 @@ List the users who have requested this user's permission to follow.
 ### /users/{user-id}/relationship
 
 #### POST
-##### Description:
+##### Description
 
 Modify the relationship between the current user and thetarget user.
-
 
 ##### Parameters
 
@@ -334,7 +338,7 @@ Modify the relationship between the current user and thetarget user.
 ### /media/{media-id}
 
 #### GET
-##### Description:
+##### Description
 
 Get information about a media object.
 The returned type key will allow you to differentiate between `image`
@@ -343,7 +347,6 @@ and `video` media.
 Note: if you authenticate with an OAuth Token, you will receive the
 `user_has_liked` key which quickly tells you whether the current user
 has liked this media item.
-
 
 ##### Parameters
 
@@ -360,14 +363,13 @@ has liked this media item.
 ### /media1/{shortcode}
 
 #### GET
-##### Description:
+##### Description
 
 This endpoint returns the same response as **GET** `/media/media-id`.
 
 A media object's shortcode can be found in its shortlink URL.
 An example shortlink is `http://instagram.com/p/D/`
 Its corresponding shortcode is D.
-
 
 ##### Parameters
 
@@ -384,12 +386,11 @@ Its corresponding shortcode is D.
 ### /media/search
 
 #### GET
-##### Description:
+##### Description
 
 Search for media in a given area. The default time span is set to 5
 days. The time span must not exceed 7 days. Defaults time stamps cover
 the last 5 days. Can return mix of image and video types.
-
 
 ##### Parameters
 
@@ -410,11 +411,10 @@ the last 5 days. Can return mix of image and video types.
 ### /media/popular
 
 #### GET
-##### Description:
+##### Description
 
 Get a list of what media is most popular at the moment.
 Can return mix of image and video types.
-
 
 ##### Responses
 
@@ -425,10 +425,9 @@ Can return mix of image and video types.
 ### /media/{media-id}/comments
 
 #### GET
-##### Description:
+##### Description
 
 Get a list of recent comments on a media object.
-
 
 ##### Parameters
 
@@ -443,7 +442,7 @@ Get a list of recent comments on a media object.
 | 200 | OK |  |
 
 #### POST
-##### Description:
+##### Description
 
 Create a comment on a media object with the following rules:
 
@@ -451,7 +450,6 @@ Create a comment on a media object with the following rules:
 * The comment cannot contain more than 4 hashtags.
 * The comment cannot contain more than 1 URL.
 * The comment cannot consist of all capital letters.
-
 
 ##### Parameters
 
@@ -473,11 +471,10 @@ Create a comment on a media object with the following rules:
 | oauth | comments |
 
 #### DELETE
-##### Description:
+##### Description
 
 Remove a comment either on the authenticated user's media object or
 authored by the authenticated user.
-
 
 ##### Parameters
 
@@ -494,10 +491,9 @@ authored by the authenticated user.
 ### /media/{media-id}/likes
 
 #### GET
-##### Description:
+##### Description
 
 Get a list of users who have liked this media.
-
 
 ##### Parameters
 
@@ -512,7 +508,7 @@ Get a list of users who have liked this media.
 | 200 | OK |  |
 
 #### POST
-##### Description:
+##### Description
 
 Set a like on this media by the currently authenticated user.
 
@@ -535,10 +531,9 @@ Set a like on this media by the currently authenticated user.
 | oauth | comments |
 
 #### DELETE
-##### Description:
+##### Description
 
 Remove a like on this media by the currently authenticated user.
-
 
 ##### Parameters
 
@@ -555,7 +550,7 @@ Remove a like on this media by the currently authenticated user.
 ### /tags/{tag-name}
 
 #### GET
-##### Description:
+##### Description
 
 Get information about a tag object.
 
@@ -574,12 +569,11 @@ Get information about a tag object.
 ### /tags/{tag-name}/media/recent
 
 #### GET
-##### Description:
+##### Description
 
 Get a list of recently tagged media. Use the `max_tag_id` and
 `min_tag_id` parameters in the pagination response to paginate through
 these objects.
-
 
 ##### Parameters
 
@@ -611,7 +605,7 @@ these objects.
 ### /locations/{location-id}
 
 #### GET
-##### Description:
+##### Description
 
 Get information about a location.
 
@@ -630,7 +624,7 @@ Get information about a location.
 ### /locations/{location-id}/media/recent
 
 #### GET
-##### Description:
+##### Description
 
 Get a list of recent media objects from a given location.
 
@@ -653,7 +647,7 @@ Get a list of recent media objects from a given location.
 ### /locations/search
 
 #### GET
-##### Description:
+##### Description
 
 Search for a location by geographic coordinate.
 
@@ -677,7 +671,7 @@ Search for a location by geographic coordinate.
 ### /geographies/{geo-id}/media/recent
 
 #### GET
-##### Description:
+##### Description
 
 Get recent media from a geography subscription that you created.
 **Note**: You can only access Geographies that were explicitly created
@@ -688,7 +682,6 @@ that you define, you will be returned a unique geo-id that can be used
 in this query. To backfill photos from the location covered by this
 geography, use the [media search endpoint
 ](https://instagram.com/developer/endpoints/media/).
-
 
 ##### Parameters
 
@@ -705,7 +698,6 @@ geography, use the [media search endpoint
 | 200 | OK |
 
 ### Models
-
 
 #### User
 

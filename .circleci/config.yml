@@ -1,31 +1,90 @@
 version: 2
+
+references:
+  node_defaults: &node_defaults
+    working_directory: ~/app
+    docker:
+      - image: circleci/node:12
+
 jobs:
+  checkout_code:
+    <<: *node_defaults
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: ~/app
+          paths:
+            - .
+
   build:
-    working_directory: ~/svc
-    docker:
-      - image: circleci/node:12
+    <<: *node_defaults
     steps:
-      - checkout
+      - attach_workspace:
+          at: ~/app
+      - restore-cache:
+          key: npm-v1-{{ checksum "package-lock.json" }}
       - run: npm install
-      - run: npm run test
+      - save-cache:
+          key: npm-v1-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/app/node_modules
+      - persist_to_workspace:
+          root: ~/app
+          paths:
+            - node_modules
+
+  test_unit:
+    <<: *node_defaults
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run: npm run test:app
+
+  test_lint:
+    <<: *node_defaults
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run: npm run test:lint
+
+  test_markdown:
+    <<: *node_defaults
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run: npm run test:markdown
+
   deploy:
-    docker:
-      - image: circleci/node:12
-    working_directory: ~/svc
+    <<: *node_defaults
     steps:
-      - checkout
-      - run: npm install
+      - attach_workspace:
+          at: ~/app
       - deploy:
           name: Deploy to npm
           command: npm run semantic-release
+
 workflows:
   version: 2
   test_and_deploy:
     jobs:
-      - build
+      - checkout_code
+      - build:
+          requires:
+            - checkout_code
+      - test_unit:
+          requires:
+            - build
+      - test_lint:
+          requires:
+            - build
+      - test_markdown:
+          requires:
+            - build
       - deploy:
           filters:
             branches:
               only: master
           requires:
-            - build
+            - test_unit
+            - test_lint
+            - test_markdown

@@ -5,11 +5,10 @@ This is a sample server Petstore server.
 
 For this sample, you can use the api key `special-key` to test the authorization filters
 
-
 ## Version: 1.0.0
 
 ### Terms of service
-http://helloreverb.com/terms/
+<http://helloreverb.com/terms/>
 
 **Contact information:**  
 apiteam@swagger.io  
@@ -28,7 +27,7 @@ apiteam@swagger.io
 
 |oauth2|*OAuth 2.0*|
 |---|---|
-|Authorization URL|http://petstore.swagger.io/api/oauth/dialog|
+|Authorization URL|<http://petstore.swagger.io/api/oauth/dialog>|
 |Flow|implicit|
 |**Scopes**||
 |write_pets|modify pets in your account|
@@ -37,13 +36,11 @@ apiteam@swagger.io
 ### /pets
 
 #### POST
-##### Summary:
+##### Summary
 
 Add a new pet to the store
 
-##### Description:
-
-
+##### Description
 
 ##### Parameters
 
@@ -64,13 +61,11 @@ Add a new pet to the store
 | petstore_auth | write_pets | read_pets |
 
 #### PUT
-##### Summary:
+##### Summary
 
 Update an existing pet
 
-##### Description:
-
-
+##### Description
 
 ##### Parameters
 
@@ -95,11 +90,11 @@ Update an existing pet
 ### /pets/findByStatus
 
 #### GET
-##### Summary:
+##### Summary
 
 Finds Pets by status
 
-##### Description:
+##### Description
 
 Multiple status values can be provided with comma seperated strings
 
@@ -125,11 +120,11 @@ Multiple status values can be provided with comma seperated strings
 ### /pets/findByTags
 
 #### GET
-##### Summary:
+##### Summary
 
 Finds Pets by tags
 
-##### Description:
+##### Description
 
 Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 for testing.
 
@@ -155,11 +150,11 @@ Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 
 ### /pets/{petId}
 
 #### GET
-##### Summary:
+##### Summary
 
 Find pet by ID
 
-##### Description:
+##### Description
 
 Returns a pet when ID < 10.  ID > 10 or nonintegers will simulate API error conditions
 
@@ -185,13 +180,11 @@ Returns a pet when ID < 10.  ID > 10 or nonintegers will simulate API error cond
 | petstore_auth | write_pets | read_pets |
 
 #### POST
-##### Summary:
+##### Summary
 
 Updates a pet in the store with form data
 
-##### Description:
-
-
+##### Description
 
 ##### Parameters
 
@@ -214,13 +207,11 @@ Updates a pet in the store with form data
 | petstore_auth | write_pets | read_pets |
 
 #### DELETE
-##### Summary:
+##### Summary
 
 Deletes a pet
 
-##### Description:
-
-
+##### Description
 
 ##### Parameters
 
@@ -244,13 +235,11 @@ Deletes a pet
 ### /stores/order
 
 #### POST
-##### Summary:
+##### Summary
 
 Place an order for a pet
 
-##### Description:
-
-
+##### Description
 
 ##### Parameters
 
@@ -268,11 +257,11 @@ Place an order for a pet
 ### /stores/order/{orderId}
 
 #### GET
-##### Summary:
+##### Summary
 
 Find purchase order by ID
 
-##### Description:
+##### Description
 
 For valid response try integer IDs with value <= 5 or > 10. Other values will generated exceptions
 
@@ -291,11 +280,11 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
 | 404 | Order not found |  |
 
 #### DELETE
-##### Summary:
+##### Summary
 
 Delete purchase order by ID
 
-##### Description:
+##### Description
 
 For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
 
@@ -315,11 +304,11 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
 ### /users
 
 #### POST
-##### Summary:
+##### Summary
 
 Create user
 
-##### Description:
+##### Description
 
 This can only be done by the logged in user.
 
@@ -338,13 +327,11 @@ This can only be done by the logged in user.
 ### /users/createWithArray
 
 #### POST
-##### Summary:
+##### Summary
 
 Creates list of users with given input array
 
-##### Description:
-
-
+##### Description
 
 ##### Parameters
 
@@ -361,13 +348,11 @@ Creates list of users with given input array
 ### /users/createWithList
 
 #### POST
-##### Summary:
+##### Summary
 
 Creates list of users with given input array
 
-##### Description:
-
-
+##### Description
 
 ##### Parameters
 
@@ -384,13 +369,11 @@ Creates list of users with given input array
 ### /users/login
 
 #### GET
-##### Summary:
+##### Summary
 
 Logs user into the system
 
-##### Description:
-
-
+##### Description
 
 ##### Parameters
 
@@ -409,13 +392,11 @@ Logs user into the system
 ### /users/logout
 
 #### GET
-##### Summary:
+##### Summary
 
 Logs out current logged in user session
 
-##### Description:
-
-
+##### Description
 
 ##### Responses
 
@@ -426,13 +407,11 @@ Logs out current logged in user session
 ### /users/{username}
 
 #### GET
-##### Summary:
+##### Summary
 
 Get user by user name
 
-##### Description:
-
-
+##### Description
 
 ##### Parameters
 
@@ -449,11 +428,11 @@ Get user by user name
 | 404 | User not found |  |
 
 #### PUT
-##### Summary:
+##### Summary
 
 Updated user
 
-##### Description:
+##### Description
 
 This can only be done by the logged in user.
 
@@ -472,11 +451,11 @@ This can only be done by the logged in user.
 | 404 | User not found |
 
 #### DELETE
-##### Summary:
+##### Summary
 
 Delete user
 
-##### Description:
+##### Description
 
 This can only be done by the logged in user.
 
@@ -494,7 +473,6 @@ This can only be done by the logged in user.
 | 404 | User not found |
 
 ### Models
-
 
 #### User
 

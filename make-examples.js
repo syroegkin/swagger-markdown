@@ -1,15 +1,17 @@
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
+const path = require('path');
+const fs = require('fs');
 
-const files = [
-  'basic-auth.yaml',
-  'default.yaml',
-  'echo.yaml',
-  'heroku-pets.yaml',
-  'instagram.yaml',
-  'minimal.yaml',
-  'petstore_full.yaml',
-  'petstore_simple.yaml',
-  'security.yaml'
-];
-
-files.map(filename => exec(`node app/index.js -i examples/${filename}`));
+const directory = path.join(__dirname, 'examples');
+fs.readdir(directory, (err, files) => {
+  if (err) {
+    console.log(`Unable to read directory: ${err}`);
+    return;
+  }
+  files.forEach((filename) => {
+    if (!filename.match(/\.yaml$/)) return;
+    console.log(`Processing ${filename}`);
+    execSync(`node app/index.js -i examples/${filename}`);
+    console.log('Done\n');
+  });
+})

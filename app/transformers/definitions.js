@@ -1,6 +1,7 @@
 const dataTypeTransformer = require('./dataTypes');
 const inArray = require('../lib/inArray');
 const Schema = require('../models/schema');
+const textEscape = require('../lib/textEscape');
 
 /**
  * If Property field is present parse them.
@@ -15,7 +16,11 @@ const parseProperties = (name, definition) => {
     const typeCell = dataTypeTransformer(new Schema(prop));
     const descriptionParts = [];
     if ('description' in prop) {
-      descriptionParts.push(prop.description.replace(/[\r\n]/g, ' '));
+      descriptionParts.push(
+        textEscape(
+          prop.description.replace(/[\r\n]/g, ' '),
+        ),
+      );
     }
     if ('enum' in prop) {
       const enumValues = prop.enum.map(val => `\`${JSON.stringify(val)}\``).join(', ');

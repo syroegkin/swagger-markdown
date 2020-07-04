@@ -142,6 +142,8 @@ definitions:
         format: int64
       name:
         type: string
+        description: Pet name
+        example: doggie dog
       tag:
         type: string
   errorModel:

@@ -6,17 +6,16 @@ Move your app forward with the Uber API
 ### /products
 
 #### GET
-##### Summary:
+##### Summary
 
 Product Types
 
-##### Description:
+##### Description
 
 The Products endpoint returns information about the *Uber* products
 offered at a given location. The response includes the display name
 and other details about each product, and lists the products in the
 proper display order.
-
 
 ##### Parameters
 
@@ -35,11 +34,11 @@ proper display order.
 ### /estimates/price
 
 #### GET
-##### Summary:
+##### Summary
 
 Price Estimates
 
-##### Description:
+##### Description
 
 The Price Estimates endpoint returns an estimated price range
 for each product offered at a given location. The price estimate is
@@ -49,7 +48,6 @@ and the [ISO 4217](http://en.wikipedia.org/wiki/ISO_4217) currency code for
 situations requiring currency conversion. When surge is active for a particular
 product, its surge_multiplier will be greater than 1, but the price estimate
 already factors in this multiplier.
-
 
 ##### Parameters
 
@@ -70,11 +68,11 @@ already factors in this multiplier.
 ### /estimates/time
 
 #### GET
-##### Summary:
+##### Summary
 
 Time Estimates
 
-##### Description:
+##### Description
 
 The Time Estimates endpoint returns ETAs for all products offered at a given location, with the responses expressed as integers in seconds. We recommend that this endpoint be called every minute to provide the most accurate, up-to-date ETAs.
 
@@ -97,11 +95,11 @@ The Time Estimates endpoint returns ETAs for all products offered at a given loc
 ### /me
 
 #### GET
-##### Summary:
+##### Summary
 
 User Profile
 
-##### Description:
+##### Description
 
 The User Profile endpoint returns information about the Uber user that has authorized with the application.
 
@@ -115,11 +113,11 @@ The User Profile endpoint returns information about the Uber user that has autho
 ### /history
 
 #### GET
-##### Summary:
+##### Summary
 
 User Activity
 
-##### Description:
+##### Description
 
 The User Activity endpoint returns data about a user's lifetime activity with Uber. The response will include pickup locations and times, dropoff locations and times, the distance of past requests, and information about which products were requested.<br><br>The history array in the response will have a maximum length based on the limit parameter. The response value count may exceed limit, therefore subsequent API requests may be necessary.
 
@@ -139,7 +137,6 @@ The User Activity endpoint returns data about a user's lifetime activity with Ub
 
 ### Models
 
-
 #### Product
 
 | Name | Type | Description | Required |
@@ -149,6 +146,7 @@ The User Activity endpoint returns data about a user's lifetime activity with Ub
 | display_name | string | Display name of product. | No |
 | capacity | string | Capacity of product. For example, 4 people. | No |
 | image | string | Image URL representing the product. | No |
+| expiration_date | string | Timestamp in YYYY-MM-DDThh:mm[:ss[.uuuuuu]][+HH:MM\|-HH:MM\|Z] format | No |
 
 #### PriceEstimate
 

@@ -4,11 +4,11 @@ A sample API that uses a petstore as an example to demonstrate features in the s
 ## Version: 1.0.0
 
 ### Terms of service
-http://helloreverb.com/terms/
+<http://helloreverb.com/terms/>
 
 **Contact information:**  
 Swagger API team  
-http://swagger.io  
+<http://swagger.io>  
 foo@example.com  
 
 **License:** [MIT](http://opensource.org/licenses/MIT)
@@ -16,7 +16,7 @@ foo@example.com
 ### /pets
 
 #### GET
-##### Description:
+##### Description
 
 Returns all pets from the system that the user has access to
 
@@ -35,7 +35,7 @@ Returns all pets from the system that the user has access to
 | default | unexpected error | [errorModel](#errormodel) |
 
 #### POST
-##### Description:
+##### Description
 
 Creates a new pet in the store.  Duplicates are allowed
 
@@ -55,7 +55,7 @@ Creates a new pet in the store.  Duplicates are allowed
 ### /pets/{id}
 
 #### GET
-##### Description:
+##### Description
 
 Returns a user based on a single ID, if the user does not have access to the pet
 
@@ -73,7 +73,7 @@ Returns a user based on a single ID, if the user does not have access to the pet
 | default | unexpected error | [errorModel](#errormodel) |
 
 #### DELETE
-##### Description:
+##### Description
 
 deletes a single pet based on the ID supplied
 
@@ -92,7 +92,6 @@ deletes a single pet based on the ID supplied
 
 ### Models
 
-
 #### pet
 
 | Name | Type | Description | Required |
@@ -106,7 +105,7 @@ deletes a single pet based on the ID supplied
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
-| name | string |  | Yes |
+| name | string | Pet name<br>_Example:_ `"doggie dog"` | Yes |
 | tag | string |  | No |
 
 #### errorModel
