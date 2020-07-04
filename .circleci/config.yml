@@ -18,9 +18,9 @@ jobs:
 
   build:
     <<: *node_defaults
-    - attach_workspace:
-        at: ~/app
     steps:
+      - attach_workspace:
+          at: ~/app
       - restore-cache:
           key: npm-v1-{{ checksum "package-lock.json" }}
       - run: npm install
@@ -35,16 +35,16 @@ jobs:
 
   test:
     <<: *node_defaults
-    - attach_workspace:
-        at: ~/app
     steps:
+      - attach_workspace:
+          at: ~/app
       - run: npm run test
 
   deploy:
     <<: *node_defaults
-    - attach_workspace:
-        at: ~/app
     steps:
+      - attach_workspace:
+          at: ~/app
       - deploy:
           name: Deploy to npm
           command: npm run semantic-release
