@@ -2,6 +2,7 @@ const inArray = require('../lib/inArray');
 const transformResponses = require('./pathResponses');
 const transformParameters = require('./pathParameters');
 const security = require('./security');
+const textEscape = require('../lib/textEscape');
 
 /**
  * Allowed methods
@@ -31,12 +32,12 @@ module.exports = (path, data, parameters) => {
 
         // Set summary
         if ('summary' in pathInfo) {
-          res.push(`##### Summary:\n\n${pathInfo.summary}\n`);
+          res.push(`##### Summary:\n\n${textEscape(pathInfo.summary)}\n`);
         }
 
         // Set description
         if ('description' in pathInfo) {
-          res.push(`##### Description:\n\n${pathInfo.description}\n`);
+          res.push(`##### Description:\n\n${textEscape(pathInfo.description)}\n`);
         }
 
         // Build parameters

@@ -198,6 +198,9 @@ definitions:
       image:
         type: string
         description: Image URL representing the product.
+      expiration_date:
+        type: string
+        description: Timestamp in YYYY-MM-DDThh:mm[:ss[.uuuuuu]][+HH:MM|-HH:MM|Z] format
   PriceEstimate:
     type: object
     properties:

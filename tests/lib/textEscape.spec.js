@@ -3,13 +3,7 @@ const textEscape = require('../../app/lib/textEscape');
 
 const fixture = [
   ['I am \\ an arm', 'I am \\\\ an arm'],
-  ['I love `boogie`', 'I love \\`boogie\\`'],
-  [':-*', ':\\-\\*'],
-  [':-) :-{} :-(', ':\\-\\) :\\-\\{\\} :\\-\\('],
-  [
-    '_Example_: #twitter + #reddit !== #tweddit',
-    '\\_Example\\_: \\#twitter \\+ \\#reddit \\!== \\#tweddit'
-  ]
+  ['I love boogie | funk', 'I love boogie \\| funk'],
 ];
 
 describe('escape function', () => {

@@ -1,3 +1,5 @@
+const textEscape = require('../lib/textEscape');
+
 /**
  * http://swagger.io/specification/#contactObject
  * Contact info transformer
@@ -6,7 +8,7 @@ module.exports = contact => {
   const res = [];
 
   if ('name' in contact) {
-    res.push(`${contact.name}  `);
+    res.push(`${textEscape(contact.name)}  `);
   }
   if ('url' in contact) {
     res.push(`${contact.url}  `);

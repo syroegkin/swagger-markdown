@@ -1,5 +1,6 @@
 const transformContact = require('./contact');
 const transformLicense = require('./license');
+const textEscape = require('../lib/textEscape');
 
 /**
  * http://swagger.io/specification/#infoObject
@@ -16,7 +17,7 @@ module.exports = info => {
     }
 
     if ('description' in info) {
-      res.push(`${info.description}\n`);
+      res.push(`${textEscape(info.description)}\n`);
     }
 
     if ('version' in info) {
@@ -24,7 +25,7 @@ module.exports = info => {
     }
 
     if ('termsOfService' in info) {
-      res.push(`### Terms of service\n${info.termsOfService}\n`);
+      res.push(`### Terms of service\n${textEscape(info.termsOfService)}\n`);
     }
 
     if ('contact' in info) {

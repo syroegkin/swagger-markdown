@@ -1,18 +1,6 @@
 const escapeTable = {
+  '|': '\\|', // pipe
   '\\': '\\\\', // backslash itself
-  '`': '\\`', // backtick
-  '*': '\\*', // asterisk
-  '_': '\\_', // underscore
-  '{': '\\{', // curly braces
-  '}': '\\}', // curly braces
-  '[': '\\[', // square brackets
-  ']': '\\]', // square brackets
-  '(': '\\(', // parentheses
-  ')': '\\)', // parentheses
-  '#': '\\#', // hash mark
-  '+': '\\+', // plus sign
-  '-': '\\-', // minus sign (hyphen)
-  '!': '\\!', // exclamation mark
 };
 
 /**

@@ -1,5 +1,6 @@
 const transformDataTypes = require('./dataTypes');
 const Schema = require('../models/schema');
+const textEscape = require('../lib/textEscape');
 
 module.exports = (parameters, pathParameters) => {
   const res = [];
@@ -15,7 +16,7 @@ module.exports = (parameters, pathParameters) => {
       line.push(keys.in || '');
       // description
       if ('description' in keys) {
-        line.push(keys.description.replace(/[\r\n]/g, ' '));
+        line.push(textEscape(keys.description.replace(/[\r\n]/g, ' ')));
       } else {
         line.push('');
       }
