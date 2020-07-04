@@ -4,10 +4,11 @@
   "description": "Create markdown API documentation from swagger file",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test:app && npm run test:lint",
+    "test": "npm run test:app && npm run test:lint && npm run test:markdown",
     "test:app": "mocha \"tests/**/*.spec.js\"",
     "test:watch": "mocha --watch \"tests/**/*.spec.js\"",
     "test:lint": "eslint .",
+    "test:markdown": "markdownlint ./examples/*.md -c .markdownlint.json",
     "build": "babel app --out-dir bin",
     "prepublishOnly": "npm run build",
     "commit": "git-cz",
@@ -90,11 +91,14 @@
     "eslint-plugin-import": "^2.22.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
+    "markdownlint-cli": "^0.23.2",
     "mocha": "^8.0.1",
     "semantic-release": "^17.1.1"
   },
   "dependencies": {
     "argparse": "^1.0.10",
+    "markdownlint": "^0.20.4",
+    "markdownlint-rule-helpers": "^0.11.0",
     "swagger-parser": "^9.0.1"
   }
 }
