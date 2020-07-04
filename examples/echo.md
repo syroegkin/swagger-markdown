@@ -3,7 +3,6 @@
 Feel free to make a path or an operation and use **Try Operation** to test it. The echo server will
 render back everything.
 
-
 ## Version: 1.0.0
 
 ### /

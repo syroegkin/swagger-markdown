@@ -1,11 +1,14 @@
 const SwaggerParser = require('swagger-parser');
 const fs = require('fs');
+const markdownlint = require('markdownlint');
+const markdownlintRuleHelpers = require('markdownlint-rule-helpers');
 
 const transformInfo = require('./transformers/info');
 const transformPath = require('./transformers/path');
 const transformSecurityDefinitions = require('./transformers/securityDefinitions');
 const transformExternalDocs = require('./transformers/externalDocs');
 const transformDefinition = require('./transformers/definitions');
+const markdownlintConfig = require('../.markdownlint.json');
 
 // replace all $refs except model definitions as these have their own section in the doc
 function partiallyDereference(node, $refs) {
@@ -61,11 +64,22 @@ function transformSwagger(inputDoc, options = {}) {
     document.push(transformDefinition(inputDoc.components.schemas));
   }
 
-  // Glue all pieces down and trim end
-  const plainDocument = document.join('\n').trimEnd();
+  // Glue all pieces down
+  const plainDocument = document.join('\n');
 
-  // Files should end with a single newline character
-  return `${plainDocument}\n`;
+  // Fix markdown issues
+  const fixOptions = {
+    resultVersion: 3,
+    strings: { plainDocument },
+    config: markdownlintConfig,
+  };
+  const fixResults = markdownlint.sync(fixOptions);
+  const fixes = fixResults.plainDocument.filter(error => error.fixInfo);
+  if (fixes.length > 0) {
+    return markdownlintRuleHelpers.applyFixes(plainDocument, fixes);
+  }
+
+  return plainDocument;
 }
 
 function transformFile(options) {
