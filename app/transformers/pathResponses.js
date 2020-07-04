@@ -1,5 +1,6 @@
 const Schema = require('../models/schema');
 const transformDataTypes = require('./dataTypes');
+const textEscape = require('../lib/textEscape');
 
 /**
  * Build responses table
@@ -22,7 +23,7 @@ module.exports = responses => {
     // Description
     let description = '';
     if ('description' in response) {
-      description += response.description.replace(/[\r\n]/g, ' ');
+      description += textEscape(response.description.replace(/[\r\n]/g, ' '));
     }
     if ('examples' in response) {
       description += Object.entries(response.examples).map(([contentType, example]) => {

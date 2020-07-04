@@ -146,6 +146,7 @@ The User Activity endpoint returns data about a user's lifetime activity with Ub
 | display_name | string | Display name of product. | No |
 | capacity | string | Capacity of product. For example, 4 people. | No |
 | image | string | Image URL representing the product. | No |
+| expiration_date | string | Timestamp in YYYY-MM-DDThh:mm[:ss[.uuuuuu]][+HH:MM\|-HH:MM\|Z] format | No |
 
 #### PriceEstimate
 
