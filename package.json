@@ -95,6 +95,6 @@
   },
   "dependencies": {
     "argparse": "^1.0.10",
-    "swagger-parser": "^8.0.3"
+    "swagger-parser": "^9.0.1"
   }
 }
