@@ -33,12 +33,26 @@ jobs:
           paths:
             - node_modules
 
-  test:
+  test_unit:
     <<: *node_defaults
     steps:
       - attach_workspace:
           at: ~/app
-      - run: npm run test
+      - run: npm run test:app
+
+  test_lint:
+    <<: *node_defaults
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run: npm run test:lint
+
+  test_markdown:
+    <<: *node_defaults
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run: npm run test:markdown
 
   deploy:
     <<: *node_defaults
@@ -57,7 +71,13 @@ workflows:
       - build:
           requires:
             - checkout_code
-      - test:
+      - test_unit:
+          requires:
+            - build
+      - test_lint:
+          requires:
+            - build
+      - test_markdown:
           requires:
             - build
       - deploy:
@@ -65,4 +85,6 @@ workflows:
             branches:
               only: master
           requires:
-            - build
+            - test_unit
+            - test_lint
+            - test_markdown
