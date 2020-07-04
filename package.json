@@ -9,7 +9,7 @@
     "test:watch": "mocha --watch \"tests/**/*.spec.js\"",
     "test:lint": "eslint .",
     "build": "babel app --out-dir bin",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "make:examples": "node make-examples.js"
