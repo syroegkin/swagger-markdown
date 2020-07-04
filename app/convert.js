@@ -61,7 +61,11 @@ function transformSwagger(inputDoc, options = {}) {
     document.push(transformDefinition(inputDoc.components.schemas));
   }
 
-  return document.join('\n');
+  // Glue all pieces down and trim end
+  const plainDocument = document.join('\n').trimEnd();
+
+  // Files should end with a single newline character
+  return `${plainDocument}\n`;
 }
 
 function transformFile(options) {
