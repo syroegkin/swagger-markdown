@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/syroegkin/swagger-markdown/compare/v1.3.0...v1.4.0) (2020-07-04)
+
+
+### Bug Fixes
+
+* escape pipe character in text ([463e9ff](https://github.com/syroegkin/swagger-markdown/commit/463e9ff29dddbc90a68ded5e6f070ca234f61168))
+
+
+### Features
+
+* prettify narkdown documents ([47e1352](https://github.com/syroegkin/swagger-markdown/commit/47e13526aef31e97c2823f40250e86c84d0b8da8))
+
 # [1.3.0](https://github.com/syroegkin/swagger-markdown/compare/v1.2.0...v1.3.0) (2020-07-03)
 
 
