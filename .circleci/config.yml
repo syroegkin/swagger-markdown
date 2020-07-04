@@ -1,28 +1,65 @@
 version: 2
+
+references:
+  node_defaults: &node_defaults
+    working_directory: ~/app
+    docker:
+      - image: circleci/node:12
+
 jobs:
+  checkout_code:
+    <<: *node_defaults
+    steps:
+      - checkout
+      - persist_to_workspace:
+          root: ~/app
+          paths:
+            - .
+
   build:
-    working_directory: ~/svc
-    docker:
-      - image: circleci/node:12
+    <<: *node_defaults
+    - attach_workspace:
+        at: ~/app
     steps:
-      - checkout
+      - restore-cache:
+          key: npm-v1-{{ checksum "package-lock.json" }}
       - run: npm install
+      - save-cache:
+          key: npm-v1-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/app/node_modules
+      - persist_to_workspace:
+          root: ~/app
+          paths:
+            - node_modules
+
+  test:
+    <<: *node_defaults
+    - attach_workspace:
+        at: ~/app
+    steps:
       - run: npm run test
+
   deploy:
-    docker:
-      - image: circleci/node:12
-    working_directory: ~/svc
+    <<: *node_defaults
+    - attach_workspace:
+        at: ~/app
     steps:
-      - checkout
-      - run: npm install
       - deploy:
           name: Deploy to npm
           command: npm run semantic-release
+
 workflows:
   version: 2
   test_and_deploy:
     jobs:
-      - build
+      - checkout_code
+      - build:
+          requires:
+            - checkout_code
+      - test:
+          requires:
+            - build
       - deploy:
           filters:
             branches:
