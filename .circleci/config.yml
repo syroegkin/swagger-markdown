@@ -1,10 +1,13 @@
-version: 2
+version: 2.1
 
 references:
   node_defaults: &node_defaults
     working_directory: ~/app
     docker:
       - image: circleci/node:12
+
+orbs:
+  sonarcloud: sonarsource/sonarcloud@1.0.1
 
 jobs:
   checkout_code:
@@ -69,9 +72,6 @@ jobs:
       - deploy:
           name: Deploy to npm
           command: npm run semantic-release
-
-orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.1
 
 workflows:
   version: 2
