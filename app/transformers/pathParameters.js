@@ -7,7 +7,7 @@ module.exports = (parameters, pathParameters) => {
   res.push('##### Parameters\n');
   res.push('| Name | Located in | Description | Required | Schema |');
   res.push('| ---- | ---------- | ----------- | -------- | ---- |');
-  [].concat(pathParameters, parameters).map(keys => {
+  [].concat(pathParameters, parameters).forEach(keys => {
     if (keys) {
       const line = [];
       // Name first
@@ -35,8 +35,9 @@ module.exports = (parameters, pathParameters) => {
       }
 
       line.push(transformDataTypes(schema));
-      // Add spaces and glue with pipeline
-      res.push(`|${line.map(el => ` ${el} `).join('|')}|`);
+      // Add spaces and glue using pipeline
+      const glued = line.map(el => ` ${el} `).join('|');
+      res.push(`|${glued}|`);
     }
   });
   return res.join('\n');
