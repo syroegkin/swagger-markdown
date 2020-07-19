@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/syroegkin/swagger-markdown/compare/v1.4.0...v1.4.1) (2020-07-19)
+
+
+### Bug Fixes
+
+* **partiallyDereference:** shallow copy node ([c7f3564](https://github.com/syroegkin/swagger-markdown/commit/c7f3564d7baad6c575ceb307471fc4efad578fa8))
+
 # [1.4.0](https://github.com/syroegkin/swagger-markdown/compare/v1.3.0...v1.4.0) (2020-07-04)
 
 
