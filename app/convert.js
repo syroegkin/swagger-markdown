@@ -14,7 +14,10 @@ const markdownlintConfig = require('../.markdownlint.json');
 function partiallyDereference(node, $refs) {
   if (typeof node !== 'object') return node;
   const obj = {};
-  for (const [key, value] of Object.entries({ ...node })) {
+  // Issue related to babel (I beleive) as it won't build it when just spreading
+  // eslint-disable-next-line prefer-object-spread
+  const nodeAsObject = Object.assign({}, node);
+  for (const [key, value] of Object.entries(nodeAsObject)) {
     if (Array.isArray(value)) {
       obj[key] = value.map(item => partiallyDereference(item, $refs));
     } else if (key === '$ref' && !value.startsWith('#/definitions/')) {
