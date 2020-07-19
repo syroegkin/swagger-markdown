@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 references:
   node_defaults: &node_defaults
@@ -21,10 +21,10 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/app
-      - restore-cache:
+      - restore_cache:
           key: npm-v1-{{ checksum "package-lock.json" }}
       - run: npm install
-      - save-cache:
+      - save_cache:
           key: npm-v1-{{ checksum "package-lock.json" }}
           paths:
             - ~/app/node_modules
@@ -54,13 +54,6 @@ jobs:
           at: ~/app
       - run: npm run test:markdown
 
-  test_sonar:
-    <<: *node_defaults
-    steps:
-      - attach_workspace:
-          at: ~/app
-      - sonarcloud/scan
-
   deploy:
     <<: *node_defaults
     steps:
@@ -69,9 +62,6 @@ jobs:
       - deploy:
           name: Deploy to npm
           command: npm run semantic-release
-
-orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.1
 
 workflows:
   version: 2
@@ -88,10 +78,6 @@ workflows:
           requires:
             - build
       - test_markdown:
-          requires:
-            - build
-      - test_sonar:
-          context: SonarCloud
           requires:
             - build
       - deploy:
