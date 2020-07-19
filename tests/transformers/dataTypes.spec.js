@@ -45,7 +45,7 @@ const fixture = [
 
 describe('Data Types', () => {
   it('should convert type and format to the common names', () => {
-    fixture.map(usecase => {
+    fixture.forEach(usecase => {
       expect(transformDataTypes(usecase[0])).to.be.equal(usecase[1]);
     });
   });

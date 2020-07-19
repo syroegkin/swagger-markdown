@@ -7,7 +7,7 @@ module.exports = (parameters, pathParameters) => {
   res.push('##### Parameters\n');
   res.push('| Name | Located in | Description | Required | Schema |');
   res.push('| ---- | ---------- | ----------- | -------- | ---- |');
-  [].concat(pathParameters, parameters).map(keys => {
+  [].concat(pathParameters, parameters).forEach(keys => {
     if (keys) {
       const line = [];
       // Name first

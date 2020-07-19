@@ -11,7 +11,7 @@ const textEscape = require('../lib/textEscape');
 const parseProperties = (name, definition) => {
   const required = 'required' in definition ? definition.required : [];
   const res = [];
-  Object.keys(definition.properties).map(propName => {
+  Object.keys(definition.properties).forEach(propName => {
     const prop = definition.properties[propName];
     const typeCell = dataTypeTransformer(new Schema(prop));
     const descriptionParts = [];

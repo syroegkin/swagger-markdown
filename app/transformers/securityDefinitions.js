@@ -15,14 +15,14 @@ const nameResolver = {
 module.exports = securityDefinitions => {
   // Base block
   const res = [];
-  Object.keys(securityDefinitions).map(type => {
+  Object.keys(securityDefinitions).forEach(type => {
     res.push(`**${type}**  \n`);
     res.push(`|${securityDefinitions[type].type}|*${typeResolver[securityDefinitions[type].type]}*|`);
     res.push('|---|---|');
-    Object.keys(securityDefinitions[type]).map(value => {
+    Object.keys(securityDefinitions[type]).forEach(value => {
       if (value === 'scopes') {
         res.push('|**Scopes**||');
-        Object.keys(securityDefinitions[type][value]).map(scope => {
+        Object.keys(securityDefinitions[type][value]).forEach(scope => {
           res.push(`|${scope}|`
             + `${securityDefinitions[type][value][scope].replace(/[\r\n]/g, ' ')}|`);
         });

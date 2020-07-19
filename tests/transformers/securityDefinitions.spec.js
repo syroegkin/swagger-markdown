@@ -10,7 +10,7 @@ describe('Security definitions', () => {
     expect(res).to.be.equal(null);
   });
   it('Should resolve auth type', () => {
-    Object.keys(typeResolver).map(type => {
+    Object.keys(typeResolver).forEach(type => {
       const fixture = { auth: { type } };
       const res = transformSecurityDefinitions(fixture);
       const result = '### Security\n'
@@ -21,7 +21,7 @@ describe('Security definitions', () => {
     });
   });
   it('Should resolve names', () => {
-    Object.keys(nameResolver).map(key => {
+    Object.keys(nameResolver).forEach(key => {
       const fixture = { auth: { type: 'basic' } };
       fixture.auth[key] = 'value';
       const res = transformSecurityDefinitions(fixture);

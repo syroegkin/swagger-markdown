@@ -24,7 +24,7 @@ module.exports = (path, data, parameters) => {
     }
 
     // Go further method by methods
-    Object.keys(data).map(method => {
+    Object.keys(data).forEach(method => {
       if (inArray(method, ALLOWED_METHODS)) {
         // Set method as a subheader
         res.push(`#### ${method.toUpperCase()}`);
