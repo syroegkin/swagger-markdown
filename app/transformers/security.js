@@ -7,7 +7,9 @@ module.exports = security => {
     });
   });
   maxLength++;
-  if (maxLength < 2) maxLength = 2;
+  if (maxLength < 2) {
+    maxLength = 2;
+  }
 
   security.forEach(rules => {
     Object.keys(rules).forEach(key => {

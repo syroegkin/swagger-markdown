@@ -26,14 +26,15 @@ module.exports = securityDefinitions => {
           res.push(`|${scope}|`
             + `${securityDefinitions[type][value][scope].replace(/[\r\n]/g, ' ')}|`);
         });
-      } else if (value !== 'type' && securityDefinitions[type][value].replace) {
+        return;
+      }
+      if (value !== 'type' && securityDefinitions[type][value].replace) {
         let key = nameResolver[value];
         if (key === undefined) {
-          if (value.match(/^x-/i)) {
-            key = value;
-          } else {
+          if (!value.match(/^x-/i)) {
             return;
           }
+          key = value;
         }
         res.push(`|${key}|${securityDefinitions[type][value].replace(/[\r\n]/g, ' ')}|`);
       }
