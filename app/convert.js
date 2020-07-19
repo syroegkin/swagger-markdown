@@ -14,7 +14,7 @@ const markdownlintConfig = require('../.markdownlint.json');
 function partiallyDereference(node, $refs) {
   if (typeof node !== 'object') return node;
   const obj = {};
-  for (const [key, value] of Object.entries(node)) {
+  for (const [key, value] of Object.entries({ ...node })) {
     if (Array.isArray(value)) {
       obj[key] = value.map(item => partiallyDereference(item, $refs));
     } else if (key === '$ref' && !value.startsWith('#/definitions/')) {
