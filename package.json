@@ -71,7 +71,7 @@
     "markdown"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^9.0.1",
+    "@commitlint/cli": "^9.1.2",
     "@commitlint/config-conventional": "^9.0.1",
     "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/commit-analyzer": "^8.0.1",
