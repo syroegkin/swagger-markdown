@@ -54,13 +54,6 @@ jobs:
           at: ~/app
       - run: npm run test:markdown
 
-  test_sonar:
-    <<: *node_defaults
-    steps:
-      - attach_workspace:
-          at: ~/app
-      - sonarcloud/scan
-
   deploy:
     <<: *node_defaults
     steps:
@@ -69,9 +62,6 @@ jobs:
       - deploy:
           name: Deploy to npm
           command: npm run semantic-release
-
-orbs:
-  sonarcloud: sonarsource/sonarcloud@1.0.1
 
 workflows:
   version: 2
@@ -88,10 +78,6 @@ workflows:
           requires:
             - build
       - test_markdown:
-          requires:
-            - build
-      - test_sonar:
-          context: SonarCloud
           requires:
             - build
       - deploy:
