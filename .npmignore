@@ -9,3 +9,4 @@ examples
 make-examples.js
 .vscode
 .circleci
+sonar-project.properties

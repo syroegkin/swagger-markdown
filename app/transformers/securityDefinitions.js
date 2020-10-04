@@ -15,25 +15,26 @@ const nameResolver = {
 module.exports = securityDefinitions => {
   // Base block
   const res = [];
-  Object.keys(securityDefinitions).map(type => {
+  Object.keys(securityDefinitions).forEach(type => {
     res.push(`**${type}**  \n`);
     res.push(`|${securityDefinitions[type].type}|*${typeResolver[securityDefinitions[type].type]}*|`);
     res.push('|---|---|');
-    Object.keys(securityDefinitions[type]).map(value => {
+    Object.keys(securityDefinitions[type]).forEach(value => {
       if (value === 'scopes') {
         res.push('|**Scopes**||');
-        Object.keys(securityDefinitions[type][value]).map(scope => {
+        Object.keys(securityDefinitions[type][value]).forEach(scope => {
           res.push(`|${scope}|`
             + `${securityDefinitions[type][value][scope].replace(/[\r\n]/g, ' ')}|`);
         });
-      } else if (value !== 'type' && securityDefinitions[type][value].replace) {
+        return;
+      }
+      if (value !== 'type' && securityDefinitions[type][value].replace) {
         let key = nameResolver[value];
         if (key === undefined) {
-          if (value.match(/^x-/i)) {
-            key = value;
-          } else {
+          if (!value.match(/^x-/i)) {
             return;
           }
+          key = value;
         }
         res.push(`|${key}|${securityDefinitions[type][value].replace(/[\r\n]/g, ' ')}|`);
       }

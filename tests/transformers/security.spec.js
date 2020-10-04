@@ -23,7 +23,7 @@ const fixture = [
 
 describe('Security transformer', () => {
   it('should transform security to the tables', () => {
-    fixture.map(usecase => {
+    fixture.forEach(usecase => {
       expect(security(usecase.security)).to.be.equal(usecase.result);
     });
   });
