@@ -62,7 +62,7 @@ already factors in this multiplier.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | An array of price estimates by product | [ [PriceEstimate](#priceestimate) ] |
+| 200 | An array of price estimates by product | [ [Price.Estimate](#priceestimate) ] |
 | default | Unexpected error | [Error](#error) |
 
 ### /estimates/time
@@ -148,7 +148,7 @@ The User Activity endpoint returns data about a user's lifetime activity with Ub
 | image | string | Image URL representing the product. | No |
 | expiration_date | string | Timestamp in YYYY-MM-DDThh:mm[:ss[.uuuuuu]][+HH:MM\|-HH:MM\|Z] format | No |
 
-#### PriceEstimate
+#### Price.Estimate
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

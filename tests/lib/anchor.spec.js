@@ -10,7 +10,8 @@ const fixture = [
   ['', ''],
   ['       ', ''],
   ['1234', '1234'],
-  ['12 34', '12-34']
+  ['12 34', '12-34'],
+  ['I.have.a.dot', 'ihaveadot'],
 ];
 
 describe('anchor function', () => {
