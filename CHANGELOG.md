@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/syroegkin/swagger-markdown/compare/v1.4.2...v1.4.3) (2020-10-04)
+
+
+### Bug Fixes
+
+* fix dot issue with anchor ([77f11f5](https://github.com/syroegkin/swagger-markdown/commit/77f11f5ac7f4ddbed4b0859867fd147eba16354e)), closes [#152](https://github.com/syroegkin/swagger-markdown/issues/152)
+
 ## [1.4.2](https://github.com/syroegkin/swagger-markdown/compare/v1.4.1...v1.4.2) (2020-07-19)
 
 
