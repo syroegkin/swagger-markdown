@@ -94,7 +94,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/PriceEstimate'
+              $ref: '#/definitions/Price.Estimate'
         default:
           description: Unexpected error
           schema:
@@ -201,7 +201,7 @@ definitions:
       expiration_date:
         type: string
         description: Timestamp in YYYY-MM-DDThh:mm[:ss[.uuuuuu]][+HH:MM|-HH:MM|Z] format
-  PriceEstimate:
+  Price.Estimate:
     type: object
     properties:
       product_id:
