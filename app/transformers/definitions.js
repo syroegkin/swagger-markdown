@@ -2,6 +2,7 @@ const dataTypeTransformer = require('./dataTypes');
 const inArray = require('../lib/inArray');
 const Schema = require('../models/schema');
 const textEscape = require('../lib/textEscape');
+const anchor = require('../lib/anchor');
 
 /**
  * If Property field is present parse them.
@@ -17,9 +18,9 @@ const parseProperties = (name, definition) => {
     const descriptionParts = [];
     if ('description' in prop) {
       descriptionParts.push(
-        textEscape(
-          prop.description.replace(/[\r\n]/g, ' '),
-        ),
+          textEscape(
+              prop.description.replace(/[\r\n]/g, ' '),
+          ),
       );
     }
     if ('enum' in prop) {
@@ -55,20 +56,32 @@ const parsePrimitive = (name, definition) => {
  * @param {type} definition
  * @return {type} Description
  */
-const processDefinition = (name, definition) => {
+const processDefinition = (name, def, skipHead) => {
+  const definition = {...def};
   let res = [];
   let parsedDef = [];
-  res.push('');
-  res.push(`#### ${name}`);
-  res.push('');
-  if (definition.description) {
-    res.push(definition.description);
-    res.push('');
-  }
-  res.push('| Name | Type | Description | Required |');
-  res.push('| ---- | ---- | ----------- | -------- |');
 
-  if ('properties' in definition) {
+  if (!skipHead) {
+    res.push('');
+    res.push(`### ${name}`);
+    if ('properties' in definition && definition.propRef) {
+      delete definition.propRef;
+      res.push(`#### ${anchor(name)}`);
+    }
+    res.push('');
+    if (definition.description) {
+      res.push(definition.description);
+      res.push('');
+    }
+    res.push('| Name | Type | Description | Required |');
+    res.push('| ---- | ---- | ----------- | -------- |');
+  }
+
+  if ('allOf' in definition) {
+    res = res.concat(definition.allOf.map(item => processDefinition(name, item, true)));
+  } else if ('$ref' in definition) {
+    parsedDef = [`| ref | ${dataTypeTransformer(new Schema(definition))} | Inherited | |`];
+  } else if ('properties' in definition) {
     parsedDef = parseProperties(name, definition);
   } else {
     parsedDef = parsePrimitive(name, definition);
@@ -77,9 +90,9 @@ const processDefinition = (name, definition) => {
 
   if (definition.example) {
     const formattedExample =
-      typeof definition.example === 'string'
-        ? definition.example
-        : JSON.stringify(definition.example, null, '  ');
+        typeof definition.example === 'string'
+            ? definition.example
+            : JSON.stringify(definition.example, null, '  ');
     res.push('');
     res.push('**Example**');
     res.push(`<pre>${formattedExample}</pre>`);
@@ -96,8 +109,8 @@ module.exports.processDefinition = processDefinition;
 module.exports = definitions => {
   const res = [];
   Object.keys(definitions).map(definitionName => res.push(processDefinition(
-    definitionName,
-    definitions[definitionName]
+      definitionName,
+      definitions[definitionName]
   )));
   if (res.length > 0) {
     res.unshift('### Models\n');
