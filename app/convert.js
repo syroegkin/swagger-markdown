@@ -21,7 +21,7 @@ function partiallyDereference(node, $refs) {
     if (Array.isArray(value)) {
       obj[key] = value.map(item => partiallyDereference(item, $refs));
     } else if (key === '$ref' && !value.startsWith('#/definitions/')) {
-      return partiallyDereference($refs.get(value), $refs);
+      return partiallyDereference({...{propRef:true}, ...$refs.get(value)}, $refs);
     } else {
       obj[key] = partiallyDereference(value, $refs);
     }
@@ -54,9 +54,9 @@ function transformSwagger(inputDoc, options = {}) {
   // Process Paths
   if ('paths' in inputDoc) {
     Object.keys(inputDoc.paths).forEach(path => document.push(transformPath(
-      path,
-      inputDoc.paths[path],
-      parameters
+        path,
+        inputDoc.paths[path],
+        parameters
     )));
   }
 
