@@ -34,12 +34,6 @@
       "git add"
     ]
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
   "release": {
     "plugins": [
       "@semantic-release/commit-analyzer",
@@ -99,6 +93,7 @@
     "argparse": "^1.0.10",
     "markdownlint": "^0.20.4",
     "markdownlint-rule-helpers": "^0.11.0",
-    "swagger-parser": "^9.0.1"
+    "swagger-model-validator": "git://github.com/isadovskiy/swagger-model-validator.git",
+    "swagger-parser": "git://github.com/isadovskiy/swagger-parser.git"
   }
 }
