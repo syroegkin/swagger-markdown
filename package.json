@@ -44,9 +44,12 @@
       "@semantic-release/github"
     ]
   },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/syroegkin/swagger-markdown.git"
+    "url": "https://github.com/vkomolaev/swagger-markdown.git"
   },
   "author": "Sergii Skorokhodov",
   "license": "MIT",
