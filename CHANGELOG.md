@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/syroegkin/swagger-markdown/compare/v1.4.4...v1.4.5) (2021-11-07)
+
+
+### Bug Fixes
+
+* downgrade argparse version so it won't break the package ([788f38c](https://github.com/syroegkin/swagger-markdown/commit/788f38cdd178cb11ac6ec3dee1135abd5a30d302))
+
 ## [1.4.4](https://github.com/syroegkin/swagger-markdown/compare/v1.4.3...v1.4.4) (2021-11-07)
 
 
