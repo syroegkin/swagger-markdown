@@ -14,7 +14,7 @@
     "prepublishOnly": "npm run build",
     "commit": "git-cz",
     "semantic-release": "semantic-release",
-    "make:examples": "node ./scripts/make-examples.js",
+    "make:examples": "ts-node ./scripts/make-examples.ts",
     "prepare": "husky install"
   },
   "bin": {
