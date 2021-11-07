@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const transformExternalDocs = require('../../app/transformers/externalDocs');
+const transformExternalDocs = require('../../src/transformers/externalDocs');
 
 const fixture = {
   notext: {

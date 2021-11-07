@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const responses = require('../../app/transformers/pathResponses');
+const responses = require('../../src/transformers/pathResponses');
 
 describe('Path responses transformer', () => {
   describe('no schemas', () => {

@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const transformContact = require('../../app/transformers/contact');
+const transformContact = require('../../src/transformers/contact');
 
 describe('Contact info', () => {
   it('should create contact info with all fields', () => {

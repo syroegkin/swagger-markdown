@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const transformPath = require('../../app/transformers/path');
+const transformPath = require('../../src/transformers/path');
 
 describe('Path transformer', () => {
   it('should return null if nothing was passed', () => {

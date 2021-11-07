@@ -1,7 +1,7 @@
 const { expect } = require('chai');
-const transformDataTypes = require('../../app/transformers/dataTypes');
-const Schema = require('../../app/models/schema');
-const anchor = require('../../app/lib/anchor');
+const transformDataTypes = require('../../src/transformers/dataTypes');
+const Schema = require('../../src/models/schema');
+const anchor = require('../../src/lib/anchor');
 
 const fixture = [
   // References

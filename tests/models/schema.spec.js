@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const Schema = require('../../app/models/schema');
+const Schema = require('../../src/models/schema');
 
 const fixture = {
   type: 'Type',

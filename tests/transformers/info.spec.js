@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const transformInfo = require('../../app/transformers/info');
+const transformInfo = require('../../src/transformers/info');
 
 describe('Info transformer', () => {
   it('should return null if nothing was passed', () => {

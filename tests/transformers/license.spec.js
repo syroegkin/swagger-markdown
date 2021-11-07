@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const transformLicense = require('../../app/transformers/license');
+const transformLicense = require('../../src/transformers/license');
 
 describe('License field', () => {
   it('should not create header if information is not provided', () => {
