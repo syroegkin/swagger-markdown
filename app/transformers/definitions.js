@@ -94,7 +94,7 @@ module.exports.processDefinition = processDefinition;
  */
 module.exports = (definitions) => {
   const res = [];
-  Object.keys(definitions).map((definitionName) => res.push(processDefinition(
+  Object.keys(definitions).forEach((definitionName) => res.push(processDefinition(
     definitionName,
     definitions[definitionName],
   )));
