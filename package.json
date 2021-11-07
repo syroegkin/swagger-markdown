@@ -90,7 +90,7 @@
     "semantic-release": "^18.0.0"
   },
   "dependencies": {
-    "argparse": "^2.0.1",
+    "argparse": "1.0.10",
     "markdownlint": "^0.24.0",
     "markdownlint-rule-helpers": "^0.15.0",
     "swagger-parser": "^10.0.3"
