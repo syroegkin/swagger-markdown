@@ -87,7 +87,6 @@ workflows:
             branches:
               only:
                 - master
-                - next
           requires:
             - test_unit
             - test_lint
