@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const inArray = require('../../app/lib/inArray');
+const inArray = require('../../src/lib/inArray');
 
 describe('InArray function', () => {
   it('should return false if no data provided', () => {

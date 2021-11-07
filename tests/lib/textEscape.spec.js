@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const textEscape = require('../../app/lib/textEscape');
+const textEscape = require('../../src/lib/textEscape');
 
 const fixture = [
   ['I am \\ an arm', 'I am \\\\ an arm'],

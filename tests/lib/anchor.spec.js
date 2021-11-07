@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const anchor = require('../../app/lib/anchor');
+const anchor = require('../../src/lib/anchor');
 
 const fixture = [
   ['any string', 'any-string'],
