@@ -11,7 +11,7 @@ describe('InArray function', () => {
     expect(inArray('a', ['a'])).to.be.equal(true);
     expect(inArray(
       'cdscksdcksdcposdkcosdpcksdpockscsdockspdo',
-      ['asd', 'asdsa', 'cdscksdcksdcposdkcosdpcksdpockscsdockspdo']
+      ['asd', 'asdsa', 'cdscksdcksdcposdkcosdpcksdpockscsdockspdo'],
     )).to.be.equal(true);
   });
 

@@ -1,8 +1,8 @@
-module.exports = security => {
+module.exports = (security) => {
   const res = [];
   let maxLength = 0;
-  security.forEach(rules => {
-    Object.keys(rules).forEach(key => {
+  security.forEach((rules) => {
+    Object.keys(rules).forEach((key) => {
       maxLength = rules[key].length > maxLength ? rules[key].length : maxLength;
     });
   });
@@ -11,8 +11,8 @@ module.exports = security => {
     maxLength = 2;
   }
 
-  security.forEach(rules => {
-    Object.keys(rules).forEach(key => {
+  security.forEach((rules) => {
+    Object.keys(rules).forEach((key) => {
       const line = [key].concat(rules[key]);
       while (line.length < maxLength) {
         line.push('');

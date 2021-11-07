@@ -1,7 +1,7 @@
 const typeResolver = {
   basic: 'Basic',
   apiKey: 'API Key',
-  oauth2: 'OAuth 2.0'
+  oauth2: 'OAuth 2.0',
 };
 const nameResolver = {
   description: 'Description',
@@ -9,20 +9,20 @@ const nameResolver = {
   in: 'In',
   flow: 'Flow',
   authorizationUrl: 'Authorization URL',
-  tokenUrl: 'Token URL'
+  tokenUrl: 'Token URL',
 };
 
-module.exports = securityDefinitions => {
+module.exports = (securityDefinitions) => {
   // Base block
   const res = [];
-  Object.keys(securityDefinitions).forEach(type => {
+  Object.keys(securityDefinitions).forEach((type) => {
     res.push(`**${type}**  \n`);
     res.push(`|${securityDefinitions[type].type}|*${typeResolver[securityDefinitions[type].type]}*|`);
     res.push('|---|---|');
-    Object.keys(securityDefinitions[type]).forEach(value => {
+    Object.keys(securityDefinitions[type]).forEach((value) => {
       if (value === 'scopes') {
         res.push('|**Scopes**||');
-        Object.keys(securityDefinitions[type][value]).forEach(scope => {
+        Object.keys(securityDefinitions[type][value]).forEach((scope) => {
           res.push(`|${scope}|`
             + `${securityDefinitions[type][value][scope].replace(/[\r\n]/g, ' ')}|`);
         });

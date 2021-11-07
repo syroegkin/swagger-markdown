@@ -4,7 +4,7 @@ references:
   node_defaults: &node_defaults
     working_directory: ~/app
     docker:
-      - image: circleci/node:12
+      - image: circleci/node:14
 
 jobs:
   checkout_code:

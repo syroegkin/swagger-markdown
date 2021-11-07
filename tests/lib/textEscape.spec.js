@@ -8,7 +8,7 @@ const fixture = [
 
 describe('escape function', () => {
   it('should escape special strings characters', () => {
-    fixture.forEach(issue => {
+    fixture.forEach((issue) => {
       expect(textEscape(issue[0])).to.be.equal(issue[1]);
     });
   });

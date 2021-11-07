@@ -6,9 +6,9 @@ describe('Integration test examples', () => {
   const examplesDir = `${__dirname}/../examples`;
   const examples = fs.readdirSync(examplesDir);
   examples
-    .filter(example => example.endsWith('.yaml'))
-    .map(example => example.substr(0, example.length - 5))
-    .forEach(example => {
+    .filter((example) => example.endsWith('.yaml'))
+    .map((example) => example.substr(0, example.length - 5))
+    .forEach((example) => {
       it(`converts ${example}.yaml`, async () => {
         const generated = await transformFile({ input: `${examplesDir}/${example}.yaml` });
         const expected = fs.readFileSync(`${__dirname}/../examples/${example}.md`, 'utf8');

@@ -9,10 +9,10 @@ describe('Info transformer', () => {
 
   it('should create title if title is listed', () => {
     const fixture = {
-      title: 'Doc title'
+      title: 'Doc title',
     };
     const results = {
-      underline: '========='
+      underline: '=========',
     };
 
     const res = transformInfo(fixture).split('\n');
@@ -23,7 +23,7 @@ describe('Info transformer', () => {
 
   it('should return description as is', () => {
     const fixture = {
-      description: 'Here is a description'
+      description: 'Here is a description',
     };
     const res = transformInfo(fixture);
     expect(res).to.be.equal(`${fixture.description}\n`);
@@ -33,7 +33,7 @@ describe('Info transformer', () => {
     const fixture = {
       title: 'Document title',
       description: 'Document description',
-      version: '1.0.1'
+      version: '1.0.1',
     };
     const result = '# Document title\n'
       + 'Document description\n\n'
@@ -44,7 +44,7 @@ describe('Info transformer', () => {
 
   it('should create term of service block', () => {
     const fixture = {
-      termsOfService: 'Terms of service'
+      termsOfService: 'Terms of service',
     };
     const result = `### Terms of service\n${fixture.termsOfService}\n`;
     const res = transformInfo(fixture);

@@ -2,7 +2,7 @@
  * http://swagger.io/specification/#licenseObject
  * License object transformer
  */
-module.exports = license => {
+module.exports = (license) => {
   const res = [];
   if ('url' in license || 'name' in license) {
     res.push('**License:** ');
