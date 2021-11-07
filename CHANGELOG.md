@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/syroegkin/swagger-markdown/compare/v1.4.3...v1.4.4) (2021-11-07)
+
+
+### Bug Fixes
+
+* replace map with forEach ([a0f07ba](https://github.com/syroegkin/swagger-markdown/commit/a0f07bad543a893729e8f754a8687acda199a827))
+
 ## [1.4.3](https://github.com/syroegkin/swagger-markdown/compare/v1.4.2...v1.4.3) (2020-10-04)
 
 
