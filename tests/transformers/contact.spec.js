@@ -7,8 +7,8 @@ describe('Contact info', () => {
       contact: {
         name: 'API Support',
         url: 'http://www.swagger.io/support',
-        email: 'support@swagger.io'
-      }
+        email: 'support@swagger.io',
+      },
     };
     const res = transformContact(fixture.contact);
     const result = '**Contact information:**  \n'
@@ -20,8 +20,8 @@ describe('Contact info', () => {
   it('should create only these fields which are provided', () => {
     const fixture = {
       contact: {
-        url: 'http://www.swagger.io/support'
-      }
+        url: 'http://www.swagger.io/support',
+      },
     };
     const res = transformContact(fixture.contact);
     const result = '**Contact information:**  \n'
@@ -30,7 +30,7 @@ describe('Contact info', () => {
   });
   it('should not create header if information is not provided', () => {
     const fixture = {
-      contact: {}
+      contact: {},
     };
     const res = transformContact(fixture.contact);
     expect(res).to.be.equal(null);

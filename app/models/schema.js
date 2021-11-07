@@ -36,7 +36,7 @@ class Schema {
    * @param {Array<Object>} allOf
    */
   setAllOf(allOf) {
-    this.allOf = allOf.map(schema => new Schema(schema));
+    this.allOf = allOf.map((schema) => new Schema(schema));
     return this;
   }
 

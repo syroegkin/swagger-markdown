@@ -16,7 +16,7 @@ const fixture = [
 
 describe('anchor function', () => {
   it('should transform strings to camel case', () => {
-    fixture.forEach(issue => {
+    fixture.forEach((issue) => {
       expect(anchor(issue[0])).to.be.equal(issue[1]);
     });
   });

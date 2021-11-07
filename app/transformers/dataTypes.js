@@ -3,19 +3,19 @@ const anchor = require('../lib/anchor');
 const resolver = {
   integer: {
     int32: 'integer',
-    int64: 'long'
+    int64: 'long',
   },
   number: {
     float: 'float',
-    double: 'double'
+    double: 'double',
   },
   string: {
     byte: 'byte',
     binary: 'binary',
     date: 'date',
     'date-time': 'dateTime',
-    password: 'password'
-  }
+    password: 'password',
+  },
 };
 
 /**
@@ -23,11 +23,11 @@ const resolver = {
  * @param {Schema} schema
  * @return {String}
  */
-const dataTypeResolver = schema => {
+const dataTypeResolver = (schema) => {
   if (schema.getAllOf()) {
     return schema.getAllOf()
-      .map(subSchema => dataTypeResolver(subSchema))
-      .filter(type => type !== '')
+      .map((subSchema) => dataTypeResolver(subSchema))
+      .filter((type) => type !== '')
       .join(' & ');
   }
   if (schema.getReference()) {

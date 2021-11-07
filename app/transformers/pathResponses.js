@@ -7,14 +7,14 @@ const textEscape = require('../lib/textEscape');
  * @param {object} responses
  * @returns {null|string}
  */
-module.exports = responses => {
+module.exports = (responses) => {
   const res = [];
   // Check if schema somewhere
   const schemas = Object.keys(responses).reduce(
     (acc, response) => acc || 'schema' in responses[response],
-    false
+    false,
   );
-  Object.keys(responses).forEach(responseCode => {
+  Object.keys(responses).forEach((responseCode) => {
     const line = [];
     const response = responses[responseCode];
     // Response
@@ -27,8 +27,7 @@ module.exports = responses => {
     }
     if ('examples' in response) {
       description += Object.entries(response.examples).map(([contentType, example]) => {
-        let formattedExample =
-          typeof example === 'string' ? example : JSON.stringify(example, null, '  ');
+        let formattedExample = typeof example === 'string' ? example : JSON.stringify(example, null, '  ');
 
         formattedExample = formattedExample.replace(/\r?\n/g, '<br>');
 
@@ -44,7 +43,7 @@ module.exports = responses => {
       line.push('');
     }
     // Combine all together
-    res.push(`|${line.map(el => ` ${el} `).join('|')}|`);
+    res.push(`|${line.map((el) => ` ${el} `).join('|')}|`);
   });
   res.unshift(`| ---- | ----------- |${schemas ? ' ------ |' : ''}`);
   res.unshift(`| Code | Description |${schemas ? ' Schema |' : ''}`);

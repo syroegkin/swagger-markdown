@@ -10,7 +10,7 @@ describe('Path transformer', () => {
   it('should present path as a subheader', () => {
     const fixture = {
       path: '/status',
-      data: {}
+      data: {},
     };
     const result = '### /status\n';
     const res = transformPath(fixture.path, fixture.data);
@@ -21,8 +21,8 @@ describe('Path transformer', () => {
     const fixture = {
       path: '/',
       data: {
-        get: {}
-      }
+        get: {},
+      },
     };
     const result = '#### GET';
     const res = transformPath(fixture.path, fixture.data).split('\n');
@@ -34,9 +34,9 @@ describe('Path transformer', () => {
       path: '/',
       data: {
         get: {
-          summary: 'Summary text'
-        }
-      }
+          summary: 'Summary text',
+        },
+      },
     };
     const result = '##### Summary:\n\nSummary text'.split('\n');
     const res = transformPath(fixture.path, fixture.data).split('\n');
@@ -50,9 +50,9 @@ describe('Path transformer', () => {
       path: '/',
       data: {
         get: {
-          description: 'Description text'
-        }
-      }
+          description: 'Description text',
+        },
+      },
     };
     const result = '##### Description:\n\nDescription text'.split('\n');
     const res = transformPath(fixture.path, fixture.data).split('\n');

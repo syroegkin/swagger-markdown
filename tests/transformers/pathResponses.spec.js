@@ -5,14 +5,14 @@ describe('Path responses transformer', () => {
   describe('no schemas', () => {
     const fixture = {
       200: { description: '200' },
-      404: {}
+      404: {},
     };
     const results = [
       '##### Responses',
       '| Code | Description |',
       '| ---- | ----------- |',
       '| 200 | 200 |',
-      '| 404 |  |'
+      '| 404 |  |',
     ];
     const res = responses(fixture).split('\n');
 
@@ -33,15 +33,15 @@ describe('Path responses transformer', () => {
   describe('simple case', () => {
     const fixture = {
       404: {
-        description: 'Not Found'
+        description: 'Not Found',
       },
       200: {
         description: 'Echo GET',
         schema: {
-          $ref: '#/definitions/Foo'
-        }
+          $ref: '#/definitions/Foo',
+        },
       },
-      500: {}
+      500: {},
     };
     const results = [
       '##### Responses',
@@ -49,7 +49,7 @@ describe('Path responses transformer', () => {
       '| ---- | ----------- | ------ |',
       '| 200 | Echo GET | [Foo](#foo) |',
       '| 404 | Not Found |  |',
-      '| 500 |  |  |'
+      '| 500 |  |  |',
     ];
     const res = responses(fixture).split('\n');
 
@@ -72,15 +72,15 @@ describe('Path responses transformer', () => {
     const fixture = {
       200: {},
       404: {
-        schema: { $ref: '#/definitions/Bar' }
-      }
+        schema: { $ref: '#/definitions/Bar' },
+      },
     };
     const results = [
       '##### Responses',
       '| Code | Description | Schema |',
       '| ---- | ----------- | ------ |',
       '| 200 |  |  |',
-      '| 404 |  | [Bar](#bar) |'
+      '| 404 |  | [Bar](#bar) |',
     ];
     const res = responses(fixture).split('\n');
     it('should build the header', () => {

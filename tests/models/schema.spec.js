@@ -6,8 +6,8 @@ const fixture = {
   format: 'Format',
   $ref: 'Ref',
   items: {
-    type: 'Type1'
-  }
+    type: 'Type1',
+  },
 };
 
 describe('Schema class', () => {

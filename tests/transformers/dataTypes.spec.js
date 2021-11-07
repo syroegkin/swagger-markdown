@@ -7,7 +7,7 @@ const fixture = [
   // References
   [
     new Schema({ $ref: '#/definitions/ErrorModel' }),
-    `[ErrorModel](#${anchor('ErrorModel')})`
+    `[ErrorModel](#${anchor('ErrorModel')})`,
   ],
   // Standard usecases
   [new Schema({ type: 'integer', format: 'int32' }), 'integer'],
@@ -27,12 +27,12 @@ const fixture = [
   [
     new Schema({
       type: 'array',
-      items: new Schema({ type: 'string' })
-    }), '[ string ]'
+      items: new Schema({ type: 'string' }),
+    }), '[ string ]',
   ], [
     new Schema({
       type: 'array',
-      items: { $ref: '#/definitions/ErrorModel' }
+      items: { $ref: '#/definitions/ErrorModel' },
     }), `[ [ErrorModel](#${anchor('ErrorModel')}) ]`],
   // Weird usecases
   [new Schema({ type: 'random', format: 'number' }), 'random (number)'],
@@ -40,12 +40,12 @@ const fixture = [
   [new Schema({ type: 'a', format: 'b' }), 'a (b)'],
   // Empty schema
   [new Schema(), ''],
-  [(new Schema()).setType(null).setFormat(null), '']
+  [(new Schema()).setType(null).setFormat(null), ''],
 ];
 
 describe('Data Types', () => {
   it('should convert type and format to the common names', () => {
-    fixture.forEach(usecase => {
+    fixture.forEach((usecase) => {
       expect(transformDataTypes(usecase[0])).to.be.equal(usecase[1]);
     });
   });

@@ -19,7 +19,7 @@ function partiallyDereference(node, $refs) {
   const nodeAsObject = Object.assign({}, node);
   for (const [key, value] of Object.entries(nodeAsObject)) {
     if (Array.isArray(value)) {
-      obj[key] = value.map(item => partiallyDereference(item, $refs));
+      obj[key] = value.map((item) => partiallyDereference(item, $refs));
     } else if (key === '$ref' && !value.startsWith('#/definitions/')) {
       return partiallyDereference($refs.get(value), $refs);
     } else {
@@ -53,10 +53,10 @@ function transformSwagger(inputDoc, options = {}) {
 
   // Process Paths
   if ('paths' in inputDoc) {
-    Object.keys(inputDoc.paths).forEach(path => document.push(transformPath(
+    Object.keys(inputDoc.paths).forEach((path) => document.push(transformPath(
       path,
       inputDoc.paths[path],
-      parameters
+      parameters,
     )));
   }
 
@@ -77,7 +77,7 @@ function transformSwagger(inputDoc, options = {}) {
     config: markdownlintConfig,
   };
   const fixResults = markdownlint.sync(fixOptions);
-  const fixes = fixResults.plainDocument.filter(error => error.fixInfo);
+  const fixes = fixResults.plainDocument.filter((error) => error.fixInfo);
   if (fixes.length > 0) {
     return markdownlintRuleHelpers.applyFixes(plainDocument, fixes);
   }
