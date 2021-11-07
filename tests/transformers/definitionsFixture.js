@@ -1,10 +1,10 @@
 const fixture = {
   definitionsHeader: [
-    '### Models'
+    '### Models',
   ],
   tableHeader: [
     '| Name | Type | Description | Required |',
-    '| ---- | ---- | ----------- | -------- |'
+    '| ---- | ---- | ----------- | -------- |',
   ],
   data1: {
     Tag: {
@@ -12,17 +12,17 @@ const fixture = {
       properties: {
         id: {
           type: 'integer',
-          format: 'int64'
+          format: 'int64',
         },
         name: {
-          type: 'string'
-        }
-      }
-    }
+          type: 'string',
+        },
+      },
+    },
   },
   result1: [
     '| id | long |  | No |',
-    '| name | string |  | No |'
+    '| name | string |  | No |',
   ],
   data2: {
     Pet: {
@@ -30,58 +30,58 @@ const fixture = {
       required: ['name', 'photoUrls'],
       properties: {
         category: {
-          $ref: '#/definitions/Category'
+          $ref: '#/definitions/Category',
         },
         name: {
           type: 'string',
           example: 'doggie',
-          description: 'pet category in the store'
+          description: 'pet category in the store',
         },
         photoUrls: {
           type: 'array',
           items: {
-            type: 'string'
-          }
+            type: 'string',
+          },
         },
         tags: {
           type: 'array',
           items: {
-            $ref: '#/definitions/Category'
-          }
+            $ref: '#/definitions/Category',
+          },
         },
         gender: {
           type: 'string',
-          enum: ['male', 'female']
+          enum: ['male', 'female'],
         },
-      }
-    }
+      },
+    },
   },
   result2: [
     '| category | [Category](#category) |  | No |',
     '| name | string | pet category in the store<br>_Example:_ `"doggie"` | Yes |',
     '| photoUrls | [ string ] |  | Yes |',
     '| tags | [ [Category](#category) ] |  | No |',
-    '| gender | string | _Enum:_ `"male"`, `"female"` | No |'
+    '| gender | string | _Enum:_ `"male"`, `"female"` | No |',
   ],
   data3: {
     deviceid: {
       type: 'integer',
       format: 'int32',
-      description: 'DeviceID'
-    }
+      description: 'DeviceID',
+    },
   },
   result3: [
-    '| deviceid | integer | DeviceID |  |'
+    '| deviceid | integer | DeviceID |  |',
   ],
   data4: {
     Pet: {
       description: 'This\nis\na\nvery\nlong\ndescription',
       type: 'string',
-    }
+    },
   },
   result4: [
-    '| Pet | string | This is a very long description |  |'
-  ]
+    '| Pet | string | This is a very long description |  |',
+  ],
 };
 fixture.defHeader1 = '#### Tag';
 fixture.defHeader2 = '#### Pet';

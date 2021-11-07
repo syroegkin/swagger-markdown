@@ -11,7 +11,7 @@ const textEscape = require('../lib/textEscape');
 const parseProperties = (name, definition) => {
   const required = 'required' in definition ? definition.required : [];
   const res = [];
-  Object.keys(definition.properties).forEach(propName => {
+  Object.keys(definition.properties).forEach((propName) => {
     const prop = definition.properties[propName];
     const typeCell = dataTypeTransformer(new Schema(prop));
     const descriptionParts = [];
@@ -23,7 +23,7 @@ const parseProperties = (name, definition) => {
       );
     }
     if ('enum' in prop) {
-      const enumValues = prop.enum.map(val => `\`${JSON.stringify(val)}\``).join(', ');
+      const enumValues = prop.enum.map((val) => `\`${JSON.stringify(val)}\``).join(', ');
       descriptionParts.push(`_Enum:_ ${enumValues}`);
     }
     if ('example' in prop) {
@@ -76,10 +76,9 @@ const processDefinition = (name, definition) => {
   res = res.concat(parsedDef);
 
   if (definition.example) {
-    const formattedExample =
-      typeof definition.example === 'string'
-        ? definition.example
-        : JSON.stringify(definition.example, null, '  ');
+    const formattedExample = typeof definition.example === 'string'
+      ? definition.example
+      : JSON.stringify(definition.example, null, '  ');
     res.push('');
     res.push('**Example**');
     res.push(`<pre>${formattedExample}</pre>`);
@@ -93,11 +92,11 @@ module.exports.processDefinition = processDefinition;
  * @param {type} definitions
  * @return {type} Description
  */
-module.exports = definitions => {
+module.exports = (definitions) => {
   const res = [];
-  Object.keys(definitions).map(definitionName => res.push(processDefinition(
+  Object.keys(definitions).forEach((definitionName) => res.push(processDefinition(
     definitionName,
-    definitions[definitionName]
+    definitions[definitionName],
   )));
   if (res.length > 0) {
     res.unshift('### Models\n');

@@ -14,4 +14,4 @@ fs.readdir(directory, (err, files) => {
     execSync(`node app/index.js -i examples/${filename}`);
     console.log('Done\n');
   });
-})
+});

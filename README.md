@@ -1,6 +1,6 @@
 # swagger-markdown
 
-[![npm][npm-image]][npm-url] [![dependencies][david-image]][david-url] [![circle ci][circleci-image]][circleci-url]
+[![npm][npm-image]][npm-url] [![circle ci][circleci-image]][circleci-url]
 
 CLI script to turn swagger yaml into markdown files.
 Supports swagger 2.0 format only
@@ -67,9 +67,6 @@ npm run md-docs
 
 [npm-url]: https://www.npmjs.com/package/swagger-markdown
 [npm-image]: https://img.shields.io/npm/v/swagger-markdown.svg
-
-[david-url]: https://david-dm.org/syroegkin/swagger-markdown
-[david-image]: https://img.shields.io/david/syroegkin/swagger-markdown.svg
 
 [circleci-url]: https://circleci.com/gh/syroegkin/swagger-markdown/tree/master
 [circleci-image]: https://img.shields.io/circleci/project/syroegkin/swagger-markdown.svg

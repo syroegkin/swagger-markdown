@@ -4,17 +4,17 @@ const transformExternalDocs = require('../../app/transformers/externalDocs');
 const fixture = {
   notext: {
     source: {
-      url: 'http://google.com'
+      url: 'http://google.com',
     },
-    result: '[Find more info here](http://google.com)'
+    result: '[Find more info here](http://google.com)',
   },
   full: {
     source: {
       url: 'http://yahoo.com',
-      description: 'RTFM'
+      description: 'RTFM',
     },
-    result: '[RTFM](http://yahoo.com)'
-  }
+    result: '[RTFM](http://yahoo.com)',
+  },
 };
 
 describe('External docs', () => {

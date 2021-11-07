@@ -4,7 +4,7 @@ const parameters = require('../../app/transformers/pathParameters');
 const tableFixture = [
   '##### Parameters',
   '| Name | Located in | Description | Required | Schema |',
-  '| ---- | ---------- | ----------- | -------- | ---- |'
+  '| ---- | ---------- | ----------- | -------- | ---- |',
 ];
 
 describe('Path parameters transformer', () => {
@@ -14,24 +14,24 @@ describe('Path parameters transformer', () => {
         name: 'name',
         in: 'formData',
         description: 'name',
-        type: 'string'
+        type: 'string',
       }, {
         name: 'year',
         in: 'formData',
         description: 'year',
         type: 'string',
-        required: true
+        required: true,
       }, {
         in: 'formData',
-        type: 'string'
-      }, {}
+        type: 'string',
+      }, {},
     ];
 
     const results = [].concat(tableFixture, [
       '| name | formData | name | No | string |',
       '| year | formData | year | Yes | string |',
       '|  | formData |  | No | string |',
-      '|  |  |  | No |  |'
+      '|  |  |  | No |  |',
     ]);
     const res = parameters(fixture).split('\n');
 
@@ -57,10 +57,10 @@ describe('Path parameters transformer', () => {
         name: 'name',
         in: 'formData',
         description: 'name',
-        type: 'string'
+        type: 'string',
       }];
       const results = [].concat(tableFixture, [
-        '| name | formData | name | No | string |'
+        '| name | formData | name | No | string |',
       ]);
       const res = parameters(undefined, fixture).split('\n');
 
@@ -85,17 +85,17 @@ describe('Path parameters transformer', () => {
         name: 'path name',
         in: 'formData',
         description: 'name',
-        type: 'string'
+        type: 'string',
       }];
       const methodFixture = [{
         name: 'method name',
         in: 'formData',
         description: 'name',
-        type: 'string'
+        type: 'string',
       }];
       const results = [].concat(tableFixture, [
         '| path name | formData | name | No | string |',
-        '| method name | formData | name | No | string |'
+        '| method name | formData | name | No | string |',
       ]);
       const res = parameters(methodFixture, pathFixture).split('\n');
       it('Should create parameters header', () => {

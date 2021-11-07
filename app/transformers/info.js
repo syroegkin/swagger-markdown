@@ -9,7 +9,7 @@ const textEscape = require('../lib/textEscape');
  * @param {Object} info
  * @returns {String}
  */
-module.exports = info => {
+module.exports = (info) => {
   const res = [];
   if (info !== null && typeof info === 'object') {
     if ('title' in info) {
