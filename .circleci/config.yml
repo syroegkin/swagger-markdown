@@ -81,6 +81,8 @@ workflows:
           requires:
             - build
       - deploy:
+          context:
+            - semantic-release
           filters:
             branches:
               only: master
