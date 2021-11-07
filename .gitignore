@@ -41,6 +41,7 @@ jspm_packages
 
 # build
 bin
+dist
 
 # development tasks
 examples.sh
