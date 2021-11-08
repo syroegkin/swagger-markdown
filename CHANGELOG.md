@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/syroegkin/swagger-markdown/compare/v1.4.5...v1.4.6) (2021-11-08)
+
+
+### Bug Fixes
+
+* **markdownlint:** markdown lint configuration file is in use ([82542f5](https://github.com/syroegkin/swagger-markdown/commit/82542f5917f7f78812681805c6d6f875fd279bfd)), closes [#177](https://github.com/syroegkin/swagger-markdown/issues/177)
+
 ## [1.4.5](https://github.com/syroegkin/swagger-markdown/compare/v1.4.4...v1.4.5) (2021-11-07)
 
 
