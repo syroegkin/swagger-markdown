@@ -8,7 +8,6 @@ examples
 .gitignore
 .vscode
 .circleci
-.markdownlint.json
 sonar-project.properties
 .husky
 scripts
