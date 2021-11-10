@@ -89,4 +89,3 @@ export const fixture = {
 // fixture.defHeader1 = '#### Tag';
 // fixture.defHeader2 = '#### Pet';
 // fixture.defHeader3 = '#### deviceid';
-

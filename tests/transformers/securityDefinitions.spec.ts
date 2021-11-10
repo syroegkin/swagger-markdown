@@ -1,7 +1,5 @@
 import { expect } from 'chai';
-import transformSecurityDefinitions from '../../src/transformers/securityDefinitions';
-import { nameResolver } from '../../src/transformers/securityDefinitions';
-import { typeResolver } from '../../src/transformers/securityDefinitions';
+import transformSecurityDefinitions, { nameResolver, typeResolver } from '../../src/transformers/securityDefinitions';
 
 describe('Security definitions', () => {
   it('Should not create any data if definitions is empty', () => {

@@ -8,4 +8,4 @@ const escapeTable = {
  * @param {string} text to escape
  * @returns {string}
  */
-export const textEscape = (text: String) => text.split('').map((character) => escapeTable[character] || character).join('');
+export const textEscape = (text: string) => text.split('').map((character) => escapeTable[character] || character).join('');
