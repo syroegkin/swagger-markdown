@@ -1,4 +1,4 @@
-const textEscape = require('../lib/textEscape');
+const { textEscape } = require('../lib/textEscape');
 
 /**
  * http://swagger.io/specification/#contactObject

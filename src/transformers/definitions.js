@@ -1,7 +1,7 @@
 const dataTypeTransformer = require('./dataTypes');
 const inArray = require('../lib/inArray');
 const Schema = require('../models/schema');
-const textEscape = require('../lib/textEscape');
+const { textEscape } = require('../lib/textEscape');
 
 /**
  * If Property field is present parse them.

@@ -1,6 +1,6 @@
 const transformContact = require('./contact');
 const transformLicense = require('./license');
-const textEscape = require('../lib/textEscape');
+const { textEscape } = require('../lib/textEscape');
 
 /**
  * http://swagger.io/specification/#infoObject

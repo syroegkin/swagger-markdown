@@ -2,7 +2,7 @@ const inArray = require('../lib/inArray');
 const transformResponses = require('./pathResponses');
 const transformParameters = require('./pathParameters');
 const security = require('./security');
-const textEscape = require('../lib/textEscape');
+const { textEscape } = require('../lib/textEscape');
 
 /**
  * Allowed methods

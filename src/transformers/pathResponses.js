@@ -1,6 +1,6 @@
 const Schema = require('../models/schema');
 const transformDataTypes = require('./dataTypes');
-const textEscape = require('../lib/textEscape');
+const { textEscape } = require('../lib/textEscape');
 
 /**
  * Build responses table
