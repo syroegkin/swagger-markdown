@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const parameters = require('../../src/transformers/pathParameters');
+import { expect } from 'chai';
+import parameters from '../../src/transformers/pathParameters';
 
 const tableFixture = [
   '##### Parameters',
@@ -52,7 +52,7 @@ describe('Path parameters transformer', () => {
     });
   });
   describe('Path parameters', () => {
-    it('Should build parameters from path parameters', () => {
+    describe('Should build parameters from path parameters', () => {
       const fixture = [{
         name: 'name',
         in: 'formData',
@@ -80,7 +80,7 @@ describe('Path parameters transformer', () => {
   });
 
   describe('Path and method parameters', () => {
-    it('Should build parameters from path and method parameters', () => {
+    describe('Should build parameters from path and method parameters', () => {
       const pathFixture = [{
         name: 'path name',
         in: 'formData',

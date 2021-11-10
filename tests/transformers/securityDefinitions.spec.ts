@@ -1,7 +1,7 @@
-const { expect } = require('chai');
-const transformSecurityDefinitions = require('../../src/transformers/securityDefinitions');
-const { nameResolver } = require('../../src/transformers/securityDefinitions');
-const { typeResolver } = require('../../src/transformers/securityDefinitions');
+import { expect } from 'chai';
+import transformSecurityDefinitions from '../../src/transformers/securityDefinitions';
+import { nameResolver } from '../../src/transformers/securityDefinitions';
+import { typeResolver } from '../../src/transformers/securityDefinitions';
 
 describe('Security definitions', () => {
   it('Should not create any data if definitions is empty', () => {

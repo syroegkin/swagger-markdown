@@ -1,8 +1,9 @@
-const { expect } = require('chai');
-const inArray = require('../../src/lib/inArray');
+import { expect } from 'chai';
+import inArray from '../../src/lib/inArray';
 
 describe('InArray function', () => {
   it('should return false if no data provided', () => {
+    // @ts-ignore
     expect(inArray()).to.be.equal(false);
   });
 
@@ -19,6 +20,7 @@ describe('InArray function', () => {
     expect(inArray('', ['a', 'b'])).to.be.equal(false);
     expect(inArray(null, ['a', 'b'])).to.be.equal(false);
     expect(inArray(undefined, ['a', 'b'])).to.be.equal(false);
+    // @ts-ignore
     expect(inArray('a', { a: 'a', b: 'b' })).to.be.equal(false);
   });
 });

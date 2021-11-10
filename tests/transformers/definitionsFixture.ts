@@ -1,4 +1,4 @@
-const fixture = {
+export const fixture = {
   definitionsHeader: [
     '### Models',
   ],
@@ -82,9 +82,11 @@ const fixture = {
   result4: [
     '| Pet | string | This is a very long description |  |',
   ],
+  defHeader1: '#### Tag',
+  defHeader2: '#### Pet',
+  defHeader3: '#### deviceid',
 };
-fixture.defHeader1 = '#### Tag';
-fixture.defHeader2 = '#### Pet';
-fixture.defHeader3 = '#### deviceid';
+// fixture.defHeader1 = '#### Tag';
+// fixture.defHeader2 = '#### Pet';
+// fixture.defHeader3 = '#### deviceid';
 
-module.exports = fixture;

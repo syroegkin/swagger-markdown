@@ -1,6 +1,6 @@
-const { expect } = require('chai');
-const transformDefinitions = require('../../src/transformers/definitions');
-const fixture = require('./definitionsFixture');
+import { expect } from 'chai';
+import transformDefinitions from '../../src/transformers/definitions';
+import { fixture } from './definitionsFixture';
 
 describe('Definitions', () => {
   const res1 = transformDefinitions(fixture.data1).split('\n');

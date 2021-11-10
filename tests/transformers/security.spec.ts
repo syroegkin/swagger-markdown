@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const security = require('../../src/transformers/security');
+import { expect } from 'chai';
+import security from '../../src/transformers/security';
 
 const fixture = [
   {

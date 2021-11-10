@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const anchor = require('../../src/lib/anchor');
+import { expect } from 'chai';
+import anchor from '../../src/lib/anchor';
 
 const fixture = [
   ['any string', 'any-string'],

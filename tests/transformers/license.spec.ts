@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const transformLicense = require('../../src/transformers/license');
+import { expect } from 'chai';
+import transformLicense from '../../src/transformers/license';
 
 describe('License field', () => {
   it('should not create header if information is not provided', () => {

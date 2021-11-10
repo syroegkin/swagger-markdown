@@ -1,9 +1,10 @@
-const { expect } = require('chai');
-const transformInfo = require('../../src/transformers/info');
+import { expect } from 'chai';
+import transformInfo from '../../src/transformers/info';
 
 describe('Info transformer', () => {
   it('should return null if nothing was passed', () => {
     expect(transformInfo({})).to.be.equal(null);
+    // @ts-ignore
     expect(transformInfo()).to.be.equal(null);
   });
 

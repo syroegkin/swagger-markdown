@@ -1,6 +1,6 @@
-const { expect } = require('chai');
-const fs = require('fs');
-const { transformFile, partiallyDereference } = require('../src/convert');
+import { expect } from 'chai';
+import fs from 'fs';
+import { transformFile, partiallyDereference } from '../src/convert';
 
 describe('Integration test examples', () => {
   const examplesDir = `${__dirname}/../examples`;

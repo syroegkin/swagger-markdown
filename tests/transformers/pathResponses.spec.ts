@@ -1,5 +1,5 @@
-const { expect } = require('chai');
-const responses = require('../../src/transformers/pathResponses');
+import { expect } from 'chai';
+import responses from '../../src/transformers/pathResponses';
 
 describe('Path responses transformer', () => {
   describe('no schemas', () => {
