@@ -1,4 +1,4 @@
-const transformContact = require('./contact');
+const { transformContact } = require('./contact');
 const transformLicense = require('./license');
 const { textEscape } = require('../lib/textEscape');
 

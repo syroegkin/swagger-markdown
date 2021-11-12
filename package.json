@@ -90,7 +90,6 @@
     "jest": "^27.3.1",
     "lint-staged": "^11.2.6",
     "markdownlint-cli": "^0.29.0",
-    "openapi-types": "^9.3.0",
     "semantic-release": "^18.0.0",
     "ts-jest": "^27.0.7",
     "ts-node": "^10.4.0",
@@ -100,6 +99,7 @@
     "argparse": "2.0.1",
     "markdownlint": "^0.24.0",
     "markdownlint-rule-helpers": "^0.15.0",
+    "openapi-types": "^9.3.0",
     "swagger-parser": "^10.0.3"
   }
 }

@@ -1,4 +1,4 @@
-const anchor = require('../lib/anchor');
+const { anchor } = require('../lib/anchor');
 
 const resolver = {
   integer: {
