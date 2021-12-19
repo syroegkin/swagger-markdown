@@ -1,6 +1,6 @@
 import { ArgumentParser } from 'argparse';
 import packageInfo from '../package.json';
-import { transfromFile, Options } from './convert';
+import { transformFile, Options } from './convert';
 
 const parser = new ArgumentParser({
   description: packageInfo.name,
@@ -33,5 +33,5 @@ if (args.input) {
   if (!args.output) {
     args.output = args.input.replace(/(yaml|yml|json)$/i, 'md');
   }
-  transfromFile(args).catch((err) => console.error(err));
+  transformFile(args).catch((err) => console.error(err));
 }
