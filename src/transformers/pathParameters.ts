@@ -1,8 +1,8 @@
-const { dataTypeResolver } = require('./dataTypes');
-const { Schema } = require('../models/schema');
-const { textEscape } = require('../lib/textEscape');
+import { dataTypeResolver } from './dataTypes';
+import { Schema } from '../models/schema';
+import { textEscape } from '../lib/textEscape';
 
-module.exports = (parameters, pathParameters) => {
+export const transformParameters = (parameters, pathParameters?: any) => {
   const res = [];
   res.push('##### Parameters\n');
   res.push('| Name | Located in | Description | Required | Schema |');
