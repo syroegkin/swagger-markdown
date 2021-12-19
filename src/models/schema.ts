@@ -1,16 +1,23 @@
 import { OpenAPIV2 } from 'openapi-types';
 
-interface SchemaInterface {
-  type?: string | string[];
+export interface SchemaInterface {
+  type?: string;
   format?: string;
   ref?: string;
   allOf?: SchemaInterface[];
   items?: SchemaInterface;
-
+  getType?(): string | undefined;
+  getFormat?(): string | undefined;
+  getItems?(): SchemaInterface;
+  getReference?(): string | undefined;
+  getAllOf?(): SchemaInterface[];
 }
 
+/**
+ * @deprecated
+ */
 export class Schema implements SchemaInterface {
-  public type?: string | string[];
+  public type?: string;
 
   public format?: string;
 
@@ -49,7 +56,8 @@ export class Schema implements SchemaInterface {
    * @param {String} type
    */
   public setType(type: string | string[]): Schema {
-    this.type = type;
+    // @todo: wtf
+    this.type = type as string;
     return this;
   }
 
@@ -88,7 +96,7 @@ export class Schema implements SchemaInterface {
   /**
    * @return {String}
    */
-  public getType(): string | string[] | undefined {
+  public getType(): string | undefined {
     return this.type;
   }
 

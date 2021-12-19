@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import transformDataTypes from '../../src/transformers/dataTypes';
+import { dataTypeResolver } from '../../src/transformers/dataTypes';
 import { Schema } from '../../src/models/schema';
 import { anchor } from '../../src/lib/anchor';
 
@@ -46,7 +46,7 @@ const fixture = [
 describe('Data Types', () => {
   it('should convert type and format to the common names', () => {
     fixture.forEach((usecase) => {
-      expect(transformDataTypes(usecase[0])).to.be.equal(usecase[1]);
+      expect(dataTypeResolver(usecase[0] as Schema)).to.be.equal(usecase[1]);
     });
   });
 });

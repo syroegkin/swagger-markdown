@@ -1,5 +1,5 @@
 import { OpenAPIV2 } from 'openapi-types';
-import dataTypeTransformer from './dataTypes';
+import { dataTypeResolver } from './dataTypes';
 import { inArray } from '../lib/inArray';
 import { Schema } from '../models/schema';
 import { textEscape } from '../lib/textEscape';
@@ -14,7 +14,7 @@ function parseProperties(name: string, definition) {
   const res = [];
   Object.keys(definition.properties).forEach((propName) => {
     const prop = definition.properties[propName];
-    const typeCell = dataTypeTransformer(new Schema(prop));
+    const typeCell = dataTypeResolver(new Schema(prop));
     const descriptionParts = [];
     if ('description' in prop) {
       descriptionParts.push(

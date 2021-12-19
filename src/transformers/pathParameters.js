@@ -1,4 +1,4 @@
-const transformDataTypes = require('./dataTypes');
+const { dataTypeResolver } = require('./dataTypes');
 const { Schema } = require('../models/schema');
 const { textEscape } = require('../lib/textEscape');
 
@@ -34,7 +34,7 @@ module.exports = (parameters, pathParameters) => {
         schema.setItems('items' in keys ? keys.items : null);
       }
 
-      line.push(transformDataTypes(schema));
+      line.push(dataTypeResolver(schema));
       // Add spaces and glue using pipeline
       const glued = line.map((el) => ` ${el} `).join('|');
       res.push(`|${glued}|`);

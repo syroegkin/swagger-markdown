@@ -1,5 +1,5 @@
 const { Schema } = require('../models/schema');
-const transformDataTypes = require('./dataTypes');
+const { dataTypeResolver } = require('./dataTypes');
 const { textEscape } = require('../lib/textEscape');
 
 /**
@@ -38,7 +38,7 @@ module.exports = (responses) => {
     // Schema
     if ('schema' in response) {
       const schema = new Schema(response.schema);
-      line.push(transformDataTypes(schema));
+      line.push(dataTypeResolver(schema));
     } else if (schemas) {
       line.push('');
     }
