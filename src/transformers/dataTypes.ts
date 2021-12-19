@@ -1,4 +1,5 @@
-const { anchor } = require('../lib/anchor');
+import { anchor } from '../lib/anchor';
+import { SchemaInterface } from '../models/schema';
 
 const resolver = {
   integer: {
@@ -23,7 +24,7 @@ const resolver = {
  * @param {Schema} schema
  * @return {String}
  */
-const dataTypeResolver = (schema) => {
+export const dataTypeResolver = (schema: SchemaInterface) => {
   if (schema.getAllOf()) {
     return schema.getAllOf()
       .map((subSchema) => dataTypeResolver(subSchema))
@@ -55,5 +56,3 @@ const dataTypeResolver = (schema) => {
   }
   return '';
 };
-
-module.exports = dataTypeResolver;

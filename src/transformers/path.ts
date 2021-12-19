@@ -1,8 +1,8 @@
-const inArray = require('../lib/inArray');
-const transformResponses = require('./pathResponses');
-const transformParameters = require('./pathParameters');
-const security = require('./security');
-const { textEscape } = require('../lib/textEscape');
+import { inArray } from '../lib/inArray';
+import { transformResponses } from './pathResponses';
+import { transformParameters } from './pathParameters';
+import { transformSecurity } from './security';
+import { textEscape } from '../lib/textEscape';
 
 /**
  * Allowed methods
@@ -10,7 +10,7 @@ const { textEscape } = require('../lib/textEscape');
  */
 const ALLOWED_METHODS = ['get', 'post', 'put', 'patch', 'delete', 'options'];
 
-module.exports = (path, data, parameters) => {
+export const transformPath = (path, data, parameters?: any) => {
   const res = [];
   let pathParameters = null;
 
@@ -45,7 +45,9 @@ module.exports = (path, data, parameters) => {
 
       // Build parameters
       if ('parameters' in pathInfo || pathParameters) {
-        res.push(`${transformParameters(pathInfo.parameters, pathParameters, parameters)}\n`);
+        // This won't work
+        // res.push(`${transformParameters(pathInfo.parameters, pathParameters, parameters)}\n`);
+        res.push(`${transformParameters(pathInfo.parameters, pathParameters)}\n`);
       }
 
       // Build responses
@@ -55,7 +57,7 @@ module.exports = (path, data, parameters) => {
 
       // Build security
       if ('security' in pathInfo) {
-        res.push(`${security(pathInfo.security)}\n`);
+        res.push(`${transformSecurity(pathInfo.security)}\n`);
       }
     }
   });

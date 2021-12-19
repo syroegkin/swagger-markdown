@@ -1,35 +1,41 @@
-const SwaggerParser = require('swagger-parser');
-const fs = require('fs');
-const markdownlint = require('markdownlint');
-const markdownlintRuleHelpers = require('markdownlint-rule-helpers');
+import SwaggerParser from '@apidevtools/swagger-parser';
+import fs from 'fs';
+import markdownlint from 'markdownlint';
+import markdownlintRuleHelpers from 'markdownlint-rule-helpers';
+import { transformInfo } from './transformers/info';
+import { transformPath } from './transformers/path';
+import { transformSecurityDefinitions } from './transformers/securityDefinitions';
+import { transformExternalDocs } from './transformers/externalDocs';
+import { transformDefinition } from './transformers/definitions';
+import markdownlintConfig from '../.markdownlint.json';
 
-const transformInfo = require('./transformers/info');
-const transformPath = require('./transformers/path');
-const transformSecurityDefinitions = require('./transformers/securityDefinitions');
-const transformExternalDocs = require('./transformers/externalDocs');
-const transformDefinition = require('./transformers/definitions');
-const markdownlintConfig = require('../.markdownlint.json');
+export interface Options {
+  skipInfo?: boolean;
+  output?: string;
+  input: string;
+}
 
 // replace all $refs except model definitions as these have their own section in the doc
-function partiallyDereference(node, $refs) {
+export function partiallyDereference(node, $refs?: any) {
   if (typeof node !== 'object') return node;
   const obj = {};
   // Issue related to babel (I beleive) as it won't build it when just spreading
   // eslint-disable-next-line prefer-object-spread
   const nodeAsObject = Object.assign({}, node);
-  for (const [key, value] of Object.entries(nodeAsObject)) {
+  Object.entries(nodeAsObject).forEach((pair: [string, any]): void => {
+    const [key, value] = pair;
     if (Array.isArray(value)) {
       obj[key] = value.map((item) => partiallyDereference(item, $refs));
     } else if (key === '$ref' && !value.startsWith('#/definitions/')) {
-      return partiallyDereference($refs.get(value), $refs);
+      partiallyDereference($refs.get(value), $refs);
     } else {
       obj[key] = partiallyDereference(value, $refs);
     }
-  }
+  });
   return obj;
 }
 
-function transformSwagger(inputDoc, options = {}) {
+export function transfromSwagger(inputDoc, options: any = {}) {
   const document = [];
 
   // Collect parameters
@@ -85,22 +91,17 @@ function transformSwagger(inputDoc, options = {}) {
   return plainDocument;
 }
 
-function transformFile(options) {
+export async function transformFile(options: Options): Promise<string> {
   const swaggerParser = new SwaggerParser();
-  return swaggerParser.resolve(options.input).then(() => {
-    const dereferencedSwagger = partiallyDereference(swaggerParser.api, swaggerParser.$refs);
-    const markdown = transformSwagger(dereferencedSwagger, options);
+  const $refs = await swaggerParser.resolve(options.input);
+  // return SwaggerParser.resolve(options.input).then(() => {
+  const dereferencedSwagger = partiallyDereference(swaggerParser.api, $refs);
+  const markdown = transfromSwagger(dereferencedSwagger, options);
 
-    if (options.output) {
-      fs.writeFileSync(options.output, markdown);
-    }
+  if (options.output) {
+    fs.writeFileSync(options.output, markdown);
+  }
 
-    return markdown;
-  });
+  return markdown;
+  // });
 }
-
-module.exports = {
-  transformFile,
-  transformSwagger,
-  partiallyDereference,
-};

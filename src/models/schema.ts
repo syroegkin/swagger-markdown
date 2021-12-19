@@ -1,11 +1,39 @@
-class Schema {
+import { OpenAPIV2 } from 'openapi-types';
+
+export interface SchemaInterface {
+  type?: string;
+  format?: string;
+  ref?: string;
+  allOf?: SchemaInterface[];
+  items?: SchemaInterface;
+  getType?(): string | undefined;
+  getFormat?(): string | undefined;
+  getItems?(): SchemaInterface;
+  getReference?(): string | undefined;
+  getAllOf?(): SchemaInterface[];
+}
+
+/**
+ * @deprecated
+ */
+export class Schema implements SchemaInterface {
+  public type?: string;
+
+  public format?: string;
+
+  public ref?: string;
+
+  public allOf?: SchemaInterface[];
+
+  public items?: SchemaInterface;
+
   /**
    * constructor
    *
    * @param {Object} [schema=null]
    */
-  constructor(schema = null) {
-    if (schema !== null) {
+  constructor(schema?: Partial<OpenAPIV2.SchemaObject>) {
+    if (schema) {
       if ('type' in schema) {
         this.setType(schema.type);
       }
@@ -27,8 +55,9 @@ class Schema {
   /**
    * @param {String} type
    */
-  setType(type) {
-    this.type = type;
+  public setType(type: string | string[]): Schema {
+    // @todo: wtf
+    this.type = type as string;
     return this;
   }
 
@@ -43,7 +72,7 @@ class Schema {
   /**
    * @param {String} format
    */
-  setFormat(format) {
+  public setFormat(format: string): Schema {
     this.format = format;
     return this;
   }
@@ -59,7 +88,7 @@ class Schema {
   /**
    * @param {String} ref
    */
-  setReference(ref) {
+  public setReference(ref: string): Schema {
     this.ref = ref;
     return this;
   }
@@ -67,37 +96,35 @@ class Schema {
   /**
    * @return {String}
    */
-  getType() {
+  public getType(): string | undefined {
     return this.type;
   }
 
   /**
    * @return {String}
    */
-  getFormat() {
+  public getFormat(): string | undefined {
     return this.format;
   }
 
   /**
    * @return {Object}
    */
-  getItems() {
+  public getItems(): SchemaInterface {
     return this.items;
   }
 
   /**
    * @return {String}
    */
-  getReference() {
+  public getReference(): string | undefined {
     return this.ref;
   }
 
   /**
    * @return {Array<Schema>}
    */
-  getAllOf() {
+  public getAllOf(): SchemaInterface[] {
     return this.allOf;
   }
 }
-
-module.exports = Schema;

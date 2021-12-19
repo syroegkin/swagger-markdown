@@ -96,10 +96,10 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
+    "@apidevtools/swagger-parser": "^10.0.3",
     "argparse": "2.0.1",
     "markdownlint": "^0.24.0",
     "markdownlint-rule-helpers": "^0.15.0",
-    "openapi-types": "^9.3.0",
-    "swagger-parser": "^10.0.3"
+    "openapi-types": "^9.3.0"
   }
 }

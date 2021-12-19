@@ -1,6 +1,8 @@
-const { transformContact } = require('./contact');
-const transformLicense = require('./license');
-const { textEscape } = require('../lib/textEscape');
+import { OpenAPIV2 } from 'openapi-types';
+import { transformContact } from './contact';
+import { transformLicense } from './license';
+import { textEscape } from '../lib/textEscape';
+// import { Markdown } from '../lib/markdown';
 
 /**
  * http://swagger.io/specification/#infoObject
@@ -9,8 +11,8 @@ const { textEscape } = require('../lib/textEscape');
  * @param {Object} info
  * @returns {String}
  */
-module.exports = (info) => {
-  const res = [];
+export function transformInfo(info: OpenAPIV2.InfoObject) {
+  const res: string[] = [];
   if (info !== null && typeof info === 'object') {
     if ('title' in info) {
       res.push(`# ${info.title}`);
@@ -37,4 +39,4 @@ module.exports = (info) => {
     }
   }
   return res.length ? res.join('\n') : null;
-};
+}

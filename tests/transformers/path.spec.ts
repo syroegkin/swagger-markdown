@@ -1,9 +1,11 @@
 import { expect } from 'chai';
-import transformPath from '../../src/transformers/path';
+import { transformPath } from '../../src/transformers/path';
 
 describe('Path transformer', () => {
   it('should return null if nothing was passed', () => {
     expect(transformPath(null, null)).to.be.equal(null);
+    // I want to test this weird case as well
+    // @ts-ignore
     expect(transformPath()).to.be.equal(null);
   });
 

@@ -8,19 +8,20 @@ import { Markdown } from '../lib/markdown';
 export function transformContact(contact: OpenAPIV2.ContactObject) {
   const md = new Markdown();
 
-  if ('name' in contact) {
-    md.line(contact.name, true).append();
-  }
-  if ('url' in contact) {
-    md.line(contact.url).append();
-  }
-  if ('email' in contact) {
-    md.line(contact.email).append();
-  }
+  if (Object.keys(contact).some(
+    (item) => ['name', 'url', 'email'].includes(item),
+  )) {
+    md.line('Contact information:').bold().append();
 
-  if (md.length > 0) {
-    md.line('Contact information:').bold().prepend();
-    md.lineBreak();
+    if ('name' in contact) {
+      md.line(contact.name, true).append();
+    }
+    if ('url' in contact) {
+      md.line(contact.url).append();
+    }
+    if ('email' in contact) {
+      md.line(contact.email).append();
+    }
   }
 
   return md.export();

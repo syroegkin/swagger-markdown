@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import security from '../../src/transformers/security';
+import { transformSecurity } from '../../src/transformers/security';
 
 const fixture = [
   {
@@ -24,7 +24,7 @@ const fixture = [
 describe('Security transformer', () => {
   it('should transform security to the tables', () => {
     fixture.forEach((usecase) => {
-      expect(security(usecase.security)).to.be.equal(usecase.result);
+      expect(transformSecurity(usecase.security)).to.be.equal(usecase.result);
     });
   });
 });

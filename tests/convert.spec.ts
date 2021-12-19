@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import fs from 'fs';
 import { transformFile, partiallyDereference } from '../src/convert';
 
-describe('Integration test examples', () => {
+describe.skip('Integration test examples', () => {
   const examplesDir = `${__dirname}/../examples`;
   const examples = fs.readdirSync(examplesDir);
   examples
@@ -17,7 +17,7 @@ describe('Integration test examples', () => {
     });
 });
 
-describe('Partial dereference', () => {
+describe.skip('Partial dereference', () => {
   const mockRefs = {
     get(ref) {
       switch (ref) {

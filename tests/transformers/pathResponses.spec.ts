@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import responses from '../../src/transformers/pathResponses';
+import { transformResponses } from '../../src/transformers/pathResponses';
 
 describe('Path responses transformer', () => {
   describe('no schemas', () => {
@@ -14,7 +14,7 @@ describe('Path responses transformer', () => {
       '| 200 | 200 |',
       '| 404 |  |',
     ];
-    const res = responses(fixture).split('\n');
+    const res = transformResponses(fixture).split('\n');
 
     it('should build the header', () => {
       expect(res[0]).to.be.equal(results[0]);
@@ -51,7 +51,7 @@ describe('Path responses transformer', () => {
       '| 404 | Not Found |  |',
       '| 500 |  |  |',
     ];
-    const res = responses(fixture).split('\n');
+    const res = transformResponses(fixture).split('\n');
 
     it('should build the header', () => {
       expect(res[0]).to.be.equal(results[0]);
@@ -82,7 +82,7 @@ describe('Path responses transformer', () => {
       '| 200 |  |  |',
       '| 404 |  | [Bar](#bar) |',
     ];
-    const res = responses(fixture).split('\n');
+    const res = transformResponses(fixture).split('\n');
     it('should build the header', () => {
       expect(res[0]).to.be.equal(results[0]);
     });

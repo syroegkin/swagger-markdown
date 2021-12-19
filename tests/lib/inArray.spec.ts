@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import inArray from '../../src/lib/inArray';
+import { inArray } from '../../src/lib/inArray';
 
 describe('InArray function', () => {
   it('should return false if no data provided', () => {

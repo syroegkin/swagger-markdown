@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import parameters from '../../src/transformers/pathParameters';
+import { transformParameters } from '../../src/transformers/pathParameters';
 
 const tableFixture = [
   '##### Parameters',
@@ -33,7 +33,7 @@ describe('Path parameters transformer', () => {
       '|  | formData |  | No | string |',
       '|  |  |  | No |  |',
     ]);
-    const res = parameters(fixture).split('\n');
+    const res = transformParameters(fixture).split('\n');
 
     it('Should create parameters header', () => {
       expect(res[0]).to.be.equal(results[0]);
@@ -62,7 +62,7 @@ describe('Path parameters transformer', () => {
       const results = [].concat(tableFixture, [
         '| name | formData | name | No | string |',
       ]);
-      const res = parameters(undefined, fixture).split('\n');
+      const res = transformParameters(undefined, fixture).split('\n');
 
       it('Should create parameters header', () => {
         expect(res[0]).to.be.equal(results[0]);
@@ -97,7 +97,7 @@ describe('Path parameters transformer', () => {
         '| path name | formData | name | No | string |',
         '| method name | formData | name | No | string |',
       ]);
-      const res = parameters(methodFixture, pathFixture).split('\n');
+      const res = transformParameters(methodFixture, pathFixture).split('\n');
       it('Should create parameters header', () => {
         expect(res[0]).to.be.equal(results[0]);
       });

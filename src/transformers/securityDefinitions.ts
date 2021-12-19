@@ -1,9 +1,9 @@
-const typeResolver = {
+export const typeResolver = {
   basic: 'Basic',
   apiKey: 'API Key',
   oauth2: 'OAuth 2.0',
 };
-const nameResolver = {
+export const nameResolver = {
   description: 'Description',
   name: 'Name',
   in: 'In',
@@ -12,7 +12,7 @@ const nameResolver = {
   tokenUrl: 'Token URL',
 };
 
-module.exports = (securityDefinitions) => {
+export const transformSecurityDefinitions = (securityDefinitions) => {
   // Base block
   const res = [];
   Object.keys(securityDefinitions).forEach((type) => {
@@ -50,5 +50,3 @@ module.exports = (securityDefinitions) => {
 
   return res.length ? res.join('\n') : null;
 };
-module.exports.nameResolver = nameResolver;
-module.exports.typeResolver = typeResolver;
