@@ -1,4 +1,4 @@
-module.exports = (security) => {
+export const transformSecurity = (security) => {
   const res = [];
   let maxLength = 0;
   security.forEach((rules) => {

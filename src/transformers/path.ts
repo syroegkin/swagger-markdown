@@ -1,7 +1,7 @@
 import { inArray } from '../lib/inArray';
 import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
-import security from './security';
+import { transformSecurity } from './security';
 import { textEscape } from '../lib/textEscape';
 
 /**
@@ -57,7 +57,7 @@ export const transformPath = (path, data, parameters?: any) => {
 
       // Build security
       if ('security' in pathInfo) {
-        res.push(`${security(pathInfo.security)}\n`);
+        res.push(`${transformSecurity(pathInfo.security)}\n`);
       }
     }
   });
