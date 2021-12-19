@@ -1,13 +1,13 @@
-const { Schema } = require('../models/schema');
-const { dataTypeResolver } = require('./dataTypes');
-const { textEscape } = require('../lib/textEscape');
+import { Schema } from '../models/schema';
+import { dataTypeResolver } from './dataTypes';
+import { textEscape } from '../lib/textEscape';
 
 /**
  * Build responses table
  * @param {object} responses
  * @returns {null|string}
  */
-module.exports = (responses) => {
+export const transformResponses = (responses) => {
   const res = [];
   // Check if schema somewhere
   const schemas = Object.keys(responses).reduce(

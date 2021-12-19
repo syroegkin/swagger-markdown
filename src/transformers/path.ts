@@ -1,5 +1,5 @@
 import { inArray } from '../lib/inArray';
-import transformResponses from './pathResponses';
+import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
 import security from './security';
 import { textEscape } from '../lib/textEscape';
