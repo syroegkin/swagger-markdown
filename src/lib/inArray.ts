@@ -3,8 +3,9 @@
  * @param {string|number} needle
  * @param {Array} haystack
  * @returns {boolean}
+ * @deprecated
  */
-module.exports = (needle, haystack) => {
+export function inArray(needle: string | number, haystack: (string | number)[]): boolean {
   if (haystack === undefined || haystack === null) return false;
   if (haystack.length) {
     for (let i = 0; i < haystack.length; i++) {
@@ -14,4 +15,4 @@ module.exports = (needle, haystack) => {
     }
   }
   return false;
-};
+}

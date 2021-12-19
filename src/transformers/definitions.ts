@@ -1,6 +1,6 @@
 import { OpenAPIV2 } from 'openapi-types';
 import dataTypeTransformer from './dataTypes';
-import inArray from '../lib/inArray';
+import { inArray } from '../lib/inArray';
 import { Schema } from '../models/schema';
 import { textEscape } from '../lib/textEscape';
 

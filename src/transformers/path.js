@@ -1,4 +1,4 @@
-const inArray = require('../lib/inArray');
+const { inArray } = require('../lib/inArray');
 const transformResponses = require('./pathResponses');
 const transformParameters = require('./pathParameters');
 const security = require('./security');
