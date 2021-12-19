@@ -1,9 +1,10 @@
 import { expect } from 'chai';
-import transformInfo from '../../src/transformers/info';
+import { OpenAPIV2 } from 'openapi-types';
+import { transformInfo } from '../../src/transformers/info';
 
 describe('Info transformer', () => {
   it('should return null if nothing was passed', () => {
-    expect(transformInfo({})).to.be.equal(null);
+    expect(transformInfo({} as OpenAPIV2.InfoObject)).to.be.equal(null);
     // @ts-ignore
     expect(transformInfo()).to.be.equal(null);
   });
@@ -11,7 +12,7 @@ describe('Info transformer', () => {
   it('should create title if title is listed', () => {
     const fixture = {
       title: 'Doc title',
-    };
+    } as OpenAPIV2.InfoObject;
     const results = {
       underline: '=========',
     };
@@ -25,7 +26,7 @@ describe('Info transformer', () => {
   it('should return description as is', () => {
     const fixture = {
       description: 'Here is a description',
-    };
+    } as OpenAPIV2.InfoObject;
     const res = transformInfo(fixture);
     expect(res).to.be.equal(`${fixture.description}\n`);
   });
@@ -46,7 +47,7 @@ describe('Info transformer', () => {
   it('should create term of service block', () => {
     const fixture = {
       termsOfService: 'Terms of service',
-    };
+    } as OpenAPIV2.InfoObject;
     const result = `### Terms of service\n${fixture.termsOfService}\n`;
     const res = transformInfo(fixture);
     expect(res).to.be.equal(result);

@@ -4,7 +4,7 @@
     "module": "commonjs",
     "outDir": "./dist",
     "allowJs": true,
-    "resolveJsonModule": false,
+    "resolveJsonModule": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,

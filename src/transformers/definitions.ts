@@ -1,14 +1,15 @@
-const dataTypeTransformer = require('./dataTypes');
-const inArray = require('../lib/inArray');
-const Schema = require('../models/schema');
-const { textEscape } = require('../lib/textEscape');
+import { OpenAPIV2 } from 'openapi-types';
+import dataTypeTransformer from './dataTypes';
+import inArray from '../lib/inArray';
+import { Schema } from '../models/schema';
+import { textEscape } from '../lib/textEscape';
 
 /**
  * If Property field is present parse them.
  * @param name of the definition
  * @param definition definition object
  */
-const parseProperties = (name, definition) => {
+function parseProperties(name: string, definition) {
   const required = 'required' in definition ? definition.required : [];
   const res = [];
   Object.keys(definition.properties).forEach((propName) => {
@@ -34,7 +35,7 @@ const parseProperties = (name, definition) => {
     res.push(`| ${propName} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
   });
   return res;
-};
+}
 
 /**
  * Parse allOf definition
@@ -55,7 +56,7 @@ const parsePrimitive = (name, definition) => {
  * @param {type} definition
  * @return {type} Description
  */
-const processDefinition = (name, definition) => {
+export const processDefinition = (name, definition) => {
   let res = [];
   let parsedDef = [];
   res.push('');
@@ -86,13 +87,12 @@ const processDefinition = (name, definition) => {
 
   return res.length ? res.join('\n') : null;
 };
-module.exports.processDefinition = processDefinition;
 
 /**
  * @param {type} definitions
  * @return {type} Description
  */
-module.exports = (definitions) => {
+export const transformDefinition = (definitions) => {
   const res = [];
   Object.keys(definitions).forEach((definitionName) => res.push(processDefinition(
     definitionName,

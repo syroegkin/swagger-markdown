@@ -1,5 +1,5 @@
 const transformDataTypes = require('./dataTypes');
-const Schema = require('../models/schema');
+const { Schema } = require('../models/schema');
 const { textEscape } = require('../lib/textEscape');
 
 module.exports = (parameters, pathParameters) => {

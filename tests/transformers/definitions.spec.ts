@@ -1,12 +1,12 @@
 import { expect } from 'chai';
-import transformDefinitions from '../../src/transformers/definitions';
+import { transformDefinition } from '../../src/transformers/definitions';
 import { fixture } from './definitionsFixture';
 
 describe('Definitions', () => {
-  const res1 = transformDefinitions(fixture.data1).split('\n');
-  const res2 = transformDefinitions(fixture.data2).split('\n');
-  const res3 = transformDefinitions(fixture.data3).split('\n');
-  const res4 = transformDefinitions(fixture.data4).split('\n');
+  const res1 = transformDefinition(fixture.data1).split('\n');
+  const res2 = transformDefinition(fixture.data2).split('\n');
+  const res3 = transformDefinition(fixture.data3).split('\n');
+  const res4 = transformDefinition(fixture.data4).split('\n');
   // Slice off header
   const res11 = res1.slice(6);
   const res12 = res2.slice(6);

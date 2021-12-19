@@ -1,4 +1,4 @@
-const Schema = require('../models/schema');
+const { Schema } = require('../models/schema');
 const transformDataTypes = require('./dataTypes');
 const { textEscape } = require('../lib/textEscape');
 

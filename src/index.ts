@@ -1,6 +1,6 @@
 import { ArgumentParser } from 'argparse';
 import packageInfo from '../package.json';
-import { transformFile } from './convert';
+import { transfromFile, Options } from './convert';
 
 const parser = new ArgumentParser({
   description: packageInfo.name,
@@ -27,11 +27,11 @@ parser.add_argument('--skip-info', {
   help: 'Skip the title, description, version etc, whatever is in the info block.',
   dest: 'skipInfo',
 });
-const args = parser.parse_args();
+const args: Options = parser.parse_args();
 
 if (args.input) {
   if (!args.output) {
     args.output = args.input.replace(/(yaml|yml|json)$/i, 'md');
   }
-  transformFile(args).catch((err) => console.error(err));
+  transfromFile(args).catch((err) => console.error(err));
 }

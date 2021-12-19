@@ -20,34 +20,49 @@ export class Markdown {
   }
 
   public link(anchor: string, href: string): Markdown {
-    this.buffer = `[${anchor}](${href})`;
+    this.buffer += `[${anchor}](${href})`;
     return this;
   }
 
   public bold(): Markdown {
-    this.buffer = `**${this.buffer}**`;
+    if (this.buffer.length) this.buffer = `**${this.buffer}**`;
     return this;
   }
 
   public italic(): Markdown {
-    this.buffer = `*${this.buffer}*`;
+    if (this.buffer.length) this.buffer = `*${this.buffer}*`;
+    return this;
+  }
+
+  public h1(): Markdown {
+    if (this.buffer.length) this.buffer = `# ${this.buffer}`;
+    return this;
+  }
+
+  public h2(): Markdown {
+    if (this.buffer.length) this.buffer = `## ${this.buffer}`;
+    return this;
+  }
+
+  public h3(): Markdown {
+    if (this.buffer.length) this.buffer = `### ${this.buffer}`;
     return this;
   }
 
   public prepend(): Markdown {
-    this.res.unshift(`${this.buffer}  `);
+    this.res.unshift(this.buffer);
     this.buffer = '';
     return this;
   }
 
   public append(): Markdown {
-    this.res.push(`${this.buffer}  `);
+    this.res.push(this.buffer);
     this.buffer = '';
     return this;
   }
 
   public lineBreak(): Markdown {
-    this.res.push('');
+    this.res.push('\n');
     return this;
   }
 
@@ -60,6 +75,6 @@ export class Markdown {
     if (!this.length) {
       return null;
     }
-    return this.res.join('\n');
+    return `${this.res.join('\n')}\n`;
   }
 }

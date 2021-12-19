@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import transformDataTypes from '../../src/transformers/dataTypes';
-import Schema from '../../src/models/schema';
+import { Schema } from '../../src/models/schema';
 import { anchor } from '../../src/lib/anchor';
 
 const fixture = [
@@ -27,7 +27,7 @@ const fixture = [
   [
     new Schema({
       type: 'array',
-      items: new Schema({ type: 'string' }),
+      items: { type: 'string' },
     }), '[ string ]',
   ], [
     new Schema({
