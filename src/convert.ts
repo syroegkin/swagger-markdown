@@ -4,7 +4,7 @@ import markdownlint from 'markdownlint';
 import markdownlintRuleHelpers from 'markdownlint-rule-helpers';
 import { transformInfo } from './transformers/info';
 import { transformPath } from './transformers/path';
-import transformSecurityDefinitions from './transformers/securityDefinitions';
+import { transformSecurityDefinitions } from './transformers/securityDefinitions';
 import { transformExternalDocs } from './transformers/externalDocs';
 import { transformDefinition } from './transformers/definitions';
 import markdownlintConfig from '../.markdownlint.json';
