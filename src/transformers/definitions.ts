@@ -1,6 +1,5 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { dataTypeResolver } from './dataTypes';
-import { inArray } from '../lib/inArray';
 import { Schema } from '../models/schema';
 import { textEscape } from '../lib/textEscape';
 
@@ -31,7 +30,7 @@ function parseProperties(name: string, definition) {
       descriptionParts.push(`_Example:_ \`${JSON.stringify(prop.example)}\``);
     }
     const descriptionCell = descriptionParts.join('<br>');
-    const requiredCell = inArray(propName, required) ? 'Yes' : 'No';
+    const requiredCell = required.includes(propName) ? 'Yes' : 'No';
     res.push(`| ${propName} | ${typeCell} | ${descriptionCell} | ${requiredCell} |`);
   });
   return res;

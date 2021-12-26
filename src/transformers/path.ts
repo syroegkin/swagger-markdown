@@ -1,4 +1,3 @@
-import { inArray } from '../lib/inArray';
 import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
 import { transformSecurity } from './security';
@@ -28,7 +27,7 @@ export const transformPath = (path, data, parameters?: any) => {
 
   // Go further method by methods
   Object.keys(data).forEach((method) => {
-    if (inArray(method, ALLOWED_METHODS)) {
+    if (ALLOWED_METHODS.includes(method)) {
       // Set method as a subheader
       res.push(`#### ${method.toUpperCase()}`);
       const pathInfo = data[method];
