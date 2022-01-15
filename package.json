@@ -91,7 +91,7 @@
   },
   "dependencies": {
     "argparse": "1.0.10",
-    "markdownlint": "^0.24.0",
+    "markdownlint": "^0.25.1",
     "markdownlint-rule-helpers": "^0.15.0",
     "swagger-parser": "^10.0.3"
   }
