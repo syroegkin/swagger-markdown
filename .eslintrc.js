@@ -27,6 +27,8 @@ module.exports = {
     '@typescript-eslint/no-shadow': ['error'],
     'no-useless-constructor': 0,
     '@typescript-eslint/no-useless-constructor': ['error'],
+    indent: 'off',
+    '@typescript-eslint/indent': ['error', 2],
   },
   overrides: [
     {
