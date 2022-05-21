@@ -28,7 +28,7 @@ describe('Info transformer', () => {
       description: 'Here is a description',
     } as OpenAPIV2.InfoObject;
     const res = transformInfo(fixture);
-    expect(res).to.be.equal(`${fixture.description}\n`);
+    expect(res).to.be.equal(`${fixture.description}\n\n`);
   });
 
   it('should return proper doc generated for the title and description', () => {
@@ -39,7 +39,7 @@ describe('Info transformer', () => {
     };
     const result = '# Document title\n'
       + 'Document description\n\n'
-      + '## Version: 1.0.1\n';
+      + '## Version: 1.0.1\n\n';
     const res = transformInfo(fixture);
     expect(res).to.be.equal(result);
   });
@@ -48,7 +48,7 @@ describe('Info transformer', () => {
     const fixture = {
       termsOfService: 'Terms of service',
     } as OpenAPIV2.InfoObject;
-    const result = `### Terms of service\n${fixture.termsOfService}\n`;
+    const result = `### Terms of service\n${fixture.termsOfService}\n\n`;
     const res = transformInfo(fixture);
     expect(res).to.be.equal(result);
   });

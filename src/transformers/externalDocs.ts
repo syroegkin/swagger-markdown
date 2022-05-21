@@ -6,7 +6,10 @@ const DEFAULT_TEXT = 'Find more info here';
 export function transformExternalDocs(externalDocs: OpenAPIV2.ExternalDocumentationObject) {
   const md = new Markdown();
   if ('url' in externalDocs) {
-    md.link(externalDocs.description || DEFAULT_TEXT, externalDocs.url).append();
+    md.line(md.string().link(
+      externalDocs.description || DEFAULT_TEXT,
+      externalDocs.url,
+    ));
   }
   return md.export();
 }

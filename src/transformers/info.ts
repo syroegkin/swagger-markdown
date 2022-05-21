@@ -1,8 +1,7 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { transformContact } from './contact';
 import { transformLicense } from './license';
-import { textEscape } from '../lib/textEscape';
-// import { Markdown } from '../lib/markdown';
+import { Markdown } from '../lib/markdown';
 
 /**
  * http://swagger.io/specification/#infoObject
@@ -12,31 +11,33 @@ import { textEscape } from '../lib/textEscape';
  * @returns {String}
  */
 export function transformInfo(info: OpenAPIV2.InfoObject) {
-  const res: string[] = [];
+  const md = new Markdown();
   if (info !== null && typeof info === 'object') {
     if ('title' in info) {
-      res.push(`# ${info.title}`);
+      md.line(md.string(info.title).h1());
     }
 
     if ('description' in info) {
-      res.push(`${textEscape(info.description)}\n`);
+      md.line(md.string(info.description).escape()).line();
     }
 
     if ('version' in info) {
-      res.push(`## Version: ${info.version}\n`);
+      md.line(md.string(`Version: ${info.version}`).h2()).line();
     }
 
     if ('termsOfService' in info) {
-      res.push(`### Terms of service\n${textEscape(info.termsOfService)}\n`);
+      md.line(md.string('Terms of service').h3())
+        .line(md.string(info.termsOfService).escape())
+        .line();
     }
 
     if ('contact' in info) {
-      res.push(transformContact(info.contact));
+      md.line(transformContact(info.contact));
     }
 
     if ('license' in info) {
-      res.push(transformLicense(info.license));
+      md.line(transformLicense(info.license));
     }
   }
-  return res.length ? res.join('\n') : null;
+  return md.length ? md.export() : null;
 }

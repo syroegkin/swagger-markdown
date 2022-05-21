@@ -9,13 +9,14 @@ export function transformLicense(license: OpenAPIV2.LicenseObject): string {
   const md = new Markdown();
 
   if ('url' in license || 'name' in license) {
-    md.line('License:').bold().line(' ');
+    const licenseDocument = md.string('License:').bold();
+    let url;
     if ('url' in license && 'name' in license) {
-      md.link(license.name, license.url);
+      url = md.string().link(license.name, license.url);
     } else {
-      md.line(license.name || license.url);
+      url = md.string(license.name || license.url);
     }
-    md.append();
+    md.line(licenseDocument, ' ', url);
   }
 
   return md.export();
