@@ -11,10 +11,10 @@ describe('Contact info', () => {
       },
     };
     const res = transformContact(fixture.contact);
-    const result = '**Contact information:**\n'
-      + `${fixture.contact.name}\n`
-      + `${fixture.contact.url}\n`
-      + `${fixture.contact.email}\n`;
+    const result = '**Contact information:**  \n'
+      + `${fixture.contact.name}  \n`
+      + `${fixture.contact.url}  \n`
+      + `${fixture.contact.email}  \n`;
     expect(res).to.be.equal(result);
   });
   it('should create only these fields which are provided', () => {
@@ -24,8 +24,8 @@ describe('Contact info', () => {
       },
     };
     const res = transformContact(fixture.contact);
-    const result = '**Contact information:**\n'
-      + `${fixture.contact.url}\n`;
+    const result = '**Contact information:**  \n'
+      + `${fixture.contact.url}  \n`;
     expect(res).to.be.equal(result);
   });
   it('should not create header if information is not provided', () => {

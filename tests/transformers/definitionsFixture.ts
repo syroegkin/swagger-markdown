@@ -58,10 +58,10 @@ export const fixture = {
   },
   result2: [
     '| category | [Category](#category) |  | No |',
-    '| name | string | pet category in the store<br>_Example:_ `"doggie"` | Yes |',
+    '| name | string | pet category in the store<br>*Example:* `"doggie"` | Yes |',
     '| photoUrls | [ string ] |  | Yes |',
     '| tags | [ [Category](#category) ] |  | No |',
-    '| gender | string | _Enum:_ `"male"`, `"female"` | No |',
+    '| gender | string | *Enum:* `"male"`, `"female"` | No |',
   ],
   data3: {
     deviceid: {
