@@ -12,7 +12,12 @@ fs.readdir(directory, (err, files) => {
   files.forEach((filename) => {
     if (!filename.match(/\.yaml$/)) return;
     console.log(`Processing ${filename}`);
-    execSync(`node dist/index.js -i examples/${filename}`);
-    console.log('Done\n');
+    try {
+      execSync(`node dist/index.js -i examples/${filename}`);
+      console.log('Done\n');
+    } catch (e) {
+      console.log(e);
+      console.log(Buffer.from(e.stdout).toString('utf-8'));
+    }
   });
 });
