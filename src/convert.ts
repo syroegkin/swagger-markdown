@@ -2,27 +2,30 @@ import SwaggerParser from '@apidevtools/swagger-parser';
 import fs from 'fs';
 import markdownlint from 'markdownlint';
 import markdownlintRuleHelpers from 'markdownlint-rule-helpers';
-import { transformInfo } from './transformers/info';
-import { transformPath } from './transformers/path';
-import { transformSecurityDefinitions } from './transformers/securityDefinitions';
-import { transformExternalDocs } from './transformers/externalDocs';
-import { transformDefinition } from './transformers/definitions';
-import markdownlintConfig from '../.markdownlint.json';
+import { AllSwaggerDocumentVersions, Options } from './types';
+import { isV2Document, isV31Document, isV3Document } from './lib/detectDocumentVersion';
+import { transformSwaggerV2 } from './transformers/documentV2';
 
-export interface Options {
-  skipInfo?: boolean;
-  output?: string;
-  input: string;
-}
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const markdownlintConfig = require('../.markdownlint.json');
 
-// replace all $refs except model definitions as these have their own section in the doc
-export function partiallyDereference(node, $refs?: any) {
+/**
+ * Replace all $refs with their values,
+ * except model definitions as these have their own section in the result md document
+ *
+ * @export
+ * @param {AllSwaggerDocumentVersions} node
+ * @param {SwaggerParser.$Refs} [$refs]
+ * @return {*}  {AllSwaggerDocumentVersions}
+ */
+export function partiallyDereference(
+  node: AllSwaggerDocumentVersions,
+  $refs?: SwaggerParser.$Refs,
+): AllSwaggerDocumentVersions {
   if (typeof node !== 'object') return node;
-  const obj = {};
-  // Issue related to babel (I beleive) as it won't build it when just spreading
-  // eslint-disable-next-line prefer-object-spread
-  const nodeAsObject = Object.assign({}, node);
-  Object.entries(nodeAsObject).forEach((pair: [string, any]): void => {
+  const obj = {} as AllSwaggerDocumentVersions;
+  Object.entries(node).forEach((pair: [string, any]): void => {
+    // console.log(pair);
     const [key, value] = pair;
     if (Array.isArray(value)) {
       obj[key] = value.map((item) => partiallyDereference(item, $refs));
@@ -35,46 +38,27 @@ export function partiallyDereference(node, $refs?: any) {
   return obj;
 }
 
-export function transfromSwagger(inputDoc, options: any = {}) {
-  const document = [];
+/**
+ * Check version of the document,
+ * run appropriate processor and beautify the markdown after processing.
+ *
+ * @export
+ * @param {AllSwaggerDocumentVersions} inputDoc
+ * @param {Options} options
+ * @return {*}  {string}
+ */
+export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: Options): string {
+  let plainDocument = '';
 
-  // Collect parameters
-  const parameters = 'parameters' in inputDoc ? inputDoc.parameters : {};
-
-  // Process info
-  if (!options.skipInfo && 'info' in inputDoc) {
-    document.push(transformInfo(inputDoc.info));
+  if (isV2Document(inputDoc)) {
+    plainDocument = transformSwaggerV2(inputDoc, options);
+  } else if (isV3Document(inputDoc)) {
+    throw new Error('OpenAPI V3 is not yet supported');
+  } else if (isV31Document(inputDoc)) {
+    throw new Error('OpenAPI V3.1 is not yet supported');
+  } else {
+    throw new Error('Can not detect version ot this version in not supported');
   }
-
-  if ('externalDocs' in inputDoc) {
-    document.push(transformExternalDocs(inputDoc.externalDocs));
-  }
-
-  // Security definitions
-  if ('securityDefinitions' in inputDoc) {
-    document.push(transformSecurityDefinitions(inputDoc.securityDefinitions));
-  } else if (inputDoc.components && inputDoc.components.securitySchemas) {
-    document.push(transformSecurityDefinitions(inputDoc.components.securityDefinitions));
-  }
-
-  // Process Paths
-  if ('paths' in inputDoc) {
-    Object.keys(inputDoc.paths).forEach((path) => document.push(transformPath(
-      path,
-      inputDoc.paths[path],
-      parameters,
-    )));
-  }
-
-  // Models (definitions)
-  if ('definitions' in inputDoc) {
-    document.push(transformDefinition(inputDoc.definitions));
-  } else if (inputDoc.components && inputDoc.components.schemas) {
-    document.push(transformDefinition(inputDoc.components.schemas));
-  }
-
-  // Glue all pieces down
-  const plainDocument = document.join('\n');
 
   // Fix markdown issues
   const fixOptions = {
@@ -91,10 +75,16 @@ export function transfromSwagger(inputDoc, options: any = {}) {
   return plainDocument;
 }
 
+/**
+ *
+ *
+ * @export
+ * @param {Options} options
+ * @return {*}  {Promise<string>}
+ */
 export async function transformFile(options: Options): Promise<string> {
   const swaggerParser = new SwaggerParser();
-  const $refs = await swaggerParser.resolve(options.input);
-  // return SwaggerParser.resolve(options.input).then(() => {
+  const $refs: SwaggerParser.$Refs = await swaggerParser.resolve(options.input);
   const dereferencedSwagger = partiallyDereference(swaggerParser.api, $refs);
   const markdown = transfromSwagger(dereferencedSwagger, options);
 
@@ -103,5 +93,4 @@ export async function transformFile(options: Options): Promise<string> {
   }
 
   return markdown;
-  // });
 }
