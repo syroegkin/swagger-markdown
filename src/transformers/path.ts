@@ -1,3 +1,4 @@
+import { OpenAPIV2 } from 'openapi-types';
 import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
 import { transformSecurity } from './security';
@@ -9,7 +10,7 @@ import { textEscape } from '../lib/textEscape';
  */
 const ALLOWED_METHODS = ['get', 'post', 'put', 'patch', 'delete', 'options'];
 
-export const transformPath = (path, data, parameters?: any) => {
+export const transformPath = (path: string, data, parameters?: any) => {
   const res = [];
   let pathParameters = null;
 

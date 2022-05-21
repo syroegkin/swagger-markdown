@@ -4,5 +4,6 @@ module.exports = {
     'no-unused-expressions': 0,
     // I want to test weird cases
     '@typescript-eslint/ban-ts-comment': 0,
+    'import/no-extraneous-dependencies': 0,
   },
 };

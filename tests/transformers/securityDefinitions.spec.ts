@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import { OpenAPIV2 } from 'openapi-types';
 import { transformSecurityDefinitions, nameResolver, typeResolver } from '../../src/transformers/securityDefinitions';
 
 describe('Security definitions', () => {
@@ -10,7 +11,7 @@ describe('Security definitions', () => {
   it('Should resolve auth type', () => {
     Object.keys(typeResolver).forEach((type) => {
       const fixture = { auth: { type } };
-      const res = transformSecurityDefinitions(fixture);
+      const res = transformSecurityDefinitions(fixture as OpenAPIV2.SecurityDefinitionsObject);
       const result = '### Security\n'
         + '**auth**  \n\n'
         + `|${type}|*${typeResolver[type]}*|\n`
@@ -22,7 +23,7 @@ describe('Security definitions', () => {
     Object.keys(nameResolver).forEach((key) => {
       const fixture = { auth: { type: 'basic' } };
       fixture.auth[key] = 'value';
-      const res = transformSecurityDefinitions(fixture);
+      const res = transformSecurityDefinitions(fixture as OpenAPIV2.SecurityDefinitionsObject);
       const result = `|${nameResolver[key]}|value|\n`;
       expect(res).to.include(result);
     });
@@ -37,7 +38,7 @@ describe('Security definitions', () => {
         },
       },
     };
-    const res = transformSecurityDefinitions(fixture);
+    const res = transformSecurityDefinitions(fixture as OpenAPIV2.SecurityDefinitionsObject);
     expect(res).to.exist;
   });
   it('Should ignore undefined keys unless it is prefixed with x-', () => {
@@ -49,7 +50,7 @@ describe('Security definitions', () => {
         'unknown-key': 'Uknown key',
       },
     };
-    const result = transformSecurityDefinitions(fixture);
+    const result = transformSecurityDefinitions(fixture as OpenAPIV2.SecurityDefinitionsObject);
     expect(result.match(/undefined/ig)).to.be.null;
     expect(result.match(/x-special-key/ig)).to.be.not.null;
   });

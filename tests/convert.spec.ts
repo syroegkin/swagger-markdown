@@ -1,6 +1,8 @@
+import SwaggerParser from '@apidevtools/swagger-parser';
 import { expect } from 'chai';
 import fs from 'fs';
 import { transformFile, partiallyDereference } from '../src/convert';
+import { AllSwaggerDocumentVersions } from '../src/types';
 
 describe.skip('Integration test examples', () => {
   const examplesDir = `${__dirname}/../examples`;
@@ -31,10 +33,10 @@ describe.skip('Partial dereference', () => {
           return null;
       }
     },
-  };
+  } as undefined as SwaggerParser.$Refs;
 
   it('makes no changes to object with no $refs', () => {
-    const input = { one: { two: [3, 'four', { five: 'six' }] } };
+    const input = { one: { two: [3, 'four', { five: 'six' }] } } as unknown as AllSwaggerDocumentVersions;
     expect(partiallyDereference(input)).to.eql(input);
   });
 
@@ -44,7 +46,7 @@ describe.skip('Partial dereference', () => {
       five: { $ref: '#/some/thing' },
       six: { seven: { $ref: '#/transitive/ref' } },
       eight: { $ref: '#/definitions/not/used' },
-    };
+    } as unknown as AllSwaggerDocumentVersions;
     const expected = {
       one: { two: [3, 'four', { some: 'thing' }] },
       five: { some: 'thing' },

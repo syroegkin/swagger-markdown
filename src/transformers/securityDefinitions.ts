@@ -1,3 +1,5 @@
+import { OpenAPIV2 } from 'openapi-types';
+
 export const typeResolver = {
   basic: 'Basic',
   apiKey: 'API Key',
@@ -12,7 +14,9 @@ export const nameResolver = {
   tokenUrl: 'Token URL',
 };
 
-export const transformSecurityDefinitions = (securityDefinitions) => {
+export const transformSecurityDefinitions = (
+  securityDefinitions: OpenAPIV2.SecurityDefinitionsObject,
+) => {
   // Base block
   const res = [];
   Object.keys(securityDefinitions).forEach((type) => {

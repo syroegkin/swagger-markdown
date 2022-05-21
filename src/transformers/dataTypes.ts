@@ -24,35 +24,40 @@ const resolver = {
  * @param {Schema} schema
  * @return {String}
  */
-export const dataTypeResolver = (schema: SchemaInterface) => {
-  if (schema.getAllOf()) {
-    return schema.getAllOf()
-      .map((subSchema) => dataTypeResolver(subSchema))
+export const dataTypeResolver = (schema: SchemaInterface): string => {
+  const all = schema.getAllOf();
+  if (all) {
+    return all.map((subSchema: SchemaInterface) => dataTypeResolver(subSchema))
       .filter((type) => type !== '')
       .join(' & ');
   }
-  if (schema.getReference()) {
-    const name = schema.getReference().match(/\/([^/]*)$/i)[1];
+
+  const reference = schema.getReference();
+  if (reference) {
+    const name = reference.match(/\/([^/]*)$/i)[1];
     const link = anchor(name);
     return `[${name}](#${link})`;
   }
-  if (schema.getType() in resolver) {
-    if (schema.getFormat()) {
-      return schema.getFormat() in resolver[schema.getType()]
-        ? resolver[schema.getType()][schema.getFormat()]
-        : `${schema.getType()} (${schema.getFormat()})`;
+
+  const type = schema.getType();
+  const format = schema.getFormat();
+  if (type in resolver) {
+    if (format) {
+      return format in resolver[type]
+        ? resolver[type][format]
+        : `${type} (${format})`;
     }
-    return schema.getType();
+    return type;
   }
-  if (schema.getFormat()) {
-    return `${schema.getType()} (${schema.getFormat()})`;
+  if (format) {
+    return `${type} (${format})`;
   }
-  if (schema.getType() === 'array') {
+  if (type === 'array') {
     const subType = dataTypeResolver(schema.getItems());
     return `[ ${subType} ]`;
   }
-  if (schema.getType()) {
-    return schema.getType();
+  if (type) {
+    return type;
   }
   return '';
 };
