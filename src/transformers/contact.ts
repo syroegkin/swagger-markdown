@@ -11,16 +11,16 @@ export function transformContact(contact: OpenAPIV2.ContactObject) {
   if (Object.keys(contact).some(
     (item) => ['name', 'url', 'email'].includes(item),
   )) {
-    md.line('Contact information:').bold().append();
+    md.line('Contact information:').bold().line('  ').append();
 
     if ('name' in contact) {
-      md.line(contact.name, true).append();
+      md.line(`${contact.name}  `, true).append();
     }
     if ('url' in contact) {
-      md.line(contact.url).append();
+      md.line(`${contact.url}  `).append();
     }
     if ('email' in contact) {
-      md.line(contact.email).append();
+      md.line(`${contact.email}  `).append();
     }
   }
 

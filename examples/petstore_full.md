@@ -500,7 +500,7 @@ This can only be done by the logged in user.
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
 | category | [Category](#category) |  | No |
-| name | string | _Example:_ `"doggie"` | Yes |
+| name | string | *Example:* `"doggie"` | Yes |
 | photoUrls | [ string ] |  | Yes |
 | tags | [ [Tag](#tag) ] |  | No |
 | status | string | pet status in the store | No |

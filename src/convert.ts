@@ -24,17 +24,17 @@ export function partiallyDereference(
 ): AllSwaggerDocumentVersions {
   if (typeof node !== 'object') return node;
   const obj = {} as AllSwaggerDocumentVersions;
-  Object.entries(node).forEach((pair: [string, any]): void => {
-    // console.log(pair);
-    const [key, value] = pair;
+  const entries = Object.entries(node);
+  for (let i = 0; i < entries.length; i++) {
+    const [key, value] = entries[i];
     if (Array.isArray(value)) {
       obj[key] = value.map((item) => partiallyDereference(item, $refs));
     } else if (key === '$ref' && !value.startsWith('#/definitions/')) {
-      partiallyDereference($refs.get(value), $refs);
+      return partiallyDereference($refs.get(value), $refs);
     } else {
       obj[key] = partiallyDereference(value, $refs);
     }
-  });
+  }
   return obj;
 }
 
@@ -85,8 +85,8 @@ export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: 
 export async function transformFile(options: Options): Promise<string> {
   const swaggerParser = new SwaggerParser();
   const $refs: SwaggerParser.$Refs = await swaggerParser.resolve(options.input);
-  const dereferencedSwagger = partiallyDereference(swaggerParser.api, $refs);
-  const markdown = transfromSwagger(dereferencedSwagger, options);
+  const dereferencedDocument = partiallyDereference(swaggerParser.api, $refs);
+  const markdown = transfromSwagger(dereferencedDocument, options);
 
   if (options.output) {
     fs.writeFileSync(options.output, markdown);

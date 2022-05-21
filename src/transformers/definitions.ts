@@ -24,10 +24,10 @@ function parseProperties(name: string, definition) {
     }
     if ('enum' in prop) {
       const enumValues = prop.enum.map((val) => `\`${JSON.stringify(val)}\``).join(', ');
-      descriptionParts.push(`_Enum:_ ${enumValues}`);
+      descriptionParts.push(`*Enum:* ${enumValues}`);
     }
     if ('example' in prop) {
-      descriptionParts.push(`_Example:_ \`${JSON.stringify(prop.example)}\``);
+      descriptionParts.push(`*Example:* \`${JSON.stringify(prop.example)}\``);
     }
     const descriptionCell = descriptionParts.join('<br>');
     const requiredCell = required.includes(propName) ? 'Yes' : 'No';
