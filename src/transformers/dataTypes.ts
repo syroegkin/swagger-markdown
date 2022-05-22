@@ -1,4 +1,5 @@
 import { anchor } from '../lib/anchor';
+import { Markdown } from '../lib/markdown';
 import { SchemaInterface } from '../models/schema';
 
 const resolver = {
@@ -25,6 +26,8 @@ const resolver = {
  * @return {String}
  */
 export const dataTypeResolver = (schema: SchemaInterface): string => {
+  const md = Markdown.md();
+
   const all = schema.getAllOf();
   if (all) {
     return all.map((subSchema: SchemaInterface) => dataTypeResolver(subSchema))
@@ -36,7 +39,7 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
   if (reference) {
     const name = reference.match(/\/([^/]*)$/i)[1];
     const link = anchor(name);
-    return `[${name}](#${link})`;
+    return md.string().link(name, `#${link}`).get();
   }
 
   const type = schema.getType();

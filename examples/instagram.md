@@ -131,22 +131,22 @@ callbackFunction({
 ### Security
 **oauth**  
 
-|oauth2|*OAuth 2.0*|
-|---|---|
-|Flow|implicit|
-|Authorization URL|<https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token>|
-|**Scopes**||
-|basic|to read any and all data related to a user (e.g. following/followed-by  lists, photos, etc.) (granted by default) |
-|comments|to create or delete comments on a user’s behalf|
-|relationships|to follow and unfollow users on a user’s behalf|
-|likes|to like and unlike items on a user’s behalf|
+| oauth2 | *OAuth 2.0* |
+| --- | --- |
+| Flow | implicit |
+| Authorization URL | <https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token> |
+| **Scopes** |  |
+| basic | to read any and all data related to a user (e.g. following/followed-by  lists, photos, etc.) (granted by default)  |
+| comments | to create or delete comments on a user’s behalf |
+| relationships | to follow and unfollow users on a user’s behalf |
+| likes | to like and unlike items on a user’s behalf |
 
 **key**  
 
-|apiKey|*API Key*|
-|---|---|
-|In|query|
-|Name|access_token|
+| apiKey | *API Key* |
+| --- | --- |
+| In | query |
+| Name | access_token |
 
 ### /users/{user-id}
 

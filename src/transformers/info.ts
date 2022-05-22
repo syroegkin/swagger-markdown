@@ -11,7 +11,7 @@ import { Markdown } from '../lib/markdown';
  * @returns {String}
  */
 export function transformInfo(info: OpenAPIV2.InfoObject) {
-  const md = new Markdown();
+  const md = Markdown.md();
   if (info !== null && typeof info === 'object') {
     if ('title' in info) {
       md.line(md.string(info.title).h1());

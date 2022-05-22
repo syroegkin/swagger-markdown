@@ -18,20 +18,20 @@ apiteam@swagger.io
 ### Security
 **api_key**  
 
-|apiKey|*API Key*|
-|---|---|
-|Name|api_key|
-|In|header|
+| apiKey | *API Key* |
+| --- | --- |
+| Name | api_key |
+| In | header |
 
 **petstore_auth**  
 
-|oauth2|*OAuth 2.0*|
-|---|---|
-|Authorization URL|<http://petstore.swagger.io/api/oauth/dialog>|
-|Flow|implicit|
-|**Scopes**||
-|write_pets|modify pets in your account|
-|read_pets|read your pets|
+| oauth2 | *OAuth 2.0* |
+| --- | --- |
+| Authorization URL | <http://petstore.swagger.io/api/oauth/dialog> |
+| Flow | implicit |
+| **Scopes** |  |
+| write_pets | modify pets in your account |
+| read_pets | read your pets |
 
 ### /pets
 

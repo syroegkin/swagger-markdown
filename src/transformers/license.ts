@@ -6,7 +6,7 @@ import { Markdown } from '../lib/markdown';
  * License object transformer
  */
 export function transformLicense(license: OpenAPIV2.LicenseObject): string {
-  const md = new Markdown();
+  const md = Markdown.md();
 
   if ('url' in license || 'name' in license) {
     const licenseDocument = md.string('License:').bold();

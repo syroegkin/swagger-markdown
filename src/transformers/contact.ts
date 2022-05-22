@@ -6,7 +6,7 @@ import { Markdown } from '../lib/markdown';
  * Contact info transformer
  */
 export function transformContact(contact: OpenAPIV2.ContactObject) {
-  const md = new Markdown();
+  const md = Markdown.md();
 
   if (Object.keys(contact).some(
     (item) => ['name', 'url', 'email'].includes(item),

@@ -1,4 +1,5 @@
 import { OpenAPIV2 } from 'openapi-types';
+import { Markdown } from '../lib/markdown';
 
 export const typeResolver = {
   basic: 'Basic',
@@ -18,17 +19,26 @@ export const transformSecurityDefinitions = (
   securityDefinitions: OpenAPIV2.SecurityDefinitionsObject,
 ) => {
   // Base block
-  const res = [];
+  const md = Markdown.md();
+
   Object.keys(securityDefinitions).forEach((type) => {
-    res.push(`**${type}**  \n`);
-    res.push(`|${securityDefinitions[type].type}|*${typeResolver[securityDefinitions[type].type]}*|`);
-    res.push('|---|---|');
+    md.line(md.string(type).bold().br()).line();
+
+    const table = md.table();
+    table
+      .th(securityDefinitions[type].type)
+      .th(md.string(typeResolver[securityDefinitions[type].type]).italic());
     Object.keys(securityDefinitions[type]).forEach((value) => {
       if (value === 'scopes') {
-        res.push('|**Scopes**||');
+        table.tr()
+          .td(md.string('Scopes').bold())
+          .td();
         Object.keys(securityDefinitions[type][value]).forEach((scope) => {
-          res.push(`|${scope}|`
-            + `${securityDefinitions[type][value][scope].replace(/[\r\n]/g, ' ')}|`);
+          table.tr()
+            .td(scope)
+            .td(
+              securityDefinitions[type][value][scope].replace(/[\r\n]/g, ' '),
+            );
         });
         return;
       }
@@ -40,17 +50,23 @@ export const transformSecurityDefinitions = (
           }
           key = value;
         }
-        res.push(`|${key}|${securityDefinitions[type][value].replace(/[\r\n]/g, ' ')}|`);
+        table.tr()
+          .td(key)
+          .td(securityDefinitions[type][value].replace(/[\r\n]/g, ' '));
       }
     });
-    res.push('');
+    md.line(table);
+    md.line();
   });
 
   // Create header
   // Only in case if there is any data
-  if (res.length > 0) {
-    res.unshift('### Security');
+  if (md.length > 0) {
+    return Markdown.md()
+      .line('### Security')
+      .line(md.export())
+      .export();
   }
 
-  return res.length ? res.join('\n') : null;
+  return null;
 };

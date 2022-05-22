@@ -14,8 +14,8 @@ describe('Security definitions', () => {
       const res = transformSecurityDefinitions(fixture as OpenAPIV2.SecurityDefinitionsObject);
       const result = '### Security\n'
         + '**auth**  \n\n'
-        + `|${type}|*${typeResolver[type]}*|\n`
-        + '|---|---|\n';
+        + `| ${type} | *${typeResolver[type]}* |\n`
+        + '| --- | --- |\n\n\n';
       expect(result).to.be.equal(res);
     });
   });
@@ -24,7 +24,7 @@ describe('Security definitions', () => {
       const fixture = { auth: { type: 'basic' } };
       fixture.auth[key] = 'value';
       const res = transformSecurityDefinitions(fixture as OpenAPIV2.SecurityDefinitionsObject);
-      const result = `|${nameResolver[key]}|value|\n`;
+      const result = `| ${nameResolver[key]} | value |\n`;
       expect(res).to.include(result);
     });
   });

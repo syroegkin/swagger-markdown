@@ -4,7 +4,7 @@ import fs from 'fs';
 import { transformFile, partiallyDereference } from '../src/convert';
 import { AllSwaggerDocumentVersions } from '../src/types';
 
-describe.skip('Integration test examples', () => {
+describe('Integration test examples', () => {
   const examplesDir = `${__dirname}/../examples`;
   const examples = fs.readdirSync(examplesDir);
   examples
@@ -19,7 +19,7 @@ describe.skip('Integration test examples', () => {
     });
 });
 
-describe.skip('Partial dereference', () => {
+describe('Partial dereference', () => {
   const mockRefs = {
     get(ref) {
       switch (ref) {

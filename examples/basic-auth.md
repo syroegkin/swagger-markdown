@@ -12,9 +12,9 @@ Server code is available [here](https://github.com/mohsen1/basic-auth-server). I
 ### Security
 **basicAuth**  
 
-|basic|*Basic*|
-|---|---|
-|Description|HTTP Basic Authentication. Works over `HTTP` and `HTTPS`|
+| basic | *Basic* |
+| --- | --- |
+| Description | HTTP Basic Authentication. Works over `HTTP` and `HTTPS` |
 
 ### /
 

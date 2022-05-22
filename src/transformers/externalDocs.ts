@@ -4,7 +4,7 @@ import { Markdown } from '../lib/markdown';
 const DEFAULT_TEXT = 'Find more info here';
 
 export function transformExternalDocs(externalDocs: OpenAPIV2.ExternalDocumentationObject) {
-  const md = new Markdown();
+  const md = Markdown.md();
   if ('url' in externalDocs) {
     md.line(md.string().link(
       externalDocs.description || DEFAULT_TEXT,

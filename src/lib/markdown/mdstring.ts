@@ -1,7 +1,6 @@
-/* eslint-disable max-classes-per-file */
-import { textEscape } from './textEscape';
+import { textEscape } from '../textEscape';
 
-class MDstring {
+export class MDstring {
   private _string = '';
 
   public static string(string?: string): MDstring {
@@ -91,37 +90,5 @@ class MDstring {
   public escape(): MDstring {
     this.set(`${textEscape(this.get())}`);
     return this;
-  }
-}
-
-export class Markdown {
-  private doc: string[] = [];
-
-  get length(): number {
-    return this.doc.length;
-  }
-
-  public string(string?: string): MDstring {
-    return MDstring.string(string);
-  }
-
-  public line(...strings: Array<MDstring | string>): Markdown {
-    if (strings && strings.length > 0) {
-      this.doc.push(
-        strings.map(
-          (d: MDstring | string) => (typeof d === 'string' ? d : d.get()),
-        ).join(''),
-      );
-    } else {
-      this.doc.push('');
-    }
-    return this;
-  }
-
-  public export(): string | null {
-    if (!this.length) {
-      return null;
-    }
-    return `${this.doc.join('\n')}\n`;
   }
 }
