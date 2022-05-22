@@ -1,4 +1,3 @@
-import { OpenAPIV2 } from 'openapi-types';
 import { dataTypeResolver } from './dataTypes';
 import { Schema } from '../models/schema';
 import { textEscape } from '../lib/textEscape';
