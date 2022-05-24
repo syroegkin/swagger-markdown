@@ -1,5 +1,11 @@
 import { textEscape } from '../textEscape';
 
+/**
+ * Helper class to create and format markdown strings
+ *
+ * @export
+ * @class MDstring
+ */
 export class MDstring {
   private _string = '';
 
@@ -22,60 +28,81 @@ export class MDstring {
   }
 
   public bold(): MDstring {
-    this.set(`**${this.get()}**`);
+    if (this._string !== '') {
+      this.set(`**${this._string}**`);
+    }
     return this;
   }
 
   public italic(): MDstring {
-    this.set(`*${this.get()}*`);
+    if (this._string !== '') {
+      this.set(`*${this._string}*`);
+    }
     return this;
   }
 
   public link(anchor: string, href: string): MDstring {
-    if (this.get() !== '') {
+    if (this._string !== '') {
       throw new Error('String is not empty');
+    }
+    if (!anchor || !href) {
+      throw new Error('All arguments are required');
     }
     this.set(`[${anchor}](${href})`);
     return this;
   }
 
   public h1(): MDstring {
-    this.set(`# ${this.get()}`);
+    if (this._string !== '') {
+      this.set(`# ${this._string}`);
+    }
     return this;
   }
 
   public h2(): MDstring {
-    this.set(`## ${this.get()}`);
+    if (this._string !== '') {
+      this.set(`## ${this._string}`);
+    }
     return this;
   }
 
   public h3(): MDstring {
-    this.set(`### ${this.get()}`);
+    if (this._string !== '') {
+      this.set(`### ${this._string}`);
+    }
     return this;
   }
 
   public h4(): MDstring {
-    this.set(`#### ${this.get()}`);
+    if (this._string !== '') {
+      this.set(`#### ${this._string}`);
+    }
     return this;
   }
 
   public h5(): MDstring {
-    this.set(`##### ${this.get()}`);
+    if (this._string !== '') {
+      this.set(`##### ${this._string}`);
+    }
     return this;
   }
 
   public h6(): MDstring {
-    this.set(`###### ${this.get()}`);
+    if (this._string !== '') {
+      this.set(`###### ${this._string}`);
+    }
     return this;
   }
 
   public strikethrough(): MDstring {
-    this.set(`~~${this.get()}~~`);
+    if (this._string !== '') {
+      this.set(`~~${this._string}~~`);
+    }
     return this;
   }
 
   public horizontalRule(): MDstring {
-    if (this.get() !== '') {
+    if (this._string !== '') {
       throw new Error('String is not empty');
     }
     this.set('---');
@@ -83,12 +110,14 @@ export class MDstring {
   }
 
   public br(): MDstring {
-    this.set(`${this.get()}  `);
+    if (this._string !== '') {
+      this.set(`${this._string}  `);
+    }
     return this;
   }
 
   public escape(): MDstring {
-    this.set(`${textEscape(this.get())}`);
+    this.set(`${textEscape(this._string)}`);
     return this;
   }
 }
