@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { MDstring } from '../../../src/lib/markdown/mdstring';
 
-describe('mdstring', () => {
+describe('MDstring', () => {
   it('should return instance when calling the static one', () => {
     const s = MDstring.string();
     expect(s).to.be.instanceOf(MDstring);
