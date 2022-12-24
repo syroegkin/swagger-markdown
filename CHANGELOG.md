@@ -1,3 +1,10 @@
+# [2.0.0-beta.3](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.2...v2.0.0-beta.3) (2022-12-24)
+
+
+### Bug Fixes
+
+* **dummy:** dummy commit to re-run semantic-release job ([6efe709](https://github.com/syroegkin/swagger-markdown/commit/6efe7098daf7535928fcabcaf1f4a48cbde21676))
+
 # [2.0.0-beta.2](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.1...v2.0.0-beta.2) (2022-12-24)
 
 
