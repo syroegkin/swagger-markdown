@@ -1,26 +1,33 @@
+import { OpenAPIV2 } from 'openapi-types';
 import { dataTypeResolver } from './dataTypes';
 import { Schema } from '../models/schema';
-import { textEscape } from '../lib/textEscape';
+import { Markdown } from '../lib/markdown';
 
-export const transformParameters = (parameters, pathParameters?: any) => {
-  const res = [];
-  res.push('##### Parameters\n');
-  res.push('| Name | Located in | Description | Required | Schema |');
-  res.push('| ---- | ---------- | ----------- | -------- | ---- |');
-  [].concat(pathParameters, parameters).forEach((keys) => {
+export const transformParameters = (
+  parameters: OpenAPIV2.Parameters,
+  pathParameters?: OpenAPIV2.Parameters,
+) => {
+  const md = Markdown.md();
+
+  md.line(md.string('Parameters').h5()).line();
+  const table = md.table();
+  table.th('Name').th('Located in').th('Description').th('Required')
+    .th('Schema');
+
+  [].concat(pathParameters, parameters).forEach((keys: OpenAPIV2.Parameter) => {
     if (keys) {
-      const line = [];
+      const tr = table.tr();
       // Name first
-      line.push(keys.name || '');
+      tr.td(keys.name || '');
       // Scope (in)
-      line.push(keys.in || '');
+      tr.td(keys.in || '');
       // description
       if ('description' in keys) {
-        line.push(textEscape(keys.description.replace(/[\r\n]/g, ' ')));
+        tr.td(md.string(keys.description.replace(/[\r\n]/g, ' ')).escape());
       } else {
-        line.push('');
+        tr.td('');
       }
-      line.push(keys.required ? 'Yes' : 'No');
+      tr.td(keys.required ? 'Yes' : 'No');
 
       // Prepare schema to be transformed
       let schema = null;
@@ -34,11 +41,10 @@ export const transformParameters = (parameters, pathParameters?: any) => {
         schema.setItems('items' in keys ? keys.items : null);
       }
 
-      line.push(dataTypeResolver(schema));
-      // Add spaces and glue using pipeline
-      const glued = line.map((el) => ` ${el} `).join('|');
-      res.push(`|${glued}|`);
+      tr.td(dataTypeResolver(schema));
     }
   });
-  return res.join('\n');
+
+  md.line(table);
+  return md.export();
 };

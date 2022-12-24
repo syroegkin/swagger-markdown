@@ -38,7 +38,7 @@ export const transformPath = (
       md.line('');
       // Set method as a subheader
       md.line(md.string(method.toUpperCase()).h4());
-      const pathInfo = data[method];
+      const pathInfo: OpenAPIV2.OperationObject = data[method];
 
       // Set summary
       if ('summary' in pathInfo) {
@@ -58,7 +58,10 @@ export const transformPath = (
 
       // Build parameters
       if ('parameters' in pathInfo || pathParameters) {
-        const builtParameters = md.string(transformParameters(pathInfo.parameters, pathParameters));
+        const builtParameters = md.string(transformParameters(
+          pathInfo.parameters,
+          pathParameters,
+        ));
         if (builtParameters.length) {
           md.line(builtParameters).line();
         }
