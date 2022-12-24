@@ -47,20 +47,24 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
   if (type in resolver) {
     if (format) {
       return format in resolver[type]
-        ? resolver[type][format]
-        : `${type} (${format})`;
+        ? md.string(resolver[type][format]).get()
+        : md.string(`${type} (${format})`).get();
     }
-    return type;
+    return md.string(type).get();
   }
+
   if (format) {
-    return `${type} (${format})`;
+    return md.string(`${type} (${format})`).get();
   }
+
   if (type === 'array') {
     const subType = dataTypeResolver(schema.getItems());
-    return `[ ${subType} ]`;
+    return md.string(`[ ${subType} ]`).get();
   }
+
   if (type) {
-    return type;
+    return md.string(type).get();
   }
-  return '';
+
+  return md.string('').get();
 };
