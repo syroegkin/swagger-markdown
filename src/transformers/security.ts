@@ -22,6 +22,7 @@ export const transformSecurity = (security) => {
       res.push(lineReduced);
     });
   });
+
   if (res.length) {
     let line = Array(maxLength).fill(' --- ');
     res.unshift(`|${line.join('|')}|`);

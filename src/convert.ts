@@ -76,8 +76,6 @@ export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: 
 }
 
 /**
- *
- *
  * @export
  * @param {Options} options
  * @return {*}  {Promise<string>}
