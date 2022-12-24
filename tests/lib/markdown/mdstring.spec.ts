@@ -47,7 +47,7 @@ describe('MDstring', () => {
       expect(() => s.link()).to.throw();
       // @ts-ignore
       expect(() => s.link('anchor')).to.throw();
-      expect(() => s.link(undefined, 'href')).to.throw();
+      expect(() => s.link(undefined as any, 'href')).to.throw();
     });
   });
   it('should create h1', () => {
@@ -111,5 +111,13 @@ describe('MDstring', () => {
     expect(s.br().get()).to.be.equal(`${test}  `);
     s.set('');
     expect(s.br().get()).to.be.equal('');
+  });
+  it('should return the string length', () => {
+    const test = 'string';
+    const s = MDstring.string(test);
+    expect(s.length).to.be.equal(test.length);
+    s.h1();
+    // it adds `# `, so it must be 2 characters longer
+    expect(s.length).to.be.equal(test.length + 2);
   });
 });

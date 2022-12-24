@@ -19,6 +19,10 @@ export class MDstring {
     }
   }
 
+  get length(): number {
+    return this._string.length;
+  }
+
   public get() {
     return this._string;
   }
