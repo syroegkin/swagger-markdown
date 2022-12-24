@@ -63,7 +63,7 @@ export const transformSecurityDefinitions = (
   // Only in case if there is any data
   if (md.length > 0) {
     return Markdown.md()
-      .line('### Security')
+      .line(md.string('Security').h3())
       .line(md.export())
       .export();
   }
