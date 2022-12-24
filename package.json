@@ -93,8 +93,8 @@
   "dependencies": {
     "@apidevtools/swagger-parser": "^10.1.0",
     "argparse": "2.0.1",
-    "markdownlint": "^0.25.1",
-    "markdownlint-rule-helpers": "^0.16.0",
+    "markdownlint": "^0.26.2",
+    "markdownlint-rule-helpers": "^0.17.2",
     "openapi-types": "^11.0.1"
   }
 }
