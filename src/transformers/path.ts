@@ -69,7 +69,9 @@ export const transformPath = (
 
       // Build responses
       if ('responses' in pathInfo) {
-        const builtResponses = md.string(transformResponses(pathInfo.responses));
+        const builtResponses = md.string(transformResponses(
+          pathInfo.responses,
+        ));
         if (builtResponses.length) {
           md.line(builtResponses).line();
         }

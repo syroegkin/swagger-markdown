@@ -1,53 +1,66 @@
+import { OpenAPIV2 } from 'openapi-types';
 import { Schema } from '../models/schema';
 import { dataTypeResolver } from './dataTypes';
-import { textEscape } from '../lib/textEscape';
+import { Markdown } from '../lib/markdown';
 
 /**
  * Build responses table
  * @param {object} responses
  * @returns {null|string}
  */
-export const transformResponses = (responses) => {
-  const res = [];
+export const transformResponses = (responses: OpenAPIV2.ResponsesObject) => {
+  const md = Markdown.md();
+  md.line(md.string('Responses').h5())
+    .line();
+
   // Check if schema somewhere
   const schemas = Object.keys(responses).reduce(
     (acc, response) => acc || 'schema' in responses[response],
     false,
   );
+
+  const table = md.table();
+  table.th('Code').th('Description');
+  if (schemas) {
+    table.th('Schema');
+  }
+
   Object.keys(responses).forEach((responseCode) => {
-    const line = [];
+    const tr = table.tr();
     const response = responses[responseCode];
     // Response
-    line.push(responseCode);
+    tr.td(responseCode);
 
     // Description
-    let description = '';
+    const description = md.string();
     if ('description' in response) {
-      description += textEscape(response.description.replace(/[\r\n]/g, ' '));
+      description.concat(
+        md.string(response.description.replace(/[\r\n]/g, ' ')).escape(),
+      );
     }
     if ('examples' in response) {
-      description += Object.entries(response.examples).map(([contentType, example]) => {
+      Object.entries(response.examples).forEach(([contentType, example]) => {
         let formattedExample = typeof example === 'string' ? example : JSON.stringify(example, null, '  ');
 
         formattedExample = formattedExample.replace(/\r?\n/g, '<br>');
+        const contentTypeMd = md.string(contentType).italic().get();
 
-        return `<br><br>**Example** (*${contentType}*):<br><pre>${formattedExample}</pre>`;
-      }).join('');
+        description
+          .concat('<br><br>')
+          .concat(md.string('Example').bold())
+          .concat(` (${contentTypeMd}):<br><pre>${formattedExample}</pre>`);
+      });
     }
-    line.push(description);
+    tr.td(description);
     // Schema
     if ('schema' in response) {
       const schema = new Schema(response.schema);
-      line.push(dataTypeResolver(schema));
+      tr.td(dataTypeResolver(schema));
     } else if (schemas) {
-      line.push('');
+      tr.td('');
     }
-    // Combine all together
-    res.push(`|${line.map((el) => ` ${el} `).join('|')}|`);
   });
-  res.unshift(`| ---- | ----------- |${schemas ? ' ------ |' : ''}`);
-  res.unshift(`| Code | Description |${schemas ? ' Schema |' : ''}`);
-  res.unshift('##### Responses\n');
 
-  return res.join('\n');
+  md.line(table);
+  return md.export();
 };
