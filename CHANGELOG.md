@@ -1,3 +1,12 @@
+# [2.0.0-beta.4](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.3...v2.0.0-beta.4) (2022-12-24)
+
+
+### Bug Fixes
+
+* **examples:** fix examples table headers ([5748eea](https://github.com/syroegkin/swagger-markdown/commit/5748eea523949eba3f659d69c3f00254dc15bb92))
+* **pathparameters:** path parameters to use md class instead of direct markup ([a62a3b7](https://github.com/syroegkin/swagger-markdown/commit/a62a3b7b7c059be3c32018c39bf7e5b61a60eab4))
+* **tables:** make number of dashes to match header length ([73b6182](https://github.com/syroegkin/swagger-markdown/commit/73b61826b90d111726f631d2187c50c729e6a236))
+
 # [2.0.0-beta.3](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.2...v2.0.0-beta.3) (2022-12-24)
 
 
