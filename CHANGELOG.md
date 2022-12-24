@@ -1,3 +1,15 @@
+# [2.0.0-beta.5](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.4...v2.0.0-beta.5) (2022-12-24)
+
+
+### Bug Fixes
+
+* **patresponses:** make path responses use md class instead of direct markup ([07063ac](https://github.com/syroegkin/swagger-markdown/commit/07063ac7c8081790694837a1500f45620d65732d))
+
+
+### Features
+
+* **mdstring:** add concat method, which allows to concatenate strings and mdstrings ([764c59f](https://github.com/syroegkin/swagger-markdown/commit/764c59f3d9effd39b643f5d0976d1464ecbd3d31))
+
 # [2.0.0-beta.4](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.3...v2.0.0-beta.4) (2022-12-24)
 
 
