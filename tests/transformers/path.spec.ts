@@ -3,7 +3,7 @@ import { transformPath } from '../../src/transformers/path';
 
 describe('Path transformer', () => {
   it('should return null if nothing was passed', () => {
-    expect(transformPath(null, null)).to.be.equal(null);
+    expect(transformPath(null as any, null as any)).to.be.equal(null);
     // I want to test this weird case as well
     // @ts-ignore
     expect(transformPath()).to.be.equal(null);
@@ -27,7 +27,7 @@ describe('Path transformer', () => {
       },
     };
     const result = '#### GET';
-    const res = transformPath(fixture.path, fixture.data).split('\n');
+    const res = (transformPath(fixture.path, fixture.data as any) as string).split('\n');
     expect(res[2]).to.be.equal(result);
   });
 
@@ -41,7 +41,7 @@ describe('Path transformer', () => {
       },
     };
     const result = '##### Summary:\n\nSummary text'.split('\n');
-    const res = transformPath(fixture.path, fixture.data).split('\n');
+    const res = (transformPath(fixture.path, fixture.data as any) as string).split('\n');
     expect(res[3]).to.be.equal(result[0]);
     expect(res[4]).to.be.equal(result[1]);
     expect(res[5]).to.be.equal(result[2]);
@@ -57,7 +57,7 @@ describe('Path transformer', () => {
       },
     };
     const result = '##### Description:\n\nDescription text'.split('\n');
-    const res = transformPath(fixture.path, fixture.data).split('\n');
+    const res = (transformPath(fixture.path, fixture.data as any) as string).split('\n');
     expect(res[3]).to.be.equal(result[0]);
     expect(res[4]).to.be.equal(result[1]);
     expect(res[5]).to.be.equal(result[2]);
