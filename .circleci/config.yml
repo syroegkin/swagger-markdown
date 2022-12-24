@@ -59,12 +59,11 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/app
-      - deploy:
+      - run:
           name: Deploy to npm
           command: npm run semantic-release
 
 workflows:
-  version: 2
   test_and_deploy:
     jobs:
       - checkout_code
