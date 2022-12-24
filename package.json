@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test:app && npm run test:lint && npm run test:markdown",
-    "test:app": "jest",
+    "test:app": "jest --detectOpenHandles --forceExit",
     "test:watch": "jest --watch",
     "test:lint": "eslint . --ignore-pattern 'src/**/*.js' --ignore-pattern 'tests/**/*.spec.js' --ignore-pattern 'scripts/**/*.js'",
     "test:markdown": "markdownlint ./examples/*.md -c .markdownlint.json",
