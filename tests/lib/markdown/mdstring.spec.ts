@@ -120,4 +120,17 @@ describe('MDstring', () => {
     // it adds `# `, so it must be 2 characters longer
     expect(s.length).to.be.equal(test.length + 2);
   });
+  it('should concatenate strings', () => {
+    const a = 'Warum';
+    const b = 'Darum';
+
+    const s = MDstring.string(a);
+    expect(s.concat(b).get()).to.be.equal(`${a}${b}`);
+
+    const s1 = MDstring.string('');
+    expect(s1.concat(b).concat(a).get()).to.be.equal(`${b}${a}`);
+
+    const s2 = MDstring.string('');
+    expect(s2.concat(b).concat(s).get()).to.be.equal(`${b}${a}${b}`);
+  });
 });

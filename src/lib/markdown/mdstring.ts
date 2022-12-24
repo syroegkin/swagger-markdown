@@ -124,4 +124,10 @@ export class MDstring {
     this.set(`${textEscape(this._string)}`);
     return this;
   }
+
+  public concat(string: string | MDstring): MDstring {
+    const s = typeof string === 'string' ? string : string.get();
+    this._string = `${this._string}${s}`;
+    return this;
+  }
 }
