@@ -1,3 +1,17 @@
+# [2.0.0-beta.2](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.1...v2.0.0-beta.2) (2022-12-24)
+
+
+### Bug Fixes
+
+* **datatypes:** use md class instead of direct markup ([77785cb](https://github.com/syroegkin/swagger-markdown/commit/77785cb1c9b9e9e5be2ea75b8b7312ce4b5dcf18))
+* **paths:** use md class instead of direct markup ([746babb](https://github.com/syroegkin/swagger-markdown/commit/746babbed8019856b72a9d1e4c2d5ec8a2cf74af))
+* **securitydefinitions:** use md class instead of direct header hashes ([7f9d373](https://github.com/syroegkin/swagger-markdown/commit/7f9d37376dc960b5eca7b310fa2b5f537a8e8690))
+
+
+### Features
+
+* **mdstring:** add length property ([9b6f331](https://github.com/syroegkin/swagger-markdown/commit/9b6f331a0eeb72d42f6ca425b3ed729cfdfc69f1))
+
 # [2.0.0-beta.1](https://github.com/syroegkin/swagger-markdown/compare/v1.4.4...v2.0.0-beta.1) (2022-05-22)
 
 
