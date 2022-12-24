@@ -15,8 +15,8 @@ describe('Security definitions', () => {
       const result = '### Security\n'
         + '**auth**  \n\n'
         + `| ${type} | *${typeResolver[type]}* |\n`
-        + '| --- | --- |\n\n\n';
-      expect(result).to.be.equal(res);
+        + `| ${'-'.repeat(type.length)} | ${'-'.repeat(2 + typeResolver[type].length)} |\n\n\n`;
+      expect(res).to.be.equal(result);
     });
   });
   it('Should resolve names', () => {
@@ -50,7 +50,9 @@ describe('Security definitions', () => {
         'unknown-key': 'Uknown key',
       },
     };
-    const result = transformSecurityDefinitions(fixture as OpenAPIV2.SecurityDefinitionsObject);
+    const result = transformSecurityDefinitions(
+      fixture as OpenAPIV2.SecurityDefinitionsObject,
+    ) as string;
     expect(result.match(/undefined/ig)).to.be.null;
     expect(result.match(/x-special-key/ig)).to.be.not.null;
   });

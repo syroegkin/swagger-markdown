@@ -46,13 +46,18 @@ export class MDtable {
     const result: string[] = [];
     const columns = this._th.length;
 
-    if (this._th.length) {
+    if (columns) {
       const th = `| ${this._th.map(
         (d: MDstring | string) => (typeof d === 'string' ? d : d.get()),
       ).join(' | ')} |`;
       result.push(th);
 
-      const thead = `| ${[...Array(columns).keys()].map(() => '---').join(' | ')} |`;
+      const thead = `| ${
+        this._th.map(
+          (el: string | MDstring) => '-'.repeat(el.length > 3 ? el.length : 3)
+          ,
+        ).join(' | ')
+      } |`;
       result.push(thead);
     }
 

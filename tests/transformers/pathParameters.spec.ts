@@ -1,10 +1,10 @@
 import { expect } from 'chai';
 import { transformParameters } from '../../src/transformers/pathParameters';
 
-const tableFixture = [
+const tableFixture: string[] = [
   '##### Parameters',
   '| Name | Located in | Description | Required | Schema |',
-  '| ---- | ---------- | ----------- | -------- | ---- |',
+  '| ---- | ---------- | ----------- | -------- | ------ |',
 ];
 
 describe('Path parameters transformer', () => {
@@ -27,13 +27,13 @@ describe('Path parameters transformer', () => {
       }, {},
     ];
 
-    const results = [].concat(tableFixture, [
+    const results = [...tableFixture, ...[
       '| name | formData | name | No | string |',
       '| year | formData | year | Yes | string |',
       '|  | formData |  | No | string |',
       '|  |  |  | No |  |',
-    ]);
-    const res = transformParameters(fixture).split('\n');
+    ]];
+    const res = (transformParameters(fixture as any) as string).split('\n');
 
     it('Should create parameters header', () => {
       expect(res[0]).to.be.equal(results[0]);
@@ -59,10 +59,10 @@ describe('Path parameters transformer', () => {
         description: 'name',
         type: 'string',
       }];
-      const results = [].concat(tableFixture, [
+      const results = [...tableFixture, ...[
         '| name | formData | name | No | string |',
-      ]);
-      const res = transformParameters(undefined, fixture).split('\n');
+      ]];
+      const res = (transformParameters(undefined as any, fixture) as string).split('\n');
 
       it('Should create parameters header', () => {
         expect(res[0]).to.be.equal(results[0]);
@@ -93,11 +93,11 @@ describe('Path parameters transformer', () => {
         description: 'name',
         type: 'string',
       }];
-      const results = [].concat(tableFixture, [
+      const results = [...tableFixture, ...[
         '| path name | formData | name | No | string |',
         '| method name | formData | name | No | string |',
-      ]);
-      const res = transformParameters(methodFixture, pathFixture).split('\n');
+      ]];
+      const res = (transformParameters(methodFixture, pathFixture) as string).split('\n');
       it('Should create parameters header', () => {
         expect(res[0]).to.be.equal(results[0]);
       });

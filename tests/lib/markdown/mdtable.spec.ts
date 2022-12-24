@@ -40,7 +40,7 @@ describe('MDtable', () => {
       .td('td1')
       .td('td2')
       .td(MDstring.string('td3').strikethrough());
-    const expected = '| h1 | h2 | **h3** |\n| --- | --- | --- |\n'
+    const expected = '| h1 | h2 | **h3** |\n| --- | --- | ------ |\n'
       + '| td1 | td2 | ~~td3~~ |';
     const result = table.get();
     expect(result).to.be.equal(expected);
