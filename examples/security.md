@@ -16,7 +16,7 @@ swagger api team
 **githubAccessCode**  
 
 | oauth2 | *OAuth 2.0* |
-| --- | --- |
+| ------ | ----------- |
 | **Scopes** |  |
 | user | Grants read/write access to profile info only. Note that this scope includes user:email and user:follow. |
 | user:email | Grants read access to a user’s email addresses. |
@@ -44,7 +44,7 @@ swagger api team
 **petstoreImplicit**  
 
 | oauth2 | *OAuth 2.0* |
-| --- | --- |
+| ------ | ----------- |
 | **Scopes** |  |
 | user | Grants read/write access to profile info only. Note that this scope includes user:email and user:follow. |
 | user:email | Grants read access to a user’s email addresses. |
@@ -71,14 +71,14 @@ swagger api team
 **internalApiKey**  
 
 | apiKey | *API Key* |
-| --- | --- |
+| ------ | --------- |
 | In | header |
 | Name | api_key |
 
 **test-authorizer**  
 
 | apiKey | *API Key* |
-| --- | --- |
+| ------ | --------- |
 | Name | Authorization |
 | In | header |
 | x-amazon-apigateway-authtype | oauth2 |
@@ -97,7 +97,7 @@ Returns pets based on ID
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | id | path | ID of pet to use | Yes | [ string ] |
 
 ##### Responses
