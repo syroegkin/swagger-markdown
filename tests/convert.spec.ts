@@ -33,7 +33,7 @@ describe('Partial dereference', () => {
           return null;
       }
     },
-  } as undefined as SwaggerParser.$Refs;
+  } as unknown as SwaggerParser.$Refs;
 
   it('makes no changes to object with no $refs', () => {
     const input = { one: { two: [3, 'four', { five: 'six' }] } } as unknown as AllSwaggerDocumentVersions;
