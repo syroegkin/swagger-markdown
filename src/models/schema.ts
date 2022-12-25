@@ -6,6 +6,7 @@ export interface SchemaInterface {
   ref?: string;
   allOf?: SchemaInterface[];
   items?: SchemaInterface;
+  properties?: { [name: string]: SchemaInterface };
   getType?(): string | undefined;
   getFormat?(): string | undefined;
   getItems?(): SchemaInterface;
@@ -13,9 +14,6 @@ export interface SchemaInterface {
   getAllOf?(): SchemaInterface[];
 }
 
-/**
- * @deprecated
- */
 export class Schema implements SchemaInterface {
   public type?: string;
 
@@ -26,6 +24,8 @@ export class Schema implements SchemaInterface {
   public allOf?: SchemaInterface[];
 
   public items?: SchemaInterface;
+
+  public properties?: { [name: string]: SchemaInterface } = {};
 
   /**
    * constructor
@@ -49,7 +49,24 @@ export class Schema implements SchemaInterface {
       if ('allOf' in schema) {
         this.setAllOf(schema.allOf);
       }
+      if ('properties' in schema) {
+        this.setProperties(schema.properties);
+      }
     }
+  }
+
+  /**
+   * @param {{ [name: string]: OpenAPIV2.SchemaObject}} properties
+   * @return {*}  {Schema}
+   * @memberof Schema
+   */
+  public setProperties(properties: { [name: string]: OpenAPIV2.SchemaObject}): Schema {
+    Object.keys(properties).forEach(
+      (name) => {
+        this.properties[name] = new Schema(properties[name]);
+      },
+    );
+    return this;
   }
 
   /**
@@ -126,5 +143,9 @@ export class Schema implements SchemaInterface {
    */
   public getAllOf(): SchemaInterface[] {
     return this.allOf;
+  }
+
+  public getProperties() {
+    return this.properties;
   }
 }

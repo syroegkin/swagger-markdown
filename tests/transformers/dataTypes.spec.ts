@@ -40,7 +40,26 @@ const fixture = [
   [new Schema({ type: 'a', format: 'b' }), 'a (b)'],
   // Empty schema
   [new Schema(), ''],
-  [(new Schema()).setType(null).setFormat(null), ''],
+  [(new Schema()).setType(null as any).setFormat(null as any), ''],
+  // Objects
+  [new Schema({
+    type: 'object',
+    properties: {
+      data: {
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: {
+            notificationId: {
+              type: 'integer',
+              description: 'ID of the notification',
+            },
+          },
+        },
+      },
+    },
+  // @todo: the schema according to the types is incorrect, although it is been seen in many places
+  } as any), '{ **"data"**: [ { **"notificationId"**: integer } ] }'],
 ];
 
 describe('Data Types', () => {

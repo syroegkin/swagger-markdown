@@ -8,7 +8,7 @@ import { Markdown } from '../lib/markdown';
  * @param {object} responses
  * @returns {null|string}
  */
-export const transformResponses = (responses: OpenAPIV2.ResponsesObject) => {
+export function transformResponses(responses: OpenAPIV2.ResponsesObject) {
   const md = Markdown.md();
   md.line(md.string('Responses').h5())
     .line();
@@ -52,6 +52,7 @@ export const transformResponses = (responses: OpenAPIV2.ResponsesObject) => {
       });
     }
     tr.td(description);
+
     // Schema
     if ('schema' in response) {
       const schema = new Schema(response.schema);
@@ -63,4 +64,4 @@ export const transformResponses = (responses: OpenAPIV2.ResponsesObject) => {
 
   md.line(table);
   return md.export();
-};
+}

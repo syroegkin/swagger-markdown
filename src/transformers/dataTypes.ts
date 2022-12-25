@@ -47,19 +47,36 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
   if (type in resolver) {
     if (format) {
       return format in resolver[type]
-        ? md.string(resolver[type][format]).get()
-        : md.string(`${type} (${format})`).get();
+        ? resolver[type][format]
+        : `${type} (${format})`;
     }
-    return md.string(type).get();
+    return type;
   }
 
   if (format) {
-    return md.string(`${type} (${format})`).get();
+    return `${type} (${format})`;
   }
 
   if (type === 'array') {
     const subType = dataTypeResolver(schema.getItems());
-    return md.string(`[ ${subType} ]`).get();
+    return `[ ${subType} ]`;
+  }
+
+  // If schema has properties, it means that type is object
+  // we can simply skip this check, furthemore some yaml files may just miss it
+  if (Object.keys(schema.properties).length > 0) {
+    const { properties } = schema;
+    const values = Object.values(properties).map((p) => dataTypeResolver(p));
+    const keys = Object.keys(properties);
+    const pairs = [];
+    for (let i = 0; i < keys.length; i++) {
+      pairs.push(
+        md.string(`"${keys[i]}"`)
+          .bold()
+          .concat(`: ${values[i]}`).get(),
+      );
+    }
+    return `{ ${pairs.join(', ')} }`;
   }
 
   if (type) {

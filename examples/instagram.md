@@ -165,7 +165,7 @@ Get basic information about a user.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | The user object | object |
+| 200 | The user object | { **"data"**: [User](#user) } |
 
 ##### Security
 
@@ -193,7 +193,7 @@ See the authenticated user's feed.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [Media](#media) ] } |
 
 ### /users/{user-id}/media/recent
 
@@ -213,7 +213,7 @@ See the authenticated user's feed.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | Get the most recent media published by a user. To get the most recent media published by the owner of the access token, you can use `self` instead of the `user-id`.  | object |
+| 200 | Get the most recent media published by a user. To get the most recent media published by the owner of the access token, you can use `self` instead of the `user-id`.  | { **"data"**: [ [Media](#media) ] } |
 
 ### /users/self/media/liked
 
@@ -236,7 +236,7 @@ available for the currently authenticated user.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [Media](#media) ] } |
 
 ### /users/search
 
@@ -256,7 +256,7 @@ Search for a user by name.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
 
 ### /users/{user-id}/follows
 
@@ -275,7 +275,7 @@ Get the list of users this user follows.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
 
 ### /users/{user-id}/followed-by
 
@@ -294,7 +294,7 @@ Get the list of users this user is followed by.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
 
 ### /users/self/requested-by
 
@@ -307,7 +307,7 @@ List the users who have requested this user's permission to follow.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"meta"**: { **"code"**: integer }, **"data"**: [ [MiniProfile](#miniprofile) ] } |
 
 ### /users/{user-id}/relationship
 
@@ -327,7 +327,7 @@ Modify the relationship between the current user and thetarget user.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
 
 ##### Security
 
@@ -406,7 +406,7 @@ the last 5 days. Can return mix of image and video types.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [Media](#media) & { **"distance"**: number } ] } |
 
 ### /media/popular
 
@@ -420,7 +420,7 @@ Can return mix of image and video types.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [Media](#media) ] } |
 
 ### /media/{media-id}/comments
 
@@ -439,7 +439,7 @@ Get a list of recent comments on a media object.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Comment](#comment) ] } |
 
 #### POST
 ##### Description
@@ -462,7 +462,7 @@ Create a comment on a media object with the following rules:
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
 
 ##### Security
 
@@ -486,7 +486,7 @@ authored by the authenticated user.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
 
 ### /media/{media-id}/likes
 
@@ -505,7 +505,7 @@ Get a list of users who have liked this media.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Like](#like) ] } |
 
 #### POST
 ##### Description
@@ -522,7 +522,7 @@ Set a like on this media by the currently authenticated user.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
 
 ##### Security
 
@@ -545,7 +545,7 @@ Remove a like on this media by the currently authenticated user.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
 
 ### /tags/{tag-name}
 
@@ -585,7 +585,7 @@ these objects.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"data"**: [ [Tag](#tag) ] } |
 
 ### /tags/search
 
@@ -600,7 +600,7 @@ these objects.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"meta"**: { **"code"**: integer }, **"data"**: [ [Tag](#tag) ] } |
 
 ### /locations/{location-id}
 
@@ -619,7 +619,7 @@ Get information about a location.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [Location](#location) } |
 
 ### /locations/{location-id}/media/recent
 
@@ -642,7 +642,7 @@ Get a list of recent media objects from a given location.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [Media](#media) ] } |
 
 ### /locations/search
 
@@ -666,7 +666,7 @@ Search for a location by geographic coordinate.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [Location](#location) ] } |
 
 ### /geographies/{geo-id}/media/recent
 
@@ -709,7 +709,7 @@ geography, use the [media search endpoint
 | profile_picture | string |  | No |
 | bio | string |  | No |
 | website | string |  | No |
-| counts | object |  | No |
+| counts | { **"media"**: integer, **"follows"**: integer, **"follwed_by"**: integer } |  | No |
 
 #### Media
 
@@ -723,10 +723,10 @@ geography, use the [media search endpoint
 | user | [MiniProfile](#miniprofile) |  | No |
 | users_in_photo | [ [MiniProfile](#miniprofile) ] |  | No |
 | location | [Location](#location) |  | No |
-| comments: | object |  | No |
-| likes | object |  | No |
-| images |  |  | No |
-| videos |  |  | No |
+| comments: | { **"count"**: integer, **"data"**: [ [Comment](#comment) ] } |  | No |
+| likes | { **"count"**: integer, **"data"**: [ [MiniProfile](#miniprofile) ] } |  | No |
+| images | { **"low_resolution"**: [Image](#image), **"thumbnail"**: [Image](#image), **"standard_resolution"**: [Image](#image) } |  | No |
+| videos | { **"low_resolution"**: [Image](#image), **"standard_resolution"**: [Image](#image) } |  | No |
 
 #### Location
 
