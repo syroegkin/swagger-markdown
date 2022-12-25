@@ -110,9 +110,9 @@ Returns pets based on ID
 ##### Security
 
 | Security Schema | Scopes |
-| --- | --- |
+| --------------- | ------ |
 | githubAccessCode | user |
-| internalApiKey | |
+| internalApiKey |  |
 
 ### Models
 

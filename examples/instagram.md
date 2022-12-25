@@ -170,8 +170,8 @@ Get basic information about a user.
 ##### Security
 
 | Security Schema | Scopes |
-| --- | --- |
-| key | |
+| --------------- | ------ |
+| key |  |
 | oauth | basic |
 
 ### /users/self/feed
@@ -332,7 +332,7 @@ Modify the relationship between the current user and thetarget user.
 ##### Security
 
 | Security Schema | Scopes |
-| --- | --- |
+| --------------- | ------ |
 | oauth | relationships |
 
 ### /media/{media-id}
@@ -467,7 +467,7 @@ Create a comment on a media object with the following rules:
 ##### Security
 
 | Security Schema | Scopes |
-| --- | --- |
+| --------------- | ------ |
 | oauth | comments |
 
 #### DELETE
@@ -527,7 +527,7 @@ Set a like on this media by the currently authenticated user.
 ##### Security
 
 | Security Schema | Scopes |
-| --- | --- |
+| --------------- | ------ |
 | oauth | comments |
 
 #### DELETE

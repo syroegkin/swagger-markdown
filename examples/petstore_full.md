@@ -56,8 +56,8 @@ Add a new pet to the store
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
 #### PUT
@@ -83,8 +83,8 @@ Update an existing pet
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
 ### /pets/findByStatus
@@ -113,8 +113,8 @@ Multiple status values can be provided with comma seperated strings
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
 ### /pets/findByTags
@@ -143,8 +143,8 @@ Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
 ### /pets/{petId}
@@ -174,9 +174,9 @@ Returns a pet when ID < 10.  ID > 10 or nonintegers will simulate API error cond
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
-| api_key | | |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
+| api_key |  |  |
 | petstore_auth | write_pets | read_pets |
 
 #### POST
@@ -202,8 +202,8 @@ Updates a pet in the store with form data
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
 #### DELETE
@@ -228,8 +228,8 @@ Deletes a pet
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
 ### /stores/order

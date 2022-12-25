@@ -28,5 +28,5 @@ Server code is available [here](https://github.com/mohsen1/basic-auth-server). I
 ##### Security
 
 | Security Schema | Scopes |
-| --- | --- |
-| basicAuth | |
+| --------------- | ------ |
+| basicAuth |  |
