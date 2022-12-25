@@ -1,3 +1,10 @@
+# [2.0.0-beta.7](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.6...v2.0.0-beta.7) (2022-12-25)
+
+
+### Features
+
+* **schema:** improve schema representations for an objects ([e1c477d](https://github.com/syroegkin/swagger-markdown/commit/e1c477d69bb5567da7f148204d7872f63315333d)), closes [#130](https://github.com/syroegkin/swagger-markdown/issues/130)
+
 # [2.0.0-beta.6](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.5...v2.0.0-beta.6) (2022-12-25)
 
 
