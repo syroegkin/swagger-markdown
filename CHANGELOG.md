@@ -1,3 +1,12 @@
+# [2.0.0-beta.6](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.5...v2.0.0-beta.6) (2022-12-25)
+
+
+### Bug Fixes
+
+* **definitions:** use md classes instead of direct markdown ([7388984](https://github.com/syroegkin/swagger-markdown/commit/738898405d2c15c0ff95830bf355f7c65b3c51b9))
+* **examples:** update examples to have nicer tables for securiry definitions ([1d7435b](https://github.com/syroegkin/swagger-markdown/commit/1d7435b8f5711c235f451a69b60f05a723cea25d))
+* **security:** security to use md classes instead of direct markdown ([ef886cc](https://github.com/syroegkin/swagger-markdown/commit/ef886ccb4c1af7396960f59d68a4a51fd4cf05c3))
+
 # [2.0.0-beta.5](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.4...v2.0.0-beta.5) (2022-12-24)
 
 
