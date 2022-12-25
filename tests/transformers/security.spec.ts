@@ -8,16 +8,16 @@ const fixture = [
     }],
     result: '##### Security\n\n'
             + '| Security Schema | Scopes |\n'
-            + '| --- | --- |\n'
-            + '| auth | |',
+            + '| --------------- | ------ |\n'
+            + '| auth |  |\n',
   }, {
     security: [{
       auth: ['write_pets', 'read_pets'],
     }],
     result: '##### Security\n\n'
-            + '| Security Schema | Scopes | |\n'
-            + '| --- | --- | --- |\n'
-            + '| auth | write_pets | read_pets |',
+            + '| Security Schema | Scopes |  |\n'
+            + '| --------------- | ------ | --- |\n'
+            + '| auth | write_pets | read_pets |\n',
   },
 ];
 

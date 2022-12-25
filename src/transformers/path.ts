@@ -79,11 +79,12 @@ export const transformPath = (
 
       // Build security
       if ('security' in pathInfo) {
-        md.line(md.string(transformSecurity(pathInfo.security)));
+        md.line(
+          transformSecurity(pathInfo.security),
+        );
       }
     }
   });
 
-  // return res.length ? res.join('\n') : null;
   return md.export();
 };
