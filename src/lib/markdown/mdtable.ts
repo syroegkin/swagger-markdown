@@ -6,6 +6,10 @@ export class MDtableRow {
     private _td: (MDstring | string)[] = [],
   ) {}
 
+  public static tr(): MDtableRow {
+    return new MDtableRow();
+  }
+
   public td(string: string | MDstring = ''): MDtableRow {
     this._td.push(string);
     return this;
@@ -38,6 +42,10 @@ export class MDtable {
 
   public tr(): MDtableRow {
     const tr = new MDtableRow();
+    return this.insertRow(tr);
+  }
+
+  public insertRow(tr: MDtableRow): MDtableRow {
     this._tr.push(tr);
     return tr;
   }

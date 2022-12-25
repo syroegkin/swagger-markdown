@@ -1,4 +1,6 @@
-export const transformSecurity = (security) => {
+import { OpenAPIV2 } from 'openapi-types';
+
+export const transformSecurity = (security: OpenAPIV2.SecurityRequirementObject[]) => {
   const res = [];
   let maxLength = 0;
   security.forEach((rules) => {
