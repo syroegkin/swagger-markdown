@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import { ArgumentParser } from 'argparse';
 import { transformFile } from './index';
 import { Options } from './types';

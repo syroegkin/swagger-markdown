@@ -13,7 +13,7 @@ fs.readdir(directory, (err, files) => {
     if (!filename.match(/\.yaml$/)) return;
     console.log(`Processing ${filename}`);
     try {
-      execSync(`node bin/swagger-markdown.js -i examples/${filename}`);
+      execSync(`node dist/swagger-markdown.js -i examples/${filename}`);
       console.log('Done\n');
     } catch (e) {
       console.log(e);
