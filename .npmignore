@@ -12,3 +12,4 @@ sonar-project.properties
 .husky
 scripts
 tsconfig.json
+jest.config.js
