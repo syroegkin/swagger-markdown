@@ -19,7 +19,7 @@
     "prepare": "husky install"
   },
   "bin": {
-    "swagger-markdown": "dist/swagger-markdown.js"
+    "swagger-markdown": "dist/index.js"
   },
   "config": {
     "commitizen": {
