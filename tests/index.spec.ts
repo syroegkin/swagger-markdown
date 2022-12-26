@@ -1,7 +1,7 @@
 import SwaggerParser from '@apidevtools/swagger-parser';
 import { expect } from 'chai';
 import fs from 'fs';
-import { transformFile, partiallyDereference } from '../src/convert';
+import { transformFile, partiallyDereference } from '../src/index';
 import { AllSwaggerDocumentVersions } from '../src/types';
 
 describe('Integration test examples', () => {

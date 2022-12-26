@@ -1,38 +1,94 @@
-import { ArgumentParser } from 'argparse';
-import { transformFile } from './convert';
-import { Options } from './types';
-import packageInfo = require('../package.json');
+import SwaggerParser from '@apidevtools/swagger-parser';
+import fs from 'fs';
+import markdownlint from 'markdownlint';
+import markdownlintRuleHelpers from 'markdownlint-rule-helpers';
+import { AllSwaggerDocumentVersions, Options } from './types';
+import { isV2Document, isV31Document, isV3Document } from './lib/detectDocumentVersion';
+import { transformSwaggerV2 } from './transformers/documentV2';
 
-const parser = new ArgumentParser({
-  description: packageInfo.name,
-  add_help: true,
-});
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const markdownlintConfig = require('../.markdownlint.json');
 
-parser.add_argument('-v', '--version', {
-  action: 'version',
-  version: packageInfo.version,
-});
-parser.add_argument('-i', '--input', {
-  required: true,
-  help: 'Path to the swagger yaml file',
-  metavar: '',
-  dest: 'input',
-});
-parser.add_argument('-o', '--output', {
-  help: 'Path to the resulting md file',
-  metavar: '',
-  dest: 'output',
-});
-parser.add_argument('--skip-info', {
-  action: 'store_true',
-  help: 'Skip the title, description, version etc, whatever is in the info block.',
-  dest: 'skipInfo',
-});
-const args: Options = parser.parse_args();
-
-if (args.input) {
-  if (!args.output) {
-    args.output = args.input.replace(/(yaml|yml|json)$/i, 'md');
+/**
+ * Replace all $refs with their values,
+ * except model definitions as these have their own section in the result md document
+ *
+ * @export
+ * @param {AllSwaggerDocumentVersions} node
+ * @param {SwaggerParser.$Refs} [$refs]
+ * @return {*}  {AllSwaggerDocumentVersions}
+ */
+export function partiallyDereference(
+  node: AllSwaggerDocumentVersions,
+  $refs?: SwaggerParser.$Refs,
+): AllSwaggerDocumentVersions {
+  if (typeof node !== 'object') return node;
+  const obj = {} as AllSwaggerDocumentVersions;
+  const entries = Object.entries(node);
+  for (let i = 0; i < entries.length; i++) {
+    const [key, value] = entries[i];
+    if (Array.isArray(value)) {
+      obj[key] = value.map((item) => partiallyDereference(item, $refs));
+    } else if (key === '$ref' && !value.startsWith('#/definitions/')) {
+      return partiallyDereference($refs.get(value), $refs);
+    } else {
+      obj[key] = partiallyDereference(value, $refs);
+    }
   }
-  transformFile(args).catch((err) => console.error(err));
+  return obj;
+}
+
+/**
+ * Check version of the document,
+ * run appropriate processor and beautify the markdown after processing.
+ *
+ * @export
+ * @param {AllSwaggerDocumentVersions} inputDoc
+ * @param {Options} options
+ * @return {*}  {string}
+ */
+export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: Options): string {
+  let plainDocument = '';
+
+  if (isV2Document(inputDoc)) {
+    plainDocument = transformSwaggerV2(inputDoc, options);
+  } else if (isV3Document(inputDoc)) {
+    throw new Error('OpenAPI V3 is not yet supported');
+  } else if (isV31Document(inputDoc)) {
+    throw new Error('OpenAPI V3.1 is not yet supported');
+  } else {
+    throw new Error('Can not detect version ot this version in not supported');
+  }
+
+  // Fix markdown issues
+  const fixOptions = {
+    resultVersion: 3,
+    strings: { plainDocument },
+    config: markdownlintConfig,
+  };
+  const fixResults = markdownlint.sync(fixOptions);
+  const fixes = fixResults.plainDocument.filter((error) => error.fixInfo);
+  if (fixes.length > 0) {
+    return markdownlintRuleHelpers.applyFixes(plainDocument, fixes);
+  }
+
+  return plainDocument;
+}
+
+/**
+ * @export
+ * @param {Options} options
+ * @return {*}  {Promise<string>}
+ */
+export async function transformFile(options: Options): Promise<string> {
+  const swaggerParser = new SwaggerParser();
+  const $refs: SwaggerParser.$Refs = await swaggerParser.resolve(options.input);
+  const dereferencedDocument = partiallyDereference(swaggerParser.api, $refs);
+  const markdown = transfromSwagger(dereferencedDocument, options);
+
+  if (options.output) {
+    fs.writeFileSync(options.output, markdown);
+  }
+
+  return markdown;
 }
