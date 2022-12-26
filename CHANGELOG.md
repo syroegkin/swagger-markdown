@@ -1,3 +1,10 @@
+# [2.0.0-beta.12](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.11...v2.0.0-beta.12) (2022-12-26)
+
+
+### Bug Fixes
+
+* **build:** retire webpack after a long serve ([7b43a4f](https://github.com/syroegkin/swagger-markdown/commit/7b43a4fac9485f3977127a97fcd1bc85b6cdf9ad))
+
 # [2.0.0-beta.11](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.10...v2.0.0-beta.11) (2022-12-26)
 
 
