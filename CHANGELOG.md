@@ -1,3 +1,10 @@
+# [2.0.0-beta.10](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2022-12-26)
+
+
+### Bug Fixes
+
+* **build:** introduce webpack for the binary build ([f94b1e0](https://github.com/syroegkin/swagger-markdown/commit/f94b1e08075c5ca7fa2f5e332af391977f8e50cc))
+
 # [2.0.0-beta.9](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2022-12-26)
 
 
