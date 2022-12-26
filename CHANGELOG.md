@@ -1,3 +1,10 @@
+# [2.0.0-beta.9](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.8...v2.0.0-beta.9) (2022-12-26)
+
+
+### Bug Fixes
+
+* **build:** make it one single file so it will work as a binary ([df6b03e](https://github.com/syroegkin/swagger-markdown/commit/df6b03ef84ff2a5436dee643bdb2f51bdc6cca14))
+
 # [2.0.0-beta.8](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2022-12-26)
 
 
