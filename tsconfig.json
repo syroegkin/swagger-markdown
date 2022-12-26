@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "AMD",
+    "module": "commonjs",
     "outDir": "./dist",
-    "outFile": "./dist/index.js",
     "allowJs": false,
     "resolveJsonModule": false,
     "moduleResolution": "node",
