@@ -1,3 +1,10 @@
+# [2.0.0-beta.11](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.10...v2.0.0-beta.11) (2022-12-26)
+
+
+### Bug Fixes
+
+* **build:** fix binary build ([13e0051](https://github.com/syroegkin/swagger-markdown/commit/13e0051094511231b94cdd4e15773220e2e2ae1c))
+
 # [2.0.0-beta.10](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.9...v2.0.0-beta.10) (2022-12-26)
 
 
