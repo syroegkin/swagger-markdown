@@ -1,3 +1,16 @@
+# [2.0.0-beta.8](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.7...v2.0.0-beta.8) (2022-12-26)
+
+
+### Code Refactoring
+
+* **filenames:** rename main files to make it expose an api in the future ([44fc7fc](https://github.com/syroegkin/swagger-markdown/commit/44fc7fcb55beafd60573cf874f7dc66c41dfde6d))
+
+
+### BREAKING CHANGES
+
+* **filenames:** the main executable file has been renamed, index.js is now swagger-markdown.js. no
+changes if used via npx (npx swagger-markdown). may not work with browser implementations tho
+
 # [2.0.0-beta.7](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.6...v2.0.0-beta.7) (2022-12-25)
 
 
