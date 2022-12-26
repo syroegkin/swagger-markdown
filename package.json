@@ -10,16 +10,17 @@
     "test:watch": "jest --watch",
     "test:lint": "eslint . --ignore-pattern 'src/**/*.js' --ignore-pattern 'tests/**/*.spec.js' --ignore-pattern 'scripts/**/*.js'",
     "test:markdown": "markdownlint ./examples/*.md -c .markdownlint.json",
-    "build": "tsc && webpack",
+    "build": "tsc && webpack && chmod +x ./bin/swagger-markdown.js",
     "build:watch": "tsc -w",
     "prepublishOnly": "npm run build",
     "commit": "git-cz",
     "semantic-release": "semantic-release",
     "make:examples": "ts-node ./scripts/make-examples.ts",
+    "clean": "rm -rf ./bin && rm -rf ./dist",
     "prepare": "husky install"
   },
   "bin": {
-    "swagger-markdown": "dist/swagger-markdown.bin.js"
+    "swagger-markdown": "bin/swagger-markdown.js"
   },
   "config": {
     "commitizen": {

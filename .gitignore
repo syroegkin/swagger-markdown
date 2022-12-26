@@ -41,6 +41,7 @@ jspm_packages
 
 # build
 dist
+bin
 
 tmp
 .vscode
