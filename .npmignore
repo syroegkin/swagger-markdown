@@ -13,3 +13,4 @@ sonar-project.properties
 scripts
 tsconfig.json
 jest.config.js
+webpack.config.js
