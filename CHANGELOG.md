@@ -1,3 +1,10 @@
+# [2.0.0-beta.15](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.14...v2.0.0-beta.15) (2022-12-27)
+
+
+### Features
+
+* **force-version:** add temporary solution for v3 documents ([1160f4e](https://github.com/syroegkin/swagger-markdown/commit/1160f4e5505d4c9e02cfb100a2bae5c99afd57ed))
+
 # [2.0.0-beta.14](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.13...v2.0.0-beta.14) (2022-12-27)
 
 
