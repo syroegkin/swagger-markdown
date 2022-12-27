@@ -1,3 +1,10 @@
+# [2.0.0-beta.13](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.12...v2.0.0-beta.13) (2022-12-27)
+
+
+### Features
+
+* **tags:** group paths by tags if provided ([4a38ad6](https://github.com/syroegkin/swagger-markdown/commit/4a38ad6638be216c13cfd1076449017b7f952b04)), closes [#188](https://github.com/syroegkin/swagger-markdown/issues/188)
+
 # [2.0.0-beta.12](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.11...v2.0.0-beta.12) (2022-12-26)
 
 
