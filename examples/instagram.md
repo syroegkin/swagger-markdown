@@ -591,7 +591,7 @@ Get a list of recent media objects from a given location.
 | ---- | ----------- | ------ |
 | 200 | OK | { **"data"**: [ [Media](#media) ] } |
 
-## default
+## Comments
 
 ### /media/{media-id}/comments
 

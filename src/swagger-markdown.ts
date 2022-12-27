@@ -2,7 +2,9 @@
 import { ArgumentParser } from 'argparse';
 import { transformFile } from './index';
 import { Options } from './types';
-import packageInfo = require('../package.json');
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const packageInfo = require('../package.json');
 
 const parser = new ArgumentParser({
   description: packageInfo.name,
