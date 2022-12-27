@@ -131,22 +131,24 @@ callbackFunction({
 ### Security
 **oauth**  
 
-|oauth2|*OAuth 2.0*|
-|---|---|
-|Flow|implicit|
-|Authorization URL|<https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token>|
-|**Scopes**||
-|basic|to read any and all data related to a user (e.g. following/followed-by  lists, photos, etc.) (granted by default) |
-|comments|to create or delete comments on a user’s behalf|
-|relationships|to follow and unfollow users on a user’s behalf|
-|likes|to like and unlike items on a user’s behalf|
+| oauth2 | *OAuth 2.0* |
+| ------ | ----------- |
+| Flow | implicit |
+| Authorization URL | <https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token> |
+| **Scopes** |  |
+| basic | to read any and all data related to a user (e.g. following/followed-by  lists, photos, etc.) (granted by default)  |
+| comments | to create or delete comments on a user’s behalf |
+| relationships | to follow and unfollow users on a user’s behalf |
+| likes | to like and unlike items on a user’s behalf |
 
 **key**  
 
-|apiKey|*API Key*|
-|---|---|
-|In|query|
-|Name|access_token|
+| apiKey | *API Key* |
+| ------ | --------- |
+| In | query |
+| Name | access_token |
+
+## Users
 
 ### /users/{user-id}
 
@@ -158,20 +160,20 @@ Get basic information about a user.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | user-id | path | The user identifier number | Yes | number |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | The user object | object |
+| 200 | The user object | { **"data"**: [User](#user) } |
 
 ##### Security
 
 | Security Schema | Scopes |
-| --- | --- |
-| key | |
+| --------------- | ------ |
+| key |  |
 | oauth | basic |
 
 ### /users/self/feed
@@ -184,7 +186,7 @@ See the authenticated user's feed.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | count | query | Count of media to return. | No | integer |
 | max_id | query | Return media earlier than this max_id.s | No | integer |
 | min_id | query | Return media later than this min_id. | No | integer |
@@ -193,7 +195,7 @@ See the authenticated user's feed.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [Media](#media) ] } |
 
 ### /users/{user-id}/media/recent
 
@@ -201,7 +203,7 @@ See the authenticated user's feed.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | user-id | path | The user identifier number | Yes | number |
 | count | query | Count of media to return. | No | integer |
 | max_timestamp | query | Return media before this UNIX timestamp. | No | integer |
@@ -213,7 +215,7 @@ See the authenticated user's feed.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | Get the most recent media published by a user. To get the most recent media published by the owner of the access token, you can use `self` instead of the `user-id`.  | object |
+| 200 | Get the most recent media published by a user. To get the most recent media published by the owner of the access token, you can use `self` instead of the `user-id`.  | { **"data"**: [ [Media](#media) ] } |
 
 ### /users/self/media/liked
 
@@ -228,7 +230,7 @@ available for the currently authenticated user.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | count | query | Count of media to return. | No | integer |
 | max_like_id | query | Return media liked before this id. | No | integer |
 
@@ -236,7 +238,7 @@ available for the currently authenticated user.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [Media](#media) ] } |
 
 ### /users/search
 
@@ -248,7 +250,7 @@ Search for a user by name.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | q | query | A query string | Yes | string |
 | count | query | Number of users to return. | No | string |
 
@@ -256,7 +258,15 @@ Search for a user by name.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
+
+## Relationships
+Relationships are expressed using the following terms:
+
+**outgoing_status**: Your relationship to the user. Can be "follows",
+  "requested", "none".
+**incoming_status**: A user's relationship to you. Can be "followed_by",
+  "requested_by", "blocked_by_you", "none".
 
 ### /users/{user-id}/follows
 
@@ -268,14 +278,14 @@ Get the list of users this user follows.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | user-id | path | The user identifier number | Yes | number |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
 
 ### /users/{user-id}/followed-by
 
@@ -287,14 +297,14 @@ Get the list of users this user is followed by.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | user-id | path | The user identifier number | Yes | number |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
 
 ### /users/self/requested-by
 
@@ -307,7 +317,7 @@ List the users who have requested this user's permission to follow.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"meta"**: { **"code"**: integer }, **"data"**: [ [MiniProfile](#miniprofile) ] } |
 
 ### /users/{user-id}/relationship
 
@@ -319,7 +329,7 @@ Modify the relationship between the current user and thetarget user.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | user-id | path | The user identifier number | Yes | number |
 | action | body | One of follow/unfollow/block/unblock/approve/ignore. | No | string |
 
@@ -327,13 +337,24 @@ Modify the relationship between the current user and thetarget user.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
 
 ##### Security
 
 | Security Schema | Scopes |
-| --- | --- |
+| --------------- | ------ |
 | oauth | relationships |
+
+## Media
+At this time, uploading via the API is not possible. We made a conscious
+choice not to add this for the following reasons:
+
+* Instagram is about your life on the go – we hope to encourage photos
+  from within the app.
+* We want to fight spam & low quality photos. Once we allow uploading
+  from other sources, it's harder to control what comes into the Instagram
+  ecosystem. All this being said, we're working on ways to ensure users
+  have a consistent and high-quality experience on our platform.
 
 ### /media/{media-id}
 
@@ -351,7 +372,7 @@ has liked this media item.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | media-id | path | The media ID | Yes | integer |
 
 ##### Responses
@@ -374,7 +395,7 @@ Its corresponding shortcode is D.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | shortcode | path | The media shortcode | Yes | string |
 
 ##### Responses
@@ -395,7 +416,7 @@ the last 5 days. Can return mix of image and video types.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | LAT | query | Latitude of the center search coordinate. If used, lng is required.  | No | number |
 | MIN_TIMESTAMP | query | A unix timestamp. All media returned will be taken later than this timestamp.  | No | integer |
 | LNG | query | Longitude of the center search coordinate. If used, lat is required.  | No | number |
@@ -406,7 +427,7 @@ the last 5 days. Can return mix of image and video types.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [Media](#media) & { **"distance"**: number } ] } |
 
 ### /media/popular
 
@@ -420,7 +441,7 @@ Can return mix of image and video types.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [Media](#media) ] } |
 
 ### /media/{media-id}/comments
 
@@ -432,14 +453,14 @@ Get a list of recent comments on a media object.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | media-id | path | Media ID | Yes | integer |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Comment](#comment) ] } |
 
 #### POST
 ##### Description
@@ -454,7 +475,7 @@ Create a comment on a media object with the following rules:
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | media-id | path | Media ID | Yes | integer |
 | TEXT | body | Text to post as a comment on the media object as specified in media-id.  | No | number |
 
@@ -462,12 +483,12 @@ Create a comment on a media object with the following rules:
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
 
 ##### Security
 
 | Security Schema | Scopes |
-| --- | --- |
+| --------------- | ------ |
 | oauth | comments |
 
 #### DELETE
@@ -479,14 +500,14 @@ authored by the authenticated user.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | media-id | path | Media ID | Yes | integer |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
 
 ### /media/{media-id}/likes
 
@@ -498,14 +519,14 @@ Get a list of users who have liked this media.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | media-id | path | Media ID | Yes | integer |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Like](#like) ] } |
 
 #### POST
 ##### Description
@@ -515,19 +536,19 @@ Set a like on this media by the currently authenticated user.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | media-id | path | Media ID | Yes | integer |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
 
 ##### Security
 
 | Security Schema | Scopes |
-| --- | --- |
+| --------------- | ------ |
 | oauth | comments |
 
 #### DELETE
@@ -538,14 +559,168 @@ Remove a like on this media by the currently authenticated user.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | media-id | path | Media ID | Yes | integer |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
+
+### /locations/{location-id}/media/recent
+
+#### GET
+##### Description
+
+Get a list of recent media objects from a given location.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| location-id | path | Location ID | Yes | integer |
+| max_timestamp | query | Return media before this UNIX timestamp. | No | integer |
+| min_timestamp | query | Return media after this UNIX timestamp. | No | integer |
+| min_id | query | Return media later than this min_id. | No | string |
+| max_id | query | Return media earlier than this max_id. | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"data"**: [ [Media](#media) ] } |
+
+## Comments
+
+### /media/{media-id}/comments
+
+#### GET
+##### Description
+
+Get a list of recent comments on a media object.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| media-id | path | Media ID | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Comment](#comment) ] } |
+
+#### POST
+##### Description
+
+Create a comment on a media object with the following rules:
+
+* The total length of the comment cannot exceed 300 characters.
+* The comment cannot contain more than 4 hashtags.
+* The comment cannot contain more than 1 URL.
+* The comment cannot consist of all capital letters.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| media-id | path | Media ID | Yes | integer |
+| TEXT | body | Text to post as a comment on the media object as specified in media-id.  | No | number |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
+
+##### Security
+
+| Security Schema | Scopes |
+| --------------- | ------ |
+| oauth | comments |
+
+#### DELETE
+##### Description
+
+Remove a comment either on the authenticated user's media object or
+authored by the authenticated user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| media-id | path | Media ID | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
+
+## Likes
+
+### /media/{media-id}/likes
+
+#### GET
+##### Description
+
+Get a list of users who have liked this media.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| media-id | path | Media ID | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Like](#like) ] } |
+
+#### POST
+##### Description
+
+Set a like on this media by the currently authenticated user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| media-id | path | Media ID | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
+
+##### Security
+
+| Security Schema | Scopes |
+| --------------- | ------ |
+| oauth | comments |
+
+#### DELETE
+##### Description
+
+Remove a like on this media by the currently authenticated user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| media-id | path | Media ID | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
+
+## Tags
 
 ### /tags/{tag-name}
 
@@ -557,7 +732,7 @@ Get information about a tag object.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | tag-name | path | Tag name | Yes | string |
 
 ##### Responses
@@ -578,14 +753,14 @@ these objects.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | tag-name | path | Tag name | Yes | string |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK |  |
+| 200 | OK | { **"data"**: [ [Tag](#tag) ] } |
 
 ### /tags/search
 
@@ -593,14 +768,16 @@ these objects.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | q | query | A valid tag name without a leading #. (eg. snowy, nofilter)  | No | string |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"meta"**: { **"code"**: integer }, **"data"**: [ [Tag](#tag) ] } |
+
+## Location
 
 ### /locations/{location-id}
 
@@ -612,14 +789,14 @@ Get information about a location.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | location-id | path | Location ID | Yes | integer |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [Location](#location) } |
 
 ### /locations/{location-id}/media/recent
 
@@ -631,7 +808,7 @@ Get a list of recent media objects from a given location.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | location-id | path | Location ID | Yes | integer |
 | max_timestamp | query | Return media before this UNIX timestamp. | No | integer |
 | min_timestamp | query | Return media after this UNIX timestamp. | No | integer |
@@ -642,7 +819,7 @@ Get a list of recent media objects from a given location.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [Media](#media) ] } |
 
 ### /locations/search
 
@@ -654,7 +831,7 @@ Search for a location by geographic coordinate.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | distance | query | Default is 1000m (distance=1000), max distance is 5000. | No | integer |
 | facebook_places_id | query | Returns a location mapped off of a Facebook places id. If used, a Foursquare id and lat, lng are not required.  | No | integer |
 | foursquare_id | query | returns a location mapped off of a foursquare v1 api location id. If used, you are not required to use lat and lng. Note that this method is deprecated; you should use the new foursquare IDs with V2 of their API.  | No | integer |
@@ -666,7 +843,9 @@ Search for a location by geographic coordinate.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | object |
+| 200 | OK | { **"data"**: [ [Location](#location) ] } |
+
+## default
 
 ### /geographies/{geo-id}/media/recent
 
@@ -686,7 +865,7 @@ geography, use the [media search endpoint
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | geo-id | path | Geolocation ID | Yes | integer |
 | count | query | Max number of media to return. | No | integer |
 | min_id | query | Return media before this `min_id`. | No | integer |
@@ -709,7 +888,7 @@ geography, use the [media search endpoint
 | profile_picture | string |  | No |
 | bio | string |  | No |
 | website | string |  | No |
-| counts | object |  | No |
+| counts | { **"media"**: integer, **"follows"**: integer, **"follwed_by"**: integer } |  | No |
 
 #### Media
 
@@ -723,10 +902,10 @@ geography, use the [media search endpoint
 | user | [MiniProfile](#miniprofile) |  | No |
 | users_in_photo | [ [MiniProfile](#miniprofile) ] |  | No |
 | location | [Location](#location) |  | No |
-| comments: | object |  | No |
-| likes | object |  | No |
-| images |  |  | No |
-| videos |  |  | No |
+| comments: | { **"count"**: integer, **"data"**: [ [Comment](#comment) ] } |  | No |
+| likes | { **"count"**: integer, **"data"**: [ [MiniProfile](#miniprofile) ] } |  | No |
+| images | { **"low_resolution"**: [Image](#image), **"thumbnail"**: [Image](#image), **"standard_resolution"**: [Image](#image) } |  | No |
+| videos | { **"low_resolution"**: [Image](#image), **"standard_resolution"**: [Image](#image) } |  | No |
 
 #### Location
 

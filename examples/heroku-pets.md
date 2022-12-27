@@ -13,7 +13,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | limit | query | number of pets to return | No | integer |
 
 ##### Responses
@@ -26,7 +26,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | pet | body | The pet JSON you want to post | Yes | [Pet](#pet) |
 
 ##### Responses
@@ -39,7 +39,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | pet | body | The pet JSON you want to post | Yes | [Pet](#pet) |
 
 ##### Responses
@@ -54,7 +54,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | petId | path | ID of the pet | Yes | string |
 
 ##### Responses

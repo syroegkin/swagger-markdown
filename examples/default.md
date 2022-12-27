@@ -20,7 +20,7 @@ proper display order.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | latitude | query | Latitude component of location. | Yes | double |
 | longitude | query | Longitude component of location. | Yes | double |
 
@@ -52,7 +52,7 @@ already factors in this multiplier.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | start_latitude | query | Latitude component of start location. | Yes | double |
 | start_longitude | query | Longitude component of start location. | Yes | double |
 | end_latitude | query | Latitude component of end location. | Yes | double |
@@ -79,7 +79,7 @@ The Time Estimates endpoint returns ETAs for all products offered at a given loc
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | start_latitude | query | Latitude component of start location. | Yes | double |
 | start_longitude | query | Longitude component of start location. | Yes | double |
 | customer_uuid | query | Unique customer identifier to be used for experience customization. | No | string (uuid) |
@@ -124,7 +124,7 @@ The User Activity endpoint returns data about a user's lifetime activity with Ub
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | offset | query | Offset the list of returned results by this amount. Default is zero. | No | integer |
 | limit | query | Number of items to retrieve. Default is 5, maximum is 100. | No | integer |
 

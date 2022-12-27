@@ -18,7 +18,7 @@ render back everything.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | name | formData | name | No | string |
 | year | formData | year | No | string |
 
@@ -34,7 +34,7 @@ render back everything.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | id | path | ID | Yes | string |
 
 ##### Responses
