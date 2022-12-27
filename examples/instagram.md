@@ -148,6 +148,8 @@ callbackFunction({
 | In | query |
 | Name | access_token |
 
+## Users
+
 ### /users/{user-id}
 
 #### GET
@@ -258,6 +260,14 @@ Search for a user by name.
 | ---- | ----------- | ------ |
 | 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
 
+## Relationships
+Relationships are expressed using the following terms:
+
+**outgoing_status**: Your relationship to the user. Can be "follows",
+  "requested", "none".
+**incoming_status**: A user's relationship to you. Can be "followed_by",
+  "requested_by", "blocked_by_you", "none".
+
 ### /users/{user-id}/follows
 
 #### GET
@@ -334,6 +344,17 @@ Modify the relationship between the current user and thetarget user.
 | Security Schema | Scopes |
 | --------------- | ------ |
 | oauth | relationships |
+
+## Media
+At this time, uploading via the API is not possible. We made a conscious
+choice not to add this for the following reasons:
+
+* Instagram is about your life on the go – we hope to encourage photos
+  from within the app.
+* We want to fight spam & low quality photos. Once we allow uploading
+  from other sources, it's harder to control what comes into the Instagram
+  ecosystem. All this being said, we're working on ways to ensure users
+  have a consistent and high-quality experience on our platform.
 
 ### /media/{media-id}
 
@@ -547,6 +568,160 @@ Remove a like on this media by the currently authenticated user.
 | ---- | ----------- | ------ |
 | 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
 
+### /locations/{location-id}/media/recent
+
+#### GET
+##### Description
+
+Get a list of recent media objects from a given location.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| location-id | path | Location ID | Yes | integer |
+| max_timestamp | query | Return media before this UNIX timestamp. | No | integer |
+| min_timestamp | query | Return media after this UNIX timestamp. | No | integer |
+| min_id | query | Return media later than this min_id. | No | string |
+| max_id | query | Return media earlier than this max_id. | No | string |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"data"**: [ [Media](#media) ] } |
+
+## default
+
+### /media/{media-id}/comments
+
+#### GET
+##### Description
+
+Get a list of recent comments on a media object.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| media-id | path | Media ID | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Comment](#comment) ] } |
+
+#### POST
+##### Description
+
+Create a comment on a media object with the following rules:
+
+* The total length of the comment cannot exceed 300 characters.
+* The comment cannot contain more than 4 hashtags.
+* The comment cannot contain more than 1 URL.
+* The comment cannot consist of all capital letters.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| media-id | path | Media ID | Yes | integer |
+| TEXT | body | Text to post as a comment on the media object as specified in media-id.  | No | number |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
+
+##### Security
+
+| Security Schema | Scopes |
+| --------------- | ------ |
+| oauth | comments |
+
+#### DELETE
+##### Description
+
+Remove a comment either on the authenticated user's media object or
+authored by the authenticated user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| media-id | path | Media ID | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
+
+## Likes
+
+### /media/{media-id}/likes
+
+#### GET
+##### Description
+
+Get a list of users who have liked this media.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| media-id | path | Media ID | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Like](#like) ] } |
+
+#### POST
+##### Description
+
+Set a like on this media by the currently authenticated user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| media-id | path | Media ID | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
+
+##### Security
+
+| Security Schema | Scopes |
+| --------------- | ------ |
+| oauth | comments |
+
+#### DELETE
+##### Description
+
+Remove a like on this media by the currently authenticated user.
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| media-id | path | Media ID | Yes | integer |
+
+##### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
+
+## Tags
+
 ### /tags/{tag-name}
 
 #### GET
@@ -601,6 +776,8 @@ these objects.
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | { **"meta"**: { **"code"**: integer }, **"data"**: [ [Tag](#tag) ] } |
+
+## Location
 
 ### /locations/{location-id}
 
@@ -667,6 +844,8 @@ Search for a location by geographic coordinate.
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | OK | { **"data"**: [ [Location](#location) ] } |
+
+## default
 
 ### /geographies/{geo-id}/media/recent
 

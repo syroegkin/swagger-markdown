@@ -14,3 +14,5 @@ export interface Options {
   output?: string;
   input: string;
 }
+
+export const ALLOWED_METHODS = ['get', 'post', 'put', 'patch', 'delete', 'options', 'head'];

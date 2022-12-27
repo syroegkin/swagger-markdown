@@ -3,18 +3,13 @@ import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
 import { transformSecurity } from './security';
 import { Markdown } from '../lib/markdown';
+import { ALLOWED_METHODS } from '../types';
 
-/**
- * Allowed methods
- * @type {string[]}
- */
-const ALLOWED_METHODS = ['get', 'post', 'put', 'patch', 'delete', 'options', 'head'];
-
-export const transformPath = (
+export function transformPath(
   path: string,
   data: OpenAPIV2.PathItemObject,
   parameters?: any,
-): string | null => {
+): string | null {
   let pathParameters = null;
 
   if (!path || !data) {
@@ -24,7 +19,6 @@ export const transformPath = (
   const md = Markdown.md();
 
   // Make path as a header
-  // res.push(`### ${path}\n`);
   md.line(md.string(path).h3());
 
   // Check if parameter for path are in the place
@@ -87,4 +81,4 @@ export const transformPath = (
   });
 
   return md.export();
-};
+}

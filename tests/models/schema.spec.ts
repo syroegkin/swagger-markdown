@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { Schema } from '../../src/models/schema';
+import { Schema } from '../../src/models/Schema';
 
 const fixture = {
   type: 'Type',
