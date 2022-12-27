@@ -31,6 +31,10 @@ parser.add_argument('--skip-info', {
   help: 'Skip the title, description, version etc, whatever is in the info block.',
   dest: 'skipInfo',
 });
+parser.add_argument('--force-version', {
+  help: 'Set the document version, ignore version provided in the yaml file',
+  dest: 'forceVersion',
+});
 const args: Options = parser.parse_args();
 
 if (args.input) {

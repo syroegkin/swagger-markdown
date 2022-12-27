@@ -13,6 +13,7 @@ export interface Options {
   skipInfo?: boolean;
   output?: string;
   input: string;
+  forceVersion?: string;
 }
 
 export const ALLOWED_METHODS = ['get', 'post', 'put', 'patch', 'delete', 'options', 'head'];

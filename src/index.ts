@@ -2,6 +2,7 @@ import SwaggerParser from '@apidevtools/swagger-parser';
 import fs from 'fs';
 import markdownlint from 'markdownlint';
 import markdownlintRuleHelpers from 'markdownlint-rule-helpers';
+import { OpenAPIV2 } from 'openapi-types';
 import { AllSwaggerDocumentVersions, Options } from './types';
 import { isV2Document, isV31Document, isV3Document } from './lib/detectDocumentVersion';
 import { transformSwaggerV2 } from './transformers/documentV2';
@@ -50,8 +51,10 @@ export function partiallyDereference(
 export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: Options): string {
   let plainDocument = '';
 
-  if (isV2Document(inputDoc)) {
-    plainDocument = transformSwaggerV2(inputDoc, options);
+  if (isV2Document(inputDoc) || options.forceVersion === '2') {
+    // Quick hack to allow version 3 to be processed as it version 2
+    // Will be removed as soon as support of version 3 will be in place
+    plainDocument = transformSwaggerV2(inputDoc as OpenAPIV2.Document, options);
   } else if (isV3Document(inputDoc)) {
     throw new Error('OpenAPI V3 is not yet supported');
   } else if (isV31Document(inputDoc)) {
