@@ -1,3 +1,10 @@
+# [2.0.0-beta.14](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.13...v2.0.0-beta.14) (2022-12-27)
+
+
+### Bug Fixes
+
+* **instagram:** fix instagram yaml specs ([1a5d0c2](https://github.com/syroegkin/swagger-markdown/commit/1a5d0c24bdbd0e3f025cd6ab17ac400fdd940a76))
+
 # [2.0.0-beta.13](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0-beta.12...v2.0.0-beta.13) (2022-12-27)
 
 
