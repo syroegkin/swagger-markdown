@@ -31,11 +31,11 @@ export function transformInfo(info: OpenAPIV2.InfoObject) {
         .line();
     }
 
-    if ('contact' in info) {
+    if ('contact' in info && Object.keys(info.contact).length) {
       md.line(transformContact(info.contact));
     }
 
-    if ('license' in info) {
+    if ('license' in info && Object.keys(info.contact).length) {
       md.line(transformLicense(info.license));
     }
   }
