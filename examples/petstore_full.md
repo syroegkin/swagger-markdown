@@ -18,20 +18,20 @@ apiteam@swagger.io
 ### Security
 **api_key**  
 
-|apiKey|*API Key*|
-|---|---|
-|Name|api_key|
-|In|header|
+| apiKey | *API Key* |
+| ------ | --------- |
+| Name | api_key |
+| In | header |
 
 **petstore_auth**  
 
-|oauth2|*OAuth 2.0*|
-|---|---|
-|Authorization URL|<http://petstore.swagger.io/api/oauth/dialog>|
-|Flow|implicit|
-|**Scopes**||
-|write_pets|modify pets in your account|
-|read_pets|read your pets|
+| oauth2 | *OAuth 2.0* |
+| ------ | ----------- |
+| Authorization URL | <http://petstore.swagger.io/api/oauth/dialog> |
+| Flow | implicit |
+| **Scopes** |  |
+| write_pets | modify pets in your account |
+| read_pets | read your pets |
 
 ### /pets
 
@@ -45,7 +45,7 @@ Add a new pet to the store
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | body | body | Pet object that needs to be added to the store | No | [Pet](#pet) |
 
 ##### Responses
@@ -56,8 +56,8 @@ Add a new pet to the store
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
 #### PUT
@@ -70,7 +70,7 @@ Update an existing pet
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | body | body | Pet object that needs to be added to the store | No | [Pet](#pet) |
 
 ##### Responses
@@ -83,8 +83,8 @@ Update an existing pet
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
 ### /pets/findByStatus
@@ -101,7 +101,7 @@ Multiple status values can be provided with comma seperated strings
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | status | query | Status values that need to be considered for filter | No | [ string ] |
 
 ##### Responses
@@ -113,8 +113,8 @@ Multiple status values can be provided with comma seperated strings
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
 ### /pets/findByTags
@@ -131,7 +131,7 @@ Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | tags | query | Tags to filter by | No | [ string ] |
 
 ##### Responses
@@ -143,8 +143,8 @@ Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
 ### /pets/{petId}
@@ -161,7 +161,7 @@ Returns a pet when ID < 10.  ID > 10 or nonintegers will simulate API error cond
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | petId | path | ID of pet that needs to be fetched | Yes | long |
 
 ##### Responses
@@ -174,9 +174,9 @@ Returns a pet when ID < 10.  ID > 10 or nonintegers will simulate API error cond
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
-| api_key | | |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
+| api_key |  |  |
 | petstore_auth | write_pets | read_pets |
 
 #### POST
@@ -189,7 +189,7 @@ Updates a pet in the store with form data
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | petId | path | ID of pet that needs to be updated | Yes | string |
 | name | formData | Updated name of the pet | Yes | string |
 | status | formData | Updated status of the pet | Yes | string |
@@ -202,8 +202,8 @@ Updates a pet in the store with form data
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
 #### DELETE
@@ -216,7 +216,7 @@ Deletes a pet
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | api_key | header |  | Yes | string |
 | petId | path | Pet id to delete | Yes | long |
 
@@ -228,8 +228,8 @@ Deletes a pet
 
 ##### Security
 
-| Security Schema | Scopes | |
-| --- | --- | --- |
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
 ### /stores/order
@@ -244,7 +244,7 @@ Place an order for a pet
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | body | body | order placed for purchasing the pet | No | [Order](#order) |
 
 ##### Responses
@@ -268,7 +268,7 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | orderId | path | ID of pet that needs to be fetched | Yes | string |
 
 ##### Responses
@@ -291,7 +291,7 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | orderId | path | ID of the order that needs to be deleted | Yes | string |
 
 ##### Responses
@@ -315,7 +315,7 @@ This can only be done by the logged in user.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | body | body | Created user object | No | [User](#user) |
 
 ##### Responses
@@ -336,7 +336,7 @@ Creates list of users with given input array
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | body | body | List of user object | No | [ [User](#user) ] |
 
 ##### Responses
@@ -357,7 +357,7 @@ Creates list of users with given input array
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | body | body | List of user object | No | [ [User](#user) ] |
 
 ##### Responses
@@ -378,7 +378,7 @@ Logs user into the system
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | username | query | The user name for login | No | string |
 | password | query | The password for login in clear text | No | string |
 
@@ -416,7 +416,7 @@ Get user by user name
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | username | path | The name that needs to be fetched. Use user1 for testing. | Yes | string |
 
 ##### Responses
@@ -439,7 +439,7 @@ This can only be done by the logged in user.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | username | path | name that need to be deleted | Yes | string |
 | body | body | Updated user object | No | [User](#user) |
 
@@ -462,7 +462,7 @@ This can only be done by the logged in user.
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ---- |
+| ---- | ---------- | ----------- | -------- | ------ |
 | username | path | The name that needs to be deleted | Yes | string |
 
 ##### Responses
@@ -500,7 +500,7 @@ This can only be done by the logged in user.
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
 | category | [Category](#category) |  | No |
-| name | string | _Example:_ `"doggie"` | Yes |
+| name | string | *Example:* `"doggie"` | Yes |
 | photoUrls | [ string ] |  | Yes |
 | tags | [ [Tag](#tag) ] |  | No |
 | status | string | pet status in the store | No |

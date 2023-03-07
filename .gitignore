@@ -40,11 +40,8 @@ jspm_packages
 .idea
 
 # build
-bin
 dist
-
-# development tasks
-examples.sh
+bin
 
 tmp
 .vscode

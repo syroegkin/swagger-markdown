@@ -4,7 +4,7 @@ references:
   node_defaults: &node_defaults
     working_directory: ~/app
     docker:
-      - image: circleci/node:14
+      - image: cimg/node:16.17
 
 jobs:
   checkout_code:
@@ -59,12 +59,11 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/app
-      - deploy:
+      - run:
           name: Deploy to npm
           command: npm run semantic-release
 
 workflows:
-  version: 2
   test_and_deploy:
     jobs:
       - checkout_code
@@ -85,7 +84,9 @@ workflows:
             - semantic-release
           filters:
             branches:
-              only: master
+              only:
+                - master
+                - beta
           requires:
             - test_unit
             - test_lint
