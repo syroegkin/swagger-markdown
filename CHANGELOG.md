@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0...v2.0.1) (2023-03-07)
+
+
+### Bug Fixes
+
+* **validation:** add additional validations ([73aeaf8](https://github.com/syroegkin/swagger-markdown/commit/73aeaf81e6038a0078fdda23bf74e14712f52fa1)), closes [#198](https://github.com/syroegkin/swagger-markdown/issues/198)
+
 # [2.0.0](https://github.com/syroegkin/swagger-markdown/compare/v1.4.6...v2.0.0) (2022-12-27)
 
 
