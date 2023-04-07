@@ -69,7 +69,7 @@ Returns a user based on a single ID, if the user does not have access to the pet
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | pet response | [pet](#pet) |
+| 200 | pet response<br><br>**Example** (*application/json*):<br><pre>{<br>  "id": 18,<br>  "name": "Doggo",<br>  "tag": "afuera"<br>}</pre> | [pet](#pet) |
 | default | unexpected error | [errorModel](#errormodel) |
 
 #### DELETE
