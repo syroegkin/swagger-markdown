@@ -7,7 +7,7 @@ describe('transformSwaggerV2', () => {
       swagger: '2.0',
       schemes: ['http', 'https'],
     };
-    const expectedResult = 'Schemes: http, https\n\n';
+    const expectedResult = '**Schemes:** http, https\n\n';
     const res = transformSwaggerV2(fixture as any, {} as any);
     expect(res).to.equal(expectedResult);
   });

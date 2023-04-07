@@ -83,7 +83,7 @@ swagger api team
 | In | header |
 | x-amazon-apigateway-authtype | oauth2 |
 
-Schemes: http, https
+**Schemes:** http, https
 
 ### /pets/{id}
 

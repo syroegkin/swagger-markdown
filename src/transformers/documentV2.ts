@@ -50,7 +50,8 @@ export function transformSwaggerV2(
   // Schemes
   if ('schemes' in inputDoc) {
     md.line(
-      md.string('Schemes: '),
+      md.string('Schemes:').bold(),
+      md.string(' '),
       md.string(inputDoc.schemes.join(', ')).escape(),
     ).line();
   }

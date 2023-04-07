@@ -7,7 +7,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
 ## Version: 1.0.0
 
-Schemes: http, https
+**Schemes:** http, https
 
 ### /
 
