@@ -47,7 +47,6 @@ export function transformSwaggerV2(
   }
 
   // Schemes
-  // Schemes
   if ('schemes' in inputDoc) {
     md.line(
       md.string('Schemes:').bold(),
