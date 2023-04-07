@@ -40,6 +40,11 @@ export function transformPath(
       md.line(md.string(method.toUpperCase()).h4());
       const pathInfo: OpenAPIV2.OperationObject = data[method];
 
+      // Deprecation
+      if ('deprecated' in pathInfo && pathInfo.deprecated === true) {
+        md.line(md.string('DEPRECATED').bold().italic());
+      }
+
       // Set summary
       if ('summary' in pathInfo) {
         md.line(md.string('Summary:').h5())

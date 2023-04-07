@@ -79,4 +79,30 @@ describe('Path transformer', () => {
     const res = (transformPath(fixture.path, fixture.data as any) as string).split('\n');
     expect(res[3]).to.be.equal(result);
   });
+
+  it('should render deprecated if present', () => {
+    const fixture = {
+      path: '/',
+      data: {
+        get: {
+          deprecated: true,
+        },
+      },
+    };
+    const result = '***DEPRECATED***';
+    const res = (transformPath(fixture.path, fixture.data as any) as string).split('\n');
+    expect(res[3]).to.be.equal(result);
+  });
+  it('should not render deprecated if present and its value is falsy', () => {
+    const fixture = {
+      path: '/',
+      data: {
+        get: {
+          deprecated: false,
+        },
+      },
+    };
+    const res = (transformPath(fixture.path, fixture.data as any) as string).split('\n');
+    expect(res[3]).to.be.equal('');
+  });
 });

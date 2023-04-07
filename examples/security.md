@@ -88,6 +88,7 @@ swagger api team
 ### /pets/{id}
 
 #### GET
+***DEPRECATED***
 ##### Summary
 
 Find pets by ID
