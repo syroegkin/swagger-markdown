@@ -13,6 +13,8 @@ foo@example.com
 
 **License:** [MIT](http://opensource.org/licenses/MIT)
 
+Schemes: http
+
 ### /pets
 
 #### GET

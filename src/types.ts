@@ -10,7 +10,7 @@ export type AllSwaggerDocumentVersions = OpenAPI.Document
 | OpenAPIV3_1.Document;
 
 export interface Options {
-  skipInfo?: boolean;
+  skipInfo?: boolean; // Allows to skip info section
   output?: string;
   input: string;
   forceVersion?: string;

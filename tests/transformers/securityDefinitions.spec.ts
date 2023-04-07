@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { OpenAPIV2 } from 'openapi-types';
-import { transformSecurityDefinitions, nameResolver, typeResolver } from '../../src/transformers/securityDefinitions';
+import { transformSecurityDefinitions, nameResolver, typeResolver } from '../../src/transformers/v2/securityDefinitions';
 
 describe('Security definitions', () => {
   it('Should not create any data if definitions is empty', () => {

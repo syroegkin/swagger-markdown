@@ -148,6 +148,8 @@ callbackFunction({
 | In | query |
 | Name | access_token |
 
+Schemes: https
+
 ## Users
 
 ### /users/{user-id}

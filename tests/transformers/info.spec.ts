@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { OpenAPIV2 } from 'openapi-types';
-import { transformInfo } from '../../src/transformers/info';
+import { transformInfo } from '../../src/transformers/v2/info';
 
 describe('Info transformer', () => {
   it('should return null if nothing was passed', () => {
@@ -17,7 +17,7 @@ describe('Info transformer', () => {
       underline: '=========',
     };
 
-    const res = transformInfo(fixture).split('\n');
+    const res = transformInfo(fixture)!.split('\n');
     expect(res[0]).to.be.equal(`# ${fixture.title}`);
     // Underline is same length as a title
     expect(res[1]).to.be.not.equal(results.underline);

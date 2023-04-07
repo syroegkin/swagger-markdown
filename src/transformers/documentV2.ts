@@ -1,9 +1,9 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { Options } from '../types';
-import { transformInfo } from './info';
+import { transformInfo } from './v2/info';
 import { transformPath } from './path';
-import { transformSecurityDefinitions } from './securityDefinitions';
-import { transformExternalDocs } from './externalDocs';
+import { transformSecurityDefinitions } from './v2/securityDefinitions';
+import { transformExternalDocs } from './v2/externalDocs';
 import { transformDefinition } from './definitions';
 import { TagsCollection } from '../models/Tags';
 import { Markdown } from '../lib/markdown';
@@ -15,6 +15,12 @@ export function transformSwaggerV2(
   options: Options,
 ): string {
   const md = Markdown.md();
+
+  // Skip host, basePath, produces and consumes
+  // those are used for the mock server and won't be rendered
+
+  // Security and Responses are supposed to be dereferenced (?)
+  // and shall not be present in the root namespace
 
   // Process info
   if (!options.skipInfo && 'info' in inputDoc) {
@@ -38,6 +44,15 @@ export function transformSwaggerV2(
     md.line(transformSecurityDefinitions(inputDoc.securityDefinitions));
   // } else if (inputDoc.components && inputDoc.components.securitySchemas) {
   //   document.push(transformSecurityDefinitions(inputDoc.components.securityDefinitions));
+  }
+
+  // Schemes
+  // Schemes
+  if ('schemes' in inputDoc) {
+    md.line(
+      md.string('Schemes: '),
+      md.string(inputDoc.schemes.join(', ')).escape(),
+    ).line();
   }
 
   // Collect parameters

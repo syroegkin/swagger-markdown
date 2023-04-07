@@ -1,7 +1,7 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { transformContact } from './contact';
 import { transformLicense } from './license';
-import { Markdown } from '../lib/markdown';
+import { Markdown } from '../../lib/markdown';
 
 /**
  * http://swagger.io/specification/#infoObject

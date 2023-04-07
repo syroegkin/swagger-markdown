@@ -1,5 +1,5 @@
 import { OpenAPIV2 } from 'openapi-types';
-import { Markdown } from '../lib/markdown';
+import { Markdown } from '../../lib/markdown';
 
 export const typeResolver = {
   basic: 'Basic',
@@ -15,6 +15,9 @@ export const nameResolver = {
   tokenUrl: 'Token URL',
 };
 
+/**
+ * https://swagger.io/specification/v2/#securityDefinitionsObject
+ */
 export const transformSecurityDefinitions = (
   securityDefinitions: OpenAPIV2.SecurityDefinitionsObject,
 ) => {

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { OpenAPIV2 } from 'openapi-types';
-import { transformLicense } from '../../src/transformers/license';
+import { transformLicense } from '../../src/transformers/v2/license';
 
 describe('License field', () => {
   it('should not create header if information is not provided', () => {

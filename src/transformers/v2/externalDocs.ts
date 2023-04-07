@@ -1,8 +1,11 @@
 import { OpenAPIV2 } from 'openapi-types';
-import { Markdown } from '../lib/markdown';
+import { Markdown } from '../../lib/markdown';
 
 const DEFAULT_TEXT = 'Find more info here';
 
+/**
+ * https://swagger.io/specification/v2/#externalDocumentationObject
+ */
 export function transformExternalDocs(externalDocs: OpenAPIV2.ExternalDocumentationObject) {
   const md = Markdown.md();
   if ('url' in externalDocs) {
