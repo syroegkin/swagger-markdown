@@ -96,6 +96,8 @@ Find pets by ID
 
 Returns pets based on ID
 
+**Documentation:** [Find more info here](https://swagger.io)
+
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |

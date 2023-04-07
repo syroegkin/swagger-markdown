@@ -7,7 +7,7 @@ import { transformExternalDocs } from './v2/externalDocs';
 import { transformDefinition } from './definitions';
 import { TagsCollection } from '../models/Tags';
 import { Markdown } from '../lib/markdown';
-import { groupPathsByTags } from './groupPathsByTags';
+import { groupPathsByTags } from './v2/groupPathsByTags';
 import { transformTag } from './tag';
 
 export function transformSwaggerV2(

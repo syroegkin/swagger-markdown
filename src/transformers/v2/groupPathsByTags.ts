@@ -1,5 +1,5 @@
 import { OpenAPIV2 } from 'openapi-types';
-import { ALLOWED_METHODS } from '../types';
+import { ALLOWED_METHODS } from '../../types';
 
 type Tagged = { [tag: string]: OpenAPIV2.PathsObject };
 

@@ -62,4 +62,21 @@ describe('Path transformer', () => {
     expect(res[4]).to.be.equal(result[1]);
     expect(res[5]).to.be.equal(result[2]);
   });
+
+  it('should render external docs if present', () => {
+    const fixture = {
+      path: '/',
+      data: {
+        get: {
+          externalDocs: {
+            description: 'External text',
+            url: 'http://example.com',
+          },
+        },
+      },
+    };
+    const result = '**Documentation:** [External text](http://example.com)';
+    const res = (transformPath(fixture.path, fixture.data as any) as string).split('\n');
+    expect(res[3]).to.be.equal(result);
+  });
 });

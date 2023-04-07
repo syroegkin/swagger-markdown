@@ -4,7 +4,13 @@ import { transformParameters } from './pathParameters';
 import { transformSecurity } from './security';
 import { Markdown } from '../lib/markdown';
 import { ALLOWED_METHODS } from '../types';
+import { transformExternalDocs } from './v2/externalDocs';
 
+/**
+ * https://swagger.io/specification/v2/#pathsObject
+ * https://swagger.io/specification/v2/#pathItemObject
+ * https://swagger.io/specification/v2/#operationObject
+ */
 export function transformPath(
   path: string,
   data: OpenAPIV2.PathItemObject,
@@ -48,6 +54,15 @@ export function transformPath(
           .line()
           .line(md.string(pathInfo.description).escape())
           .line();
+      }
+
+      // Set externalDocs
+      if ('externalDocs' in pathInfo) {
+        md.line(
+          md.string('Documentation:').bold(),
+          md.string(' '),
+          transformExternalDocs(pathInfo.externalDocs),
+        );
       }
 
       // Build parameters
