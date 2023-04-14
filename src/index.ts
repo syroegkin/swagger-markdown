@@ -85,7 +85,8 @@ export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: 
  */
 export async function transformFile(options: Options): Promise<string> {
   const swaggerParser = new SwaggerParser();
-  const $refs: SwaggerParser.$Refs = await swaggerParser.resolve(options.input);
+  const bundle = await swaggerParser.bundle(options.input);
+  const $refs: SwaggerParser.$Refs = await swaggerParser.resolve(bundle);
   const dereferencedDocument = partiallyDereference(swaggerParser.api, $refs);
   const markdown = transfromSwagger(dereferencedDocument, options);
 
