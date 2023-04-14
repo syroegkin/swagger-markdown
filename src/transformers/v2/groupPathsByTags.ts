@@ -1,5 +1,5 @@
 import { OpenAPIV2 } from 'openapi-types';
-import { ALLOWED_METHODS } from '../types';
+import { ALLOWED_METHODS } from '../../types';
 
 type Tagged = { [tag: string]: OpenAPIV2.PathsObject };
 
@@ -15,7 +15,7 @@ export function groupPathsByTags(
     const data = inputDoc[path];
     Object.keys(data).forEach((method) => {
       if (ALLOWED_METHODS.includes(method)) {
-        const pathMethod = data[method];
+        const pathMethod: OpenAPIV2.OperationObject = data[method];
         const tags = pathMethod.tags || [''];
         tags.forEach((tagName) => {
           if (!tagged[tagName]) {

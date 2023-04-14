@@ -33,6 +33,8 @@ apiteam@swagger.io
 | write_pets | modify pets in your account |
 | read_pets | read your pets |
 
+**Schemes:** http
+
 ### /pets
 
 #### POST

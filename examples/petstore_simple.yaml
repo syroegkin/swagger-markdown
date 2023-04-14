@@ -97,6 +97,11 @@ paths:
           description: pet response
           schema:
             $ref: '#/definitions/pet'
+          examples:
+            application/json:
+              id: 18
+              name: Doggo
+              tag: afuera
         default:
           description: unexpected error
           schema:

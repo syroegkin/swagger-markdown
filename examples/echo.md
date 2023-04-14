@@ -5,6 +5,8 @@ render back everything.
 
 ## Version: 1.0.0
 
+**Schemes:** http
+
 ### /
 
 #### GET

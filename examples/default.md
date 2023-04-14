@@ -3,6 +3,8 @@ Move your app forward with the Uber API
 
 ## Version: 1.0.0
 
+**Schemes:** https
+
 ### /products
 
 #### GET

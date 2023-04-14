@@ -76,6 +76,10 @@ paths:
       description: Returns pets based on ID
       summary: Find pets by ID
       operationId: getPetsById
+      deprecated: true
+      externalDocs:
+        description: Find more info here
+        url: https://swagger.io
       security:
         - githubAccessCode:
             - user

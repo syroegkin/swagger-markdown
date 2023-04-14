@@ -83,9 +83,12 @@ swagger api team
 | In | header |
 | x-amazon-apigateway-authtype | oauth2 |
 
+**Schemes:** http, https
+
 ### /pets/{id}
 
 #### GET
+***DEPRECATED***
 ##### Summary
 
 Find pets by ID
@@ -93,6 +96,8 @@ Find pets by ID
 ##### Description
 
 Returns pets based on ID
+
+**Documentation:** [Find more info here](https://swagger.io)
 
 ##### Parameters
 

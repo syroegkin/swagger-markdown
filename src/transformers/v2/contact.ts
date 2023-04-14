@@ -1,5 +1,5 @@
 import { OpenAPIV2 } from 'openapi-types';
-import { Markdown } from '../lib/markdown';
+import { Markdown } from '../../lib/markdown';
 
 /**
  * http://swagger.io/specification/#contactObject

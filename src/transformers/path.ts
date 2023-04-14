@@ -1,16 +1,23 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
-import { transformSecurity } from './security';
+import { transformSecurity } from './v2/security';
 import { Markdown } from '../lib/markdown';
 import { ALLOWED_METHODS } from '../types';
+import { transformExternalDocs } from './v2/externalDocs';
+import { transformSchemes } from './v2/schemes';
 
+/**
+ * https://swagger.io/specification/v2/#pathsObject
+ * https://swagger.io/specification/v2/#pathItemObject
+ * https://swagger.io/specification/v2/#operationObject
+ */
 export function transformPath(
   path: string,
   data: OpenAPIV2.PathItemObject,
-  parameters?: any,
+  parameters?: OpenAPIV2.ParametersDefinitionsObject,
 ): string | null {
-  let pathParameters = null;
+  let pathParameters: OpenAPIV2.Parameters = null;
 
   if (!path || !data) {
     return null;
@@ -34,6 +41,16 @@ export function transformPath(
       md.line(md.string(method.toUpperCase()).h4());
       const pathInfo: OpenAPIV2.OperationObject = data[method];
 
+      // Deprecation
+      if ('deprecated' in pathInfo && pathInfo.deprecated === true) {
+        md.line(md.string('DEPRECATED').bold().italic());
+      }
+
+      // Schemes
+      if ('schemes' in pathInfo && pathInfo.schemes.length > 0) {
+        md.line(transformSchemes(pathInfo.schemes));
+      }
+
       // Set summary
       if ('summary' in pathInfo) {
         md.line(md.string('Summary:').h5())
@@ -48,6 +65,15 @@ export function transformPath(
           .line()
           .line(md.string(pathInfo.description).escape())
           .line();
+      }
+
+      // Set externalDocs
+      if ('externalDocs' in pathInfo) {
+        md.line(
+          md.string('Documentation:').bold(),
+          md.string(' '),
+          transformExternalDocs(pathInfo.externalDocs),
+        );
       }
 
       // Build parameters

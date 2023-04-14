@@ -1,20 +1,27 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { Options } from '../types';
-import { transformInfo } from './info';
+import { transformInfo } from './v2/info';
 import { transformPath } from './path';
-import { transformSecurityDefinitions } from './securityDefinitions';
-import { transformExternalDocs } from './externalDocs';
+import { transformSecurityDefinitions } from './v2/securityDefinitions';
+import { transformExternalDocs } from './v2/externalDocs';
 import { transformDefinition } from './definitions';
 import { TagsCollection } from '../models/Tags';
 import { Markdown } from '../lib/markdown';
-import { groupPathsByTags } from './groupPathsByTags';
+import { groupPathsByTags } from './v2/groupPathsByTags';
 import { transformTag } from './tag';
+import { transformSchemes } from './v2/schemes';
 
 export function transformSwaggerV2(
   inputDoc: OpenAPIV2.Document,
   options: Options,
 ): string {
   const md = Markdown.md();
+
+  // Skip host, basePath, produces and consumes
+  // those are used for the mock server and won't be rendered
+
+  // Security and Responses are supposed to be dereferenced (?)
+  // and shall not be present in the root namespace
 
   // Process info
   if (!options.skipInfo && 'info' in inputDoc) {
@@ -40,8 +47,13 @@ export function transformSwaggerV2(
   //   document.push(transformSecurityDefinitions(inputDoc.components.securityDefinitions));
   }
 
+  // Schemes
+  if ('schemes' in inputDoc) {
+    md.line(transformSchemes(inputDoc.schemes));
+  }
+
   // Collect parameters
-  const parameters = 'parameters' in inputDoc ? inputDoc.parameters : {};
+  const parameters: OpenAPIV2.ParametersDefinitionsObject = 'parameters' in inputDoc ? inputDoc.parameters : {};
 
   // Process Paths
   if ('paths' in inputDoc) {

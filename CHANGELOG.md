@@ -1,3 +1,20 @@
+# [2.2.0](https://github.com/syroegkin/swagger-markdown/compare/v2.1.0...v2.2.0) (2023-04-14)
+
+
+### Features
+
+* **schemes:** display schemes if present in the path ([bbf610a](https://github.com/syroegkin/swagger-markdown/commit/bbf610a80e8d5f3f7f47d2da56d247dd2e865a6e))
+
+# [2.1.0](https://github.com/syroegkin/swagger-markdown/compare/v2.0.1...v2.1.0) (2023-04-07)
+
+
+### Features
+
+* **deprecated:** respect deprecated flag in the path description ([c3466df](https://github.com/syroegkin/swagger-markdown/commit/c3466dfa7feb054893f5ee9036a6e3665fb9dd27))
+* **externaldocs:** support external docs in the path ([8fee911](https://github.com/syroegkin/swagger-markdown/commit/8fee9116a0542ef1cb4a1b4aea5a45d6dd0b90d8))
+* **schemes:** add schemes to the document ([7963c18](https://github.com/syroegkin/swagger-markdown/commit/7963c182951a621870c13e7c522dc89dd0f24f85))
+* **schemes:** make schemes in bold ([b0877c1](https://github.com/syroegkin/swagger-markdown/commit/b0877c1f4bc068037f324edad95d2c738eeb430e))
+
 ## [2.0.1](https://github.com/syroegkin/swagger-markdown/compare/v2.0.0...v2.0.1) (2023-03-07)
 
 
