@@ -93,6 +93,7 @@ describe('Path transformer', () => {
     const res = (transformPath(fixture.path, fixture.data as any) as string).split('\n');
     expect(res[3]).to.be.equal(result);
   });
+
   it('should not render deprecated if present and its value is falsy', () => {
     const fixture = {
       path: '/',
@@ -104,5 +105,14 @@ describe('Path transformer', () => {
     };
     const res = (transformPath(fixture.path, fixture.data as any) as string).split('\n');
     expect(res[3]).to.be.equal('');
+  });
+
+  it('should render schemes if present', () => {
+    const fixture = {
+      path: '/',
+      data: { get: { schemes: ['http', 'https'] } },
+    };
+    const res = (transformPath(fixture.path, fixture.data as any) as string).split('\n');
+    expect(res[3]).to.be.equal('**Schemes:** http, https');
   });
 });

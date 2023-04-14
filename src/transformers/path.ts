@@ -5,6 +5,7 @@ import { transformSecurity } from './v2/security';
 import { Markdown } from '../lib/markdown';
 import { ALLOWED_METHODS } from '../types';
 import { transformExternalDocs } from './v2/externalDocs';
+import { transformSchemes } from './v2/schemes';
 
 /**
  * https://swagger.io/specification/v2/#pathsObject
@@ -43,6 +44,11 @@ export function transformPath(
       // Deprecation
       if ('deprecated' in pathInfo && pathInfo.deprecated === true) {
         md.line(md.string('DEPRECATED').bold().italic());
+      }
+
+      // Schemes
+      if ('schemes' in pathInfo && pathInfo.schemes.length > 0) {
+        md.line(transformSchemes(pathInfo.schemes));
       }
 
       // Set summary
