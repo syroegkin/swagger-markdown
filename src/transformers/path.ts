@@ -1,7 +1,7 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
-import { transformSecurity } from './security';
+import { transformSecurity } from './v2/security';
 import { Markdown } from '../lib/markdown';
 import { ALLOWED_METHODS } from '../types';
 import { transformExternalDocs } from './v2/externalDocs';
@@ -14,9 +14,9 @@ import { transformExternalDocs } from './v2/externalDocs';
 export function transformPath(
   path: string,
   data: OpenAPIV2.PathItemObject,
-  parameters?: any,
+  parameters?: OpenAPIV2.ParametersDefinitionsObject,
 ): string | null {
-  let pathParameters = null;
+  let pathParameters: OpenAPIV2.Parameters = null;
 
   if (!path || !data) {
     return null;

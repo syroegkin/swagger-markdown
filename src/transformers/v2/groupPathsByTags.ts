@@ -15,7 +15,7 @@ export function groupPathsByTags(
     const data = inputDoc[path];
     Object.keys(data).forEach((method) => {
       if (ALLOWED_METHODS.includes(method)) {
-        const pathMethod = data[method];
+        const pathMethod: OpenAPIV2.OperationObject = data[method];
         const tags = pathMethod.tags || [''];
         tags.forEach((tagName) => {
           if (!tagged[tagName]) {

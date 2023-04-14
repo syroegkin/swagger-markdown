@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { transformSecurity } from '../../src/transformers/security';
+import { transformSecurity } from '../../src/transformers/v2/security';
 
 const fixture = [
   {

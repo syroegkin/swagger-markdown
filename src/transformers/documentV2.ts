@@ -9,6 +9,7 @@ import { TagsCollection } from '../models/Tags';
 import { Markdown } from '../lib/markdown';
 import { groupPathsByTags } from './v2/groupPathsByTags';
 import { transformTag } from './tag';
+import { transformSchemes } from './v2/schemes';
 
 export function transformSwaggerV2(
   inputDoc: OpenAPIV2.Document,
@@ -48,15 +49,11 @@ export function transformSwaggerV2(
 
   // Schemes
   if ('schemes' in inputDoc) {
-    md.line(
-      md.string('Schemes:').bold(),
-      md.string(' '),
-      md.string(inputDoc.schemes.join(', ')).escape(),
-    ).line();
+    md.line(transformSchemes(inputDoc.schemes));
   }
 
   // Collect parameters
-  const parameters = 'parameters' in inputDoc ? inputDoc.parameters : {};
+  const parameters: OpenAPIV2.ParametersDefinitionsObject = 'parameters' in inputDoc ? inputDoc.parameters : {};
 
   // Process Paths
   if ('paths' in inputDoc) {
