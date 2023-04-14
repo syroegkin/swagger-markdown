@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/syroegkin/swagger-markdown/compare/v2.1.0...v2.2.0) (2023-04-14)
+
+
+### Features
+
+* **schemes:** display schemes if present in the path ([bbf610a](https://github.com/syroegkin/swagger-markdown/commit/bbf610a80e8d5f3f7f47d2da56d247dd2e865a6e))
+
 # [2.1.0](https://github.com/syroegkin/swagger-markdown/compare/v2.0.1...v2.1.0) (2023-04-07)
 
 
