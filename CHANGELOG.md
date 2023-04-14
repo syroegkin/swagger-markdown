@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/syroegkin/swagger-markdown/compare/v2.2.0...v2.2.1) (2023-04-14)
+
+
+### Bug Fixes
+
+* correct problem of broken build caused by scattered files in multiple directories ([fdac96c](https://github.com/syroegkin/swagger-markdown/commit/fdac96c8220888f1cc70dd53e8151d66fe32ef47)), closes [#169](https://github.com/syroegkin/swagger-markdown/issues/169)
+
 # [2.2.0](https://github.com/syroegkin/swagger-markdown/compare/v2.1.0...v2.2.0) (2023-04-14)
 
 
