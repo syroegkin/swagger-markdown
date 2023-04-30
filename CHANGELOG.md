@@ -1,3 +1,11 @@
+# [2.3.0](https://github.com/syroegkin/swagger-markdown/compare/v2.2.1...v2.3.0) (2023-04-30)
+
+
+### Features
+
+* **headers:** show headers in the response when present ([3f02648](https://github.com/syroegkin/swagger-markdown/commit/3f02648d1e937e0db7ae0fc8c4155ab7e7c125d3))
+* **readability:** improve readability by inserting horizontal lines between blocks ([94f17ab](https://github.com/syroegkin/swagger-markdown/commit/94f17abfac5517afd931c5f66f68841a62412c2f))
+
 ## [2.2.1](https://github.com/syroegkin/swagger-markdown/compare/v2.2.0...v2.2.1) (2023-04-14)
 
 
