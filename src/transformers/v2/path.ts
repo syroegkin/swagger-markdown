@@ -1,11 +1,11 @@
 import { OpenAPIV2 } from 'openapi-types';
-import { transformResponses } from './pathResponses';
+import { transformResponses } from '../pathResponses';
 import { transformParameters } from './pathParameters';
-import { transformSecurity } from './v2/security';
-import { Markdown } from '../lib/markdown';
-import { ALLOWED_METHODS } from '../types';
-import { transformExternalDocs } from './v2/externalDocs';
-import { transformSchemes } from './v2/schemes';
+import { transformSecurity } from './security';
+import { Markdown } from '../../lib/markdown';
+import { ALLOWED_METHODS } from '../../types';
+import { transformExternalDocs } from './externalDocs';
+import { transformSchemes } from './schemes';
 
 /**
  * https://swagger.io/specification/v2/#pathsObject

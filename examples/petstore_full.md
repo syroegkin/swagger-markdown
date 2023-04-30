@@ -55,7 +55,7 @@ Add a new pet to the store
 
 | Code | Description |
 | ---- | ----------- |
-| 405 | Invalid input |
+| 405 | Invalid input<br>**Headers:**<br>**X-Rate-Limit-Limit** (integer): The number of allowed requests in the current period<br>**X-Rate-Limit-Remaining** (integer): The number of remaining requests in the current period<br>**X-Rate-Limit-Reset** (integer): The number of seconds left in the current period<br> |
 
 ##### Security
 

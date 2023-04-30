@@ -1,7 +1,7 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { Options } from '../types';
 import { transformInfo } from './v2/info';
-import { transformPath } from './path';
+import { transformPath } from './v2/path';
 import { transformSecurityDefinitions } from './v2/securityDefinitions';
 import { transformExternalDocs } from './v2/externalDocs';
 import { transformDefinition } from './definitions';

@@ -2,6 +2,7 @@ import { OpenAPIV2 } from 'openapi-types';
 import { Schema } from '../models/Schema';
 import { dataTypeResolver } from './v2/dataTypes';
 import { Markdown } from '../lib/markdown';
+import { transformHeaders } from './v2/headers';
 
 /**
  * Build responses table
@@ -36,6 +37,12 @@ export function transformResponses(responses: OpenAPIV2.ResponsesObject) {
     if ('description' in response) {
       description.concat(
         md.string(response.description.replace(/[\r\n]/g, ' ')).escape(),
+      );
+    }
+    if ('headers' in response) {
+      description.concat(md.string('').br(true));
+      description.concat(
+        transformHeaders(response.headers),
       );
     }
     if ('examples' in response) {

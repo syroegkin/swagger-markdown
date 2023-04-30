@@ -112,6 +112,13 @@ describe('MDstring', () => {
     s.set('');
     expect(s.br().get()).to.be.equal('');
   });
+  it('should return new line as the html tag', () => {
+    const test = 'string';
+    const s = MDstring.string(test);
+    expect(s.br(true).get()).to.be.equal(`${test}<br>`);
+    s.set('');
+    expect(s.br(true).get()).to.be.equal('<br>');
+  });
   it('should return the string length', () => {
     const test = 'string';
     const s = MDstring.string(test);

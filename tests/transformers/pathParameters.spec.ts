@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { transformParameters } from '../../src/transformers/pathParameters';
+import { transformParameters } from '../../src/transformers/v2/pathParameters';
 
 const tableFixture: string[] = [
   '##### Parameters',

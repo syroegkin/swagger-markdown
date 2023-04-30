@@ -27,6 +27,13 @@ export class MDstring {
     return this._string;
   }
 
+  /**
+   * Synonym for this.get()
+   */
+  public toString(): string {
+    return this.get();
+  }
+
   public set(string: string) {
     this._string = string;
   }
@@ -113,7 +120,11 @@ export class MDstring {
     return this;
   }
 
-  public br(): MDstring {
+  public br(asHtmlTag = false): MDstring {
+    if (asHtmlTag === true) {
+      this.set(`${this._string}<br>`);
+      return this;
+    }
     if (this._string !== '') {
       this.set(`${this._string}  `);
     }
