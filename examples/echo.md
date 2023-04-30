@@ -7,6 +7,7 @@ render back everything.
 
 **Schemes:** http
 
+---
 ### /
 
 #### GET

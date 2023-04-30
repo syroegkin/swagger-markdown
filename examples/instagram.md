@@ -150,6 +150,7 @@ callbackFunction({
 
 **Schemes:** https
 
+---
 ## Users
 
 ### /users/{user-id}
@@ -262,6 +263,7 @@ Search for a user by name.
 | ---- | ----------- | ------ |
 | 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
 
+---
 ## Relationships
 Relationships are expressed using the following terms:
 
@@ -347,6 +349,7 @@ Modify the relationship between the current user and thetarget user.
 | --------------- | ------ |
 | oauth | relationships |
 
+---
 ## Media
 At this time, uploading via the API is not possible. We made a conscious
 choice not to add this for the following reasons:
@@ -593,6 +596,7 @@ Get a list of recent media objects from a given location.
 | ---- | ----------- | ------ |
 | 200 | OK | { **"data"**: [ [Media](#media) ] } |
 
+---
 ## Comments
 
 ### /media/{media-id}/comments
@@ -661,6 +665,7 @@ authored by the authenticated user.
 | ---- | ----------- | ------ |
 | 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
 
+---
 ## Likes
 
 ### /media/{media-id}/likes
@@ -722,6 +727,7 @@ Remove a like on this media by the currently authenticated user.
 | ---- | ----------- | ------ |
 | 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: object } |
 
+---
 ## Tags
 
 ### /tags/{tag-name}
@@ -779,6 +785,7 @@ these objects.
 | ---- | ----------- | ------ |
 | 200 | OK | { **"meta"**: { **"code"**: integer }, **"data"**: [ [Tag](#tag) ] } |
 
+---
 ## Location
 
 ### /locations/{location-id}
@@ -847,6 +854,7 @@ Search for a location by geographic coordinate.
 | ---- | ----------- | ------ |
 | 200 | OK | { **"data"**: [ [Location](#location) ] } |
 
+---
 ## default
 
 ### /geographies/{geo-id}/media/recent
@@ -878,6 +886,7 @@ geography, use the [media search endpoint
 | ---- | ----------- |
 | 200 | OK |
 
+---
 ### Models
 
 #### User

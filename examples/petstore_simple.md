@@ -15,6 +15,7 @@ foo@example.com
 
 **Schemes:** http
 
+---
 ### /pets
 
 #### GET
@@ -92,6 +93,7 @@ deletes a single pet based on the ID supplied
 | 204 | pet deleted |  |
 | default | unexpected error | [errorModel](#errormodel) |
 
+---
 ### Models
 
 #### pet

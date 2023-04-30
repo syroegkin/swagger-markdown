@@ -9,6 +9,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
 **Schemes:** http, https
 
+---
 ### /
 
 #### GET
@@ -65,6 +66,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 | ---- | ----------- |
 | 200 | Sends the pet with pet Id |
 
+---
 ### Models
 
 #### Pet
