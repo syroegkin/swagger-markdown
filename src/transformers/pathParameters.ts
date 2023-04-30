@@ -1,5 +1,5 @@
 import { OpenAPIV2 } from 'openapi-types';
-import { dataTypeResolver } from './dataTypes';
+import { dataTypeResolver } from './v2/dataTypes';
 import { Schema } from '../models/Schema';
 import { Markdown } from '../lib/markdown';
 
