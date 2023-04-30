@@ -5,6 +5,7 @@ Move your app forward with the Uber API
 
 **Schemes:** https
 
+---
 ### /products
 
 #### GET
@@ -33,6 +34,7 @@ proper display order.
 | 200 | An array of products | [ [Product](#product) ] |
 | default | Unexpected error | [Error](#error) |
 
+---
 ### /estimates/price
 
 #### GET
@@ -94,6 +96,7 @@ The Time Estimates endpoint returns ETAs for all products offered at a given loc
 | 200 | An array of products | [ [Product](#product) ] |
 | default | Unexpected error | [Error](#error) |
 
+---
 ### /me
 
 #### GET
@@ -137,6 +140,7 @@ The User Activity endpoint returns data about a user's lifetime activity with Ub
 | 200 | History information for the given user | [Activities](#activities) |
 | default | Unexpected error | [Error](#error) |
 
+---
 ### Models
 
 #### Product

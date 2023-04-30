@@ -85,6 +85,7 @@ swagger api team
 
 **Schemes:** http, https
 
+---
 ### /pets/{id}
 
 #### GET
@@ -119,6 +120,7 @@ Returns pets based on ID
 | githubAccessCode | user |
 | internalApiKey |  |
 
+---
 ### Models
 
 #### Pet

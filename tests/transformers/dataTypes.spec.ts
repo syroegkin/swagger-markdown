@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { dataTypeResolver } from '../../src/transformers/dataTypes';
+import { dataTypeResolver } from '../../src/transformers/v2/dataTypes';
 import { Schema } from '../../src/models/Schema';
 import { anchor } from '../../src/lib/anchor';
 

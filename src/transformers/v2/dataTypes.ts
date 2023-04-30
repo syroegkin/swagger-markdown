@@ -1,6 +1,6 @@
-import { anchor } from '../lib/anchor';
-import { Markdown } from '../lib/markdown';
-import { SchemaInterface } from '../models/Schema';
+import { anchor } from '../../lib/anchor';
+import { Markdown } from '../../lib/markdown';
+import { SchemaInterface } from '../../models/Schema';
 
 const resolver = {
   integer: {

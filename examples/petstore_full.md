@@ -35,6 +35,7 @@ apiteam@swagger.io
 
 **Schemes:** http
 
+---
 ### /pets
 
 #### POST
@@ -54,7 +55,7 @@ Add a new pet to the store
 
 | Code | Description |
 | ---- | ----------- |
-| 405 | Invalid input |
+| 405 | Invalid input<br>**Headers:**<br>**X-Rate-Limit-Limit** (integer): The number of allowed requests in the current period<br>**X-Rate-Limit-Remaining** (integer): The number of remaining requests in the current period<br>**X-Rate-Limit-Reset** (integer): The number of seconds left in the current period<br> |
 
 ##### Security
 
@@ -234,6 +235,7 @@ Deletes a pet
 | --------------- | ------ | --- |
 | petstore_auth | write_pets | read_pets |
 
+---
 ### /stores/order
 
 #### POST
@@ -303,6 +305,7 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
 | 400 | Invalid ID supplied |
 | 404 | Order not found |
 
+---
 ### /users
 
 #### POST
@@ -474,6 +477,7 @@ This can only be done by the logged in user.
 | 400 | Invalid username supplied |
 | 404 | User not found |
 
+---
 ### Models
 
 #### User

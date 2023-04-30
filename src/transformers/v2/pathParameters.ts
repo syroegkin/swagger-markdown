@@ -1,7 +1,7 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { dataTypeResolver } from './dataTypes';
-import { Schema } from '../models/Schema';
-import { Markdown } from '../lib/markdown';
+import { Schema } from '../../models/Schema';
+import { Markdown } from '../../lib/markdown';
 
 export const transformParameters = (
   parameters: OpenAPIV2.Parameters,

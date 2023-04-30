@@ -18,6 +18,7 @@ Server code is available [here](https://github.com/mohsen1/basic-auth-server). I
 
 **Schemes:** http, https
 
+---
 ### /
 
 #### GET
