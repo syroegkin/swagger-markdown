@@ -1,5 +1,5 @@
 import { OpenAPIV2 } from 'openapi-types';
-import { Markdown } from '../lib/markdown';
+import { Markdown } from '../../lib/markdown';
 
 export function transformTag(tag: OpenAPIV2.TagObject | '') {
   const md = Markdown.md();
