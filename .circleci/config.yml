@@ -4,7 +4,7 @@ references:
   node_defaults: &node_defaults
     working_directory: ~/app
     docker:
-      - image: cimg/node:16.17
+      - image: cimg/node:18.17
 
 jobs:
   checkout_code:
