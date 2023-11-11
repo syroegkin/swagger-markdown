@@ -46,6 +46,13 @@ jobs:
       - attach_workspace:
           at: ~/app
       - run: npm run test:lint
+  
+  test_types:
+    <<: *node_defaults
+    steps:
+      - attach_workspace:
+          at: ~/app
+      - run: npm run typecheck
 
   test_markdown:
     <<: *node_defaults
@@ -79,6 +86,9 @@ workflows:
       - test_markdown:
           requires:
             - build
+      - test_types:
+          requires:
+            - build
       - deploy:
           context:
             - semantic-release
@@ -88,6 +98,7 @@ workflows:
                 - master
                 - beta
           requires:
+            - test_types
             - test_unit
             - test_lint
             - test_markdown
