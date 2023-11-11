@@ -4,11 +4,11 @@ A sample API that uses a petstore as an example to demonstrate features in the s
 ## Version: 1.0.0
 
 ### Terms of service
-<http://helloreverb.com/terms/>
+http://helloreverb.com/terms/
 
 **Contact information:**  
 Swagger API team  
-<http://swagger.io>  
+http://swagger.io  
 foo@example.com  
 
 **License:** [MIT](http://opensource.org/licenses/MIT)

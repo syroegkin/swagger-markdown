@@ -126,7 +126,7 @@ callbackFunction({
 ## Version: v1
 
 ### Terms of service
-<http://instagram.com/about/legal/terms/api>
+http://instagram.com/about/legal/terms/api
 
 ### Security
 **oauth**  
@@ -134,7 +134,7 @@ callbackFunction({
 | oauth2 | *OAuth 2.0* |
 | ------ | ----------- |
 | Flow | implicit |
-| Authorization URL | <https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token> |
+| Authorization URL | https://instagram.com/oauth/authorize/?client_id=CLIENT-ID&redirect_uri=REDIRECT-URI&response_type=token |
 | **Scopes** |  |
 | basic | to read any and all data related to a user (e.g. following/followed-by  lists, photos, etc.) (granted by default)  |
 | comments | to create or delete comments on a user’s behalf |

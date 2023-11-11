@@ -29,6 +29,15 @@ module.exports = {
     '@typescript-eslint/no-useless-constructor': ['error'],
     indent: 'off',
     '@typescript-eslint/indent': ['error', 2],
+    'no-empty-function': 'off',
+    '@typescript-eslint/no-empty-function': ['error'],
+    '@typescript-eslint/no-unused-vars': [
+      'error', {
+        argsIgnorePattern: '^_',
+        varsIgnorePattern: '^_',
+        caughtErrorsIgnorePattern: '^_',
+      },
+    ],
   },
   overrides: [
     {
