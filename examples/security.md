@@ -4,11 +4,11 @@ A sample API that uses a petstore as an example to demonstrate features in the s
 ## Version: 1.0.9-abcd
 
 ### Terms of service
-<http://helloreverb.com/terms/>
+http://helloreverb.com/terms/
 
 **Contact information:**  
 swagger api team  
-<http://swagger.io>  
+http://swagger.io  
 
 **License:** [Creative Commons 4.0 International](http://creativecommons.org/licenses/by/4.0/)
 
@@ -38,8 +38,8 @@ swagger api team
 | write:public_key | Create, list, and view details for public keys. |
 | admin:public_key | Fully manage public keys. |
 | Flow | accessCode |
-| Authorization URL | <https://github.com/login/oauth/authorize> |
-| Token URL | <https://github.com/login/oauth/access_token> |
+| Authorization URL | https://github.com/login/oauth/authorize |
+| Token URL | https://github.com/login/oauth/access_token |
 
 **petstoreImplicit**  
 
@@ -66,7 +66,7 @@ swagger api team
 | write:public_key | Create, list, and view details for public keys. |
 | admin:public_key | Fully manage public keys. |
 | Flow | implicit |
-| Authorization URL | <http://petstore.swagger.io/oauth/dialog> |
+| Authorization URL | http://petstore.swagger.io/oauth/dialog |
 
 **internalApiKey**  
 

@@ -8,7 +8,7 @@ For this sample, you can use the api key `special-key` to test the authorization
 ## Version: 1.0.0
 
 ### Terms of service
-<http://helloreverb.com/terms/>
+http://helloreverb.com/terms/
 
 **Contact information:**  
 apiteam@swagger.io  
@@ -27,7 +27,7 @@ apiteam@swagger.io
 
 | oauth2 | *OAuth 2.0* |
 | ------ | ----------- |
-| Authorization URL | <http://petstore.swagger.io/api/oauth/dialog> |
+| Authorization URL | http://petstore.swagger.io/api/oauth/dialog |
 | Flow | implicit |
 | **Scopes** |  |
 | write_pets | modify pets in your account |

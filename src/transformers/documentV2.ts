@@ -8,7 +8,7 @@ import { transformDefinition } from './definitions';
 import { TagsCollection } from '../models/Tags';
 import { Markdown } from '../lib/markdown';
 import { groupPathsByTags } from './v2/groupPathsByTags';
-import { transformTag } from './tag';
+import { transformTag } from './v2/tag';
 import { transformSchemes } from './v2/schemes';
 
 export function transformSwaggerV2(

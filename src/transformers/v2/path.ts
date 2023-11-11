@@ -15,7 +15,7 @@ import { transformSchemes } from './schemes';
 export function transformPath(
   path: string,
   data: OpenAPIV2.PathItemObject,
-  parameters?: OpenAPIV2.ParametersDefinitionsObject,
+  _parameters?: OpenAPIV2.ParametersDefinitionsObject,
 ): string | null {
   let pathParameters: OpenAPIV2.Parameters = null;
 
