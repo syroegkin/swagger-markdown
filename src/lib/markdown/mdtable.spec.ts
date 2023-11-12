@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import { MDtableRow, MDtable } from '../../../src/lib/markdown/mdtable';
-import { MDstring } from '../../../src/lib/markdown/mdstring';
+import { MDtableRow, MDtable } from './mdtable';
+import { MDstring } from './mdstring';
 
 describe('MDtableRow', () => {
   it('should create a string from the row', () => {

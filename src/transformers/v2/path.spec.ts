@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { transformPath } from '../../src/transformers/v2/path';
+import { transformPath } from './path';
 
 describe('Path transformer', () => {
   it('should return null if nothing was passed', () => {

@@ -8,7 +8,7 @@
     "test": "npm run test:app && npm run test:lint && npm run test:markdown",
     "test:app": "jest --detectOpenHandles --forceExit",
     "test:watch": "jest --watch",
-    "test:lint": "eslint . --ignore-pattern 'src/**/*.js' --ignore-pattern 'tests/**/*.spec.js' --ignore-pattern 'scripts/**/*.js'",
+    "test:lint": "eslint .",
     "test:markdown": "markdownlint ./examples/*.md -c .markdownlint.json",
     "build": "tsc && chmod +x ./dist/swagger-markdown.js",
     "build:watch": "tsc -w",

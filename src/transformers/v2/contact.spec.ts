@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { transformContact } from '../../src/transformers/v2/contact';
+import { transformContact } from './contact';
 
 describe('Contact info', () => {
   it('should create contact info with all fields', () => {

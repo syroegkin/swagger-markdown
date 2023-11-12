@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { transformResponses } from '../../src/transformers/v2/pathResponses';
+import { transformResponses } from './pathResponses';
 
 describe('Path responses transformer', () => {
   describe('no schemas', () => {

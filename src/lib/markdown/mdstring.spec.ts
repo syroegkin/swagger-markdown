@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { MDstring } from '../../../src/lib/markdown/mdstring';
+import { MDstring } from './mdstring';
 
 describe('MDstring', () => {
   it('should return instance when calling the static one', () => {

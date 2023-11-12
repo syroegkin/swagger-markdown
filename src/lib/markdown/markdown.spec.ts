@@ -1,7 +1,7 @@
 import { expect } from 'chai';
-import { Markdown } from '../../../src/lib/markdown/markdown';
-import { MDstring } from '../../../src/lib/markdown/mdstring';
-import { MDtable } from '../../../src/lib/markdown/mdtable';
+import { Markdown } from './markdown';
+import { MDstring } from './mdstring';
+import { MDtable } from './mdtable';
 
 describe('Markdown', () => {
   it('should create markdown object', () => {
