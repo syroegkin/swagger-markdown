@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/syroegkin/swagger-markdown/compare/v2.3.0...v2.3.1) (2023-11-11)
+
+
+### Bug Fixes
+
+* **chore:** technical release dependencies upgrade ([230e6b6](https://github.com/syroegkin/swagger-markdown/commit/230e6b67c40a3851e649622b5a69891d472b3492))
+
 # [2.3.0](https://github.com/syroegkin/swagger-markdown/compare/v2.2.1...v2.3.0) (2023-04-30)
 
 
