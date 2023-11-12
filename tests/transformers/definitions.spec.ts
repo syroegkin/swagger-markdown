@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { expect } from 'chai';
-import { transformDefinition } from '../../src/transformers/definitions';
+import { transformDefinition } from '../../src/transformers/v2/definitions';
 import { fixture } from './definitionsFixture';
 
 describe('Definitions', () => {

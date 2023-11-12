@@ -1,8 +1,8 @@
 import { OpenAPIV2 } from 'openapi-types';
-import { dataTypeResolver } from './v2/dataTypes';
-import { Schema } from '../models/Schema';
-import { Markdown } from '../lib/markdown';
-import { MDtableRow } from '../lib/markdown/mdtable';
+import { dataTypeResolver } from './dataTypes';
+import { Schema } from '../../models/Schema';
+import { Markdown } from '../../lib/markdown';
+import { MDtableRow } from '../../lib/markdown/mdtable';
 
 /**
  * Parse the Property field if present.

@@ -1,8 +1,8 @@
 import { OpenAPIV2 } from 'openapi-types';
-import { Schema } from '../models/Schema';
-import { dataTypeResolver } from './v2/dataTypes';
-import { Markdown } from '../lib/markdown';
-import { transformHeaders } from './v2/headers';
+import { Schema } from '../../models/Schema';
+import { dataTypeResolver } from './dataTypes';
+import { Markdown } from '../../lib/markdown';
+import { transformHeaders } from './headers';
 
 /**
  * Build responses table

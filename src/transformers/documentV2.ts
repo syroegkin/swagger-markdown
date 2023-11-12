@@ -4,7 +4,7 @@ import { transformInfo } from './v2/info';
 import { transformPath } from './v2/path';
 import { transformSecurityDefinitions } from './v2/securityDefinitions';
 import { transformExternalDocs } from './v2/externalDocs';
-import { transformDefinition } from './definitions';
+import { transformDefinition } from './v2/definitions';
 import { TagsCollection } from '../models/Tags';
 import { Markdown } from '../lib/markdown';
 import { groupPathsByTags } from './v2/groupPathsByTags';
