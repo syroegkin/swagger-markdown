@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { transformSwaggerV2 } from '../../src/transformers/documentV2';
+import { transformSwaggerV2 } from './documentV2';
 
 describe('transformSwaggerV2', () => {
   it('should create schemas', () => {

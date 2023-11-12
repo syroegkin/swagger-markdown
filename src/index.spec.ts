@@ -1,8 +1,8 @@
 import SwaggerParser from '@apidevtools/swagger-parser';
 import { expect } from 'chai';
 import fs from 'fs';
-import { transformFile, partiallyDereference } from '../src/index';
-import { AllSwaggerDocumentVersions } from '../src/types';
+import { transformFile, partiallyDereference } from './index';
+import { AllSwaggerDocumentVersions } from './types';
 
 describe('Integration test examples', () => {
   const examplesDir = `${__dirname}/../examples`;
