@@ -1,6 +1,6 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { dataTypeResolver } from './dataTypes';
-import { Schema } from '../../models/Schema';
+import { Schema } from './models/Schema';
 import { Markdown } from '../../lib/markdown';
 import { MDtableRow } from '../../lib/markdown/mdtable';
 

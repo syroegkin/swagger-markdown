@@ -5,7 +5,7 @@ import { transformPath } from './v2/path';
 import { transformSecurityDefinitions } from './v2/securityDefinitions';
 import { transformExternalDocs } from './v2/externalDocs';
 import { transformDefinition } from './v2/definitions';
-import { TagsCollection } from '../models/Tags';
+import { TagsCollection } from './v2/models/Tags';
 import { Markdown } from '../lib/markdown';
 import { groupPathsByTags } from './v2/groupPathsByTags';
 import { transformTag } from './v2/tag';
