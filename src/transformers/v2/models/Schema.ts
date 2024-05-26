@@ -1,21 +1,21 @@
 import { OpenAPIV2 } from 'openapi-types';
 
 export interface SchemaInterface {
-  type?: string;
+  type?: OpenAPIV2.SchemaObject['type'];
   format?: string;
   ref?: string;
   allOf?: SchemaInterface[];
   items?: SchemaInterface;
   properties?: { [name: string]: SchemaInterface };
-  getType?(): string | undefined;
-  getFormat?(): string | undefined;
-  getItems?(): SchemaInterface;
-  getReference?(): string | undefined;
-  getAllOf?(): SchemaInterface[];
+  getType(): OpenAPIV2.SchemaObject['type'] | undefined;
+  getFormat(): string | undefined;
+  getItems(): SchemaInterface | undefined;
+  getReference(): string | undefined;
+  getAllOf(): SchemaInterface[] | undefined;
 }
 
 export class Schema implements SchemaInterface {
-  public type?: string;
+  public type?: OpenAPIV2.SchemaObject['type'];
 
   public format?: string;
 
@@ -37,6 +37,7 @@ export class Schema implements SchemaInterface {
       if ('type' in schema) {
         this.setType(schema.type);
       }
+      // Custom property
       if ('format' in schema) {
         this.setFormat(schema.format);
       }
@@ -72,16 +73,15 @@ export class Schema implements SchemaInterface {
   /**
    * @param {String} type
    */
-  public setType(type: string | string[]): Schema {
-    // @todo: wtf
-    this.type = type as string;
+  public setType(type: OpenAPIV2.SchemaObject['type']): Schema {
+    this.type = type;
     return this;
   }
 
   /**
    * @param {Array<Object>} allOf
    */
-  setAllOf(allOf) {
+  public setAllOf(allOf) {
     this.allOf = allOf.map((schema) => new Schema(schema));
     return this;
   }
@@ -97,7 +97,7 @@ export class Schema implements SchemaInterface {
   /**
    * @param {Object} items
    */
-  setItems(items) {
+  public setItems(items: OpenAPIV2.SchemaObject['items']) {
     this.items = new Schema(items);
     return this;
   }
@@ -113,7 +113,7 @@ export class Schema implements SchemaInterface {
   /**
    * @return {String}
    */
-  public getType(): string | undefined {
+  public getType(): OpenAPIV2.SchemaObject['type'] | undefined {
     return this.type;
   }
 
@@ -127,7 +127,7 @@ export class Schema implements SchemaInterface {
   /**
    * @return {Object}
    */
-  public getItems(): SchemaInterface {
+  public getItems(): SchemaInterface | undefined {
     return this.items;
   }
 

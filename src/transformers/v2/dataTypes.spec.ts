@@ -23,6 +23,8 @@ const fixture = [
   [new Schema({ type: 'string', format: 'date' }), 'date'],
   [new Schema({ type: 'string', format: 'date-time' }), 'dateTime'],
   [new Schema({ type: 'string', format: 'password' }), 'password'],
+  [new Schema({ type: ['string', 'boolean'] }), 'string, boolean'],
+  [new Schema({ type: ['string', 'boolean'], format: 'truefalsy' }), 'string (truefalsy), boolean (truefalsy)'],
   // Arrays
   [
     new Schema({
