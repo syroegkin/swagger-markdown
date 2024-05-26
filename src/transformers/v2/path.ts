@@ -1,5 +1,5 @@
 import { OpenAPIV2 } from 'openapi-types';
-import { transformResponses } from '../pathResponses';
+import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
 import { transformSecurity } from './security';
 import { Markdown } from '../../lib/markdown';

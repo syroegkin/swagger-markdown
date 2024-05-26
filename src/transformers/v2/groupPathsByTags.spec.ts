@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { groupPathsByTags } from '../../src/transformers/v2/groupPathsByTags';
+import { groupPathsByTags } from './groupPathsByTags';
 
 describe('Group paths by tag', () => {
   it('should group with default tag', () => {

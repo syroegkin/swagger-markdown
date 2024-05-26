@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { Schema } from '../../src/models/Schema';
+import { Schema } from './Schema';
 
 const fixture = {
   type: 'Type',
@@ -21,7 +21,7 @@ describe('Schema class', () => {
     expect(schema.getReference()).to.be.equal(fixture.$ref);
     schema.setItems(fixture.items);
     expect(schema.getItems()).to.be.instanceOf(Schema);
-    expect(schema.getItems().type).to.be.equal(fixture.items.type);
+    expect(schema.getItems()!.type).to.be.equal(fixture.items.type);
   });
   it('Should set data using constructor', () => {
     const schema = new Schema(fixture);
@@ -29,6 +29,6 @@ describe('Schema class', () => {
     expect(schema.getFormat()).to.be.equal(fixture.format);
     expect(schema.getReference()).to.be.equal(fixture.$ref);
     expect(schema.getItems()).to.be.instanceOf(Schema);
-    expect(schema.getItems().type).to.be.equal(fixture.items.type);
+    expect(schema.getItems()!.type).to.be.equal(fixture.items.type);
   });
 });

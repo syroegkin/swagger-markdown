@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import { isV2Document, isV31Document, isV3Document } from '../../src/lib/detectDocumentVersion';
-import { AllSwaggerDocumentVersions } from '../../src/types';
+import { isV2Document, isV31Document, isV3Document } from './detectDocumentVersion';
+import { AllSwaggerDocumentVersions } from '../types';
 
 function makeDocV2(version: string): AllSwaggerDocumentVersions {
   return { swagger: version } as AllSwaggerDocumentVersions;

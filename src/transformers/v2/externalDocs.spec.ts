@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { OpenAPIV2 } from 'openapi-types';
-import { transformExternalDocs } from '../../src/transformers/v2/externalDocs';
+import { transformExternalDocs } from './externalDocs';
 
 const fixture = {
   notext: {

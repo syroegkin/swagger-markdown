@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { transformHeaders } from '../../src/transformers/v2/headers';
+import { transformHeaders } from './headers';
 
 describe('transformHeaders', () => {
   it('should return empty string if headers is empty', () => {

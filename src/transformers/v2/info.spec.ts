@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { OpenAPIV2 } from 'openapi-types';
-import { transformInfo } from '../../src/transformers/v2/info';
+import { transformInfo } from './info';
 
 describe('Info transformer', () => {
   it('should return null if nothing was passed', () => {

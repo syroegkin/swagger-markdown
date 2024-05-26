@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { transformTag } from '../../src/transformers/v2/tag';
+import { transformTag } from './tag';
 
 describe('Tags', () => {
   it('should throw an error if nothing is provided', () => {

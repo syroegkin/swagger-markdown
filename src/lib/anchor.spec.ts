@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { anchor } from '../../src/lib/anchor';
+import { anchor } from './anchor';
 
 const fixture = [
   ['any string', 'any-string'],

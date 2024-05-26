@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { TagsCollection } from '../../src/models/Tags';
+import { TagsCollection } from './Tags';
 
 const tags = [{
   name: 'Tag',

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { textEscape } from '../../src/lib/textEscape';
+import { textEscape } from './textEscape';
 
 const fixture = [
   ['I am \\ an arm', 'I am \\\\ an arm'],
