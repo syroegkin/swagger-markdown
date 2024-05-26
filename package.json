@@ -1,6 +1,6 @@
 {
 	"name": "swagger-markdown",
-	"version": "2.3.1",
+	"version": "2.3.2",
 	"description": "Create markdown API documentation from swagger file",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
