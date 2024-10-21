@@ -1,3 +1,10 @@
+## [2.3.2](https://github.com/syroegkin/swagger-markdown/compare/v2.3.1...v2.3.2) (2024-05-26)
+
+
+### Bug Fixes
+
+* package.json & package-lock.json to reduce vulnerabilities ([4ee40e1](https://github.com/syroegkin/swagger-markdown/commit/4ee40e149d07c0013f09332ff797eddb16d1c2ef))
+
 ## [2.3.1](https://github.com/syroegkin/swagger-markdown/compare/v2.3.0...v2.3.1) (2023-11-11)
 
 
