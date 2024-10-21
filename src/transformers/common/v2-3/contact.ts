@@ -1,11 +1,12 @@
-import { OpenAPIV2 } from 'openapi-types';
-import { Markdown } from '../../lib/markdown';
+import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
+import { Markdown } from '../../../lib/markdown';
 
 /**
- * http://swagger.io/specification/#contactObject
- * Contact info transformer
+ * @todo: add extensions, e.g. ^x-
  */
-export function transformContact(contact: OpenAPIV2.ContactObject) {
+export function transformContact(
+  contact: OpenAPIV2.ContactObject | OpenAPIV3.ContactObject,
+) {
   const md = Markdown.md();
 
   if (Object.keys(contact).some(

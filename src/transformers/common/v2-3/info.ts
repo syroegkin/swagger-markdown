@@ -1,7 +1,7 @@
-import { OpenAPIV2 } from 'openapi-types';
+import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
 import { transformContact } from './contact';
 import { transformLicense } from './license';
-import { Markdown } from '../../lib/markdown';
+import { Markdown } from '../../../lib/markdown';
 
 /**
  * http://swagger.io/specification/#infoObject
@@ -10,7 +10,7 @@ import { Markdown } from '../../lib/markdown';
  * @param {Object} info
  * @returns {String}
  */
-export function transformInfo(info: OpenAPIV2.InfoObject) {
+export function transformInfo(info: OpenAPIV2.InfoObject | OpenAPIV3.InfoObject) {
   const md = Markdown.md();
   if (info !== null && typeof info === 'object') {
     if ('title' in info) {

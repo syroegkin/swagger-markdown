@@ -1,14 +1,14 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { Options } from '../types';
-import { transformInfo } from './v2/info';
+import { transformInfo } from './common/v2-3/info';
 import { transformPath } from './v2/path';
 import { transformSecurityDefinitions } from './v2/securityDefinitions';
-import { transformExternalDocs } from './v2/externalDocs';
+import { transformExternalDocs } from './common/v2-3/externalDocs';
 import { transformDefinition } from './v2/definitions';
-import { TagsCollection } from './v2/models/Tags';
+import { TagsCollection } from './common/Tags';
 import { Markdown } from '../lib/markdown';
-import { groupPathsByTags } from './v2/groupPathsByTags';
-import { transformTag } from './v2/tag';
+import { groupPathsByTags } from './common/v2-3/groupPathsByTags';
+import { transformTag } from './common/v2-3/tag';
 import { transformSchemes } from './v2/schemes';
 
 export function transformSwaggerV2(
@@ -58,7 +58,7 @@ export function transformSwaggerV2(
   // Process Paths
   if ('paths' in inputDoc) {
     // Group paths by tag name
-    const tagged = groupPathsByTags(inputDoc.paths);
+    const tagged = groupPathsByTags<OpenAPIV2.PathsObject>(inputDoc.paths);
 
     Object.keys(tagged).forEach((tagName) => {
       md.line(md.string().horizontalRule());

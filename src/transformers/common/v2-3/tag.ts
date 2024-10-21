@@ -1,7 +1,10 @@
-import { OpenAPIV2 } from 'openapi-types';
-import { Markdown } from '../../lib/markdown';
+import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
+import { Markdown } from '../../../lib/markdown';
 
-export function transformTag(tag: OpenAPIV2.TagObject | '') {
+/**
+ * @todo: add extensions, e.g. ^x-
+ */
+export function transformTag(tag: OpenAPIV2.TagObject | OpenAPIV3.TagObject | '') {
   const md = Markdown.md();
 
   // If tag is just en empty line, then this means

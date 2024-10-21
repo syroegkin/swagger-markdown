@@ -1,10 +1,10 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
-import { transformSecurity } from './security';
+import { transformSecurity } from '../common/v2-3/security';
 import { Markdown } from '../../lib/markdown';
 import { ALLOWED_METHODS } from '../../types';
-import { transformExternalDocs } from './externalDocs';
+import { transformExternalDocs } from '../common/v2-3/externalDocs';
 import { transformSchemes } from './schemes';
 
 /**

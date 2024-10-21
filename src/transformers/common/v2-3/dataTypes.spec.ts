@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import { dataTypeResolver } from './dataTypes';
-import { Schema } from './models/Schema';
-import { anchor } from '../../lib/anchor';
+import { Schema } from '../../v2/models/Schema';
+import { anchor } from '../../../lib/anchor';
 
 const fixture = [
   // References

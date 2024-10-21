@@ -1,6 +1,6 @@
-import { OpenAPIV2 } from 'openapi-types';
-import { Markdown } from '../../lib/markdown';
-import { MDstring } from '../../lib/markdown/mdstring';
+import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
+import { Markdown } from '../../../lib/markdown';
+import { MDstring } from '../../../lib/markdown/mdstring';
 
 /**
  * Make it a little bit simpler
@@ -10,7 +10,9 @@ import { MDstring } from '../../lib/markdown/mdstring';
  * @param {OpenAPIV2.HeadersObject} headers
  * @return {*}  {MDstring}
  */
-export function transformHeaders(headers: OpenAPIV2.HeadersObject): MDstring {
+export function transformHeaders(
+  headers: OpenAPIV2.HeadersObject | { [index: string]: OpenAPIV3.HeaderObject },
+): MDstring {
   const md = Markdown.md();
   let string: MDstring;
   const subString = md.string();

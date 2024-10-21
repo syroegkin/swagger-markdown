@@ -9,6 +9,10 @@ const tags = [{
   name: 'Tag1',
   description: 'Some description1',
   externalDocs: 'http://127.0.0.1',
+}, {
+  name: 'Tag@#!',
+  description: 'Some special tag',
+  externalDocs: 'http://127.0.0.1',
 }];
 
 describe('Tags collection', () => {
