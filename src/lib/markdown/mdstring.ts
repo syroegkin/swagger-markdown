@@ -131,6 +131,17 @@ export class MDstring {
     return this;
   }
 
+  public codeBlock(language = ''): MDstring {
+    if (this._string !== '') {
+      this.set(
+        `\`\`\`${language}
+${this._string}
+\`\`\``,
+      );
+    }
+    return this;
+  }
+
   public escape(): MDstring {
     this.set(`${textEscape(this._string)}`);
     return this;
