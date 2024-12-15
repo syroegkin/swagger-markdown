@@ -31,7 +31,11 @@ export function partiallyDereference(
     const [key, value] = entries[i];
     if (Array.isArray(value)) {
       obj[key] = value.map((item) => partiallyDereference(item, $refs));
-    } else if (key === '$ref' && !value.startsWith('#/definitions/')) {
+    } else if (
+      key === '$ref'
+      && !value.startsWith('#/definitions/') // V2
+      && !value.startsWith('#/components/') // V3
+    ) {
       return partiallyDereference($refs.get(value), $refs);
     } else {
       obj[key] = partiallyDereference(value, $refs);

@@ -1,19 +1,13 @@
 import { OpenAPIV3 } from 'openapi-types';
-import { Options } from '../types';
+import { ALLOWED_METHODS_V3, Options } from '../types';
 import { transformInfo } from './common/v2-3/info';
-import { transformPath } from './v2/path';
-// import { transformSecurityDefinitions } from './v2/securityDefinitions';
-// import { transformExternalDocs } from './v2/externalDocs';
-// import { transformDefinition } from './v2/definitions';
-// import { TagsCollection } from './v2/models/Tags';
+import { transformPath } from './v3/path';
 import { Markdown } from '../lib/markdown';
 import { TagsCollection } from './common/Tags';
 import { transformExternalDocs } from './common/v2-3/externalDocs';
 import { transformTag } from './common/v2-3/tag';
 import { groupPathsByTags } from './common/v2-3/groupPathsByTags';
-// import { groupPathsByTags } from './v2/groupPathsByTags';
-// import { transformTag } from './v2/tag';
-// import { transformSchemes } from './v2/schemes';
+import { transformDefinition } from './v2/definitions';
 
 export function transformSwaggerV3(
   inputDoc: OpenAPIV3.Document,
@@ -44,12 +38,14 @@ export function transformSwaggerV3(
     md.line(transformExternalDocs(inputDoc.externalDocs));
   }
 
+  // Security definitions aren't presented in v3
+
   // All components must be dereferenced
 
   // Process Paths
   if ('paths' in inputDoc) {
     // Group paths by tag name
-    const tagged = groupPathsByTags(inputDoc.paths);
+    const tagged = groupPathsByTags(inputDoc.paths, ALLOWED_METHODS_V3);
 
     Object.keys(tagged).forEach((tagName) => {
       md.line(md.string().horizontalRule());
@@ -59,21 +55,25 @@ export function transformSwaggerV3(
         md.line(transformTag(tagObject));
       }
       const pathsUnderTag = tagged[tagName];
-      Object.keys(pathsUnderTag).forEach((path: string) => md.line(transformPath(
-        path,
-        inputDoc.paths[path] as unknown,
-        undefined,
-      )));
+      Object.keys(pathsUnderTag).forEach((path: string) => md.line(
+        transformPath(
+          path,
+          inputDoc.paths[path] as unknown,
+        ),
+      ));
     });
   }
 
-  // // Models (definitions)
-  // if ('definitions' in inputDoc) {
-  //   md.line(md.string().horizontalRule());
-  //   md.line(transformDefinition(inputDoc.definitions));
-  // // } else if (inputDoc.components && inputDoc.components.schemas) {
-  // //   document.push(transformDefinition(inputDoc.components.schemas));
-  // }
+  // Models (components)
+  if ('components' in inputDoc) {
+    md.line(md.string().horizontalRule());
+    md.line(
+      // @todo: move transform definition to the v3 folder and refactor to respect v3 only
+      transformDefinition(
+        inputDoc.components.schemas as never,
+      ),
+    );
+  }
 
   // Glue all pieces down
   return md.export();

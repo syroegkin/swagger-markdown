@@ -10,6 +10,7 @@ export interface SchemaInterface {
   getType?(): string | undefined;
   getFormat?(): string | undefined;
   getItems?(): SchemaInterface;
+  getReference(): string | undefined;
   getAllOf?(): SchemaInterface[];
 }
 
@@ -39,6 +40,9 @@ export class Schema implements SchemaInterface {
       if ('format' in schema) {
         this.setFormat(schema.format);
       }
+      if ('$ref' in schema) {
+        this.setReference(schema.$ref as string);
+      }
       if ('items' in schema) {
         this.setItems(schema.items);
       }
@@ -51,6 +55,21 @@ export class Schema implements SchemaInterface {
         this.setProperties(schema.properties);
       }
     }
+  }
+
+  /**
+   * @param {String} ref
+   */
+  public setReference(ref: string): Schema {
+    this.ref = ref;
+    return this;
+  }
+
+  /**
+   * @return {String}
+   */
+  public getReference(): string | undefined {
+    return this.ref;
   }
 
   public setProperties(properties: {
@@ -76,8 +95,12 @@ export class Schema implements SchemaInterface {
   /**
    * @param {Array<Object>} allOf
    */
-  public setAllOf(allOf) {
-    this.allOf = allOf.map((schema) => new Schema(schema));
+  public setAllOf(allOf: (OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject)[]): Schema {
+    this.allOf = allOf.map(
+      (
+        schema: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject,
+      ) => new Schema(schema as OpenAPIV3.SchemaObject),
+    );
     return this;
   }
 

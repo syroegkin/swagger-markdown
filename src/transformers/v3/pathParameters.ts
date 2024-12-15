@@ -1,11 +1,11 @@
-import { OpenAPIV2 } from 'openapi-types';
-import { dataTypeResolver } from './dataTypes';
+import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
+import { dataTypeResolver } from '../common/v2-3/dataTypes';
 import { Schema } from './models/Schema';
 import { Markdown } from '../../lib/markdown';
 
 export const transformParameters = (
-  parameters: OpenAPIV2.Parameters,
-  pathParameters?: OpenAPIV2.Parameters,
+  parameters: OpenAPIV3.ParameterObject,
+  pathParameters?: OpenAPIV3.ParameterObject,
 ) => {
   const md = Markdown.md();
 

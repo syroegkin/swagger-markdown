@@ -1,5 +1,5 @@
 import { OpenAPIV2 } from 'openapi-types';
-import { Options } from '../types';
+import { ALLOWED_METHODS_V2, Options } from '../types';
 import { transformInfo } from './common/v2-3/info';
 import { transformPath } from './v2/path';
 import { transformSecurityDefinitions } from './v2/securityDefinitions';
@@ -58,7 +58,10 @@ export function transformSwaggerV2(
   // Process Paths
   if ('paths' in inputDoc) {
     // Group paths by tag name
-    const tagged = groupPathsByTags<OpenAPIV2.PathsObject>(inputDoc.paths);
+    const tagged = groupPathsByTags<OpenAPIV2.PathsObject>(
+      inputDoc.paths,
+      ALLOWED_METHODS_V2,
+    );
 
     Object.keys(tagged).forEach((tagName) => {
       md.line(md.string().horizontalRule());

@@ -1,5 +1,5 @@
 import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
-import { ALLOWED_METHODS } from '../../../types';
+import { ALLOWED_METHODS_V2, ALLOWED_METHODS_V3 } from '../../../types';
 
 type AnyPathObject = OpenAPIV2.PathsObject | OpenAPIV3.PathsObject;
 
@@ -10,13 +10,14 @@ type Tagged<T extends AnyPathObject = AnyPathObject> = { [tag: string]: T };
  */
 export function groupPathsByTags<T extends AnyPathObject = AnyPathObject>(
   inputDoc: T,
+  allowedMethods: typeof ALLOWED_METHODS_V2 | typeof ALLOWED_METHODS_V3,
 ): Tagged<T> {
   const tagged: Tagged<T> = {};
 
   Object.keys(inputDoc).forEach((path: string) => {
     const data = inputDoc[path];
     Object.keys(data).forEach((method) => {
-      if (ALLOWED_METHODS.includes(method)) {
+      if (allowedMethods.includes(method)) {
         const pathMethod: T extends OpenAPIV2.PathsObject
           ? OpenAPIV2.OperationObject
           : OpenAPIV3.OperationObject = data[method];
