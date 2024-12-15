@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs';
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 
 const examplesDirectory = path.join(__dirname, '..', 'examples');
 
@@ -19,7 +19,7 @@ subdirectories.forEach((subdirectory) => {
 
     console.log(`Processing ${filename} in ${subdirectory}`);
     try {
-      execSync(`node dist/swagger-markdown.js -i examples/${subdirectory}/${filename}`);
+      execFileSync('node', ['dist/swagger-markdown.js', '-i', `examples/${subdirectory}/${filename}`]);
       console.log('Done\n');
     } catch (e) {
       console.log(e);
