@@ -148,6 +148,19 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Pet'
+          links:
+            address:
+              # the target link operationId
+              operationId: getUserAddress
+              description: Address link description
+              parameters:
+                # get the `id` field from the request path parameter named `id`
+                userId: $request.path.id
+                entityId: $request.entity.id
+              requestBody: RequestBody
+              server:
+                url: https://development.gigantic-server.com/v1
+                description: Development server
         '400':
           description: Invalid status value
       security:
@@ -158,6 +171,7 @@ paths:
     get:
       tags:
         - pet
+      deprecated: true
       summary: Finds Pets by tags
       description: Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
       operationId: findPetsByTags

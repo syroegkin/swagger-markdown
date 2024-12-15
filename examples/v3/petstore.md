@@ -26,48 +26,19 @@ apiteam@swagger.io
 Everything about your Pets
 [Find out more](http://swagger.io)
 
-### /pet
-
-#### PUT
-##### Summary
-
-Update an existing pet
-
-##### Description
+### [PUT] /pet
+**Update an existing pet**
 
 Update an existing pet by Id
 
-##### Responses
+#### Responses
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | Successful operation |
-| 400 | Invalid ID supplied |
-| 404 | Pet not found |
-| 422 | Validation exception |
-
-##### Security
-
-| Security Schema | Scopes |  |
-| --------------- | ------ | --- |
-| petstore_auth | write:pets | read:pets |
-
-#### POST
-##### Summary
-
-Add a new pet to the store
-
-##### Description
-
-Add a new pet to the store
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | Successful operation |
-| 400 | Invalid input |
-| 422 | Validation exception |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Successful operation | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br> |
+| 400 | Invalid ID supplied |  |
+| 404 | Pet not found |  |
+| 422 | Validation exception |  |
 
 ##### Security
 
@@ -75,29 +46,34 @@ Add a new pet to the store
 | --------------- | ------ | --- |
 | petstore_auth | write:pets | read:pets |
 
-### /pet/findByStatus
+### [POST] /pet
+**Add a new pet to the store**
 
-#### GET
-##### Summary
+#### Responses
 
-Finds Pets by status
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Successful operation | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br> |
+| 400 | Invalid input |  |
+| 422 | Validation exception |  |
 
-##### Description
+##### Security
+
+| Security Schema | Scopes |  |
+| --------------- | ------ | --- |
+| petstore_auth | write:pets | read:pets |
+
+### [GET] /pet/findByStatus
+**Finds Pets by status**
 
 Multiple status values can be provided with comma separated strings
 
-##### Parameters
+#### Responses
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| status | query | Status values that need to be considered for filter | No | string |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid status value |
+| Code | Description | Schema | Links |
+| ---- | ----------- | ------ | ----- |
+| 200 | successful operation | **application/json**: [ [Pet](#pet) ]<br>**application/xml**: [ [Pet](#pet) ]<br> | **address**<br>Address link description<br>Parameters {<br>"userId": "$request.path.id",<br>"entityId": "$request.entity.id"<br>}<br> |
+| 400 | Invalid status value |  |  |
 
 ##### Security
 
@@ -105,29 +81,20 @@ Multiple status values can be provided with comma separated strings
 | --------------- | ------ | --- |
 | petstore_auth | write:pets | read:pets |
 
-### /pet/findByTags
+### ~~[GET] /pet/findByTags~~
 
-#### GET
-##### Summary
+***DEPRECATED***
 
-Finds Pets by tags
-
-##### Description
+**Finds Pets by tags**
 
 Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
 
-##### Parameters
+#### Responses
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| tags | query | Tags to filter by | No | [ string ] |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid tag value |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | **application/json**: [ [Pet](#pet) ]<br>**application/xml**: [ [Pet](#pet) ]<br> |
+| 400 | Invalid tag value |  |
 
 ##### Security
 
@@ -135,30 +102,18 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
 | --------------- | ------ | --- |
 | petstore_auth | write:pets | read:pets |
 
-### /pet/{petId}
-
-#### GET
-##### Summary
-
-Find pet by ID
-
-##### Description
+### [GET] /pet/{petId}
+**Find pet by ID**
 
 Returns a single pet
 
-##### Parameters
+#### Responses
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| petId | path | ID of pet to return | Yes | long |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid ID supplied |
-| 404 | Pet not found |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br> |
+| 400 | Invalid ID supplied |  |
+| 404 | Pet not found |  |
 
 ##### Security
 
@@ -167,22 +122,10 @@ Returns a single pet
 | api_key |  |  |
 | petstore_auth | write:pets | read:pets |
 
-#### POST
-##### Summary
+### [POST] /pet/{petId}
+**Updates a pet in the store with form data**
 
-Updates a pet in the store with form data
-
-##### Description
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| petId | path | ID of pet that needs to be updated | Yes | long |
-| name | query | Name of pet that needs to be updated | No | string |
-| status | query | Status of pet that needs to be updated | No | string |
-
-##### Responses
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
@@ -194,23 +137,12 @@ Updates a pet in the store with form data
 | --------------- | ------ | --- |
 | petstore_auth | write:pets | read:pets |
 
-#### DELETE
-##### Summary
-
-Deletes a pet
-
-##### Description
+### [DELETE] /pet/{petId}
+**Deletes a pet**
 
 delete a pet
 
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| api_key | header |  | No | string |
-| petId | path | Pet id to delete | Yes | long |
-
-##### Responses
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
@@ -222,27 +154,14 @@ delete a pet
 | --------------- | ------ | --- |
 | petstore_auth | write:pets | read:pets |
 
-### /pet/{petId}/uploadImage
+### [POST] /pet/{petId}/uploadImage
+**uploads an image**
 
-#### POST
-##### Summary
+#### Responses
 
-uploads an image
-
-##### Description
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| petId | path | ID of pet to update | Yes | long |
-| additionalMetadata | query | Additional Metadata | No | string |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | **application/json**: [ApiResponse](#apiresponse)<br> |
 
 ##### Security
 
@@ -255,22 +174,16 @@ uploads an image
 Access to Petstore orders
 [Find out more about our store](http://swagger.io)
 
-### /store/inventory
-
-#### GET
-##### Summary
-
-Returns pet inventories by status
-
-##### Description
+### [GET] /store/inventory
+**Returns pet inventories by status**
 
 Returns a map of status codes to quantities
 
-##### Responses
+#### Responses
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | **application/json**: object<br> |
 
 ##### Security
 
@@ -278,66 +191,38 @@ Returns a map of status codes to quantities
 | --------------- | ------ |
 | api_key |  |
 
-### /store/order
-
-#### POST
-##### Summary
-
-Place an order for a pet
-
-##### Description
+### [POST] /store/order
+**Place an order for a pet**
 
 Place a new order in the store
 
-##### Responses
+#### Responses
 
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid input |
-| 422 | Validation exception |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | **application/json**: [Order](#order)<br> |
+| 400 | Invalid input |  |
+| 422 | Validation exception |  |
 
-### /store/order/{orderId}
-
-#### GET
-##### Summary
-
-Find purchase order by ID
-
-##### Description
+### [GET] /store/order/{orderId}
+**Find purchase order by ID**
 
 For valid response try integer IDs with value <= 5 or > 10. Other values will generate exceptions.
 
-##### Parameters
+#### Responses
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| orderId | path | ID of order that needs to be fetched | Yes | long |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | **application/json**: [Order](#order)<br>**application/xml**: [Order](#order)<br> |
+| 400 | Invalid ID supplied |  |
+| 404 | Order not found |  |
 
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid ID supplied |
-| 404 | Order not found |
-
-#### DELETE
-##### Summary
-
-Delete purchase order by ID
-
-##### Description
+### [DELETE] /store/order/{orderId}
+**Delete purchase order by ID**
 
 For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
 
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| orderId | path | ID of the order that needs to be deleted | Yes | long |
-
-##### Responses
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
@@ -348,146 +233,153 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
 ## user
 Operations about user
 
-### /user
-
-#### POST
-##### Summary
-
-Create user
-
-##### Description
+### [POST] /user
+**Create user**
 
 This can only be done by the logged in user.
 
-##### Responses
+#### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| default | successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
+
+### [POST] /user/createWithList
+**Creates list of users with given input array**
+
+#### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
+| default | successful operation |  |
+
+### [GET] /user/login
+**Logs user into the system**
+
+#### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation<br>**Headers:**<br>**X-Rate-Limit**: calls per hour allowed by the user<br>**X-Expires-After**: date in UTC when token expires<br> | **application/xml**: string<br>**application/json**: string<br> |
+| 400 | Invalid username/password supplied |  |
+
+### [GET] /user/logout
+**Logs out current logged in user session**
+
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
 | default | successful operation |
 
-### /user/createWithList
+### [GET] /user/{username}
+**Get user by user name**
 
-#### POST
-##### Summary
+#### Responses
 
-Creates list of users with given input array
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
+| 400 | Invalid username supplied |  |
+| 404 | User not found |  |
 
-##### Description
-
-Creates list of users with given input array
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | Successful operation |
-| default | successful operation |
-
-### /user/login
-
-#### GET
-##### Summary
-
-Logs user into the system
-
-##### Description
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| username | query | The user name for login | No | string |
-| password | query | The password for login in clear text | No | string |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation<br>**Headers:**<br>**X-Rate-Limit**: calls per hour allowed by the user<br>**X-Expires-After**: date in UTC when token expires<br> |
-| 400 | Invalid username/password supplied |
-
-### /user/logout
-
-#### GET
-##### Summary
-
-Logs out current logged in user session
-
-##### Description
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| default | successful operation |
-
-### /user/{username}
-
-#### GET
-##### Summary
-
-Get user by user name
-
-##### Description
-
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| username | path | The name that needs to be fetched. Use user1 for testing.  | Yes | string |
-
-##### Responses
-
-| Code | Description |
-| ---- | ----------- |
-| 200 | successful operation |
-| 400 | Invalid username supplied |
-| 404 | User not found |
-
-#### PUT
-##### Summary
-
-Update user
-
-##### Description
+### [PUT] /user/{username}
+**Update user**
 
 This can only be done by the logged in user.
 
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| username | path | name that need to be deleted | Yes | string |
-
-##### Responses
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
 | default | successful operation |
 
-#### DELETE
-##### Summary
-
-Delete user
-
-##### Description
+### [DELETE] /user/{username}
+**Delete user**
 
 This can only be done by the logged in user.
 
-##### Parameters
-
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| username | path | The name that needs to be deleted | Yes | string |
-
-##### Responses
+#### Responses
 
 | Code | Description |
 | ---- | ----------- |
 | 400 | Invalid username supplied |
 | 404 | User not found |
+
+---
+### Models
+
+#### Order
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long | *Example:* `10` | No |
+| petId | long | *Example:* `198772` | No |
+| quantity | integer | *Example:* `7` | No |
+| shipDate | dateTime |  | No |
+| status | string | Order Status<br>*Enum:* `"placed"`, `"approved"`, `"delivered"`<br>*Example:* `"approved"` | No |
+| complete | boolean |  | No |
+
+#### Customer
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long | *Example:* `100000` | No |
+| username | string | *Example:* `"fehguy"` | No |
+| address | [ [Address](#address) ] |  | No |
+
+#### Address
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| street | string | *Example:* `"437 Lytton"` | No |
+| city | string | *Example:* `"Palo Alto"` | No |
+| state | string | *Example:* `"CA"` | No |
+| zip | string | *Example:* `"94301"` | No |
+
+#### Category
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long | *Example:* `1` | No |
+| name | string | *Example:* `"Dogs"` | No |
+
+#### User
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long | *Example:* `10` | No |
+| username | string | *Example:* `"theUser"` | No |
+| firstName | string | *Example:* `"John"` | No |
+| lastName | string | *Example:* `"James"` | No |
+| email | string | *Example:* `"john@email.com"` | No |
+| password | string | *Example:* `"12345"` | No |
+| phone | string | *Example:* `"12345"` | No |
+| userStatus | integer | User Status<br>*Example:* `1` | No |
+
+#### Tag
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long |  | No |
+| name | string |  | No |
+
+#### Pet
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| id | long | *Example:* `10` | No |
+| name | string | *Example:* `"doggie"` | Yes |
+| category | [Category](#category) |  | No |
+| photoUrls | [ string ] |  | Yes |
+| tags | [ [Tag](#tag) ] |  | No |
+| status | string | pet status in the store<br>*Enum:* `"available"`, `"pending"`, `"sold"` | No |
+
+#### ApiResponse
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| code | integer |  | No |
+| type | string |  | No |
+| message | string |  | No |
