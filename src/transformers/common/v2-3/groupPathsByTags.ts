@@ -23,6 +23,9 @@ export function groupPathsByTags<T extends AnyPathObject = AnyPathObject>(
           : OpenAPIV3.OperationObject = data[method];
         const tags = pathMethod.tags || [''];
         tags.forEach((tagName) => {
+          if (tagName === '__proto__' || tagName === 'constructor' || tagName === 'prototype') {
+            return; // Skip special properties to prevent prototype pollution
+          }
           if (!tagged[tagName]) {
             // Initialize as an empty PathsObject of the correct type T
             tagged[tagName] = {} as T;
