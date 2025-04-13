@@ -24,23 +24,22 @@ export function groupPathsByTags<T extends AnyPathObject = AnyPathObject>(
         const tags = pathMethod.tags || [''];
         tags.forEach((tagName) => {
           if (!tagged[tagName]) {
-            tagged[tagName] = {
-              ...tagged[tagName],
-              [path]: {
-                parameters: data.parameters,
-                $ref: data.$ref,
-              },
-            };
+            // Initialize as an empty PathsObject of the correct type T
+            tagged[tagName] = {} as T;
           }
-          tagged[tagName] = {
-            ...tagged[tagName],
-            ...{
-              [path]: {
-                ...tagged[tagName][path],
-                [method]: pathMethod,
-              },
-            },
-          };
+          // Ensure the path exists within the tag's PathsObject
+          if (!tagged[tagName][path]) {
+            // Initialize the PathItemObject for this path, copying common elements
+            tagged[tagName][path] = {
+              ...(data.parameters && { parameters: data.parameters }),
+              ...(data.$ref && { $ref: data.$ref }),
+            } as T[string]; // Cast to the expected PathItemObject type
+          }
+          // Add the specific method to the PathItemObject
+          // Assert type to allow dynamic method assignment
+          const pathItem = tagged[tagName][path] as
+            OpenAPIV2.PathItemObject | OpenAPIV3.PathItemObject;
+          pathItem[method] = pathMethod;
         });
       }
     });

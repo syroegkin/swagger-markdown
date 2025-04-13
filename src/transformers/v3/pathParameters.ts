@@ -1,11 +1,11 @@
-import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
-import { dataTypeResolver } from '../common/v2-3/dataTypes';
+import { OpenAPIV3 } from 'openapi-types';
+import { dataTypeResolver } from './dataTypes';
 import { Schema } from './models/Schema';
 import { Markdown } from '../../lib/markdown';
 
 export const transformParameters = (
-  parameters: OpenAPIV3.ParameterObject,
-  pathParameters?: OpenAPIV3.ParameterObject,
+  parameters: OpenAPIV3.ParameterObject[] = [],
+  pathParameters: OpenAPIV3.ParameterObject[] = [],
 ) => {
   const md = Markdown.md();
 
@@ -14,34 +14,43 @@ export const transformParameters = (
   table.th('Name').th('Located in').th('Description').th('Required')
     .th('Schema');
 
-  [].concat(pathParameters, parameters).forEach((keys: OpenAPIV2.Parameter) => {
-    if (keys) {
+  // Combine path and operation parameters, ensuring they are V3 objects
+  [...pathParameters, ...parameters].forEach((parameterObject: OpenAPIV3.ParameterObject) => {
+    if (parameterObject) {
       const tr = table.tr();
       // Name first
-      tr.td(keys.name || '');
+      tr.td(parameterObject.name || '');
       // Scope (in)
-      tr.td(keys.in || '');
+      tr.td(parameterObject.in || '');
       // description
-      if ('description' in keys) {
-        tr.td(md.string(keys.description.replace(/[\r\n]/g, ' ')).escape());
+      if ('description' in parameterObject && parameterObject.description) {
+        tr.td(md.string(parameterObject.description.replace(/[\r\n]/g, ' ')).escape());
       } else {
         tr.td('');
       }
-      tr.td(keys.required ? 'Yes' : 'No');
+      tr.td(parameterObject.required ? 'Yes' : 'No');
 
-      // Prepare schema to be transformed
-      let schema = null;
-      if ('schema' in keys) {
-        schema = new Schema(keys.schema);
+      // Prepare schema to be transformed - V3 parameters have schema property
+      let schema: Schema | null = null;
+      if ('schema' in parameterObject && parameterObject.schema) {
+        // Constructor now handles ReferenceObject | SchemaObject
+        schema = new Schema(parameterObject.schema);
+      } else if ('content' in parameterObject && parameterObject.content) {
+        // Handle parameters with 'content' instead of 'schema' (e.g., requestBody)
+        // For simplicity, we might just indicate the media type or take the first one
+        const mediaType = Object.keys(parameterObject.content)[0];
+        if (mediaType && parameterObject.content[mediaType]?.schema) {
+          // Constructor now handles ReferenceObject | SchemaObject
+          schema = new Schema(parameterObject.content[mediaType].schema);
+        } else {
+          schema = new Schema({}); // Fallback for content without schema
+        }
       } else {
-        schema = new Schema();
-        schema.setType('type' in keys ? keys.type : null);
-        schema.setFormat('format' in keys ? keys.format : null);
-        schema.setReference('$ref' in keys ? keys.$ref : null);
-        schema.setItems('items' in keys ? keys.items : null);
+        // Fallback if neither schema nor content is present
+        schema = new Schema({});
       }
 
-      tr.td(dataTypeResolver(schema));
+      tr.td(dataTypeResolver(schema)); // dataTypeResolver expects a Schema object
     }
   });
 

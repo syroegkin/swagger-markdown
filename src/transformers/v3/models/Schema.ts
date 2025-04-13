@@ -30,29 +30,32 @@ export class Schema implements SchemaInterface {
   /**
    * constructor
    *
-   * @param {Object} [schema=null]
+   * @param {OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject} [schema=undefined]
    */
-  constructor(schema?: Partial<OpenAPIV3.SchemaObject>) {
+  constructor(schema?: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject) {
     if (schema) {
-      if ('type' in schema) {
-        this.setType(schema.type);
-      }
-      if ('format' in schema) {
-        this.setFormat(schema.format);
-      }
+      // Check if it's a Reference Object
       if ('$ref' in schema) {
-        this.setReference(schema.$ref as string);
-      }
-      if ('items' in schema) {
-        this.setItems(schema.items);
-      }
-      if ('allOf' in schema) {
-        this.setAllOf(schema.allOf);
-      }
-      if ('properties' in schema) {
-        // At this point the document is dereferenced
-        // So we can avoid the reference here
-        this.setProperties(schema.properties);
+        this.setReference(schema.$ref);
+      } else {
+        // It's a Schema Object
+        if ('type' in schema && schema.type) {
+          this.setType(schema.type);
+        }
+        if ('format' in schema && schema.format) {
+          this.setFormat(schema.format);
+        }
+        if ('items' in schema && schema.items) {
+          this.setItems(schema.items);
+        }
+        if ('allOf' in schema && schema.allOf) {
+          this.setAllOf(schema.allOf);
+        }
+        if ('properties' in schema && schema.properties) {
+          // At this point the document is dereferenced
+          // So we can avoid the reference here
+          this.setProperties(schema.properties);
+        }
       }
     }
   }
@@ -113,9 +116,9 @@ export class Schema implements SchemaInterface {
   }
 
   /**
-   * @param {Object} items
+   * @param {OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject} items
    */
-  setItems(items) {
+  setItems(items: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject) {
     this.items = new Schema(items);
     return this;
   }

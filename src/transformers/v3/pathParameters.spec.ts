@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import { OpenAPIV3 } from 'openapi-types';
 import { transformParameters } from './pathParameters';
 
 const tableFixture: string[] = [
@@ -9,31 +10,36 @@ const tableFixture: string[] = [
 
 describe('Path parameters transformer', () => {
   describe('Method parameters', () => {
-    const fixture = [
+    // Corrected fixture to use V3 ParameterObject structure
+    const fixture: OpenAPIV3.ParameterObject[] = [
       {
         name: 'name',
-        in: 'formData',
+        in: 'query', // 'formData' is V2, using 'query' as example for V3
         description: 'name',
-        type: 'string',
+        schema: { type: 'string' },
       }, {
         name: 'year',
-        in: 'formData',
+        in: 'query',
         description: 'year',
-        type: 'string',
         required: true,
+        schema: { type: 'string' },
       }, {
-        in: 'formData',
-        type: 'string',
-      }, {},
+        name: 'missing_description', // Added missing name
+        in: 'query',
+        schema: { type: 'string' },
+      },
+      // Removed invalid empty object {}
     ];
 
+    // Updated expected results based on corrected fixture
     const results = [...tableFixture, ...[
-      '| name | formData | name | No | string |',
-      '| year | formData | year | Yes | string |',
-      '|  | formData |  | No | string |',
-      '|  |  |  | No |  |',
+      '| name | query | name | No | string |',
+      '| year | query | year | Yes | string |',
+      '| missing_description | query |  | No | string |',
+      // Removed line corresponding to empty object
     ]];
-    const res = (transformParameters(fixture as any) as string).split('\n');
+    // Pass fixture directly as the first argument (parameters)
+    const res = (transformParameters(fixture) as string).split('\n');
 
     it('Should create parameters header', () => {
       expect(res[0]).to.be.equal(results[0]);
@@ -48,21 +54,25 @@ describe('Path parameters transformer', () => {
       expect(res[4]).to.be.equal(results[3]);
       expect(res[5]).to.be.equal(results[4]);
       expect(res[6]).to.be.equal(results[5]);
-      expect(res[7]).to.be.equal(results[6]);
+      // Removed assertion for the removed empty object
     });
   });
   describe('Path parameters', () => {
     describe('Should build parameters from path parameters', () => {
-      const fixture = [{
+      // Corrected fixture to use V3 ParameterObject structure
+      const fixture: OpenAPIV3.ParameterObject[] = [{
         name: 'name',
-        in: 'formData',
+        in: 'path', // 'formData' is V2, using 'path' as example
         description: 'name',
-        type: 'string',
+        required: true, // Path parameters are typically required
+        schema: { type: 'string' },
       }];
+      // Updated expected results
       const results = [...tableFixture, ...[
-        '| name | formData | name | No | string |',
+        '| name | path | name | Yes | string |',
       ]];
-      const res = (transformParameters(undefined as any, fixture) as string).split('\n');
+      // Pass empty array for first arg (parameters), fixture for second (pathParameters)
+      const res = (transformParameters([], fixture) as string).split('\n');
 
       it('Should create parameters header', () => {
         expect(res[0]).to.be.equal(results[0]);
@@ -81,21 +91,24 @@ describe('Path parameters transformer', () => {
 
   describe('Path and method parameters', () => {
     describe('Should build parameters from path and method parameters', () => {
-      const pathFixture = [{
-        name: 'path name',
-        in: 'formData',
-        description: 'name',
-        type: 'string',
+      // Corrected fixtures to use V3 ParameterObject structure
+      const pathFixture: OpenAPIV3.ParameterObject[] = [{
+        name: 'path_name',
+        in: 'path',
+        description: 'path name description',
+        required: true,
+        schema: { type: 'string' },
       }];
-      const methodFixture = [{
-        name: 'method name',
-        in: 'formData',
-        description: 'name',
-        type: 'string',
+      const methodFixture: OpenAPIV3.ParameterObject[] = [{
+        name: 'method_name',
+        in: 'query',
+        description: 'method name description',
+        schema: { type: 'string' },
       }];
+      // Updated expected results
       const results = [...tableFixture, ...[
-        '| path name | formData | name | No | string |',
-        '| method name | formData | name | No | string |',
+        '| path_name | path | path name description | Yes | string |',
+        '| method_name | query | method name description | No | string |',
       ]];
       const res = (transformParameters(methodFixture, pathFixture) as string).split('\n');
       it('Should create parameters header', () => {

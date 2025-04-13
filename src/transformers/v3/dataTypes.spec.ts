@@ -6,7 +6,7 @@ import { anchor } from '../../lib/anchor';
 const fixture = [
   // References
   [
-    new Schema({ $ref: '#/definitions/ErrorModel' }),
+    new Schema({ $ref: '#/definitions/ErrorModel' } as any),
     `[ErrorModel](#${anchor('ErrorModel')})`,
   ],
   // Standard usecases
@@ -23,8 +23,8 @@ const fixture = [
   [new Schema({ type: 'string', format: 'date' }), 'date'],
   [new Schema({ type: 'string', format: 'date-time' }), 'dateTime'],
   [new Schema({ type: 'string', format: 'password' }), 'password'],
-  [new Schema({ type: ['string', 'boolean'] }), 'string, boolean'],
-  [new Schema({ type: ['string', 'boolean'], format: 'truefalsy' }), 'string (truefalsy), boolean (truefalsy)'],
+  [new Schema({ type: ['string', 'boolean'] } as any), 'string, boolean'],
+  [new Schema({ type: ['string', 'boolean'], format: 'truefalsy' } as any), 'string (truefalsy), boolean (truefalsy)'],
   // Arrays
   [
     new Schema({
@@ -37,9 +37,9 @@ const fixture = [
       items: { $ref: '#/definitions/ErrorModel' },
     }), `[ [ErrorModel](#${anchor('ErrorModel')}) ]`],
   // Weird usecases
-  [new Schema({ type: 'random', format: 'number' }), 'random (number)'],
+  [new Schema({ type: 'random', format: 'number' } as any), 'random (number)'],
   [new Schema({ type: 'integer', format: 'int128' }), 'integer (int128)'],
-  [new Schema({ type: 'a', format: 'b' }), 'a (b)'],
+  [new Schema({ type: 'a', format: 'b' } as any), 'a (b)'],
   // Empty schema
   [new Schema(), ''],
   [(new Schema()).setType(null as any).setFormat(null as any), ''],
