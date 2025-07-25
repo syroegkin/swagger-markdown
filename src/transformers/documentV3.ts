@@ -7,7 +7,8 @@ import { TagsCollection } from './common/Tags';
 import { transformExternalDocs } from './common/v2-3/externalDocs';
 import { transformTag } from './common/v2-3/tag';
 import { groupPathsByTags } from './common/v2-3/groupPathsByTags';
-import { transformDefinition } from './v2/definitions';
+// import { transformComponents } from './v3/components';
+import { transformSecuritySchemes } from './v3/securitySchemes/securitySchemes';
 
 export function transformSwaggerV3(
   inputDoc: OpenAPIV3.Document,
@@ -38,7 +39,11 @@ export function transformSwaggerV3(
     md.line(transformExternalDocs(inputDoc.externalDocs));
   }
 
-  // Security definitions aren't presented in v3
+  if ('securitySchemes' in inputDoc.components) {
+    md.line(transformSecuritySchemes(
+      inputDoc.components.securitySchemes as { [key: string]: OpenAPIV3.SecuritySchemeObject; },
+    ));
+  }
 
   // All components must be dereferenced
 
@@ -66,13 +71,13 @@ export function transformSwaggerV3(
 
   // Models (components)
   if ('components' in inputDoc) {
+  //   // console.log(JSON.stringify(inputDoc.components, null, 2));
     md.line(md.string().horizontalRule());
-    md.line(
-      // @todo: move transform definition to the v3 folder and refactor to respect v3 only
-      transformDefinition(
-        inputDoc.components.schemas as never,
-      ),
-    );
+  //   md.line(
+  //     transformComponents(
+  //       inputDoc.components,
+  //     ),
+  //   );
   }
 
   // Glue all pieces down
