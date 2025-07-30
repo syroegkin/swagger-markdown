@@ -34,7 +34,7 @@ export function partiallyDereference(
     } else if (
       key === '$ref'
       && !value.startsWith('#/definitions/') // V2
-      && !value.startsWith('#/components/') // V3
+      && !value.startsWith('#/components/schemas') // V3
     ) {
       return partiallyDereference($refs.get(value), $refs);
     } else {

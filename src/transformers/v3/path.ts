@@ -1,11 +1,3 @@
-// import { OpenAPIV2 } from 'openapi-types';
-// import { transformResponses } from './pathResponses';
-// import { transformParameters } from './pathParameters';
-// import { transformSecurity } from '../common/v2-3/security';
-// import { Markdown } from '../../lib/markdown';
-// import { ALLOWED_METHODS } from '../../types';
-// import { transformExternalDocs } from '../common/v2-3/externalDocs';
-// import { transformSchemes } from './schemes';
 import { OpenAPIV3 } from 'openapi-types';
 import { Markdown } from '../../lib/markdown';
 import {
@@ -14,12 +6,13 @@ import {
 import { transformExternalDocs } from '../common/v2-3/externalDocs';
 import { transformSecurity } from '../common/v2-3/security';
 import { transformResponses } from './pathResponses';
+import { transformParameters } from './pathParameters';
 
 export function transformPath(
   path: string,
   data: OpenAPIV3.PathItemObject,
 ): string | null {
-  // const pathParameters: OpenAPIV3.ParameterObject = null;
+  let pathParameters: OpenAPIV3.ParameterObject[] = [];
 
   if (!path || !data) {
     return null;
@@ -28,9 +21,9 @@ export function transformPath(
   const md = Markdown.md();
 
   // Check if parameter for path are in the place
-  // if ('parameters' in data) {
-  //   pathParameters = data.parameters;
-  // }
+  if ('parameters' in data) {
+    pathParameters = data.parameters as OpenAPIV3.ParameterObject[];
+  }
 
   // Go further method by methods
   Object.keys(data).forEach((method) => {
@@ -76,16 +69,16 @@ export function transformPath(
         );
       }
 
-      // // Build parameters
-      // if ('parameters' in pathInfo || pathParameters) {
-      //   const builtParameters = md.string(transformParameters(
-      //     pathInfo.parameters,
-      //     pathParameters,
-      //   ));
-      //   if (builtParameters.length) {
-      //     md.line(builtParameters).line();
-      //   }
-      // }
+      // Build parameters
+      if ('parameters' in pathInfo || pathParameters) {
+        const builtParameters = md.string(transformParameters(
+          pathInfo.parameters as OpenAPIV3.ParameterObject[],
+          pathParameters,
+        ));
+        if (builtParameters.length) {
+          md.line(builtParameters).line();
+        }
+      }
 
       // Build responses
       if ('responses' in pathInfo) {

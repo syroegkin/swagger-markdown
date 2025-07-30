@@ -102,5 +102,27 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
     return md.string('').get();
   }).filter((s) => s.length > 0); // and filter out empty strings
 
+  if (schema.getEnum() && schema.getEnum().length > 0) {
+    const enumValues = schema.getEnum().map((value) => {
+      if (typeof value === 'string') {
+        return md.string(`"${value}"`).get();
+      }
+      return md.string(`${value}`).get();
+    });
+    resolveResults.push(
+      md.string().br(true).concat(
+        md.string('Available values:').bold().concat(` ${enumValues.join(', ')}`),
+      ).get(),
+    );
+  }
+
+  if (schema.getDefault()) {
+    resolveResults.push(
+      md.string().br(true).concat(
+        md.string('Default: ').bold().concat(` ${schema.getDefault()}`),
+      ).get(),
+    );
+  }
+
   return md.string(resolveResults.join(', ')).get();
 };

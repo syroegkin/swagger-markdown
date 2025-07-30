@@ -7,6 +7,10 @@ export const transformParameters = (
   parameters: OpenAPIV3.ParameterObject[] = [],
   pathParameters: OpenAPIV3.ParameterObject[] = [],
 ) => {
+  const allParameters = [...parameters, ...pathParameters];
+  if (allParameters.length === 0) {
+    return '';
+  }
   const md = Markdown.md();
 
   md.line(md.string('Parameters').h5()).line();
@@ -15,7 +19,7 @@ export const transformParameters = (
     .th('Schema');
 
   // Combine path and operation parameters, ensuring they are V3 objects
-  [...pathParameters, ...parameters].forEach((parameterObject: OpenAPIV3.ParameterObject) => {
+  allParameters.forEach((parameterObject: OpenAPIV3.ParameterObject) => {
     if (parameterObject) {
       const tr = table.tr();
       // Name first

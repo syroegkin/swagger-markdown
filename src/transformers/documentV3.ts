@@ -7,7 +7,7 @@ import { TagsCollection } from './common/Tags';
 import { transformExternalDocs } from './common/v2-3/externalDocs';
 import { transformTag } from './common/v2-3/tag';
 import { groupPathsByTags } from './common/v2-3/groupPathsByTags';
-// import { transformComponents } from './v3/components';
+import { transformComponents } from './v3/components/components';
 import { transformSecuritySchemes } from './v3/securitySchemes/securitySchemes';
 
 export function transformSwaggerV3(
@@ -19,7 +19,7 @@ export function transformSwaggerV3(
   // Skip servers
   // those are used for the mock server and won't be rendered
 
-  // Security and Responses are supposed to be dereferenced (?)
+  // Security and Responses are supposed to be dereferenced
   // and shall not be present in the root namespace
 
   // Process info
@@ -71,13 +71,12 @@ export function transformSwaggerV3(
 
   // Models (components)
   if ('components' in inputDoc) {
-  //   // console.log(JSON.stringify(inputDoc.components, null, 2));
     md.line(md.string().horizontalRule());
-  //   md.line(
-  //     transformComponents(
-  //       inputDoc.components,
-  //     ),
-  //   );
+    md.line(
+      transformComponents(
+        inputDoc.components,
+      ),
+    );
   }
 
   // Glue all pieces down

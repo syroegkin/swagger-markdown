@@ -12,6 +12,8 @@ export interface SchemaInterface {
   getItems?(): SchemaInterface;
   getReference(): string | undefined;
   getAllOf?(): SchemaInterface[];
+  getDefault?(): unknown;
+  getEnum?(): unknown[];
 }
 
 export class Schema implements SchemaInterface {
@@ -26,6 +28,10 @@ export class Schema implements SchemaInterface {
   public items?: SchemaInterface;
 
   public properties?: { [name: string]: SchemaInterface } = {};
+
+  public defaultValue?: unknown;
+
+  public enum?: unknown[] = [];
 
   /**
    * constructor
@@ -56,6 +62,12 @@ export class Schema implements SchemaInterface {
           // So we can avoid the reference here
           this.setProperties(schema.properties);
         }
+        if ('default' in schema) {
+          this.setDefault(schema.default);
+        }
+        if ('enum' in schema && schema.enum) {
+          this.enum = schema.enum;
+        }
       }
     }
   }
@@ -75,6 +87,28 @@ export class Schema implements SchemaInterface {
     return this.ref;
   }
 
+  /**
+   * @param {string} defaultValue
+   * @return {*}  {Schema}
+   * @memberof Schema
+   */
+  public setDefault(defaultValue: unknown): Schema {
+    this.defaultValue = defaultValue;
+    return this;
+  }
+
+  public setEnum(enumValues: unknown[]): Schema {
+    this.enum = enumValues;
+    return this;
+  }
+
+  /**
+   * @param {({
+   *     [name: string]: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject
+   *   })} properties
+   * @return {*}  {Schema}
+   * @memberof Schema
+   */
   public setProperties(properties: {
     [name: string]: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject
   }): Schema {
@@ -153,5 +187,13 @@ export class Schema implements SchemaInterface {
 
   public getProperties() {
     return this.properties;
+  }
+
+  public getDefault(): unknown {
+    return this.defaultValue;
+  }
+
+  public getEnum(): unknown[] {
+    return this.enum;
   }
 }
