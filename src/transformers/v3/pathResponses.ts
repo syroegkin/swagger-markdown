@@ -66,9 +66,6 @@ export function transformResponses(responses: OpenAPIV3.ResponsesObject) {
     const tr = table.tr();
     const response = responses[responseCode];
 
-    // console.log();
-    // console.log(JSON.stringify(response, null, 2));
-    // console.log();
     // Response
     tr.td(responseCode);
 

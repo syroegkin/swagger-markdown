@@ -1,9 +1,12 @@
 import { OpenAPIV3 } from 'openapi-types';
+import { Dereferenced } from '../../../types';
 
 export function processRequestBodies(schemas: OpenAPIV3.ComponentsObject['requestBodies']): string {
   const md = [];
   Object.keys(schemas).forEach((requestBodyName) => {
-    const requestBody = schemas[requestBodyName] as OpenAPIV3.RequestBodyObject;
+    const requestBody = schemas[requestBodyName] as Dereferenced<
+      typeof schemas[typeof requestBodyName]
+    >;
     if (requestBody) {
       md.push(`### Request Body: ${requestBodyName}`);
       if (requestBody.description) {

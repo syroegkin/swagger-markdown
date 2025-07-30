@@ -1,4 +1,5 @@
 import { OpenAPIV3 } from 'openapi-types';
+import { Dereferenced } from '../../../types';
 
 export interface SchemaInterface {
   type?: string;
@@ -136,7 +137,7 @@ export class Schema implements SchemaInterface {
     this.allOf = allOf.map(
       (
         schema: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject,
-      ) => new Schema(schema as OpenAPIV3.SchemaObject),
+      ) => new Schema(schema as Dereferenced<typeof schema>),
     );
     return this;
   }

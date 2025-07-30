@@ -2,11 +2,13 @@ import { OpenAPIV3 } from 'openapi-types';
 import { Markdown } from '../../lib/markdown';
 import {
   ALLOWED_METHODS_V3,
+  Dereferenced,
 } from '../../types';
 import { transformExternalDocs } from '../common/v2-3/externalDocs';
 import { transformSecurity } from '../common/v2-3/security';
 import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
+import { transformRequestBody } from './pathRequestBody';
 
 export function transformPath(
   path: string,
@@ -22,7 +24,7 @@ export function transformPath(
 
   // Check if parameter for path are in the place
   if ('parameters' in data) {
-    pathParameters = data.parameters as OpenAPIV3.ParameterObject[];
+    pathParameters = data.parameters as Dereferenced<typeof data.parameters>;
   }
 
   // Go further method by methods
@@ -72,11 +74,24 @@ export function transformPath(
       // Build parameters
       if ('parameters' in pathInfo || pathParameters) {
         const builtParameters = md.string(transformParameters(
-          pathInfo.parameters as OpenAPIV3.ParameterObject[],
+          pathInfo.parameters as Dereferenced<typeof pathInfo.parameters>,
           pathParameters,
         ));
         if (builtParameters.length) {
           md.line(builtParameters).line();
+        }
+      }
+
+      // Build Request bodies
+      if ('requestBody' in pathInfo && pathInfo.requestBody) {
+        const requestBody = pathInfo.requestBody as Dereferenced<typeof pathInfo.requestBody>;
+        if (requestBody) {
+          const builtRequestBody = md.string(
+            transformRequestBody(requestBody),
+          );
+          if (builtRequestBody.length) {
+            md.line(builtRequestBody).line();
+          }
         }
       }
 
