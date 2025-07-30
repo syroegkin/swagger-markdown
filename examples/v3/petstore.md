@@ -21,6 +21,18 @@ apiteam@swagger.io
 
 [Find out more about Swagger](http://swagger.io)
 
+### Available authorizations
+#### petstore_auth (OAuth2, implicit)
+Authorization URL: https://petstore3.swagger.io/oauth/authorize  
+Scopes:
+
+- write:pets: modify pets in your account  
+- read:pets: read your pets  
+
+#### api_key (API Key Authentication)
+**Name:** api_key  
+**In:** header  
+
 ---
 ## pet
 Everything about your Pets
@@ -30,6 +42,12 @@ Everything about your Pets
 **Update an existing pet**
 
 Update an existing pet by Id
+
+#### Request Body
+
+| Required | Schema |
+| -------- | ------ |
+|  Yes | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br>**application/x-www-form-urlencoded**: [Pet](#pet)<br> | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br>**application/x-www-form-urlencoded**: [Pet](#pet)<br> | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br>**application/x-www-form-urlencoded**: [Pet](#pet)<br> |
 
 #### Responses
 
@@ -49,6 +67,12 @@ Update an existing pet by Id
 ### [POST] /pet
 **Add a new pet to the store**
 
+#### Request Body
+
+| Required | Schema |
+| -------- | ------ |
+|  Yes | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br>**application/x-www-form-urlencoded**: [Pet](#pet)<br> | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br>**application/x-www-form-urlencoded**: [Pet](#pet)<br> | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br>**application/x-www-form-urlencoded**: [Pet](#pet)<br> |
+
 #### Responses
 
 | Code | Description | Schema |
@@ -67,6 +91,12 @@ Update an existing pet by Id
 **Finds Pets by status**
 
 Multiple status values can be provided with comma separated strings
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| status | query | Status values that need to be considered for filter | No | string, <br>**Available values:** "available", "pending", "sold", <br>**Default:** available |
 
 #### Responses
 
@@ -89,6 +119,12 @@ Multiple status values can be provided with comma separated strings
 
 Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
 
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| tags | query | Tags to filter by | No | [ string ] |
+
 #### Responses
 
 | Code | Description | Schema |
@@ -106,6 +142,12 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
 **Find pet by ID**
 
 Returns a single pet
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| petId | path | ID of pet to return | Yes | long |
 
 #### Responses
 
@@ -125,6 +167,14 @@ Returns a single pet
 ### [POST] /pet/{petId}
 **Updates a pet in the store with form data**
 
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| petId | path | ID of pet that needs to be updated | Yes | long |
+| name | query | Name of pet that needs to be updated | No | string |
+| status | query | Status of pet that needs to be updated | No | string |
+
 #### Responses
 
 | Code | Description |
@@ -142,6 +192,13 @@ Returns a single pet
 
 delete a pet
 
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| api_key | header |  | No | string |
+| petId | path | Pet id to delete | Yes | long |
+
 #### Responses
 
 | Code | Description |
@@ -156,6 +213,19 @@ delete a pet
 
 ### [POST] /pet/{petId}/uploadImage
 **uploads an image**
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| petId | path | ID of pet to update | Yes | long |
+| additionalMetadata | query | Additional Metadata | No | string |
+
+#### Request Body
+
+| Required | Schema |
+| -------- | ------ |
+|  No | **application/octet-stream**: binary<br> |
 
 #### Responses
 
@@ -196,6 +266,12 @@ Returns a map of status codes to quantities
 
 Place a new order in the store
 
+#### Request Body
+
+| Required | Schema |
+| -------- | ------ |
+|  No | **application/json**: [Order](#order)<br>**application/xml**: [Order](#order)<br>**application/x-www-form-urlencoded**: [Order](#order)<br> | **application/json**: [Order](#order)<br>**application/xml**: [Order](#order)<br>**application/x-www-form-urlencoded**: [Order](#order)<br> | **application/json**: [Order](#order)<br>**application/xml**: [Order](#order)<br>**application/x-www-form-urlencoded**: [Order](#order)<br> |
+
 #### Responses
 
 | Code | Description | Schema |
@@ -209,6 +285,12 @@ Place a new order in the store
 
 For valid response try integer IDs with value <= 5 or > 10. Other values will generate exceptions.
 
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| orderId | path | ID of order that needs to be fetched | Yes | long |
+
 #### Responses
 
 | Code | Description | Schema |
@@ -221,6 +303,12 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
 **Delete purchase order by ID**
 
 For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| orderId | path | ID of the order that needs to be deleted | Yes | long |
 
 #### Responses
 
@@ -238,6 +326,12 @@ Operations about user
 
 This can only be done by the logged in user.
 
+#### Request Body
+
+| Required | Schema |
+| -------- | ------ |
+|  No | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br>**application/x-www-form-urlencoded**: [User](#user)<br> | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br>**application/x-www-form-urlencoded**: [User](#user)<br> | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br>**application/x-www-form-urlencoded**: [User](#user)<br> |
+
 #### Responses
 
 | Code | Description | Schema |
@@ -246,6 +340,12 @@ This can only be done by the logged in user.
 
 ### [POST] /user/createWithList
 **Creates list of users with given input array**
+
+#### Request Body
+
+| Required | Schema |
+| -------- | ------ |
+|  No | **application/json**: [ [User](#user) ]<br> |
 
 #### Responses
 
@@ -256,6 +356,13 @@ This can only be done by the logged in user.
 
 ### [GET] /user/login
 **Logs user into the system**
+
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| username | query | The user name for login | No | string |
+| password | query | The password for login in clear text | No | string |
 
 #### Responses
 
@@ -276,6 +383,12 @@ This can only be done by the logged in user.
 ### [GET] /user/{username}
 **Get user by user name**
 
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| username | path | The name that needs to be fetched. Use user1 for testing.  | Yes | string |
+
 #### Responses
 
 | Code | Description | Schema |
@@ -289,6 +402,18 @@ This can only be done by the logged in user.
 
 This can only be done by the logged in user.
 
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| username | path | name that need to be deleted | Yes | string |
+
+#### Request Body
+
+| Required | Schema |
+| -------- | ------ |
+|  No | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br>**application/x-www-form-urlencoded**: [User](#user)<br> | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br>**application/x-www-form-urlencoded**: [User](#user)<br> | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br>**application/x-www-form-urlencoded**: [User](#user)<br> |
+
 #### Responses
 
 | Code | Description |
@@ -300,6 +425,12 @@ This can only be done by the logged in user.
 
 This can only be done by the logged in user.
 
+##### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| username | path | The name that needs to be deleted | Yes | string |
+
 #### Responses
 
 | Code | Description |
@@ -308,78 +439,313 @@ This can only be done by the logged in user.
 | 404 | User not found |
 
 ---
-### Models
+### Schemas
 
-#### Order
+### Schema: Order
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| id | long | *Example:* `10` | No |
-| petId | long | *Example:* `198772` | No |
-| quantity | integer | *Example:* `7` | No |
-| shipDate | dateTime |  | No |
-| status | string | Order Status<br>*Enum:* `"placed"`, `"approved"`, `"delivered"`<br>*Example:* `"approved"` | No |
-| complete | boolean |  | No |
+```json
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "example": 10
+    },
+    "petId": {
+      "type": "integer",
+      "format": "int64",
+      "example": 198772
+    },
+    "quantity": {
+      "type": "integer",
+      "format": "int32",
+      "example": 7
+    },
+    "shipDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "type": "string",
+      "description": "Order Status",
+      "example": "approved",
+      "enum": [
+        "placed",
+        "approved",
+        "delivered"
+      ]
+    },
+    "complete": {
+      "type": "boolean"
+    }
+  },
+  "xml": {
+    "name": "order"
+  }
+}
+```
 
-#### Customer
+### Schema: Customer
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| id | long | *Example:* `100000` | No |
-| username | string | *Example:* `"fehguy"` | No |
-| address | [ [Address](#address) ] |  | No |
+```json
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "example": 100000
+    },
+    "username": {
+      "type": "string",
+      "example": "fehguy"
+    },
+    "address": {
+      "type": "array",
+      "xml": {
+        "name": "addresses",
+        "wrapped": true
+      },
+      "items": {
+        "$ref": "#/components/schemas/Address"
+      }
+    }
+  },
+  "xml": {
+    "name": "customer"
+  }
+}
+```
 
-#### Address
+### Schema: Address
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| street | string | *Example:* `"437 Lytton"` | No |
-| city | string | *Example:* `"Palo Alto"` | No |
-| state | string | *Example:* `"CA"` | No |
-| zip | string | *Example:* `"94301"` | No |
+```json
+{
+  "type": "object",
+  "properties": {
+    "street": {
+      "type": "string",
+      "example": "437 Lytton"
+    },
+    "city": {
+      "type": "string",
+      "example": "Palo Alto"
+    },
+    "state": {
+      "type": "string",
+      "example": "CA"
+    },
+    "zip": {
+      "type": "string",
+      "example": "94301"
+    }
+  },
+  "xml": {
+    "name": "address"
+  }
+}
+```
 
-#### Category
+### Schema: Category
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| id | long | *Example:* `1` | No |
-| name | string | *Example:* `"Dogs"` | No |
+```json
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1
+    },
+    "name": {
+      "type": "string",
+      "example": "Dogs"
+    }
+  },
+  "xml": {
+    "name": "category"
+  }
+}
+```
 
-#### User
+### Schema: User
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| id | long | *Example:* `10` | No |
-| username | string | *Example:* `"theUser"` | No |
-| firstName | string | *Example:* `"John"` | No |
-| lastName | string | *Example:* `"James"` | No |
-| email | string | *Example:* `"john@email.com"` | No |
-| password | string | *Example:* `"12345"` | No |
-| phone | string | *Example:* `"12345"` | No |
-| userStatus | integer | User Status<br>*Example:* `1` | No |
+```json
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "example": 10
+    },
+    "username": {
+      "type": "string",
+      "example": "theUser"
+    },
+    "firstName": {
+      "type": "string",
+      "example": "John"
+    },
+    "lastName": {
+      "type": "string",
+      "example": "James"
+    },
+    "email": {
+      "type": "string",
+      "example": "john@email.com"
+    },
+    "password": {
+      "type": "string",
+      "example": "12345"
+    },
+    "phone": {
+      "type": "string",
+      "example": "12345"
+    },
+    "userStatus": {
+      "type": "integer",
+      "description": "User Status",
+      "format": "int32",
+      "example": 1
+    }
+  },
+  "xml": {
+    "name": "user"
+  }
+}
+```
 
-#### Tag
+### Schema: Tag
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| id | long |  | No |
-| name | string |  | No |
+```json
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "xml": {
+    "name": "tag"
+  }
+}
+```
 
-#### Pet
+### Schema: Pet
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| id | long | *Example:* `10` | No |
-| name | string | *Example:* `"doggie"` | Yes |
-| category | [Category](#category) |  | No |
-| photoUrls | [ string ] |  | Yes |
-| tags | [ [Tag](#tag) ] |  | No |
-| status | string | pet status in the store<br>*Enum:* `"available"`, `"pending"`, `"sold"` | No |
+```json
+{
+  "required": [
+    "name",
+    "photoUrls"
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "format": "int64",
+      "example": 10
+    },
+    "name": {
+      "type": "string",
+      "example": "doggie"
+    },
+    "category": {
+      "$ref": "#/components/schemas/Category"
+    },
+    "photoUrls": {
+      "type": "array",
+      "xml": {
+        "wrapped": true
+      },
+      "items": {
+        "type": "string",
+        "xml": {
+          "name": "photoUrl"
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "xml": {
+        "wrapped": true
+      },
+      "items": {
+        "$ref": "#/components/schemas/Tag"
+      }
+    },
+    "status": {
+      "type": "string",
+      "description": "pet status in the store",
+      "enum": [
+        "available",
+        "pending",
+        "sold"
+      ]
+    }
+  },
+  "xml": {
+    "name": "pet"
+  }
+}
+```
 
-#### ApiResponse
+### Schema: ApiResponse
 
-| Name | Type | Description | Required |
-| ---- | ---- | ----------- | -------- |
-| code | integer |  | No |
-| type | string |  | No |
-| message | string |  | No |
+```json
+{
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "integer",
+      "format": "int32"
+    },
+    "type": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "xml": {
+    "name": "##default"
+  }
+}
+```
+
+### Request Body: Pet
+Pet object that needs to be added to the store
+#### Media Type: application/json
+
+```json
+{
+  "$ref": "#/components/schemas/Pet"
+}
+```
+
+#### Media Type: application/xml
+
+```json
+{
+  "$ref": "#/components/schemas/Pet"
+}
+```
+
+### Request Body: UserArray
+List of user object
+#### Media Type: application/json
+
+```json
+{
+  "type": "array",
+  "items": {
+    "$ref": "#/components/schemas/User"
+  }
+}
+```
