@@ -2,14 +2,12 @@
 
 [![npm][npm-image]][npm-url] [![circle ci][circleci-image]][circleci-url]
 
-CLI script to turn swagger yaml into markdown files.
-Supports swagger 2.0 format only
+CLI script to turn Swagger/OpenAPI specifications into Markdown files.
+Supports Swagger 2.0 and OpenAPI 3.0.* formats. OpenAPI 3.1.* is not yet supported.
 
 The version 2.0 is a breaking change. The project was rewritten in typescript.
 Along with addressing multiple issues, it is more strict now with the openapi version. 
-In case if version 3 is provided, the application will throw an error.
-The support of v3 is at the roadmap, although it is possible to overcome this restriction by using --force-version flag: `--force-version 2`. It will process v3 documents as it is v2, although it may fail and it may generate the markdown with errors.
-As soon as v3 support will be added, the flag will be removed.
+The `--force-version` flag is now obsolete and will be removed in a future release.
 
 see [examples](https://github.com/syroegkin/swagger-markdown/tree/master/examples) folder
 
@@ -30,7 +28,7 @@ Options:
   -i , --input    Path to the swagger yaml file
   -o , --output   Path to the resulting md file
   --skip-info     Skip the title, description, version etc, whatever is in the info block.
-  --force-version Set the document version, ignore version provided in the yaml file
+  --force-version [Deprecated] Set the document version, ignore version provided in the yaml file. Use with caution.
 
 ```
 
