@@ -3,7 +3,7 @@ import { OpenAPIV3 } from 'openapi-types';
 import { transformParameters } from './pathParameters';
 
 const tableFixture: string[] = [
-  '##### Parameters',
+  '#### Parameters',
   '| Name | Located in | Description | Required | Schema |',
   '| ---- | ---------- | ----------- | -------- | ------ |',
 ];
@@ -110,7 +110,7 @@ describe('Path parameters transformer', () => {
         '| path_name | path | path name description | Yes | string |',
         '| method_name | query | method name description | No | string |',
       ]];
-      const res = (transformParameters(methodFixture, pathFixture) as string).split('\n');
+      const res = (transformParameters(pathFixture, methodFixture) as string).split('\n');
       it('Should create parameters header', () => {
         expect(res[0]).to.be.equal(results[0]);
       });

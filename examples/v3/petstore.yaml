@@ -71,7 +71,7 @@ paths:
           description: Invalid ID supplied
         '404':
           description: Pet not found
-        '422':
+        '405':
           description: Validation exception
       security:
         - petstore_auth:
@@ -106,10 +106,8 @@ paths:
             application/xml:
               schema:
                 $ref: '#/components/schemas/Pet'
-        '400':
+        '405':
           description: Invalid input
-        '422':
-          description: Validation exception
       security:
         - petstore_auth:
             - write:pets
@@ -148,19 +146,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Pet'
-          links:
-            address:
-              # the target link operationId
-              operationId: getUserAddress
-              description: Address link description
-              parameters:
-                # get the `id` field from the request path parameter named `id`
-                userId: $request.path.id
-                entityId: $request.entity.id
-              requestBody: RequestBody
-              server:
-                url: https://development.gigantic-server.com/v1
-                description: Development server
         '400':
           description: Invalid status value
       security:
@@ -171,7 +156,6 @@ paths:
     get:
       tags:
         - pet
-      deprecated: true
       summary: Finds Pets by tags
       description: Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
       operationId: findPetsByTags
@@ -264,7 +248,7 @@ paths:
           schema:
             type: string
       responses:
-        '400':
+        '405':
           description: Invalid input
       security:
         - petstore_auth:
@@ -379,10 +363,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Order'
-        '400':
+        '405':
           description: Invalid input
-        '422':
-          description: Validation exception
   /store/order/{orderId}:
     get:
       tags:
@@ -805,6 +787,11 @@ components:
             items:
               $ref: '#/components/schemas/User'
   securitySchemes:
+    basic_auth:
+      type: http
+      description: Just Basic HTTP login and password
+      bearerFormat: JWT
+      scheme: bearer
     petstore_auth:
       type: oauth2
       flows:
@@ -813,7 +800,20 @@ components:
           scopes:
             write:pets: modify pets in your account
             read:pets: read your pets
+        password:
+            tokenUrl: https://petstore3.swagger.io/oauth/authorize
+            refreshUrl: https://petstore3.swagger.io/oauth/refresh
+            scopes:
+              read:pets: read your pets
+    openid_connect:
+      type: openIdConnect
+      description: |
+        OpenID Connect is an authentication layer on top of OAuth 2.0.
+        It allows clients to verify the identity of the end-user based on the authentication performed by an authorization server.
+      openIdConnectUrl: https://petstore3.swagger.io/oauth/openid-connect
     api_key:
       type: apiKey
       name: api_key
+      description: |
+        To test the API, you can use the `api_key` security scheme. You can pass the key in the header or as a query parameter.
       in: header
