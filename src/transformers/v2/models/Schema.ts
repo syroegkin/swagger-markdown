@@ -61,7 +61,7 @@ export class Schema implements SchemaInterface {
    * @return {*}  {Schema}
    * @memberof Schema
    */
-  public setProperties(properties: { [name: string]: OpenAPIV2.SchemaObject}): Schema {
+  public setProperties(properties: { [name: string]: OpenAPIV2.SchemaObject}): this {
     Object.keys(properties).forEach(
       (name) => {
         this.properties[name] = new Schema(properties[name]);
@@ -73,7 +73,7 @@ export class Schema implements SchemaInterface {
   /**
    * @param {String} type
    */
-  public setType(type: OpenAPIV2.SchemaObject['type']): Schema {
+  public setType(type: OpenAPIV2.SchemaObject['type']): this {
     this.type = type;
     return this;
   }
@@ -81,7 +81,7 @@ export class Schema implements SchemaInterface {
   /**
    * @param {Array<Object>} allOf
    */
-  public setAllOf(allOf) {
+  public setAllOf(allOf): this {
     this.allOf = allOf.map((schema) => new Schema(schema));
     return this;
   }
@@ -89,7 +89,7 @@ export class Schema implements SchemaInterface {
   /**
    * @param {String} format
    */
-  public setFormat(format: string): Schema {
+  public setFormat(format: string): this {
     this.format = format;
     return this;
   }
@@ -97,7 +97,7 @@ export class Schema implements SchemaInterface {
   /**
    * @param {Object} items
    */
-  public setItems(items: OpenAPIV2.SchemaObject['items']) {
+  public setItems(items: OpenAPIV2.SchemaObject['items']): this {
     this.items = new Schema(items);
     return this;
   }
@@ -105,7 +105,7 @@ export class Schema implements SchemaInterface {
   /**
    * @param {String} ref
    */
-  public setReference(ref: string): Schema {
+  public setReference(ref: string): this {
     this.ref = ref;
     return this;
   }

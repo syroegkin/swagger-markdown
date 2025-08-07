@@ -6,7 +6,7 @@ describe('Contact info', () => {
     const fixture = {
       contact: {
         name: 'API Support',
-        url: 'http://www.swagger.io/support',
+        url: 'https://www.swagger.io/support',
         email: 'support@swagger.io',
       },
     };
@@ -20,7 +20,7 @@ describe('Contact info', () => {
   it('should create only these fields which are provided', () => {
     const fixture = {
       contact: {
-        url: 'http://www.swagger.io/support',
+        url: 'https://www.swagger.io/support',
       },
     };
     const res = transformContact(fixture.contact);

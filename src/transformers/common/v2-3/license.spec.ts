@@ -14,7 +14,7 @@ describe('License field', () => {
     const fixture = {
       license: {
         name: 'Apache 2.0',
-        url: 'http://www.apache.org/licenses/LICENSE-2.0.html',
+        url: 'https://www.apache.org/licenses/LICENSE-2.0.html',
       } as OpenAPIV2.LicenseObject,
     };
     const res = transformLicense(fixture.license);
@@ -35,7 +35,7 @@ describe('License field', () => {
   it('should create license url as text if ony one field is available', () => {
     const fixture = {
       license: {
-        url: 'http://www.apache.org/licenses/LICENSE-2.0.html',
+        url: 'https://www.apache.org/licenses/LICENSE-2.0.html',
       } as OpenAPIV2.LicenseObject,
     };
     const res = transformLicense(fixture.license);

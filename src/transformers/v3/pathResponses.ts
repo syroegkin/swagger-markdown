@@ -52,9 +52,7 @@ export function transformResponses(responses: OpenAPIV3.ResponsesObject) {
 
   const table = md.table();
   table.th('Code').th('Description');
-  // if (hasContent) {
-  //   table.th('Content');
-  // }
+
   if (hasSchemas) {
     table.th('Schema');
   }
@@ -82,20 +80,7 @@ export function transformResponses(responses: OpenAPIV3.ResponsesObject) {
         transformHeaders(response.headers as never),
       );
     }
-    // if ('examples' in response) {
-    //   Object.entries(response.examples).forEach(([contentType, example]) => {
-    //     let formattedExample = typeof example === 'string' ? example
-    //       : JSON.stringify(example, null, '  ');
 
-    //     formattedExample = formattedExample.replace(/\r?\n/g, '<br>');
-    //     const contentTypeMd = md.string(contentType).italic().get();
-
-    //     description
-    //       .concat('<br><br>')
-    //       .concat(md.string('Example').bold())
-    //       .concat(` (${contentTypeMd}):<br><pre>${formattedExample}</pre>`);
-    //   });
-    // }
     tr.td(description);
 
     // Schema
@@ -124,7 +109,7 @@ export function transformResponses(responses: OpenAPIV3.ResponsesObject) {
       const linksMd = md.string();
       Object.keys(response.links).forEach((linkName: string) => {
         const link = response.links[linkName];
-        linksMd.concat(processLink(linkName, link as OpenAPIV3.LinkObject | string));
+        linksMd.concat(processLink(linkName, link as Dereferenced<typeof link>));
       });
       tr.td(linksMd);
     } else if (hasLinks) {

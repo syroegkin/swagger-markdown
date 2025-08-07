@@ -47,11 +47,6 @@ export function transformPath(
         md.line().line(md.string('DEPRECATED').bold().italic()).line();
       }
 
-      //       // Schemes
-      //       if ('schemes' in pathInfo && pathInfo.schemes.length > 0) {
-      //         md.line(transformSchemes(pathInfo.schemes));
-      //       }
-
       // Set summary
       if ('summary' in pathInfo) {
         md.line(md.string(pathInfo.summary).escape().bold()).line();

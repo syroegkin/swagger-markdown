@@ -5,7 +5,7 @@
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"test": "npm run test:app && npm run test:lint && npm run test:markdown",
+		"test": "npm run test:app && npm run test:lint && npm run typecheck && npm run test:markdown",
 		"test:app": "jest --detectOpenHandles --forceExit",
 		"test:watch": "jest --watch",
 		"test:lint": "eslint .",
