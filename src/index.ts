@@ -1,4 +1,5 @@
 import SwaggerParser from '@apidevtools/swagger-parser';
+import type { $Refs } from '@apidevtools/json-schema-ref-parser';
 import fs from 'fs';
 import markdownlint from 'markdownlint';
 import markdownlintRuleHelpers from 'markdownlint-rule-helpers';
@@ -17,12 +18,12 @@ const markdownlintConfig = require('../.markdownlint.json');
  *
  * @export
  * @param {AllSwaggerDocumentVersions} node
- * @param {SwaggerParser.$Refs} [$refs]
+ * @param {$Refs} [$refs]
  * @return {*}  {AllSwaggerDocumentVersions}
  */
 export function partiallyDereference(
   node: AllSwaggerDocumentVersions,
-  $refs?: SwaggerParser.$Refs,
+  $refs?: $Refs,
 ): AllSwaggerDocumentVersions {
   if (typeof node !== 'object') return node;
   const obj = {} as AllSwaggerDocumentVersions;
@@ -36,7 +37,7 @@ export function partiallyDereference(
       && !value.startsWith('#/definitions/') // V2
       && !value.startsWith('#/components/schemas') // V3
     ) {
-      return partiallyDereference($refs.get(value), $refs);
+      return partiallyDereference($refs.get(value) as unknown as AllSwaggerDocumentVersions, $refs);
     } else {
       obj[key] = partiallyDereference(value, $refs);
     }
@@ -91,7 +92,7 @@ export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: 
 export async function transformFile(options: Options): Promise<string> {
   const swaggerParser = new SwaggerParser();
   const bundle = await swaggerParser.bundle(options.input);
-  const $refs: SwaggerParser.$Refs = await swaggerParser.resolve(bundle);
+  const $refs: $Refs = await swaggerParser.resolve(bundle);
   const dereferencedDocument = partiallyDereference(swaggerParser.api, $refs);
   const markdown = transfromSwagger(dereferencedDocument, options);
 
