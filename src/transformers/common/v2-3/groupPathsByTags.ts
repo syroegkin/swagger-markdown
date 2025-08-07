@@ -40,8 +40,7 @@ export function groupPathsByTags<T extends AnyPathObject = AnyPathObject>(
           }
           // Add the specific method to the PathItemObject
           // Assert type to allow dynamic method assignment
-          const pathItem = tagged[tagName][path] as
-            OpenAPIV2.PathItemObject | OpenAPIV3.PathItemObject;
+          const pathItem = tagged[tagName][path];
           pathItem[method] = pathMethod;
         });
       }

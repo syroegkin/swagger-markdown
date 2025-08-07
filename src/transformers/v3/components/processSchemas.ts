@@ -31,7 +31,7 @@ function parseProperties(definition: OpenAPIV3.SchemaObject): MDtableRow[] {
   const rows: MDtableRow[] = [];
   const md = Markdown.md();
   const required = 'required' in definition ? definition.required : [];
-  // const res = [];
+
   Object.keys(definition.properties).forEach((propName) => {
     const tr = MDtableRow.tr();
     const prop = definition.properties[propName];

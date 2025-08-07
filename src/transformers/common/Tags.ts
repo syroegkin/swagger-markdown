@@ -9,7 +9,7 @@ export class TagsCollection<T extends AnyTagObject = AnyTagObject> {
     return Object.keys(this.tags).length;
   }
 
-  public tag(tag: T): TagsCollection<T> {
+  public tag(tag: T): this {
     if (!('name' in tag)) {
       throw new Error('Tag must have name property');
     }

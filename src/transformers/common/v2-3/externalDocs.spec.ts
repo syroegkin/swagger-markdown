@@ -5,16 +5,16 @@ import { transformExternalDocs } from './externalDocs';
 const fixture = {
   notext: {
     source: {
-      url: 'http://google.com',
+      url: 'https://google.com',
     },
-    result: '[Find more info here](http://google.com)\n',
+    result: '[Find more info here](https://google.com)\n',
   },
   full: {
     source: {
-      url: 'http://yahoo.com',
+      url: 'https://yahoo.com',
       description: 'RTFM',
     },
-    result: '[RTFM](http://yahoo.com)\n',
+    result: '[RTFM](https://yahoo.com)\n',
   },
 };
 
