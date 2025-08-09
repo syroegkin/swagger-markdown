@@ -1,3 +1,31 @@
+# [3.0.0](https://github.com/syroegkin/swagger-markdown/compare/v2.3.2...v3.0.0) (2025-08-09)
+
+
+### Bug Fixes
+
+* remove markdownlint dependency ([cb6e5a3](https://github.com/syroegkin/swagger-markdown/commit/cb6e5a3ce3405d08f5f3f8692fc896282f203228))
+* tune md test to respect all versions ([11d9e39](https://github.com/syroegkin/swagger-markdown/commit/11d9e3971ee552db287d8b97310033962fdbe6d5))
+* unify headers ([cb19331](https://github.com/syroegkin/swagger-markdown/commit/cb19331ab3fcdff8b717a7703cb8bcaacc3eab94))
+* update examples ([1e7f973](https://github.com/syroegkin/swagger-markdown/commit/1e7f973e2c398282537f2b31481df4add70575ce))
+
+
+### Features
+
+* add fenced code block for md string class ([04ec0d0](https://github.com/syroegkin/swagger-markdown/commit/04ec0d0d60c69a36a819bf98bb40bc55a7f30506))
+* add requiest body ([dd19353](https://github.com/syroegkin/swagger-markdown/commit/dd19353d3c20b5be3cef17957bbb2c9acf031391))
+* add security definitions trransformers ([5589660](https://github.com/syroegkin/swagger-markdown/commit/55896607dbf19f882f96cfcbce43824ceac225d4))
+* **linkobject:** add process link function to process link objects ([c1d89af](https://github.com/syroegkin/swagger-markdown/commit/c1d89afcd0c16e01153b278beed35772e302ef34))
+* process schemas ([0c2707e](https://github.com/syroegkin/swagger-markdown/commit/0c2707efe9e158eacaa8257cc7b2f1f65f370a94))
+* show parameters ([e3cc8d0](https://github.com/syroegkin/swagger-markdown/commit/e3cc8d044c680ff65e0b92808a78855f5e11d933))
+* split more v3 and v2, add responses and models to v3 ([da18994](https://github.com/syroegkin/swagger-markdown/commit/da18994f7113425f43c52532c46eb2ad9d1aafff))
+* **update dependecny:** upgrade minimal node version to 20, upgrade openapi parser ([37650d0](https://github.com/syroegkin/swagger-markdown/commit/37650d0fdfbb751dbaa4b3a97ed0cfb5914c6cf3))
+* **v3:** extract common functions for v2 and 3 ([9753b15](https://github.com/syroegkin/swagger-markdown/commit/9753b150650047cae4328d9b068feab1a683c8a8))
+
+
+### BREAKING CHANGES
+
+* **update dependecny:** the minimal node version is 20
+
 # [3.0.0-beta.1](https://github.com/syroegkin/swagger-markdown/compare/v2.3.2...v3.0.0-beta.1) (2025-08-07)
 
 
