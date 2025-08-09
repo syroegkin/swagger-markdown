@@ -53,7 +53,7 @@ export function transformPath(
 
       // Set summary
       if ('summary' in pathInfo) {
-        md.line(md.string('Summary:').h5())
+        md.line(md.string('Summary').h5())
           .line()
           .line(md.string(pathInfo.summary).escape())
           .line();
@@ -61,7 +61,7 @@ export function transformPath(
 
       // Set description
       if ('description' in pathInfo) {
-        md.line(md.string('Description:').h5())
+        md.line(md.string('Description').h5())
           .line()
           .line(md.string(pathInfo.description).escape())
           .line();

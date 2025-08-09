@@ -9,7 +9,7 @@
 		"test:app": "jest --detectOpenHandles --forceExit",
 		"test:watch": "jest --watch",
 		"test:lint": "eslint .",
-		"test:markdown": "markdownlint ./examples/v2/*.md -c .markdownlint.json && markdownlint ./examples/v3/*.md -c .markdownlint.json",
+		"test:markdown": "npx markdownlint ./examples/v2/*.md -c .markdownlint.json && npx markdownlint ./examples/v3/*.md -c .markdownlint.json",
 		"build": "rimraf dist && tsc && chmod +x ./dist/swagger-markdown.js",
 		"build:watch": "tsc -w",
 		"prepublishOnly": "npm run build",
@@ -98,8 +98,6 @@
 		"@apidevtools/json-schema-ref-parser": "^14.1.1",
 		"@apidevtools/swagger-parser": "^12.0.0",
 		"argparse": "2.0.1",
-		"markdownlint": "^0.32.0",
-		"markdownlint-rule-helpers": "^0.22.0",
 		"openapi-types": "^12.1.3"
 	}
 }

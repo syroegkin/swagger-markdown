@@ -22,9 +22,9 @@ describe('OAuth2SecurityScheme', () => {
         + 'Authorization URL: https://example.com/oauth2/authorize  \n'
         + 'Token URL: https://example.com/oauth2/token  \n'
         + 'Refresh URL: https://example.com/oauth2/refresh  \n'
-        + 'Scopes:\n'
+        + 'Scopes:\n\n'
         + '- read:pets: read your pets  \n'
-        + '- write:pets: modify pets in your account  \n\n';
+        + '- write:pets: modify pets in your account  \n\n\n';
       expect(transformOAuth2SecurityScheme('', oauth2Scheme)).toBe(expectedMarkdown);
     });
 
@@ -40,7 +40,7 @@ describe('OAuth2SecurityScheme', () => {
       };
       const expectedMarkdown = '####  (OAuth2, implicit)\n'
         + 'Authorization URL: https://example.com/oauth2/authorize  \n'
-        + 'Scopes:\n\n';
+        + 'Scopes:\n\n\n\n';
       expect(transformOAuth2SecurityScheme('', oauth2Scheme)).toBe(expectedMarkdown);
     });
 
@@ -56,7 +56,7 @@ describe('OAuth2SecurityScheme', () => {
       };
       const expectedMarkdown = '####  (OAuth2, password)\n'
         + 'Token URL: https://example.com/oauth2/token  \n'
-        + 'Scopes:\n\n';
+        + 'Scopes:\n\n\n\n';
       expect(transformOAuth2SecurityScheme('', oauth2Scheme)).toBe(expectedMarkdown);
     });
 
@@ -73,7 +73,7 @@ describe('OAuth2SecurityScheme', () => {
       };
       const expectedMarkdown = '####  (OAuth2, clientCredentials)\n'
         + 'Refresh URL: https://example.com/oauth2/refresh  \n'
-        + 'Scopes:\n\n';
+        + 'Scopes:\n\n\n\n';
       expect(transformOAuth2SecurityScheme('', oauth2Scheme)).toBe(expectedMarkdown);
     });
 
@@ -105,9 +105,9 @@ describe('OAuth2SecurityScheme', () => {
         + 'This is an OAuth2 security scheme.  \n'
         + 'Authorization URL: https://example.com/oauth2/authorize  \n'
         + 'Token URL: https://example.com/oauth2/token  \n'
-        + 'Scopes:\n'
+        + 'Scopes:\n\n'
         + '- read:pets: read your pets  \n'
-        + '- write:pets: modify pets in your account  \n\n';
+        + '- write:pets: modify pets in your account  \n\n\n';
       expect(transformOAuth2SecurityScheme('', oauth2Scheme)).toBe(expectedMarkdown);
     });
   });

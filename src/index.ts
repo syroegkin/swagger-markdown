@@ -1,16 +1,11 @@
 import SwaggerParser from '@apidevtools/swagger-parser';
 import type { $Refs } from '@apidevtools/json-schema-ref-parser';
 import fs from 'fs';
-import markdownlint from 'markdownlint';
-import markdownlintRuleHelpers from 'markdownlint-rule-helpers';
 import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
 import { AllSwaggerDocumentVersions, Options } from './types';
 import { isV2Document, isV31Document, isV3Document } from './lib/detectDocumentVersion';
 import { transformSwaggerV2 } from './transformers/documentV2';
 import { transformSwaggerV3 } from './transformers/documentV3';
-
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const markdownlintConfig = require('../.markdownlint.json');
 
 /**
  * Replace all $refs with their values,
@@ -46,6 +41,25 @@ export function partiallyDereference(
 }
 
 /**
+ * Tidy up markdown
+ *
+ * @export
+ * @param {string} markdown
+ * @return {*}  {string}
+ */
+export function tidyMarkdown(markdown: string): string {
+  // Remove newlines at the end of the file
+  markdown = markdown.replace(/\n+$/, '');
+  // Add newline at the end of the file if it does not have one
+  if (!markdown.endsWith('\n')) {
+    markdown += '\n';
+  }
+  // Remove duplicate newlines
+  markdown = markdown.replace(/\n{2,}/g, '\n\n');
+  return markdown;
+}
+
+/**
  * Check version of the document,
  * run appropriate processor and beautify the markdown after processing.
  *
@@ -69,19 +83,7 @@ export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: 
     throw new Error('Can not detect version ot this version in not supported');
   }
 
-  // Fix markdown issues
-  const fixOptions = {
-    resultVersion: 3,
-    strings: { plainDocument },
-    config: markdownlintConfig,
-  };
-  const fixResults = markdownlint.sync(fixOptions);
-  const fixes = fixResults.plainDocument.filter((error) => error.fixInfo);
-  if (fixes.length > 0) {
-    return markdownlintRuleHelpers.applyFixes(plainDocument, fixes);
-  }
-
-  return plainDocument;
+  return tidyMarkdown(plainDocument);
 }
 
 /**

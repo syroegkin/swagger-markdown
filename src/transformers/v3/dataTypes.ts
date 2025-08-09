@@ -119,7 +119,7 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
   if (schema.getDefault()) {
     resolveResults.push(
       md.string().br(true).concat(
-        md.string('Default: ').bold().concat(` ${schema.getDefault()}`),
+        md.string('Default:').bold().concat(` ${schema.getDefault()}`),
       ).get(),
     );
   }

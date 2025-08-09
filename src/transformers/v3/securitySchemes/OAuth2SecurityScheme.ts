@@ -39,9 +39,11 @@ export function transformOAuth2SecurityScheme(
       }
       if (flow.scopes) {
         md.line(md.string('Scopes:'));
+        md.line(md.string().br());
         Object.keys(flow.scopes).forEach((scope) => {
           md.line(md.string(`- ${scope}: ${flow.scopes[scope]}`).br());
         });
+        md.line(md.string().br());
         md.line();
       }
     });

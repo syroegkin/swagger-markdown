@@ -8,8 +8,10 @@ info:
     Server code is available [here](https://github.com/mohsen1/basic-auth-server). It's running on Heroku.
 
     **User Name and Password**
-    * User Name: `user`
-    * Password: `pass`
+
+    - User Name: `user`
+    - Password: `pass`
+
 host: basic-auth-server.herokuapp.com
 schemes:
   - http

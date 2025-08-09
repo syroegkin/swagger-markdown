@@ -4,8 +4,8 @@ Server code is available [here](https://github.com/mohsen1/basic-auth-server). I
 
 **User Name and Password**
 
-* User Name: `user`
-* Password: `pass`
+- User Name: `user`
+- Password: `pass`
 
 ## Version: 1.0.0
 
