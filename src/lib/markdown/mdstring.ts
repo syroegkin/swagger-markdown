@@ -38,21 +38,21 @@ export class MDstring {
     this._string = string;
   }
 
-  public bold(): MDstring {
+  public bold(): this {
     if (this._string !== '') {
       this.set(`**${this._string}**`);
     }
     return this;
   }
 
-  public italic(): MDstring {
+  public italic(): this {
     if (this._string !== '') {
       this.set(`*${this._string}*`);
     }
     return this;
   }
 
-  public link(anchor: string, href: string): MDstring {
+  public link(anchor: string, href: string): this {
     if (this._string !== '') {
       throw new Error('String is not empty');
     }
@@ -63,56 +63,56 @@ export class MDstring {
     return this;
   }
 
-  public h1(): MDstring {
+  public h1(): this {
     if (this._string !== '') {
       this.set(`# ${this._string}`);
     }
     return this;
   }
 
-  public h2(): MDstring {
+  public h2(): this {
     if (this._string !== '') {
       this.set(`## ${this._string}`);
     }
     return this;
   }
 
-  public h3(): MDstring {
+  public h3(): this {
     if (this._string !== '') {
       this.set(`### ${this._string}`);
     }
     return this;
   }
 
-  public h4(): MDstring {
+  public h4(): this {
     if (this._string !== '') {
       this.set(`#### ${this._string}`);
     }
     return this;
   }
 
-  public h5(): MDstring {
+  public h5(): this {
     if (this._string !== '') {
       this.set(`##### ${this._string}`);
     }
     return this;
   }
 
-  public h6(): MDstring {
+  public h6(): this {
     if (this._string !== '') {
       this.set(`###### ${this._string}`);
     }
     return this;
   }
 
-  public strikethrough(): MDstring {
+  public strikethrough(): this {
     if (this._string !== '') {
       this.set(`~~${this._string}~~`);
     }
     return this;
   }
 
-  public horizontalRule(): MDstring {
+  public horizontalRule(): this {
     if (this._string !== '') {
       throw new Error('String is not empty');
     }
@@ -120,7 +120,7 @@ export class MDstring {
     return this;
   }
 
-  public br(asHtmlTag = false): MDstring {
+  public br(asHtmlTag = false): this {
     if (asHtmlTag === true) {
       this.set(`${this._string}<br>`);
       return this;
@@ -131,12 +131,23 @@ export class MDstring {
     return this;
   }
 
-  public escape(): MDstring {
+  public codeBlock(language = ''): this {
+    if (this._string !== '') {
+      this.set(
+        `\`\`\`${language}
+${this._string}
+\`\`\``,
+      );
+    }
+    return this;
+  }
+
+  public escape(): this {
     this.set(`${textEscape(this._string)}`);
     return this;
   }
 
-  public concat(string: string | MDstring): MDstring {
+  public concat(string: string | this): this {
     const s = typeof string === 'string' ? string : string.get();
     this._string = `${this._string}${s}`;
     return this;

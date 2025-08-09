@@ -45,3 +45,5 @@ bin
 
 tmp
 .vscode
+.clinerules
+Makefile

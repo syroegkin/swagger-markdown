@@ -2,7 +2,7 @@ import { OpenAPIV2 } from 'openapi-types';
 import { Schema } from './models/Schema';
 import { dataTypeResolver } from './dataTypes';
 import { Markdown } from '../../lib/markdown';
-import { transformHeaders } from './headers';
+import { transformHeaders } from '../common/v2-3/headers';
 
 /**
  * Build responses table
@@ -15,9 +15,8 @@ export function transformResponses(responses: OpenAPIV2.ResponsesObject) {
     .line();
 
   // Check if schema somewhere
-  const schemas = Object.keys(responses).reduce(
-    (acc, response) => acc || 'schema' in responses[response],
-    false,
+  const schemas = Object.values(responses).some(
+    (response) => 'schema' in response,
   );
 
   const table = md.table();

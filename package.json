@@ -1,15 +1,15 @@
 {
 	"name": "swagger-markdown",
-	"version": "2.3.2",
+	"version": "3.0.0-beta.1",
 	"description": "Create markdown API documentation from swagger file",
 	"main": "dist/index.js",
 	"types": "dist/index.d.ts",
 	"scripts": {
-		"test": "npm run test:app && npm run test:lint && npm run test:markdown",
+		"test": "npm run test:app && npm run test:lint && npm run typecheck && npm run test:markdown",
 		"test:app": "jest --detectOpenHandles --forceExit",
 		"test:watch": "jest --watch",
 		"test:lint": "eslint .",
-		"test:markdown": "markdownlint ./examples/*.md -c .markdownlint.json",
+		"test:markdown": "npx markdownlint ./examples/v2/*.md -c .markdownlint.json && npx markdownlint ./examples/v3/*.md -c .markdownlint.json",
 		"build": "rimraf dist && tsc && chmod +x ./dist/swagger-markdown.js",
 		"build:watch": "tsc -w",
 		"prepublishOnly": "npm run build",
@@ -95,10 +95,9 @@
 		"typescript": "^5.2.2"
 	},
 	"dependencies": {
-		"@apidevtools/swagger-parser": "^10.1.0",
+		"@apidevtools/json-schema-ref-parser": "^14.1.1",
+		"@apidevtools/swagger-parser": "^12.0.0",
 		"argparse": "2.0.1",
-		"markdownlint": "^0.32.0",
-		"markdownlint-rule-helpers": "^0.22.0",
 		"openapi-types": "^12.1.3"
 	}
 }

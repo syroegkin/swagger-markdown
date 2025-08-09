@@ -1,10 +1,10 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
-import { transformSecurity } from './security';
+import { transformSecurity } from '../common/v2-3/security';
 import { Markdown } from '../../lib/markdown';
-import { ALLOWED_METHODS } from '../../types';
-import { transformExternalDocs } from './externalDocs';
+import { ALLOWED_METHODS_V2 } from '../../types';
+import { transformExternalDocs } from '../common/v2-3/externalDocs';
 import { transformSchemes } from './schemes';
 
 /**
@@ -35,7 +35,7 @@ export function transformPath(
 
   // Go further method by methods
   Object.keys(data).forEach((method) => {
-    if (ALLOWED_METHODS.includes(method)) {
+    if (ALLOWED_METHODS_V2.includes(method)) {
       md.line('');
       // Set method as a subheader
       md.line(md.string(method.toUpperCase()).h4());
@@ -53,7 +53,7 @@ export function transformPath(
 
       // Set summary
       if ('summary' in pathInfo) {
-        md.line(md.string('Summary:').h5())
+        md.line(md.string('Summary').h5())
           .line()
           .line(md.string(pathInfo.summary).escape())
           .line();
@@ -61,7 +61,7 @@ export function transformPath(
 
       // Set description
       if ('description' in pathInfo) {
-        md.line(md.string('Description:').h5())
+        md.line(md.string('Description').h5())
           .line()
           .line(md.string(pathInfo.description).escape())
           .line();

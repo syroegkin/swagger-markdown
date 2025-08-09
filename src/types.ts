@@ -16,4 +16,17 @@ export interface Options {
   forceVersion?: string;
 }
 
-export const ALLOWED_METHODS = ['get', 'post', 'put', 'patch', 'delete', 'options', 'head'];
+export type Dereferenced<T> = T extends Array<infer U>
+  ? (U extends
+  OpenAPIV3.ReferenceObject |
+  OpenAPIV2.ReferenceObject |
+  // eslint-disable-next-line camelcase
+  OpenAPIV3_1.ReferenceObject ? never : U
+  )[] : T extends
+  OpenAPIV3.ReferenceObject |
+  OpenAPIV2.ReferenceObject |
+  // eslint-disable-next-line camelcase
+  OpenAPIV3_1.ReferenceObject ? never : T;
+
+export const ALLOWED_METHODS_V2 = ['get', 'post', 'put', 'patch', 'delete', 'options', 'head'];
+export const ALLOWED_METHODS_V3 = [...ALLOWED_METHODS_V2, 'trace'];

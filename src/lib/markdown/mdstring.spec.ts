@@ -140,4 +140,37 @@ describe('MDstring', () => {
     const s2 = MDstring.string('');
     expect(s2.concat(b).concat(s).get()).to.be.equal(`${b}${a}${b}`);
   });
+  describe('codeBlock', () => {
+    it('should wrap the existing string in a code block without language', () => {
+      const mdString = new MDstring('console.log("Hello, World!");');
+      mdString.codeBlock();
+      expect(mdString.get()).to.be.equal('```\nconsole.log("Hello, World!");\n```');
+    });
+
+    it('should wrap the existing string in a code block with specified language', () => {
+      const mdString = new MDstring('console.log("Hello, World!");');
+      mdString.codeBlock('javascript');
+      expect(mdString.get()).to.be.equal('```javascript\nconsole.log("Hello, World!");\n```');
+    });
+
+    it('should not modify an empty string', () => {
+      const mdString = new MDstring();
+      mdString.codeBlock('python');
+      expect(mdString.get()).to.be.equal('');
+    });
+
+    it('should handle multi-line code blocks', () => {
+      const mdString = new MDstring('const x = 1;\nconst y = 2;\nconsole.log(x + y);');
+      mdString.codeBlock('javascript');
+      expect(mdString.get()).to.be.equal(
+        '```javascript\nconst x = 1;\nconst y = 2;\nconsole.log(x + y);\n```',
+      );
+    });
+
+    it('should return the MDstring instance for method chaining', () => {
+      const mdString = new MDstring('Hello, World!');
+      const result = mdString.codeBlock();
+      expect(result).to.be.deep.equal(mdString);
+    });
+  });
 });
