@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 
 export interface SchemaInterface {

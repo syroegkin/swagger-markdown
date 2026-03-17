@@ -1,13 +1,11 @@
 import SwaggerParser from '@apidevtools/swagger-parser';
 import type { $Refs } from '@apidevtools/json-schema-ref-parser';
 import fs from 'fs';
-// eslint-disable-next-line camelcase
 import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { AllSwaggerDocumentVersions, Options } from './types';
 import { isV2Document, isV31Document, isV3Document } from './lib/detectDocumentVersion';
 import { transformSwaggerV2 } from './transformers/documentV2';
 import { transformSwaggerV3 } from './transformers/documentV3';
-// eslint-disable-next-line camelcase
 import { transformSwaggerV3_1 } from './transformers/documentV3_1';
 
 /**
@@ -79,7 +77,6 @@ export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: 
     // Will be removed as soon as support of version 3 will be in place`
     plainDocument = transformSwaggerV2(inputDoc as OpenAPIV2.Document, options);
   } else if (isV31Document(inputDoc)) {
-    // eslint-disable-next-line camelcase
     plainDocument = transformSwaggerV3_1(inputDoc as OpenAPIV3_1.Document, options);
   } else if (isV3Document(inputDoc) || options.forceVersion === '3') {
     plainDocument = transformSwaggerV3(inputDoc as OpenAPIV3.Document, options);

@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { dataTypeResolver } from './dataTypes';
 import { Schema } from './models/Schema';

@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { OpenAPIV3_1 } from 'openapi-types';
 import { ALLOWED_METHODS_V3, Options } from '../types';
 import { transformInfo } from './common/info';

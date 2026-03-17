@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { expect } from 'chai';
 import { OpenAPIV3_1 } from 'openapi-types';
 import { transformSwaggerV3_1 } from './documentV3_1';

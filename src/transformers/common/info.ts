@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { transformContact } from './contact';
 import { transformLicense } from './license';
