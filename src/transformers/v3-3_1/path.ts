@@ -1,20 +1,21 @@
-import { OpenAPIV3 } from 'openapi-types';
+/* eslint-disable camelcase */
+import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { Markdown } from '../../lib/markdown';
 import {
   ALLOWED_METHODS_V3,
   Dereferenced,
 } from '../../types';
-import { transformExternalDocs } from '../common/v2-3/externalDocs';
-import { transformSecurity } from '../common/v2-3/security';
+import { transformExternalDocs } from '../common/externalDocs';
+import { transformSecurity } from '../common/security';
 import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
 import { transformRequestBody } from './pathRequestBody';
 
 export function transformPath(
   path: string,
-  data: OpenAPIV3.PathItemObject,
+  data: OpenAPIV3.PathItemObject | OpenAPIV3_1.PathItemObject,
 ): string | null {
-  let pathParameters: OpenAPIV3.ParameterObject[] = [];
+  let pathParameters: (OpenAPIV3.ParameterObject | OpenAPIV3_1.ParameterObject)[] = [];
 
   if (!path || !data) {
     return null;
@@ -30,7 +31,7 @@ export function transformPath(
   // Go further method by methods
   Object.keys(data).forEach((method) => {
     if (ALLOWED_METHODS_V3.includes(method)) {
-      const pathInfo: OpenAPIV3.OperationObject = data[method];
+      const pathInfo: OpenAPIV3.OperationObject | OpenAPIV3_1.OperationObject = data[method];
 
       const deprecated = 'deprecated' in pathInfo && pathInfo.deprecated === true;
 

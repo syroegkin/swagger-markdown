@@ -1,55 +1,34 @@
-# Swagger Petstore - OpenAPI 3.0
-This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
+# Swagger Petstore - OpenAPI 3.1
+This is a sample Pet Store Server based on the OpenAPI 3.1 specification.  You can find out more about
 Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
 You can now help us improve the API whether it's by making changes to the definition itself or to the code.
 That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
 
 Some useful links:
-
 - [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
 - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
 
-## Version: 1.0.11
+## Version: 1.0.12
 
 ### Terms of service
-http://swagger.io/terms/
+https://swagger.io/terms/
 
 **Contact information:**  
 apiteam@swagger.io  
 
-**License:** [Apache 2.0](http://www.apache.org/licenses/LICENSE-2.0.html)
+**License:** [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
 
-[Find out more about Swagger](http://swagger.io)
+[Find out more about Swagger](https://swagger.io)
 
 ### Available authorizations
-#### basic_auth (HTTP, bearer)
-Just Basic HTTP login and password  
-Bearer format: JWT
-
-#### petstore_auth (OAuth2, implicit, password)
-****Flow:** implicit**  
+#### petstore_auth (OAuth2, implicit)
 Authorization URL: https://petstore3.swagger.io/oauth/authorize  
 Scopes:
 
 - write:pets: modify pets in your account  
 - read:pets: read your pets  
 
-****Flow:** password**  
-Token URL: https://petstore3.swagger.io/oauth/authorize  
-Refresh URL: https://petstore3.swagger.io/oauth/refresh  
-Scopes:
-
-- read:pets: read your pets  
-
-#### openid_connect (OpenID Connect)
-OpenID Connect is an authentication layer on top of OAuth 2.0.
-It allows clients to verify the identity of the end-user based on the authentication performed by an authorization server.
-  
-OpenID Connect URL: https://petstore3.swagger.io/oauth/openid-connect  
-
 #### api_key (API Key Authentication)
-To test the API, you can use the `api_key` security scheme. You can pass the key in the header or as a query parameter.
-  
 **Name:** api_key  
 **In:** header  
 
@@ -59,9 +38,9 @@ Everything about your Pets
 [Find out more](http://swagger.io)
 
 ### [PUT] /pet
-**Update an existing pet**
+**Update an existing pet.**
 
-Update an existing pet by Id
+Update an existing pet by Id.
 
 #### Request Body
 
@@ -78,7 +57,8 @@ Update an existent pet in the store
 | 200 | Successful operation | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br> |
 | 400 | Invalid ID supplied |  |
 | 404 | Pet not found |  |
-| 405 | Validation exception |  |
+| 422 | Validation exception |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ##### Security
 
@@ -87,7 +67,7 @@ Update an existent pet in the store
 | petstore_auth | write:pets | read:pets |
 
 ### [POST] /pet
-**Add a new pet to the store**
+**Add a new pet to the store.**
 
 #### Request Body
 
@@ -102,7 +82,9 @@ Create a new pet in the store
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | Successful operation | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br> |
-| 405 | Invalid input |  |
+| 400 | Invalid input |  |
+| 422 | Validation exception |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ##### Security
 
@@ -111,9 +93,9 @@ Create a new pet in the store
 | petstore_auth | write:pets | read:pets |
 
 ### [GET] /pet/findByStatus
-**Finds Pets by status**
+**Finds Pets by status.**
 
-Multiple status values can be provided with comma separated strings
+Multiple status values can be provided with comma separated strings.
 
 #### Parameters
 
@@ -127,6 +109,7 @@ Multiple status values can be provided with comma separated strings
 | ---- | ----------- | ------ |
 | 200 | successful operation | **application/json**: [ [Pet](#pet) ]<br>**application/xml**: [ [Pet](#pet) ]<br> |
 | 400 | Invalid status value |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ##### Security
 
@@ -135,7 +118,7 @@ Multiple status values can be provided with comma separated strings
 | petstore_auth | write:pets | read:pets |
 
 ### [GET] /pet/findByTags
-**Finds Pets by tags**
+**Finds Pets by tags.**
 
 Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
 
@@ -151,6 +134,7 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
 | ---- | ----------- | ------ |
 | 200 | successful operation | **application/json**: [ [Pet](#pet) ]<br>**application/xml**: [ [Pet](#pet) ]<br> |
 | 400 | Invalid tag value |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ##### Security
 
@@ -159,9 +143,9 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
 | petstore_auth | write:pets | read:pets |
 
 ### [GET] /pet/{petId}
-**Find pet by ID**
+**Find pet by identifier.**
 
-Returns a single pet
+Returns a single pet.
 
 #### Parameters
 
@@ -176,6 +160,7 @@ Returns a single pet
 | 200 | successful operation | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br> |
 | 400 | Invalid ID supplied |  |
 | 404 | Pet not found |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ##### Security
 
@@ -185,7 +170,9 @@ Returns a single pet
 | petstore_auth | write:pets | read:pets |
 
 ### [POST] /pet/{petId}
-**Updates a pet in the store with form data**
+**Updates a pet in the store with form data.**
+
+update a pet via the form data.
 
 #### Parameters
 
@@ -197,9 +184,11 @@ Returns a single pet
 
 #### Responses
 
-| Code | Description |
-| ---- | ----------- |
-| 405 | Invalid input |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successfully updated |  |
+| 400 | Invalid input |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ##### Security
 
@@ -208,9 +197,9 @@ Returns a single pet
 | petstore_auth | write:pets | read:pets |
 
 ### [DELETE] /pet/{petId}
-**Deletes a pet**
+**Deletes a pet.**
 
-delete a pet
+delete a pet.
 
 #### Parameters
 
@@ -221,9 +210,11 @@ delete a pet
 
 #### Responses
 
-| Code | Description |
-| ---- | ----------- |
-| 400 | Invalid pet value |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation |  |
+| 400 | Invalid pet value |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ##### Security
 
@@ -232,7 +223,9 @@ delete a pet
 | petstore_auth | write:pets | read:pets |
 
 ### [POST] /pet/{petId}/uploadImage
-**uploads an image**
+**Uploads an image.**
+
+Upload an image of pet.
 
 #### Parameters
 
@@ -252,6 +245,7 @@ delete a pet
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | **application/json**: [ApiResponse](#apiresponse)<br> |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ##### Security
 
@@ -265,15 +259,16 @@ Access to Petstore orders
 [Find out more about our store](http://swagger.io)
 
 ### [GET] /store/inventory
-**Returns pet inventories by status**
+**Returns pet inventories by status.**
 
-Returns a map of status codes to quantities
+Returns a map of status codes to quantities.
 
 #### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | **application/json**: object<br> |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ##### Security
 
@@ -282,9 +277,9 @@ Returns a map of status codes to quantities
 | api_key |  |
 
 ### [POST] /store/order
-**Place an order for a pet**
+**Place an order for a pet.**
 
-Place a new order in the store
+Place a new order in the store.
 
 #### Request Body
 
@@ -297,10 +292,12 @@ Place a new order in the store
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | **application/json**: [Order](#order)<br> |
-| 405 | Invalid input |  |
+| 400 | Invalid input |  |
+| 422 | Validation exception |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ### [GET] /store/order/{orderId}
-**Find purchase order by ID**
+**Find purchase order by identifier.**
 
 For valid response try integer IDs with value <= 5 or > 10. Other values will generate exceptions.
 
@@ -317,11 +314,12 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
 | 200 | successful operation | **application/json**: [Order](#order)<br>**application/xml**: [Order](#order)<br> |
 | 400 | Invalid ID supplied |  |
 | 404 | Order not found |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ### [DELETE] /store/order/{orderId}
-**Delete purchase order by ID**
+**Delete purchase order by identifier.**
 
-For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
+For valid response try integer IDs with value < 1000. Anything above 1000 or non-integers will generate API errors.
 
 #### Parameters
 
@@ -331,17 +329,19 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
 
 #### Responses
 
-| Code | Description |
-| ---- | ----------- |
-| 400 | Invalid ID supplied |
-| 404 | Order not found |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation |  |
+| 400 | Invalid ID supplied |  |
+| 404 | Order not found |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ---
 ## user
 Operations about user
 
 ### [POST] /user
-**Create user**
+**Create user.**
 
 This can only be done by the logged in user.
 
@@ -357,10 +357,11 @@ Created user object
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| default | successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
+| 200 | successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ### [POST] /user/createWithList
-**Creates list of users with given input array**
+**Creates list of users with given input array.**
 
 #### Request Body
 
@@ -373,10 +374,12 @@ Created user object
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | Successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
-| default | successful operation |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ### [GET] /user/login
-**Logs user into the system**
+**Logs user into the system.**
+
+log user into the system.
 
 #### Parameters
 
@@ -391,24 +394,30 @@ Created user object
 | ---- | ----------- | ------ |
 | 200 | successful operation<br>**Headers:**<br>**X-Rate-Limit**: calls per hour allowed by the user<br>**X-Expires-After**: date in UTC when token expires<br> | **application/xml**: string<br>**application/json**: string<br> |
 | 400 | Invalid username/password supplied |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ### [GET] /user/logout
-**Logs out current logged in user session**
+**Logs out current logged in user session.**
+
+Log user out of system.
 
 #### Responses
 
 | Code | Description |
 | ---- | ----------- |
+| 200 | successful operation |
 | default | successful operation |
 
 ### [GET] /user/{username}
-**Get user by user name**
+**Get user by user name.**
+
+Get user details based on username.
 
 #### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
-| username | path | The name that needs to be fetched. Use user1 for testing.  | Yes | string |
+| username | path | The name that needs to be fetched. Use user1 for testing | Yes | string |
 
 #### Responses
 
@@ -417,9 +426,10 @@ Created user object
 | 200 | successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
 | 400 | Invalid username supplied |  |
 | 404 | User not found |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ### [PUT] /user/{username}
-**Update user**
+**Update user.**
 
 This can only be done by the logged in user.
 
@@ -439,12 +449,13 @@ Update an existent user in the store
 
 #### Responses
 
-| Code | Description |
-| ---- | ----------- |
-| default | successful operation |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ### [DELETE] /user/{username}
-**Delete user**
+**Delete user.**
 
 This can only be done by the logged in user.
 
@@ -456,10 +467,12 @@ This can only be done by the logged in user.
 
 #### Responses
 
-| Code | Description |
-| ---- | ----------- |
-| 400 | Invalid username supplied |
-| 404 | User not found |
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation |  |
+| 400 | Invalid username supplied |  |
+| 404 | User not found |  |
+| default | Unexpected error | **application/json**: [Error](#error)<br> |
 
 ---
 ### Schemas
@@ -468,49 +481,49 @@ This can only be done by the logged in user.
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long | *Example:* `10` | No |
-| petId | long | *Example:* `198772` | No |
-| quantity | integer | *Example:* `7` | No |
+| id | long |  | No |
+| petId | long |  | No |
+| quantity | integer |  | No |
 | shipDate | dateTime |  | No |
-| status | string, <br>**Available values:** "placed", "approved", "delivered" | Order Status<br>*Enum:* `"placed"`, `"approved"`, `"delivered"`<br>*Example:* `"approved"` | No |
+| status | string, <br>**Available values:** "placed", "approved", "delivered" | Order Status<br>*Enum:* `"placed"`, `"approved"`, `"delivered"` | No |
 | complete | boolean |  | No |
 
 #### Customer
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long | *Example:* `100000` | No |
-| username | string | *Example:* `"fehguy"` | No |
+| id | long |  | No |
+| username | string |  | No |
 | address | [ [Address](#address) ] |  | No |
 
 #### Address
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| street | string | *Example:* `"437 Lytton"` | No |
-| city | string | *Example:* `"Palo Alto"` | No |
-| state | string | *Example:* `"CA"` | No |
-| zip | string | *Example:* `"94301"` | No |
+| street | string |  | No |
+| city | string |  | No |
+| state | string |  | No |
+| zip | string |  | No |
 
 #### Category
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long | *Example:* `1` | No |
-| name | string | *Example:* `"Dogs"` | No |
+| id | long |  | No |
+| name | string |  | No |
 
 #### User
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long | *Example:* `10` | No |
-| username | string | *Example:* `"theUser"` | No |
-| firstName | string | *Example:* `"John"` | No |
-| lastName | string | *Example:* `"James"` | No |
-| email | string | *Example:* `"john@email.com"` | No |
-| password | string | *Example:* `"12345"` | No |
-| phone | string | *Example:* `"12345"` | No |
-| userStatus | integer | User Status<br>*Example:* `1` | No |
+| id | long |  | No |
+| username | string |  | No |
+| firstName | string |  | No |
+| lastName | string |  | No |
+| email | string |  | No |
+| password | string |  | No |
+| phone | string |  | No |
+| userStatus | integer | User Status | No |
 
 #### Tag
 
@@ -523,8 +536,8 @@ This can only be done by the logged in user.
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long | *Example:* `10` | No |
-| name | string | *Example:* `"doggie"` | Yes |
+| id | long |  | No |
+| name | string |  | Yes |
 | category | [Category](#category) |  | No |
 | photoUrls | [ string ] |  | Yes |
 | tags | [ [Tag](#tag) ] |  | No |
@@ -537,3 +550,10 @@ This can only be done by the logged in user.
 | code | integer |  | No |
 | type | string |  | No |
 | message | string |  | No |
+
+#### Error
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| code | string |  | Yes |
+| message | string |  | Yes |

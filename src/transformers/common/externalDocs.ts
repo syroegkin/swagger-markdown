@@ -1,5 +1,6 @@
-import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
-import { Markdown } from '../../../lib/markdown';
+/* eslint-disable camelcase */
+import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
+import { Markdown } from '../../lib/markdown';
 
 const DEFAULT_TEXT = 'Find more info here';
 
@@ -7,7 +8,10 @@ const DEFAULT_TEXT = 'Find more info here';
  * @todo: add extensions, e.g. ^x-
  */
 export function transformExternalDocs(
-  externalDocs: OpenAPIV2.ExternalDocumentationObject | OpenAPIV3.ExternalDocumentationObject,
+  externalDocs:
+  | OpenAPIV2.ExternalDocumentationObject
+  | OpenAPIV3.ExternalDocumentationObject
+  | OpenAPIV3_1.ExternalDocumentationObject,
 ) {
   const md = Markdown.md();
   if ('url' in externalDocs) {

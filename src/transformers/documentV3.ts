@@ -1,14 +1,14 @@
 import { OpenAPIV3 } from 'openapi-types';
 import { ALLOWED_METHODS_V3, Options } from '../types';
-import { transformInfo } from './common/v2-3/info';
-import { transformPath } from './v3/path';
+import { transformInfo } from './common/info';
+import { transformPath } from './v3-3_1/path';
 import { Markdown } from '../lib/markdown';
 import { TagsCollection } from './common/Tags';
-import { transformExternalDocs } from './common/v2-3/externalDocs';
-import { transformTag } from './common/v2-3/tag';
-import { groupPathsByTags } from './common/v2-3/groupPathsByTags';
-import { transformComponents } from './v3/components/components';
-import { transformSecuritySchemes } from './v3/securitySchemes/securitySchemes';
+import { transformExternalDocs } from './common/externalDocs';
+import { transformTag } from './common/tag';
+import { groupPathsByTags } from './common/groupPathsByTags';
+import { transformComponents } from './v3-3_1/components/components';
+import { transformSecuritySchemes } from './v3-3_1/securitySchemes/securitySchemes';
 
 export function transformSwaggerV3(
   inputDoc: OpenAPIV3.Document,

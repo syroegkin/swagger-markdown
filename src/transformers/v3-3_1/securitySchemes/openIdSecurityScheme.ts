@@ -1,15 +1,16 @@
-import { OpenAPIV3 } from 'openapi-types';
+/* eslint-disable camelcase */
+import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { Markdown } from '../../../lib/markdown';
 
 export function isOpenIdSecurityScheme(
-  scheme: OpenAPIV3.SecuritySchemeObject,
-): scheme is OpenAPIV3.OpenIdSecurityScheme {
+  scheme: OpenAPIV3.SecuritySchemeObject | OpenAPIV3_1.SecuritySchemeObject,
+): scheme is OpenAPIV3.OpenIdSecurityScheme | OpenAPIV3_1.OpenIdSecurityScheme {
   return scheme.type === 'openIdConnect';
 }
 
 export function transformOpenIdSecurityScheme(
   name: string,
-  scheme: OpenAPIV3.OpenIdSecurityScheme,
+  scheme: OpenAPIV3.OpenIdSecurityScheme | OpenAPIV3_1.OpenIdSecurityScheme,
 ) {
   const md = Markdown.md();
 

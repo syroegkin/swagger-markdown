@@ -1,15 +1,16 @@
-import { OpenAPIV3 } from 'openapi-types';
+/* eslint-disable camelcase */
+import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { Markdown } from '../../../lib/markdown';
 
 export function isOAuth2SecurityScheme(
-  scheme: OpenAPIV3.SecuritySchemeObject,
-): scheme is OpenAPIV3.OAuth2SecurityScheme {
+  scheme: OpenAPIV3.SecuritySchemeObject | OpenAPIV3_1.SecuritySchemeObject,
+): scheme is OpenAPIV3.OAuth2SecurityScheme | OpenAPIV3_1.OAuth2SecurityScheme {
   return scheme.type === 'oauth2';
 }
 
 export function transformOAuth2SecurityScheme(
   name: string,
-  scheme: OpenAPIV3.OAuth2SecurityScheme,
+  scheme: OpenAPIV3.OAuth2SecurityScheme | OpenAPIV3_1.OAuth2SecurityScheme,
 ) {
   const md = Markdown.md();
 

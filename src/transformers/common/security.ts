@@ -1,8 +1,12 @@
-import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
-import { Markdown } from '../../../lib/markdown';
+/* eslint-disable camelcase */
+import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
+import { Markdown } from '../../lib/markdown';
 
 export function transformSecurity(
-  security: OpenAPIV2.SecurityRequirementObject[] | OpenAPIV3.SecurityRequirementObject[],
+  security:
+  | OpenAPIV2.SecurityRequirementObject[]
+  | OpenAPIV3.SecurityRequirementObject[]
+  | OpenAPIV3_1.SecurityRequirementObject[],
 ) {
   const md = Markdown.md();
   md.line(md.string('Security').h5()).line();
@@ -29,7 +33,10 @@ export function transformSecurity(
   }
 
   security.forEach(
-    (rules: OpenAPIV2.SecurityRequirementObject | OpenAPIV3.SecurityRequirementObject) => {
+    (rules:
+    | OpenAPIV2.SecurityRequirementObject
+    | OpenAPIV3.SecurityRequirementObject
+    | OpenAPIV3_1.SecurityRequirementObject) => {
       const tr = table.tr();
       Object.keys(rules).forEach((key) => {
         hasRules = true;

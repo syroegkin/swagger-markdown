@@ -1,4 +1,5 @@
-import { OpenAPIV3 } from 'openapi-types';
+/* eslint-disable camelcase */
+import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { Dereferenced } from '../../../types';
 
 export interface SchemaInterface {
@@ -37,9 +38,12 @@ export class Schema implements SchemaInterface {
   /**
    * constructor
    *
-   * @param {OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject} [schema=undefined]
+   * @param schema Schema or reference (V3 or V3.1)
    */
-  constructor(schema?: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject) {
+  constructor(
+    schema?: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject
+    | OpenAPIV3_1.SchemaObject | OpenAPIV3_1.ReferenceObject,
+  ) {
     if (schema) {
       // Check if it's a Reference Object
       if ('$ref' in schema) {
@@ -112,10 +116,13 @@ export class Schema implements SchemaInterface {
    */
   public setProperties(properties: {
     [name: string]: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject
+    | OpenAPIV3_1.SchemaObject | OpenAPIV3_1.ReferenceObject;
   }): Schema {
     Object.keys(properties).forEach(
       (name) => {
-        this.properties[name] = new Schema(properties[name] as OpenAPIV3.SchemaObject);
+        this.properties[name] = new Schema(
+          properties[name] as OpenAPIV3.SchemaObject | OpenAPIV3_1.SchemaObject,
+        );
       },
     );
     return this;
@@ -133,11 +140,10 @@ export class Schema implements SchemaInterface {
   /**
    * @param {Array<Object>} allOf
    */
-  public setAllOf(allOf: (OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject)[]): Schema {
+  public setAllOf(allOf: (OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject
+  | OpenAPIV3_1.SchemaObject | OpenAPIV3_1.ReferenceObject)[]): Schema {
     this.allOf = allOf.map(
-      (
-        schema: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject,
-      ) => new Schema(schema as Dereferenced<typeof schema>),
+      (s) => new Schema(s as Dereferenced<OpenAPIV3.SchemaObject>),
     );
     return this;
   }
@@ -153,7 +159,8 @@ export class Schema implements SchemaInterface {
   /**
    * @param {OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject} items
    */
-  setItems(items: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject) {
+  setItems(items: OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject
+  | OpenAPIV3_1.SchemaObject | OpenAPIV3_1.ReferenceObject) {
     this.items = new Schema(items);
     return this;
   }

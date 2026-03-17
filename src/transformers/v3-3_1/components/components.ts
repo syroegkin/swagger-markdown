@@ -1,8 +1,11 @@
-import { OpenAPIV3 } from 'openapi-types';
+/* eslint-disable camelcase */
+import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { Markdown } from '../../../lib/markdown';
 import { processSchemas } from './processSchemas';
 
-export function transformComponents(components: OpenAPIV3.ComponentsObject): string | null {
+export function transformComponents(
+  components: OpenAPIV3.ComponentsObject | OpenAPIV3_1.ComponentsObject,
+): string | null {
   let hasComponents = false;
   const md = Markdown.md();
   md
@@ -13,7 +16,9 @@ export function transformComponents(components: OpenAPIV3.ComponentsObject): str
     if (componentName === 'schemas' && components.schemas) {
       const processedSchemas = processSchemas(components.schemas);
       hasComponents = true;
-      md.line(processedSchemas);
+      if (processedSchemas != null) {
+        md.line(processedSchemas);
+      }
     }
   });
   if (hasComponents) {

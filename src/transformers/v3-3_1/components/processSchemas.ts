@@ -1,4 +1,5 @@
-import { OpenAPIV3 } from 'openapi-types';
+/* eslint-disable camelcase */
+import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { Markdown } from '../../../lib/markdown';
 import { Dereferenced } from '../../../types';
 import { MDtableRow } from '../../../lib/markdown/mdtable';
@@ -10,13 +11,23 @@ import { dataTypeResolver } from '../dataTypes';
  * @param name of the definition
  * @param definition definition object
  */
-function parsePrimitive(name: string, definition: OpenAPIV3.SchemaObject): MDtableRow {
+function parsePrimitive(
+  name: string,
+  definition: OpenAPIV3.SchemaObject | OpenAPIV3_1.SchemaObject | null | undefined,
+): MDtableRow {
   const tr = MDtableRow.tr();
+  if (definition == null || typeof definition !== 'object') {
+    definition = {};
+  }
   const typeCell = 'type' in definition ? definition.type : '';
+  let safeType = '';
+  if (typeCell !== undefined) {
+    safeType = Array.isArray(typeCell) ? typeCell.join(', ') : String(typeCell);
+  }
   const descriptionCell = ('description' in definition ? definition.description : '').replace(/[\r\n]/g, ' ');
   const requiredCell = '';
   tr.td(name)
-    .td(Array.isArray(typeCell) ? typeCell.join(', ') : typeCell)
+    .td(safeType)
     .td(descriptionCell)
     .td(requiredCell);
   return tr;
@@ -27,7 +38,17 @@ function parsePrimitive(name: string, definition: OpenAPIV3.SchemaObject): MDtab
  * @param name of the definition
  * @param definition definition object
  */
-function parseProperties(definition: OpenAPIV3.SchemaObject): MDtableRow[] {
+function parseProperties(
+  definition: OpenAPIV3.SchemaObject | OpenAPIV3_1.SchemaObject,
+): MDtableRow[] {
+  const hasValidProperties = definition
+    && typeof definition === 'object'
+    && 'properties' in definition
+    && definition.properties
+    && typeof definition.properties === 'object';
+  if (!hasValidProperties) {
+    return [];
+  }
   const rows: MDtableRow[] = [];
   const md = Markdown.md();
   const required = 'required' in definition ? definition.required : [];
@@ -61,11 +82,29 @@ function parseProperties(definition: OpenAPIV3.SchemaObject): MDtableRow[] {
   return rows;
 }
 
-export function processSchemas(schemas: OpenAPIV3.ComponentsObject['schemas']): string {
+export function processSchemas(
+  schemas: OpenAPIV3.ComponentsObject['schemas'] | OpenAPIV3_1.ComponentsObject['schemas'],
+): string {
   const md = Markdown.md();
 
   Object.keys(schemas).forEach((schemaName: string) => {
-    const schema = schemas[schemaName] as Dereferenced<OpenAPIV3.SchemaObject>;
+    const schema = schemas[schemaName] as
+      Dereferenced<OpenAPIV3.SchemaObject> | OpenAPIV3_1.SchemaObject | boolean | null;
+    if (schema === true) {
+      md.line()
+        .line(md.string(schemaName).h4())
+        .line(`${schemaName} (schema allows any instance)`);
+      return;
+    }
+    if (schema === false) {
+      md.line()
+        .line(md.string(schemaName).h4())
+        .line(`${schemaName} (schema allows no instance)`);
+      return;
+    }
+    if (schema === null || typeof schema !== 'object') {
+      return;
+    }
     md.line()
       .line(md.string(schemaName).h4())
       .line();
@@ -84,10 +123,16 @@ export function processSchemas(schemas: OpenAPIV3.ComponentsObject['schemas']): 
     }
     md.line(table);
 
-    if (schema.example) {
-      const formattedExample = typeof schema.example === 'string'
-        ? schema.example
-        : JSON.stringify(schema.example, null, '  ');
+    const schemaWithExamples = schema as { example?: unknown; examples?: unknown[] };
+    const hasExamples = Array.isArray(schemaWithExamples.examples)
+      && schemaWithExamples.examples.length > 0;
+    const exampleValue = schema.example ?? (
+      hasExamples ? schemaWithExamples.examples![0] : undefined
+    );
+    if (exampleValue !== undefined) {
+      const formattedExample = typeof exampleValue === 'string'
+        ? exampleValue
+        : JSON.stringify(exampleValue, null, '  ');
       md.line()
         .line(md.string('Example').bold())
         .line(`<pre>${formattedExample}</pre>`);

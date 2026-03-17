@@ -1,14 +1,14 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { ALLOWED_METHODS_V2, Options } from '../types';
-import { transformInfo } from './common/v2-3/info';
+import { transformInfo } from './common/info';
 import { transformPath } from './v2/path';
 import { transformSecurityDefinitions } from './v2/securityDefinitions';
-import { transformExternalDocs } from './common/v2-3/externalDocs';
+import { transformExternalDocs } from './common/externalDocs';
 import { transformDefinition } from './v2/definitions';
 import { TagsCollection } from './common/Tags';
 import { Markdown } from '../lib/markdown';
-import { groupPathsByTags } from './common/v2-3/groupPathsByTags';
-import { transformTag } from './common/v2-3/tag';
+import { groupPathsByTags } from './common/groupPathsByTags';
+import { transformTag } from './common/tag';
 import { transformSchemes } from './v2/schemes';
 
 export function transformSwaggerV2(

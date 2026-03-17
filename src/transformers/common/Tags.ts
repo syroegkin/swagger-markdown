@@ -1,6 +1,8 @@
-import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
+/* eslint-disable camelcase */
+import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 
-type AnyTagObject = OpenAPIV2.TagObject | OpenAPIV3.TagObject;
+type AnyTagObject =
+  OpenAPIV2.TagObject | OpenAPIV3.TagObject | OpenAPIV3_1.TagObject;
 
 export class TagsCollection<T extends AnyTagObject = AnyTagObject> {
   private tags: { [key: string]: T } = {};

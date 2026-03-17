@@ -1,11 +1,12 @@
-import { OpenAPIV3 } from 'openapi-types';
+/* eslint-disable camelcase */
+import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { dataTypeResolver } from './dataTypes';
 import { Schema } from './models/Schema';
 import { Markdown } from '../../lib/markdown';
 
 export const transformParameters = (
-  parameters: OpenAPIV3.ParameterObject[] = [],
-  pathParameters: OpenAPIV3.ParameterObject[] = [],
+  parameters: (OpenAPIV3.ParameterObject | OpenAPIV3_1.ParameterObject)[] = [],
+  pathParameters: (OpenAPIV3.ParameterObject | OpenAPIV3_1.ParameterObject)[] = [],
 ) => {
   const allParameters = [...parameters, ...pathParameters];
   if (allParameters.length === 0) {
@@ -19,7 +20,9 @@ export const transformParameters = (
     .th('Schema');
 
   // Combine path and operation parameters, ensuring they are V3 objects
-  allParameters.forEach((parameterObject: OpenAPIV3.ParameterObject) => {
+  allParameters.forEach((
+    parameterObject: OpenAPIV3.ParameterObject | OpenAPIV3_1.ParameterObject,
+  ) => {
     if (parameterObject) {
       const tr = table.tr();
       // Name first

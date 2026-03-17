@@ -1,6 +1,7 @@
-import { OpenAPIV3 } from 'openapi-types';
+/* eslint-disable camelcase */
+import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { Markdown } from '../../lib/markdown';
-import { transformHeaders } from '../common/v2-3/headers';
+import { transformHeaders } from '../common/headers';
 import { processLink } from './link';
 import { dataTypeResolver } from './dataTypes';
 import { Schema } from './models/Schema';
@@ -12,7 +13,9 @@ import { Dereferenced } from '../../types';
  * @param response - An OpenAPI V3 response object.
  * @returns A boolean indicating whether the response contains a schema.
  */
-function hasSchemaInResponse(response: OpenAPIV3.ResponseObject): boolean {
+function hasSchemaInResponse(
+  response: OpenAPIV3.ResponseObject | OpenAPIV3_1.ResponseObject,
+): boolean {
   if ('content' in response) {
     return Object.values(response.content).some((data) => 'schema' in data);
   }
@@ -26,7 +29,9 @@ function hasSchemaInResponse(response: OpenAPIV3.ResponseObject): boolean {
  * @returns A boolean indicating whether any res
  * ponse contains schemas.
  */
-export function hasSchemasInResponses(responses: OpenAPIV3.ResponsesObject): boolean {
+export function hasSchemasInResponses(
+  responses: OpenAPIV3.ResponsesObject | OpenAPIV3_1.ResponsesObject,
+): boolean {
   return Object.values(responses).some(hasSchemaInResponse);
 }
 
@@ -36,14 +41,18 @@ export function hasSchemasInResponses(responses: OpenAPIV3.ResponsesObject): boo
  * @param responses - An object containing OpenAPI V3 response objects.
  * @returns A boolean indicating whether any response contains links.
  */
-export function hasLinksInResponses(responses: OpenAPIV3.ResponsesObject): boolean {
+export function hasLinksInResponses(
+  responses: OpenAPIV3.ResponsesObject | OpenAPIV3_1.ResponsesObject,
+): boolean {
   return Object.values(responses).some((response) => 'links' in response);
 }
 
 /**
  * Build responses table
  */
-export function transformResponses(responses: OpenAPIV3.ResponsesObject) {
+export function transformResponses(
+  responses: OpenAPIV3.ResponsesObject | OpenAPIV3_1.ResponsesObject,
+) {
   const md = Markdown.md();
   md.line(md.string('Responses').h4()).line();
 

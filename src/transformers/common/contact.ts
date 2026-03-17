@@ -1,11 +1,12 @@
-import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
-import { Markdown } from '../../../lib/markdown';
+/* eslint-disable camelcase */
+import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
+import { Markdown } from '../../lib/markdown';
 
 /**
  * @todo: add extensions, e.g. ^x-
  */
 export function transformContact(
-  contact: OpenAPIV2.ContactObject | OpenAPIV3.ContactObject,
+  contact: OpenAPIV2.ContactObject | OpenAPIV3.ContactObject | OpenAPIV3_1.ContactObject,
 ) {
   const md = Markdown.md();
 

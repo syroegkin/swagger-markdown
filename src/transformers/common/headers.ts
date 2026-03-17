@@ -1,17 +1,21 @@
-import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
-import { Markdown } from '../../../lib/markdown';
-import { MDstring } from '../../../lib/markdown/mdstring';
+/* eslint-disable camelcase */
+import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
+import { Markdown } from '../../lib/markdown';
+import { MDstring } from '../../lib/markdown/mdstring';
 
 /**
  * Make it a little bit simpler
  * Respect just type and description, like it is shown in the documentation
  *
  * @export
- * @param {OpenAPIV2.HeadersObject} headers
- * @return {*}  {MDstring}
+ * @param headers Headers object (v2, v3, or v3.1)
+ * @return {MDstring}
  */
 export function transformHeaders(
-  headers: OpenAPIV2.HeadersObject | { [index: string]: OpenAPIV3.HeaderObject },
+  headers:
+  | OpenAPIV2.HeadersObject
+  | { [index: string]: OpenAPIV3.HeaderObject }
+  | { [index: string]: OpenAPIV3_1.HeaderObject },
 ): MDstring {
   const md = Markdown.md();
   let string: MDstring;

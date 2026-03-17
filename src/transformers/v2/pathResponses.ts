@@ -2,7 +2,7 @@ import { OpenAPIV2 } from 'openapi-types';
 import { Schema } from './models/Schema';
 import { dataTypeResolver } from './dataTypes';
 import { Markdown } from '../../lib/markdown';
-import { transformHeaders } from '../common/v2-3/headers';
+import { transformHeaders } from '../common/headers';
 
 /**
  * Build responses table

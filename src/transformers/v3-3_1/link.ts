@@ -1,10 +1,11 @@
-import { OpenAPIV3 } from 'openapi-types';
+/* eslint-disable camelcase */
+import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { Markdown } from '../../lib/markdown';
 import { MDstring } from '../../lib/markdown/mdstring';
 
 export function processLink(
   linkName: string,
-  link: OpenAPIV3.LinkObject | string,
+  link: OpenAPIV3.LinkObject | OpenAPIV3_1.LinkObject | string,
 ): MDstring {
   const md = Markdown.md();
 

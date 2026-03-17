@@ -1,15 +1,16 @@
-import { OpenAPIV3 } from 'openapi-types';
+/* eslint-disable camelcase */
+import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { Markdown } from '../../lib/markdown';
 import { Dereferenced } from '../../types';
 import { Schema } from './models/Schema';
 import { dataTypeResolver } from './dataTypes';
 
 export function transformRequestBody(
-  requestBody: OpenAPIV3.RequestBodyObject,
+  requestBody: OpenAPIV3.RequestBodyObject | OpenAPIV3_1.RequestBodyObject,
 ) {
   const md = Markdown.md();
   md.line(md.string('Request Body').h4()).line();
-  if ('descrtiption' in requestBody && requestBody.description) {
+  if ('description' in requestBody && requestBody.description) {
     md.line(md.string(requestBody.description).escape()).line();
   }
 

@@ -1,12 +1,13 @@
-import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
-import { Markdown } from '../../../lib/markdown';
-import { MDstring } from '../../../lib/markdown/mdstring';
+/* eslint-disable camelcase */
+import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
+import { Markdown } from '../../lib/markdown';
+import { MDstring } from '../../lib/markdown/mdstring';
 
 /**
  * @todo: add extensions, e.g. ^x-
  */
 export function transformLicense(
-  license: OpenAPIV2.LicenseObject | OpenAPIV3.LicenseObject,
+  license: OpenAPIV2.LicenseObject | OpenAPIV3.LicenseObject | OpenAPIV3_1.LicenseObject,
 ): string {
   const md = Markdown.md();
 
