@@ -80,4 +80,32 @@ describe('documentV3_1 transformer', () => {
     const result = transformSwaggerV3_1(doc, { input: '' });
     expect(result).to.be.a('string');
   });
+
+  it('with webhooks: output includes Webhooks section and webhook content', () => {
+    const doc = {
+      openapi: '3.1.0',
+      info: { title: 'Test', version: '1.0' },
+      paths: {
+        '/ping': {
+          get: {
+            responses: { 200: { description: 'OK' } },
+          },
+        },
+      },
+      webhooks: {
+        orderCreated: {
+          post: {
+            summary: 'Order created',
+            responses: { 200: { description: 'OK' } },
+          },
+        },
+      },
+    } as OpenAPIV3_1.Document;
+
+    const result = transformSwaggerV3_1(doc, { input: '' });
+
+    expect(result).to.include('Webhooks');
+    expect(result).to.include('orderCreated');
+    expect(result).to.include('Order created');
+  });
 });

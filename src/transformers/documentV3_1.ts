@@ -55,7 +55,18 @@ export function transformSwaggerV3_1(
     });
   }
 
-  // Webhooks section added in Step 4
+  if ('webhooks' in inputDoc && inputDoc.webhooks && Object.keys(inputDoc.webhooks).length > 0) {
+    md.line(md.string().horizontalRule());
+    md.line(md.string('Webhooks').h3());
+    md.line('');
+    Object.keys(inputDoc.webhooks).forEach((webhookName) => {
+      const pathItem = inputDoc.webhooks[webhookName];
+      const webhookOutput = transformPath(webhookName, pathItem as unknown);
+      if (webhookOutput != null) {
+        md.line(webhookOutput);
+      }
+    });
+  }
 
   if ('components' in inputDoc) {
     const componentsOutput = transformComponents(inputDoc.components);
