@@ -6,15 +6,25 @@ import { isApiKeySecurityScheme, transformApiKeySecuritySchema } from './apiKeyS
 import { isOAuth2SecurityScheme, transformOAuth2SecurityScheme } from './OAuth2SecurityScheme';
 import { isOpenIdSecurityScheme, transformOpenIdSecurityScheme } from './openIdSecurityScheme';
 
-export function transformSecuritySchemes(
-  securitySchemas: {
-    [key: string]: OpenAPIV3.SecuritySchemeObject | OpenAPIV3_1.SecuritySchemeObject;
-  },
-) {
+export type SecuritySchemesMap = {
+  [key: string]:
+  | OpenAPIV3.SecuritySchemeObject
+  | OpenAPIV3_1.SecuritySchemeObject
+  | OpenAPIV3.ReferenceObject
+  | OpenAPIV3_1.ReferenceObject;
+};
+
+export function transformSecuritySchemes(securitySchemas: SecuritySchemesMap) {
   const md = Markdown.md();
 
+  type SchemeObject = OpenAPIV3.SecuritySchemeObject | OpenAPIV3_1.SecuritySchemeObject;
+
   Object.keys(securitySchemas).forEach((type) => {
-    const schema = securitySchemas[type];
+    const raw = securitySchemas[type];
+    if (raw && '$ref' in raw && raw.$ref) {
+      return;
+    }
+    const schema = raw as SchemeObject;
 
     if (isHttpSecurityScheme(schema)) {
       md.line(transformHTTPSecurityScheme(type, schema));

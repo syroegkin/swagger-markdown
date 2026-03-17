@@ -11,27 +11,37 @@ import { transformResponses } from './pathResponses';
 import { transformParameters } from './pathParameters';
 import { transformRequestBody } from './pathRequestBody';
 
+export type PathItemLike =
+  | OpenAPIV3.PathItemObject
+  | OpenAPIV3_1.PathItemObject
+  | OpenAPIV3.ReferenceObject
+  | OpenAPIV3_1.ReferenceObject;
+
 export function transformPath(
   path: string,
-  data: OpenAPIV3.PathItemObject | OpenAPIV3_1.PathItemObject,
+  data: PathItemLike,
 ): string | null {
   let pathParameters: (OpenAPIV3.ParameterObject | OpenAPIV3_1.ParameterObject)[] = [];
 
   if (!path || !data) {
     return null;
   }
+  if ('$ref' in data && data.$ref) {
+    return null;
+  }
 
+  const pathItem = data as OpenAPIV3.PathItemObject | OpenAPIV3_1.PathItemObject;
   const md = Markdown.md();
 
   // Check if parameter for path are in the place
-  if ('parameters' in data) {
-    pathParameters = data.parameters as Dereferenced<typeof data.parameters>;
+  if ('parameters' in pathItem) {
+    pathParameters = pathItem.parameters as Dereferenced<typeof pathItem.parameters>;
   }
 
   // Go further method by methods
-  Object.keys(data).forEach((method) => {
+  Object.keys(pathItem).forEach((method) => {
     if (ALLOWED_METHODS_V3.includes(method)) {
-      const pathInfo: OpenAPIV3.OperationObject | OpenAPIV3_1.OperationObject = data[method];
+      const pathInfo: OpenAPIV3.OperationObject | OpenAPIV3_1.OperationObject = pathItem[method];
 
       const deprecated = 'deprecated' in pathInfo && pathInfo.deprecated === true;
 
