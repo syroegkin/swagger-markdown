@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
-import { Dereferenced } from '../../../types';
 
 export interface SchemaInterface {
   type?: string;
@@ -142,9 +141,7 @@ export class Schema implements SchemaInterface {
    */
   public setAllOf(allOf: (OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject
   | OpenAPIV3_1.SchemaObject | OpenAPIV3_1.ReferenceObject)[]): Schema {
-    this.allOf = allOf.map(
-      (s) => new Schema(s as Dereferenced<OpenAPIV3.SchemaObject>),
-    );
+    this.allOf = allOf.map((s) => new Schema(s));
     return this;
   }
 

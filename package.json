@@ -9,7 +9,7 @@
 		"test:app": "jest --detectOpenHandles --forceExit",
 		"test:watch": "jest --watch",
 		"test:lint": "eslint .",
-		"test:markdown": "npx markdownlint ./examples/v2/*.md -c .markdownlint.json && npx markdownlint ./examples/v3/*.md -c .markdownlint.json",
+		"test:markdown": "npx markdownlint ./examples/v2/*.md -c .markdownlint.json && npx markdownlint ./examples/v3/*.md -c .markdownlint.json && npx markdownlint ./examples/v3.1/*.md -c .markdownlint.json",
 		"build": "rimraf dist && tsc && chmod +x ./dist/swagger-markdown.js",
 		"build:watch": "tsc -w",
 		"prepublishOnly": "npm run build",

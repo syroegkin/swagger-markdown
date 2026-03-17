@@ -15,8 +15,8 @@ export function transformComponents(
   Object.keys(components).forEach((componentName: string) => {
     if (componentName === 'schemas' && components.schemas) {
       const processedSchemas = processSchemas(components.schemas);
-      hasComponents = true;
       if (processedSchemas != null) {
+        hasComponents = true;
         md.line(processedSchemas);
       }
     }

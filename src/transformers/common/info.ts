@@ -4,6 +4,10 @@ import { transformContact } from './contact';
 import { transformLicense } from './license';
 import { Markdown } from '../../lib/markdown';
 
+function ensureBlankLineBeforeList(text: string): string {
+  return text.replace(/\n(\s*[-*]\s)/g, '\n\n$1');
+}
+
 /**
  * http://swagger.io/specification/#infoObject
  * Prepare page header
@@ -20,8 +24,9 @@ export function transformInfo(
       md.line(md.string(info.title).h1());
     }
 
-    if ('description' in info) {
-      md.line(md.string(info.description).escape()).line();
+    if ('description' in info && info.description) {
+      const description = ensureBlankLineBeforeList(info.description);
+      md.line(md.string(description).escape()).line();
     }
 
     if ('version' in info) {

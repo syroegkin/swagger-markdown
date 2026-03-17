@@ -6,7 +6,7 @@ import { AllSwaggerDocumentVersions } from './types';
 
 describe('Integration test examples', () => {
   const examplesDir = `${__dirname}/../examples`;
-  ['v2', 'v3'].forEach((version) => {
+  ['v2', 'v3', 'v3.1'].forEach((version) => {
     const examples = fs.readdirSync(`${examplesDir}/${version}/`);
     examples
       .filter((example) => example.endsWith('.yaml'))

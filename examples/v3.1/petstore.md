@@ -5,7 +5,9 @@ You can now help us improve the API whether it's by making changes to the defini
 That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
 
 Some useful links:
+
 - [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
+
 - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
 
 ## Version: 1.0.12

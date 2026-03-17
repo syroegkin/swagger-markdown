@@ -7,6 +7,7 @@ That way, with time, we can improve the API in general, and expose some of the n
 Some useful links:
 
 - [The Pet Store repository](https://github.com/swagger-api/swagger-petstore)
+
 - [The source API definition for the Pet Store](https://github.com/swagger-api/swagger-petstore/blob/master/src/main/resources/openapi.yaml)
 
 ## Version: 1.0.11

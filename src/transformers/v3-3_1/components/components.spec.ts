@@ -5,6 +5,7 @@ describe('transformComponents (v3-3_1)', () => {
   it('should return null when components has no schemas', () => {
     expect(transformComponents({} as any)).to.equal(null);
     expect(transformComponents({ parameters: {} } as any)).to.equal(null);
+    expect(transformComponents({ schemas: {} } as any)).to.equal(null);
   });
 
   it('should return markdown with Schemas h3 when schemas present', () => {
