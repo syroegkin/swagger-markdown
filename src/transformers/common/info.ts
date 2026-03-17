@@ -38,7 +38,7 @@ export function transformInfo(
       md.line(transformContact(info.contact));
     }
 
-    if ('license' in info && Object.keys(info.contact).length) {
+    if ('license' in info && Object.keys(info.license).length) {
       md.line(transformLicense(info.license));
     }
   }

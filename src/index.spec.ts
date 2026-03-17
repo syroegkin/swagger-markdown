@@ -1,7 +1,7 @@
 import type { $Refs } from '@apidevtools/json-schema-ref-parser';
 import { expect } from 'chai';
 import fs from 'fs';
-import { transformFile, partiallyDereference } from './index';
+import { transformFile, partiallyDereference, transfromSwagger } from './index';
 import { AllSwaggerDocumentVersions } from './types';
 
 describe('Integration test examples', () => {
@@ -18,6 +18,26 @@ describe('Integration test examples', () => {
           expect(generated).to.eql(expected);
         });
       });
+  });
+});
+
+describe('transfromSwagger routing', () => {
+  it('transforms OpenAPI 3.1 document via transformSwaggerV31', () => {
+    const doc = {
+      openapi: '3.1.0',
+      info: { title: 'R', version: '1' },
+      paths: {
+        '/': {
+          get: {
+            responses: { 200: { description: 'OK' } },
+          },
+        },
+      },
+    };
+    const result = transfromSwagger(doc as AllSwaggerDocumentVersions, { input: '' });
+    expect(result).to.be.a('string').and.not.empty;
+    expect(result).to.include('R');
+    expect(result).to.include('/');
   });
 });
 

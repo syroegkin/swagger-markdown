@@ -1,11 +1,13 @@
 import SwaggerParser from '@apidevtools/swagger-parser';
 import type { $Refs } from '@apidevtools/json-schema-ref-parser';
 import fs from 'fs';
-import { OpenAPIV2, OpenAPIV3 } from 'openapi-types';
+// eslint-disable-next-line camelcase
+import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { AllSwaggerDocumentVersions, Options } from './types';
 import { isV2Document, isV31Document, isV3Document } from './lib/detectDocumentVersion';
 import { transformSwaggerV2 } from './transformers/documentV2';
 import { transformSwaggerV3 } from './transformers/documentV3';
+import { transformSwaggerV31 } from './transformers/documentV31';
 
 /**
  * Replace all $refs with their values,
@@ -75,10 +77,11 @@ export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: 
     // Quick hack to allow version 3 to be processed as it version 2
     // Will be removed as soon as support of version 3 will be in place`
     plainDocument = transformSwaggerV2(inputDoc as OpenAPIV2.Document, options);
+  } else if (isV31Document(inputDoc)) {
+    // eslint-disable-next-line camelcase
+    plainDocument = transformSwaggerV31(inputDoc as OpenAPIV3_1.Document, options);
   } else if (isV3Document(inputDoc) || options.forceVersion === '3') {
     plainDocument = transformSwaggerV3(inputDoc as OpenAPIV3.Document, options);
-  } else if (isV31Document(inputDoc)) {
-    throw new Error('OpenAPI V3.1 is not yet supported');
   } else {
     throw new Error('Can not detect version ot this version in not supported');
   }
