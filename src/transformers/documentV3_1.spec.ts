@@ -1,9 +1,9 @@
 /* eslint-disable camelcase */
 import { expect } from 'chai';
 import { OpenAPIV3_1 } from 'openapi-types';
-import { transformSwaggerV31 } from './documentV31';
+import { transformSwaggerV3_1 } from './documentV3_1';
 
-describe('documentV31 transformer', () => {
+describe('documentV3_1 transformer', () => {
   it('minimal (paths only): returns non-empty string, includes title and path', () => {
     const doc = {
       openapi: '3.1.0',
@@ -17,7 +17,7 @@ describe('documentV31 transformer', () => {
       },
     } as OpenAPIV3_1.Document;
 
-    const result = transformSwaggerV31(doc, { input: '' });
+    const result = transformSwaggerV3_1(doc, { input: '' });
 
     expect(result).to.be.a('string');
     expect(result.length).to.be.greaterThan(0);
@@ -46,7 +46,7 @@ describe('documentV31 transformer', () => {
       },
     } as OpenAPIV3_1.Document;
 
-    const result = transformSwaggerV31(doc, { input: '' });
+    const result = transformSwaggerV3_1(doc, { input: '' });
 
     expect(result).to.include('Foo');
   });
@@ -64,7 +64,7 @@ describe('documentV31 transformer', () => {
       },
     } as OpenAPIV3_1.Document;
 
-    const result = transformSwaggerV31(doc, { skipInfo: true, input: '' });
+    const result = transformSwaggerV3_1(doc, { skipInfo: true, input: '' });
 
     expect(result).not.to.include('Test');
   });
@@ -76,8 +76,8 @@ describe('documentV31 transformer', () => {
       paths: {},
     } as OpenAPIV3_1.Document;
 
-    expect(() => transformSwaggerV31(doc, { input: '' })).not.to.throw();
-    const result = transformSwaggerV31(doc, { input: '' });
+    expect(() => transformSwaggerV3_1(doc, { input: '' })).not.to.throw();
+    const result = transformSwaggerV3_1(doc, { input: '' });
     expect(result).to.be.a('string');
   });
 });

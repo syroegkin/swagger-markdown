@@ -40,7 +40,10 @@ export function transformSwaggerV3(
   }
 
   if (inputDoc.components && 'securitySchemes' in inputDoc.components) {
-    md.line(transformSecuritySchemes(inputDoc.components.securitySchemes));
+    const securitySchemesOutput = transformSecuritySchemes(inputDoc.components.securitySchemes);
+    if (securitySchemesOutput != null) {
+      md.line(securitySchemesOutput);
+    }
   }
 
   // All components must be dereferenced
@@ -66,12 +69,11 @@ export function transformSwaggerV3(
 
   // Models (components)
   if ('components' in inputDoc) {
-    md.line(md.string().horizontalRule());
-    md.line(
-      transformComponents(
-        inputDoc.components,
-      ),
-    );
+    const componentsOutput = transformComponents(inputDoc.components);
+    if (componentsOutput != null) {
+      md.line(md.string().horizontalRule());
+      md.line(componentsOutput);
+    }
   }
 
   // Glue all pieces down

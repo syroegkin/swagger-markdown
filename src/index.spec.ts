@@ -22,7 +22,7 @@ describe('Integration test examples', () => {
 });
 
 describe('transfromSwagger routing', () => {
-  it('transforms OpenAPI 3.1 document via transformSwaggerV31', () => {
+  it('transforms OpenAPI 3.1 document via transformSwaggerV3_1', () => {
     const doc = {
       openapi: '3.1.0',
       info: { title: 'R', version: '1' },

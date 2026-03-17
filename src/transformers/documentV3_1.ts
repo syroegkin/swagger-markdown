@@ -11,7 +11,7 @@ import { groupPathsByTags } from './common/groupPathsByTags';
 import { transformComponents } from './v3-3_1/components/components';
 import { transformSecuritySchemes } from './v3-3_1/securitySchemes/securitySchemes';
 
-export function transformSwaggerV31(
+export function transformSwaggerV3_1(
   inputDoc: OpenAPIV3_1.Document,
   options: Options,
 ): string {
@@ -33,7 +33,10 @@ export function transformSwaggerV31(
   }
 
   if (inputDoc.components && 'securitySchemes' in inputDoc.components) {
-    md.line(transformSecuritySchemes(inputDoc.components.securitySchemes));
+    const securitySchemesOutput = transformSecuritySchemes(inputDoc.components.securitySchemes);
+    if (securitySchemesOutput != null) {
+      md.line(securitySchemesOutput);
+    }
   }
 
   if ('paths' in inputDoc && inputDoc.paths) {
@@ -55,8 +58,11 @@ export function transformSwaggerV31(
   // Webhooks section added in Step 4
 
   if ('components' in inputDoc) {
-    md.line(md.string().horizontalRule());
-    md.line(transformComponents(inputDoc.components));
+    const componentsOutput = transformComponents(inputDoc.components);
+    if (componentsOutput != null) {
+      md.line(md.string().horizontalRule());
+      md.line(componentsOutput);
+    }
   }
 
   return md.export();
