@@ -22,16 +22,16 @@ export function transformRequestBody(
   tr.td(requestBody.required ? ' Yes' : ' No');
 
   const { content } = requestBody;
-  const td = md.string();
+  const schemaTd = md.string();
   Object.keys(content).forEach((contentType: string) => {
     const { schema } = content[contentType];
     if (schema) {
       const schemaObject = new Schema(schema as Dereferenced<typeof schema>);
-      td.concat(`${md.string(contentType).bold()}: `);
-      td.concat(dataTypeResolver(schemaObject)).br(true);
+      schemaTd.concat(`${md.string(contentType).bold()}: `);
+      schemaTd.concat(dataTypeResolver(schemaObject)).br(true);
     }
-    tr.td(td);
   });
+  tr.td(schemaTd);
   md.line(table);
   return md.export();
 }

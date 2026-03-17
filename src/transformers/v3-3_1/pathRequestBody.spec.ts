@@ -79,4 +79,22 @@ describe('pathRequestBody transformer (v3-3_1)', () => {
     expect(res).to.include('application/json');
     expect(res).to.include('text/plain');
   });
+
+  it('should render exactly two columns (Required, Schema) for multiple content types', () => {
+    const fixture = {
+      required: true,
+      content: {
+        'application/json': { schema: { type: 'object' } },
+        'application/xml': { schema: { type: 'object' } },
+        'application/x-www-form-urlencoded': { schema: { type: 'object' } },
+      },
+    };
+    const res = (transformRequestBody(fixture as any) as string).split('\n');
+    const tableRows = res.filter((l) => l.startsWith('|'));
+    expect(tableRows.length).to.be.at.least(2);
+    tableRows.forEach((row) => {
+      const cells = row.split('|').filter((c) => c.trim().length > 0);
+      expect(cells.length, `expected 2 columns in row: ${row}`).to.equal(2);
+    });
+  });
 });
