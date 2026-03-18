@@ -4,13 +4,6 @@ import { transformLicense } from './license';
 import { Markdown } from '../../lib/markdown';
 
 /**
- * @todo: simplify or ditch
- */
-function ensureBlankLineBeforeList(text: string): string {
-  return text.replace(/\n(\s*[-*]\s)/g, '\n\n$1');
-}
-
-/**
  * http://swagger.io/specification/#infoObject
  * Prepare page header
  * Leave description with no changes
@@ -27,8 +20,7 @@ export function transformInfo(
     }
 
     if ('description' in info && info.description) {
-      const description = ensureBlankLineBeforeList(info.description);
-      md.line(md.string(description).escape()).line();
+      md.line(md.string(info.description).escape()).line();
     }
 
     if ('version' in info) {
