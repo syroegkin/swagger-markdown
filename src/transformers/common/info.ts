@@ -3,6 +3,9 @@ import { transformContact } from './contact';
 import { transformLicense } from './license';
 import { Markdown } from '../../lib/markdown';
 
+/**
+ * @todo: simplify or ditch
+ */
 function ensureBlankLineBeforeList(text: string): string {
   return text.replace(/\n(\s*[-*]\s)/g, '\n\n$1');
 }
