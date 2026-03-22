@@ -10,15 +10,19 @@ export function transformLicense(
 ): string {
   const md = Markdown.md();
 
-  if ('url' in license || 'name' in license) {
+  if ('url' in license || 'name' in license || 'identifier' in license) {
     const licenseDocument = md.string('License:').bold();
-    let url: MDstring;
+    let value: MDstring;
     if ('url' in license && 'name' in license) {
-      url = md.string().link(license.name, license.url);
+      value = md.string().link(license.name, license.url);
+    } else if ('identifier' in license && license.identifier && 'name' in license) {
+      value = md.string(`${license.name} (${license.identifier})`);
+    } else if ('identifier' in license && license.identifier) {
+      value = md.string(license.identifier);
     } else {
-      url = md.string(license.name || license.url);
+      value = md.string(license.name || license.url);
     }
-    md.line(licenseDocument, ' ', url);
+    md.line(licenseDocument, ' ', value);
   }
 
   return md.export();

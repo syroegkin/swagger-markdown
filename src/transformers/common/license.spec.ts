@@ -42,4 +42,12 @@ describe('License field', () => {
     const result = `**License:** ${fixture.license.url}\n`;
     expect(res).to.be.equal(result);
   });
+  it('should render name with SPDX identifier (v3.1)', () => {
+    const res = transformLicense({ name: 'Apache 2.0', identifier: 'Apache-2.0' } as any);
+    expect(res).to.equal('**License:** Apache 2.0 (Apache-2.0)\n');
+  });
+  it('should render identifier alone when no name or url', () => {
+    const res = transformLicense({ identifier: 'MIT' } as any);
+    expect(res).to.equal('**License:** MIT\n');
+  });
 });
