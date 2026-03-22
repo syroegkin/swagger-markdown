@@ -1,3 +1,34 @@
+# [3.1.0](https://github.com/syroegkin/swagger-markdown/compare/v3.0.0...v3.1.0) (2026-03-22)
+
+
+### Bug Fixes
+
+* fix list spaces in the infro block ([8b92ea0](https://github.com/syroegkin/swagger-markdown/commit/8b92ea033796c921947c893ebf88718bf7bf880f))
+* fix markdown line, so it supports null-ish values without crashing ([14baca3](https://github.com/syroegkin/swagger-markdown/commit/14baca30a06a9013fcd72cea6fa439299908e767)), closes [#221](https://github.com/syroegkin/swagger-markdown/issues/221)
+* fix shema/path linmks collisions ([a53a148](https://github.com/syroegkin/swagger-markdown/commit/a53a14885b1d6f453fd127a97a813729f0a24dc2))
+* fix typo in info transformer ([b20f23d](https://github.com/syroegkin/swagger-markdown/commit/b20f23d89f3283285f7f476cd65ec01947bfc99c))
+* remove pesky regex ([dad1bad](https://github.com/syroegkin/swagger-markdown/commit/dad1bade9fb3c5ce43899d5691c80e03f0acf5a9))
+* render Request Body table with two columns (Required, Schema) ([6190bc8](https://github.com/syroegkin/swagger-markdown/commit/6190bc871cb7f194d2e7b30802a82e93ea476f18))
+
+
+### Features
+
+* 3.1 support, null guards, license fix ([52b1587](https://github.com/syroegkin/swagger-markdown/commit/52b1587d0c8774dde9b0e9004563c1c0d6d1549e))
+* add deprecated parameters support for 3.* versions ([37a722a](https://github.com/syroegkin/swagger-markdown/commit/37a722a9475600bb48a7eec07853466ce4013579))
+* add missing oneOf and anyOf compositions for 3.* versions ([f3a510b](https://github.com/syroegkin/swagger-markdown/commit/f3a510bcc3722b1e1c86ea36010cd04242a35025))
+* add mutualTLS to the security schema ([1bef5c3](https://github.com/syroegkin/swagger-markdown/commit/1bef5c3e43f008f63ddf7430847f71fcbeb33721))
+* add parameters explode support ([c5784c4](https://github.com/syroegkin/swagger-markdown/commit/c5784c43fc5c3032fda0d121e51216d0ade8b396))
+* add read-only and write-only properties support ([417d764](https://github.com/syroegkin/swagger-markdown/commit/417d7643042007afe50c8e43327d544fbdad6d2b))
+* add server section for v3.* ([a05523b](https://github.com/syroegkin/swagger-markdown/commit/a05523b9e525a6ab99a9f53b7812ae5b1ed917de))
+* add spdx type for the licenses (3.1 only) ([0f33e0a](https://github.com/syroegkin/swagger-markdown/commit/0f33e0a9aee405a2006c4d8eb5946f70a4d74685))
+* add summary support vor version 3.1 ([e867c80](https://github.com/syroegkin/swagger-markdown/commit/e867c809ffabdbd0513b950d9c060e51c0efc4e0))
+* add webhooks for v3.1 ([4b68f66](https://github.com/syroegkin/swagger-markdown/commit/4b68f6649918ebe961af6e0fc74091487c568a4f))
+* documentV31 transformer, request body table fix, typed helpers ([c776abc](https://github.com/syroegkin/swagger-markdown/commit/c776abcfb189e88ad80289244b6b3f19dfbf8cf5))
+* prepare for v3.1, add guards and rearrange transformers ([73b6680](https://github.com/syroegkin/swagger-markdown/commit/73b6680668d9f5d89134a16ac1fe132373610c09))
+* support deprecation in the schemas for v3.* ([59d9139](https://github.com/syroegkin/swagger-markdown/commit/59d9139cc29d14505b5e0e0fe5ece2b91b5806e4))
+* support the callback section for v3.* ([01c0127](https://github.com/syroegkin/swagger-markdown/commit/01c012737dc998f9ac23980830544c07279a3ec3))
+* v3 add nullable type ([b8ec7d5](https://github.com/syroegkin/swagger-markdown/commit/b8ec7d56088d67e37c7dc12e25a8d56284cbd1b0))
+
 # [3.0.0](https://github.com/syroegkin/swagger-markdown/compare/v2.3.2...v3.0.0) (2025-08-09)
 
 
