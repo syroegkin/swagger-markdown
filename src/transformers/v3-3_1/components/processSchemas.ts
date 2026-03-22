@@ -2,6 +2,7 @@ import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { Markdown } from '../../../lib/markdown';
 import { Dereferenced } from '../../../types';
 import { Schema } from '../models/Schema';
+import { V3_SCHEMA_SUFFIX } from '../../common/dataTypes';
 import {
   parseProperties,
   parsePrimitive,
@@ -15,15 +16,16 @@ export function processSchemas(
   Object.keys(schemas).forEach((schemaName: string) => {
     const schema = schemas[schemaName] as
       Dereferenced<OpenAPIV3.SchemaObject> | OpenAPIV3_1.SchemaObject | boolean | null;
+    const heading = `${schemaName} ${V3_SCHEMA_SUFFIX}`;
     if (schema === true) {
       md.line()
-        .line(md.string(schemaName).h4())
+        .line(md.string(heading).h4())
         .line(`${schemaName} (schema allows any instance)`);
       return;
     }
     if (schema === false) {
       md.line()
-        .line(md.string(schemaName).h4())
+        .line(md.string(heading).h4())
         .line(`${schemaName} (schema allows no instance)`);
       return;
     }
@@ -31,7 +33,7 @@ export function processSchemas(
       return;
     }
     md.line()
-      .line(md.string(schemaName).h4())
+      .line(md.string(heading).h4())
       .line();
     if (schema.description) {
       md.line(schema.description)

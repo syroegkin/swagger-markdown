@@ -31,8 +31,8 @@ proper display order.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | An array of products | [ [Product](#product) ] |
-| default | Unexpected error | [Error](#error) |
+| 200 | An array of products | [ [Product](#product-model) ] |
+| default | Unexpected error | [Error](#error-model) |
 
 ---
 ### /estimates/price
@@ -66,8 +66,8 @@ already factors in this multiplier.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | An array of price estimates by product | [ [Price.Estimate](#priceestimate) ] |
-| default | Unexpected error | [Error](#error) |
+| 200 | An array of price estimates by product | [ [Price.Estimate](#priceestimate-model) ] |
+| default | Unexpected error | [Error](#error-model) |
 
 ### /estimates/time
 
@@ -93,8 +93,8 @@ The Time Estimates endpoint returns ETAs for all products offered at a given loc
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | An array of products | [ [Product](#product) ] |
-| default | Unexpected error | [Error](#error) |
+| 200 | An array of products | [ [Product](#product-model) ] |
+| default | Unexpected error | [Error](#error-model) |
 
 ---
 ### /me
@@ -112,8 +112,8 @@ The User Profile endpoint returns information about the Uber user that has autho
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | Profile information for a user | [Profile](#profile) |
-| default | Unexpected error | [Error](#error) |
+| 200 | Profile information for a user | [Profile](#profile-model) |
+| default | Unexpected error | [Error](#error-model) |
 
 ### /history
 
@@ -137,13 +137,13 @@ The User Activity endpoint returns data about a user's lifetime activity with Ub
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | History information for the given user | [Activities](#activities) |
-| default | Unexpected error | [Error](#error) |
+| 200 | History information for the given user | [Activities](#activities-model) |
+| default | Unexpected error | [Error](#error-model) |
 
 ---
 ### Models
 
-#### Product
+#### Product Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -154,7 +154,7 @@ The User Activity endpoint returns data about a user's lifetime activity with Ub
 | image | string | Image URL representing the product. | No |
 | expiration_date | string | Timestamp in YYYY-MM-DDThh:mm[:ss[.uuuuuu]][+HH:MM\|-HH:MM\|Z] format | No |
 
-#### Price.Estimate
+#### Price.Estimate Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -166,7 +166,7 @@ The User Activity endpoint returns data about a user's lifetime activity with Ub
 | high_estimate | number | Upper bound of the estimated price. | No |
 | surge_multiplier | number | Expected surge multiplier. Surge is active if surge_multiplier is greater than 1. Price estimate already factors in the surge multiplier. | No |
 
-#### Profile
+#### Profile Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -176,22 +176,22 @@ The User Activity endpoint returns data about a user's lifetime activity with Ub
 | picture | string | Image URL of the Uber user. | No |
 | promo_code | string | Promo code of the Uber user. | No |
 
-#### Activity
+#### Activity Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | uuid | string | Unique identifier for the activity | No |
 
-#### Activities
+#### Activities Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | offset | integer | Position in pagination. | No |
 | limit | integer | Number of items to retrieve (100 max). | No |
 | count | integer | Total number of items available. | No |
-| history | [ [Activity](#activity) ] |  | No |
+| history | [ [Activity](#activity-model) ] |  | No |
 
-#### Error
+#### Error Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

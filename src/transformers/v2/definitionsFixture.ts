@@ -57,10 +57,10 @@ export const fixture = {
     },
   },
   result2: [
-    '| category | [Category](#category) |  | No |',
+    '| category | [Category](#category-model) |  | No |',
     '| name | string | pet category in the store<br>*Example:* `"doggie"` | Yes |',
     '| photoUrls | [ string ] |  | Yes |',
-    '| tags | [ [Category](#category) ] |  | No |',
+    '| tags | [ [Category](#category-model) ] |  | No |',
     '| gender | string | *Enum:* `"male"`, `"female"` | No |',
   ],
   data3: {
@@ -82,9 +82,9 @@ export const fixture = {
   result4: [
     '| Pet | string | This is a very long description |  |',
   ],
-  defHeader1: '#### Tag',
-  defHeader2: '#### Pet',
-  defHeader3: '#### deviceid',
+  defHeader1: '#### Tag Model',
+  defHeader2: '#### Pet Model',
+  defHeader3: '#### deviceid Model',
 };
 // fixture.defHeader1 = '#### Tag';
 // fixture.defHeader2 = '#### Pet';

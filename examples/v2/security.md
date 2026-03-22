@@ -110,8 +110,8 @@ Returns pets based on ID
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | pet response | [ [Pet](#pet) ] |
-| default | error payload | [ErrorModel](#errormodel) |
+| 200 | pet response | [ [Pet](#pet-model) ] |
+| default | error payload | [ErrorModel](#errormodel-model) |
 
 ##### Security
 
@@ -123,14 +123,14 @@ Returns pets based on ID
 ---
 ### Models
 
-#### Pet
+#### Pet Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | name | string |  | Yes |
 | tag | string |  | No |
 
-#### ErrorModel
+#### ErrorModel Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

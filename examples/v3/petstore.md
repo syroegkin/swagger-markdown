@@ -69,13 +69,13 @@ Update an existent pet in the store
 
 | Required | Schema |
 | -------- | ------ |
-|  Yes | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br>**application/x-www-form-urlencoded**: [Pet](#pet)<br> |
+|  Yes | **application/json**: [Pet](#pet-schema)<br>**application/xml**: [Pet](#pet-schema)<br>**application/x-www-form-urlencoded**: [Pet](#pet-schema)<br> |
 
 #### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | Successful operation | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br> |
+| 200 | Successful operation | **application/json**: [Pet](#pet-schema)<br>**application/xml**: [Pet](#pet-schema)<br> |
 | 400 | Invalid ID supplied |  |
 | 404 | Pet not found |  |
 | 405 | Validation exception |  |
@@ -95,13 +95,13 @@ Create a new pet in the store
 
 | Required | Schema |
 | -------- | ------ |
-|  Yes | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br>**application/x-www-form-urlencoded**: [Pet](#pet)<br> |
+|  Yes | **application/json**: [Pet](#pet-schema)<br>**application/xml**: [Pet](#pet-schema)<br>**application/x-www-form-urlencoded**: [Pet](#pet-schema)<br> |
 
 #### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | Successful operation | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br> |
+| 200 | Successful operation | **application/json**: [Pet](#pet-schema)<br>**application/xml**: [Pet](#pet-schema)<br> |
 | 405 | Invalid input |  |
 
 ##### Security
@@ -125,7 +125,7 @@ Multiple status values can be provided with comma separated strings
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [ [Pet](#pet) ]<br>**application/xml**: [ [Pet](#pet) ]<br> |
+| 200 | successful operation | **application/json**: [ [Pet](#pet-schema) ]<br>**application/xml**: [ [Pet](#pet-schema) ]<br> |
 | 400 | Invalid status value |  |
 
 ##### Security
@@ -149,7 +149,7 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [ [Pet](#pet) ]<br>**application/xml**: [ [Pet](#pet) ]<br> |
+| 200 | successful operation | **application/json**: [ [Pet](#pet-schema) ]<br>**application/xml**: [ [Pet](#pet-schema) ]<br> |
 | 400 | Invalid tag value |  |
 
 ##### Security
@@ -173,7 +173,7 @@ Returns a single pet
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br> |
+| 200 | successful operation | **application/json**: [Pet](#pet-schema)<br>**application/xml**: [Pet](#pet-schema)<br> |
 | 400 | Invalid ID supplied |  |
 | 404 | Pet not found |  |
 
@@ -251,7 +251,7 @@ delete a pet
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [ApiResponse](#apiresponse)<br> |
+| 200 | successful operation | **application/json**: [ApiResponse](#apiresponse-schema)<br> |
 
 ##### Security
 
@@ -290,13 +290,13 @@ Place a new order in the store
 
 | Required | Schema |
 | -------- | ------ |
-|  No | **application/json**: [Order](#order)<br>**application/xml**: [Order](#order)<br>**application/x-www-form-urlencoded**: [Order](#order)<br> |
+|  No | **application/json**: [Order](#order-schema)<br>**application/xml**: [Order](#order-schema)<br>**application/x-www-form-urlencoded**: [Order](#order-schema)<br> |
 
 #### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [Order](#order)<br> |
+| 200 | successful operation | **application/json**: [Order](#order-schema)<br> |
 | 405 | Invalid input |  |
 
 ### [GET] /store/order/{orderId}
@@ -314,7 +314,7 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [Order](#order)<br>**application/xml**: [Order](#order)<br> |
+| 200 | successful operation | **application/json**: [Order](#order-schema)<br>**application/xml**: [Order](#order-schema)<br> |
 | 400 | Invalid ID supplied |  |
 | 404 | Order not found |  |
 
@@ -351,13 +351,13 @@ Created user object
 
 | Required | Schema |
 | -------- | ------ |
-|  No | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br>**application/x-www-form-urlencoded**: [User](#user)<br> |
+|  No | **application/json**: [User](#user-schema)<br>**application/xml**: [User](#user-schema)<br>**application/x-www-form-urlencoded**: [User](#user-schema)<br> |
 
 #### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| default | successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
+| default | successful operation | **application/json**: [User](#user-schema)<br>**application/xml**: [User](#user-schema)<br> |
 
 ### [POST] /user/createWithList
 **Creates list of users with given input array**
@@ -366,13 +366,13 @@ Created user object
 
 | Required | Schema |
 | -------- | ------ |
-|  No | **application/json**: [ [User](#user) ]<br> |
+|  No | **application/json**: [ [User](#user-schema) ]<br> |
 
 #### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | Successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
+| 200 | Successful operation | **application/json**: [User](#user-schema)<br>**application/xml**: [User](#user-schema)<br> |
 | default | successful operation |  |
 
 ### [GET] /user/login
@@ -414,7 +414,7 @@ Created user object
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
+| 200 | successful operation | **application/json**: [User](#user-schema)<br>**application/xml**: [User](#user-schema)<br> |
 | 400 | Invalid username supplied |  |
 | 404 | User not found |  |
 
@@ -435,7 +435,7 @@ Update an existent user in the store
 
 | Required | Schema |
 | -------- | ------ |
-|  No | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br>**application/x-www-form-urlencoded**: [User](#user)<br> |
+|  No | **application/json**: [User](#user-schema)<br>**application/xml**: [User](#user-schema)<br>**application/x-www-form-urlencoded**: [User](#user-schema)<br> |
 
 #### Responses
 
@@ -464,7 +464,7 @@ This can only be done by the logged in user.
 ---
 ### Schemas
 
-#### Order
+#### Order Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -475,15 +475,15 @@ This can only be done by the logged in user.
 | status | string, <br>**Available values:** "placed", "approved", "delivered" | Order Status<br>*Enum:* `"placed"`, `"approved"`, `"delivered"`<br>*Example:* `"approved"` | No |
 | complete | boolean |  | No |
 
-#### Customer
+#### Customer Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long | *Example:* `100000` | No |
 | username | string | *Example:* `"fehguy"` | No |
-| address | [ [Address](#address) ] |  | No |
+| address | [ [Address](#address-schema) ] |  | No |
 
-#### Address
+#### Address Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -492,14 +492,14 @@ This can only be done by the logged in user.
 | state | string | *Example:* `"CA"` | No |
 | zip | string | *Example:* `"94301"` | No |
 
-#### Category
+#### Category Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long | *Example:* `1` | No |
 | name | string | *Example:* `"Dogs"` | No |
 
-#### User
+#### User Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -512,25 +512,25 @@ This can only be done by the logged in user.
 | phone | string | *Example:* `"12345"` | No |
 | userStatus | integer | User Status<br>*Example:* `1` | No |
 
-#### Tag
+#### Tag Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
 | name | string |  | No |
 
-#### Pet
+#### Pet Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long | *Example:* `10` | No |
 | name | string | *Example:* `"doggie"` | Yes |
-| category | [Category](#category) |  | No |
+| category | [Category](#category-schema) |  | No |
 | photoUrls | [ string ] |  | Yes |
-| tags | [ [Tag](#tag) ] |  | No |
+| tags | [ [Tag](#tag-schema) ] |  | No |
 | status | string, <br>**Available values:** "available", "pending", "sold" | pet status in the store<br>*Enum:* `"available"`, `"pending"`, `"sold"` | No |
 
-#### ApiResponse
+#### ApiResponse Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

@@ -49,17 +49,17 @@ Update an existent pet in the store
 
 | Required | Schema |
 | -------- | ------ |
-|  Yes | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br>**application/x-www-form-urlencoded**: [Pet](#pet)<br> |
+|  Yes | **application/json**: [Pet](#pet-schema)<br>**application/xml**: [Pet](#pet-schema)<br>**application/x-www-form-urlencoded**: [Pet](#pet-schema)<br> |
 
 #### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | Successful operation | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br> |
+| 200 | Successful operation | **application/json**: [Pet](#pet-schema)<br>**application/xml**: [Pet](#pet-schema)<br> |
 | 400 | Invalid ID supplied |  |
 | 404 | Pet not found |  |
 | 422 | Validation exception |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ##### Security
 
@@ -76,16 +76,16 @@ Create a new pet in the store
 
 | Required | Schema |
 | -------- | ------ |
-|  Yes | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br>**application/x-www-form-urlencoded**: [Pet](#pet)<br> |
+|  Yes | **application/json**: [Pet](#pet-schema)<br>**application/xml**: [Pet](#pet-schema)<br>**application/x-www-form-urlencoded**: [Pet](#pet-schema)<br> |
 
 #### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | Successful operation | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br> |
+| 200 | Successful operation | **application/json**: [Pet](#pet-schema)<br>**application/xml**: [Pet](#pet-schema)<br> |
 | 400 | Invalid input |  |
 | 422 | Validation exception |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ##### Security
 
@@ -108,9 +108,9 @@ Multiple status values can be provided with comma separated strings.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [ [Pet](#pet) ]<br>**application/xml**: [ [Pet](#pet) ]<br> |
+| 200 | successful operation | **application/json**: [ [Pet](#pet-schema) ]<br>**application/xml**: [ [Pet](#pet-schema) ]<br> |
 | 400 | Invalid status value |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ##### Security
 
@@ -133,9 +133,9 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [ [Pet](#pet) ]<br>**application/xml**: [ [Pet](#pet) ]<br> |
+| 200 | successful operation | **application/json**: [ [Pet](#pet-schema) ]<br>**application/xml**: [ [Pet](#pet-schema) ]<br> |
 | 400 | Invalid tag value |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ##### Security
 
@@ -158,10 +158,10 @@ Returns a single pet.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [Pet](#pet)<br>**application/xml**: [Pet](#pet)<br> |
+| 200 | successful operation | **application/json**: [Pet](#pet-schema)<br>**application/xml**: [Pet](#pet-schema)<br> |
 | 400 | Invalid ID supplied |  |
 | 404 | Pet not found |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ##### Security
 
@@ -189,7 +189,7 @@ update a pet via the form data.
 | ---- | ----------- | ------ |
 | 200 | successfully updated |  |
 | 400 | Invalid input |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ##### Security
 
@@ -215,7 +215,7 @@ delete a pet.
 | ---- | ----------- | ------ |
 | 200 | successful operation |  |
 | 400 | Invalid pet value |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ##### Security
 
@@ -245,8 +245,8 @@ Upload an image of pet.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [ApiResponse](#apiresponse)<br> |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| 200 | successful operation | **application/json**: [ApiResponse](#apiresponse-schema)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ##### Security
 
@@ -269,7 +269,7 @@ Returns a map of status codes to quantities.
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation | **application/json**: object<br> |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ##### Security
 
@@ -286,16 +286,16 @@ Place a new order in the store.
 
 | Required | Schema |
 | -------- | ------ |
-|  No | **application/json**: [Order](#order)<br>**application/xml**: [Order](#order)<br>**application/x-www-form-urlencoded**: [Order](#order)<br> |
+|  No | **application/json**: [Order](#order-schema)<br>**application/xml**: [Order](#order-schema)<br>**application/x-www-form-urlencoded**: [Order](#order-schema)<br> |
 
 #### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [Order](#order)<br> |
+| 200 | successful operation | **application/json**: [Order](#order-schema)<br> |
 | 400 | Invalid input |  |
 | 422 | Validation exception |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ### [GET] /store/order/{orderId}
 **Find purchase order by identifier.**
@@ -312,10 +312,10 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [Order](#order)<br>**application/xml**: [Order](#order)<br> |
+| 200 | successful operation | **application/json**: [Order](#order-schema)<br>**application/xml**: [Order](#order-schema)<br> |
 | 400 | Invalid ID supplied |  |
 | 404 | Order not found |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ### [DELETE] /store/order/{orderId}
 **Delete purchase order by identifier.**
@@ -335,7 +335,7 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
 | 200 | successful operation |  |
 | 400 | Invalid ID supplied |  |
 | 404 | Order not found |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ---
 ## user
@@ -352,14 +352,14 @@ Created user object
 
 | Required | Schema |
 | -------- | ------ |
-|  No | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br>**application/x-www-form-urlencoded**: [User](#user)<br> |
+|  No | **application/json**: [User](#user-schema)<br>**application/xml**: [User](#user-schema)<br>**application/x-www-form-urlencoded**: [User](#user-schema)<br> |
 
 #### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| 200 | successful operation | **application/json**: [User](#user-schema)<br>**application/xml**: [User](#user-schema)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ### [POST] /user/createWithList
 **Creates list of users with given input array.**
@@ -368,14 +368,14 @@ Created user object
 
 | Required | Schema |
 | -------- | ------ |
-|  No | **application/json**: [ [User](#user) ]<br> |
+|  No | **application/json**: [ [User](#user-schema) ]<br> |
 
 #### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | Successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| 200 | Successful operation | **application/json**: [User](#user-schema)<br>**application/xml**: [User](#user-schema)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ### [GET] /user/login
 **Logs user into the system.**
@@ -395,7 +395,7 @@ log user into the system.
 | ---- | ----------- | ------ |
 | 200 | successful operation<br>**Headers:**<br>**X-Rate-Limit**: calls per hour allowed by the user<br>**X-Expires-After**: date in UTC when token expires<br> | **application/xml**: string<br>**application/json**: string<br> |
 | 400 | Invalid username/password supplied |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ### [GET] /user/logout
 **Logs out current logged in user session.**
@@ -424,10 +424,10 @@ Get user details based on username.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br> |
+| 200 | successful operation | **application/json**: [User](#user-schema)<br>**application/xml**: [User](#user-schema)<br> |
 | 400 | Invalid username supplied |  |
 | 404 | User not found |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ### [PUT] /user/{username}
 **Update user.**
@@ -446,14 +446,14 @@ Update an existent user in the store
 
 | Required | Schema |
 | -------- | ------ |
-|  No | **application/json**: [User](#user)<br>**application/xml**: [User](#user)<br>**application/x-www-form-urlencoded**: [User](#user)<br> |
+|  No | **application/json**: [User](#user-schema)<br>**application/xml**: [User](#user-schema)<br>**application/x-www-form-urlencoded**: [User](#user-schema)<br> |
 
 #### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 200 | successful operation |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ### [DELETE] /user/{username}
 **Delete user.**
@@ -473,12 +473,12 @@ This can only be done by the logged in user.
 | 200 | successful operation |  |
 | 400 | Invalid username supplied |  |
 | 404 | User not found |  |
-| default | Unexpected error | **application/json**: [Error](#error)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
 ---
 ### Schemas
 
-#### Order
+#### Order Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -489,15 +489,15 @@ This can only be done by the logged in user.
 | status | string, <br>**Available values:** "placed", "approved", "delivered" | Order Status<br>*Enum:* `"placed"`, `"approved"`, `"delivered"` | No |
 | complete | boolean |  | No |
 
-#### Customer
+#### Customer Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
 | username | string |  | No |
-| address | [ [Address](#address) ] |  | No |
+| address | [ [Address](#address-schema) ] |  | No |
 
-#### Address
+#### Address Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -506,14 +506,14 @@ This can only be done by the logged in user.
 | state | string |  | No |
 | zip | string |  | No |
 
-#### Category
+#### Category Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
 | name | string |  | No |
 
-#### User
+#### User Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -526,25 +526,25 @@ This can only be done by the logged in user.
 | phone | string |  | No |
 | userStatus | integer | User Status | No |
 
-#### Tag
+#### Tag Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
 | name | string |  | No |
 
-#### Pet
+#### Pet Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
 | name | string |  | Yes |
-| category | [Category](#category) |  | No |
+| category | [Category](#category-schema) |  | No |
 | photoUrls | [ string ] |  | Yes |
-| tags | [ [Tag](#tag) ] |  | No |
+| tags | [ [Tag](#tag-schema) ] |  | No |
 | status | string, <br>**Available values:** "available", "pending", "sold" | pet status in the store<br>*Enum:* `"available"`, `"pending"`, `"sold"` | No |
 
-#### ApiResponse
+#### ApiResponse Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -552,7 +552,7 @@ This can only be done by the logged in user.
 | type | string |  | No |
 | message | string |  | No |
 
-#### Error
+#### Error Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

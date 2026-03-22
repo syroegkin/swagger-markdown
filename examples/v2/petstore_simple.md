@@ -34,8 +34,8 @@ Returns all pets from the system that the user has access to
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | pet response | [ [pet](#pet) ] |
-| default | unexpected error | [errorModel](#errormodel) |
+| 200 | pet response | [ [pet](#pet-model) ] |
+| default | unexpected error | [errorModel](#errormodel-model) |
 
 #### POST
 ##### Description
@@ -46,14 +46,14 @@ Creates a new pet in the store.  Duplicates are allowed
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
-| pet | body | Pet to add to the store | Yes | [newPet](#newpet) |
+| pet | body | Pet to add to the store | Yes | [newPet](#newpet-model) |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | pet response | [pet](#pet) |
-| default | unexpected error | [errorModel](#errormodel) |
+| 200 | pet response | [pet](#pet-model) |
+| default | unexpected error | [errorModel](#errormodel-model) |
 
 ### /pets/{id}
 
@@ -72,8 +72,8 @@ Returns a user based on a single ID, if the user does not have access to the pet
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | pet response<br><br>**Example** (*application/json*):<br><pre>{<br>  "id": 18,<br>  "name": "Doggo",<br>  "tag": "afuera"<br>}</pre> | [pet](#pet) |
-| default | unexpected error | [errorModel](#errormodel) |
+| 200 | pet response<br><br>**Example** (*application/json*):<br><pre>{<br>  "id": 18,<br>  "name": "Doggo",<br>  "tag": "afuera"<br>}</pre> | [pet](#pet-model) |
+| default | unexpected error | [errorModel](#errormodel-model) |
 
 #### DELETE
 ##### Description
@@ -91,12 +91,12 @@ deletes a single pet based on the ID supplied
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
 | 204 | pet deleted |  |
-| default | unexpected error | [errorModel](#errormodel) |
+| default | unexpected error | [errorModel](#errormodel-model) |
 
 ---
 ### Models
 
-#### pet
+#### pet Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -104,7 +104,7 @@ deletes a single pet based on the ID supplied
 | name | string |  | Yes |
 | tag | string |  | No |
 
-#### newPet
+#### newPet Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -112,7 +112,7 @@ deletes a single pet based on the ID supplied
 | name | string | Pet name<br>*Example:* `"doggie dog"` | Yes |
 | tag | string |  | No |
 
-#### errorModel
+#### errorModel Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

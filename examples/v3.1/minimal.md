@@ -27,7 +27,7 @@
 ---
 ### Schemas
 
-#### Ping
+#### Ping Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

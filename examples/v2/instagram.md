@@ -170,7 +170,7 @@ Get basic information about a user.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | The user object | { **"data"**: [User](#user) } |
+| 200 | The user object | { **"data"**: [User](#user-model) } |
 
 ##### Security
 
@@ -198,7 +198,7 @@ See the authenticated user's feed.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [ [Media](#media) ] } |
+| 200 | OK | { **"data"**: [ [Media](#media-model) ] } |
 
 ### /users/{user-id}/media/recent
 
@@ -218,7 +218,7 @@ See the authenticated user's feed.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | Get the most recent media published by a user. To get the most recent media published by the owner of the access token, you can use `self` instead of the `user-id`.  | { **"data"**: [ [Media](#media) ] } |
+| 200 | Get the most recent media published by a user. To get the most recent media published by the owner of the access token, you can use `self` instead of the `user-id`.  | { **"data"**: [ [Media](#media-model) ] } |
 
 ### /users/self/media/liked
 
@@ -241,7 +241,7 @@ available for the currently authenticated user.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [ [Media](#media) ] } |
+| 200 | OK | { **"data"**: [ [Media](#media-model) ] } |
 
 ### /users/search
 
@@ -261,7 +261,7 @@ Search for a user by name.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
+| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile-model) ] } |
 
 ---
 ## Relationships
@@ -289,7 +289,7 @@ Get the list of users this user follows.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
+| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile-model) ] } |
 
 ### /users/{user-id}/followed-by
 
@@ -308,7 +308,7 @@ Get the list of users this user is followed by.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
+| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile-model) ] } |
 
 ### /users/self/requested-by
 
@@ -321,7 +321,7 @@ List the users who have requested this user's permission to follow.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"meta"**: { **"code"**: integer }, **"data"**: [ [MiniProfile](#miniprofile) ] } |
+| 200 | OK | { **"meta"**: { **"code"**: integer }, **"data"**: [ [MiniProfile](#miniprofile-model) ] } |
 
 ### /users/{user-id}/relationship
 
@@ -341,7 +341,7 @@ Modify the relationship between the current user and thetarget user.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile) ] } |
+| 200 | OK | { **"data"**: [ [MiniProfile](#miniprofile-model) ] } |
 
 ##### Security
 
@@ -384,7 +384,7 @@ has liked this media item.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | [Media](#media) |
+| 200 | OK | [Media](#media-model) |
 
 ### /media1/{shortcode}
 
@@ -407,7 +407,7 @@ Its corresponding shortcode is D.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | [Media](#media) |
+| 200 | OK | [Media](#media-model) |
 
 ### /media/search
 
@@ -432,7 +432,7 @@ the last 5 days. Can return mix of image and video types.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [ [Media](#media) & { **"distance"**: number } ] } |
+| 200 | OK | { **"data"**: [ [Media](#media-model) & { **"distance"**: number } ] } |
 
 ### /media/popular
 
@@ -446,7 +446,7 @@ Can return mix of image and video types.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [ [Media](#media) ] } |
+| 200 | OK | { **"data"**: [ [Media](#media-model) ] } |
 
 ### /media/{media-id}/comments
 
@@ -465,7 +465,7 @@ Get a list of recent comments on a media object.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Comment](#comment) ] } |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Comment](#comment-model) ] } |
 
 #### POST
 ##### Description
@@ -531,7 +531,7 @@ Get a list of users who have liked this media.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Like](#like) ] } |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Like](#like-model) ] } |
 
 #### POST
 ##### Description
@@ -594,7 +594,7 @@ Get a list of recent media objects from a given location.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [ [Media](#media) ] } |
+| 200 | OK | { **"data"**: [ [Media](#media-model) ] } |
 
 ---
 ## Comments
@@ -616,7 +616,7 @@ Get a list of recent comments on a media object.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Comment](#comment) ] } |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Comment](#comment-model) ] } |
 
 #### POST
 ##### Description
@@ -685,7 +685,7 @@ Get a list of users who have liked this media.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Like](#like) ] } |
+| 200 | OK | { **"meta"**: { **"code"**: number }, **"data"**: [ [Like](#like-model) ] } |
 
 #### POST
 ##### Description
@@ -747,7 +747,7 @@ Get information about a tag object.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | [Tag](#tag) |
+| 200 | OK | [Tag](#tag-model) |
 
 ### /tags/{tag-name}/media/recent
 
@@ -768,7 +768,7 @@ these objects.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [ [Tag](#tag) ] } |
+| 200 | OK | { **"data"**: [ [Tag](#tag-model) ] } |
 
 ### /tags/search
 
@@ -783,7 +783,7 @@ these objects.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"meta"**: { **"code"**: integer }, **"data"**: [ [Tag](#tag) ] } |
+| 200 | OK | { **"meta"**: { **"code"**: integer }, **"data"**: [ [Tag](#tag-model) ] } |
 
 ---
 ## Location
@@ -805,7 +805,7 @@ Get information about a location.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [Location](#location) } |
+| 200 | OK | { **"data"**: [Location](#location-model) } |
 
 ### /locations/{location-id}/media/recent
 
@@ -828,7 +828,7 @@ Get a list of recent media objects from a given location.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [ [Media](#media) ] } |
+| 200 | OK | { **"data"**: [ [Media](#media-model) ] } |
 
 ### /locations/search
 
@@ -852,7 +852,7 @@ Search for a location by geographic coordinate.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | OK | { **"data"**: [ [Location](#location) ] } |
+| 200 | OK | { **"data"**: [ [Location](#location-model) ] } |
 
 ---
 ## default
@@ -889,7 +889,7 @@ geography, use the [media search endpoint
 ---
 ### Models
 
-#### User
+#### User Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -901,24 +901,24 @@ geography, use the [media search endpoint
 | website | string |  | No |
 | counts | { **"media"**: integer, **"follows"**: integer, **"follwed_by"**: integer } |  | No |
 
-#### Media
+#### Media Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | created_time | integer | Epoc time (ms) | No |
 | type | string |  | No |
 | filter | string |  | No |
-| tags | [ [Tag](#tag) ] |  | No |
+| tags | [ [Tag](#tag-model) ] |  | No |
 | id | integer |  | No |
-| user | [MiniProfile](#miniprofile) |  | No |
-| users_in_photo | [ [MiniProfile](#miniprofile) ] |  | No |
-| location | [Location](#location) |  | No |
-| comments: | { **"count"**: integer, **"data"**: [ [Comment](#comment) ] } |  | No |
-| likes | { **"count"**: integer, **"data"**: [ [MiniProfile](#miniprofile) ] } |  | No |
-| images | { **"low_resolution"**: [Image](#image), **"thumbnail"**: [Image](#image), **"standard_resolution"**: [Image](#image) } |  | No |
-| videos | { **"low_resolution"**: [Image](#image), **"standard_resolution"**: [Image](#image) } |  | No |
+| user | [MiniProfile](#miniprofile-model) |  | No |
+| users_in_photo | [ [MiniProfile](#miniprofile-model) ] |  | No |
+| location | [Location](#location-model) |  | No |
+| comments: | { **"count"**: integer, **"data"**: [ [Comment](#comment-model) ] } |  | No |
+| likes | { **"count"**: integer, **"data"**: [ [MiniProfile](#miniprofile-model) ] } |  | No |
+| images | { **"low_resolution"**: [Image](#image-model), **"thumbnail"**: [Image](#image-model), **"standard_resolution"**: [Image](#image-model) } |  | No |
+| videos | { **"low_resolution"**: [Image](#image-model), **"standard_resolution"**: [Image](#image-model) } |  | No |
 
-#### Location
+#### Location Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -927,16 +927,16 @@ geography, use the [media search endpoint
 | latitude | number |  | No |
 | longitude | number |  | No |
 
-#### Comment
+#### Comment Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | string |  | No |
 | created_time | string |  | No |
 | text | string |  | No |
-| from | [MiniProfile](#miniprofile) |  | No |
+| from | [MiniProfile](#miniprofile-model) |  | No |
 
-#### Like
+#### Like Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -946,14 +946,14 @@ geography, use the [media search endpoint
 | type | string |  | No |
 | id | string |  | No |
 
-#### Tag
+#### Tag Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | media_count | integer |  | No |
 | name | string |  | No |
 
-#### Image
+#### Image Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -961,7 +961,7 @@ geography, use the [media search endpoint
 | height | integer |  | No |
 | url | string |  | No |
 
-#### MiniProfile
+#### MiniProfile Model
 
 A shorter version of User for likes array
 

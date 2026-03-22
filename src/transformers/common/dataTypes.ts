@@ -1,6 +1,11 @@
 import { anchor } from '../../lib/anchor';
 import { Markdown } from '../../lib/markdown';
 
+// Suffixes appended to schema/definition headings to avoid anchor collisions with tag headings.
+// Must stay in sync: link generation in dataTypeResolver uses these same suffixes.
+export const V2_DEFINITION_SUFFIX = 'Model';
+export const V3_SCHEMA_SUFFIX = 'Schema';
+
 export interface SchemaInterface {
   type?: string | string[];
   format?: string;
@@ -60,7 +65,9 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
   const reference = schema.getReference();
   if (reference) {
     const name = reference.match(/\/([^/]*)$/i)[1];
-    const link = anchor(name);
+    const suffix = reference.includes('/definitions/')
+      ? V2_DEFINITION_SUFFIX : V3_SCHEMA_SUFFIX;
+    const link = anchor(`${name} ${suffix}`);
     return md.string().link(name, `#${link}`).get();
   }
 

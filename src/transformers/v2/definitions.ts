@@ -1,6 +1,7 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { Schema } from './models/Schema';
 import { Markdown } from '../../lib/markdown';
+import { V2_DEFINITION_SUFFIX } from '../common/dataTypes';
 import {
   parseProperties,
   parsePrimitive,
@@ -9,7 +10,7 @@ import {
 export function processDefinition(name: string, definition: OpenAPIV2.SchemaObject) {
   const md = Markdown.md();
   md.line()
-    .line(md.string(name).h4())
+    .line(md.string(`${name} ${V2_DEFINITION_SUFFIX}`).h4())
     .line();
   if (definition.description) {
     md.line(definition.description)

@@ -8,7 +8,7 @@ const fixture = [
   // References
   [
     new V2Schema({ $ref: '#/definitions/ErrorModel' }),
-    `[ErrorModel](#${anchor('ErrorModel')})`,
+    `[ErrorModel](#${anchor('ErrorModel model')})`,
   ],
   // Standard usecases
   [new V2Schema({ type: 'integer', format: 'int32' }), 'integer'],
@@ -36,7 +36,7 @@ const fixture = [
     new V2Schema({
       type: 'array',
       items: { $ref: '#/definitions/ErrorModel' },
-    }), `[ [ErrorModel](#${anchor('ErrorModel')}) ]`],
+    }), `[ [ErrorModel](#${anchor('ErrorModel model')}) ]`],
   // Weird usecases
   [new V2Schema({ type: 'random', format: 'number' }), 'random (number)'],
   [new V2Schema({ type: 'integer', format: 'int128' }), 'integer (int128)'],
@@ -79,7 +79,7 @@ describe('Data Types', () => {
 
   it('should resolve V3 Schema references', () => {
     const schema = new V3Schema({ $ref: '#/components/schemas/Pet' } as any);
-    expect(dataTypeResolver(schema)).to.equal(`[Pet](#${anchor('Pet')})`);
+    expect(dataTypeResolver(schema)).to.equal(`[Pet](#${anchor('Pet schema')})`);
   });
 
   it('should render enum values for V3 schemas', () => {
