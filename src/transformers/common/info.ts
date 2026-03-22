@@ -20,7 +20,19 @@ export function transformInfo(
     }
 
     if ('description' in info && info.description) {
-      md.line(md.string(info.description).escape()).line();
+      const descriptionLines = info.description.split('\n');
+      let prevIsList = false;
+      for (let i = 0; i < descriptionLines.length; i++) {
+        const line = descriptionLines[i];
+        const isList = /^\s*[-*+]\s/.test(line);
+        // Insert blank line at list boundaries; tidyMarkdown deduplicates
+        if (i > 0 && isList !== prevIsList) {
+          md.line();
+        }
+        md.line(md.string(line).escape());
+        prevIsList = isList;
+      }
+      md.line();
     }
 
     if ('version' in info) {

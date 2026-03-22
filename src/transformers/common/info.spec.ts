@@ -44,6 +44,48 @@ describe('Info transformer', () => {
     expect(res).to.be.equal(result);
   });
 
+  it('should insert blank line before list in description', () => {
+    const fixture = {
+      description: 'Some useful links:\n- Link one\n- Link two',
+    } as OpenAPIV2.InfoObject;
+    const res = transformInfo(fixture);
+    expect(res).to.be.equal('Some useful links:\n\n- Link one\n- Link two\n\n');
+  });
+
+  it('should insert blank line at list boundary even if one exists (tidyMarkdown deduplicates)', () => {
+    const fixture = {
+      description: 'Some useful links:\n\n- Link one\n- Link two',
+    } as OpenAPIV2.InfoObject;
+    const res = transformInfo(fixture);
+    expect(res).to.be.equal('Some useful links:\n\n\n- Link one\n- Link two\n\n');
+  });
+
+  it('should insert blank line after list in description', () => {
+    const fixture = {
+      description: '- Link one\n- Link two\nSome text after',
+    } as OpenAPIV2.InfoObject;
+    const res = transformInfo(fixture);
+    expect(res).to.be.equal('- Link one\n- Link two\n\nSome text after\n\n');
+  });
+
+  it('should insert blank lines both before and after list', () => {
+    const fixture = {
+      description: 'Some text before\n- Link one\n- Link two\nSome text after',
+    } as OpenAPIV2.InfoObject;
+    const res = transformInfo(fixture);
+    expect(res).to.be.equal('Some text before\n\n- Link one\n- Link two\n\nSome text after\n\n');
+  });
+
+  it('should not treat lines starting with numbers as list items', () => {
+    const fixture = {
+      description: 'you\'ll only ever see a code key with value\n200. However, sometimes things go wrong',
+    } as OpenAPIV2.InfoObject;
+    const res = transformInfo(fixture);
+    expect(res).to.be.equal(
+      'you\'ll only ever see a code key with value\n200. However, sometimes things go wrong\n\n',
+    );
+  });
+
   it('should create term of service block', () => {
     const fixture = {
       termsOfService: 'Terms of service',
