@@ -1,5 +1,11 @@
 import { expect } from 'chai';
-import { transformPath } from './path';
+import { Markdown } from '../../lib/markdown';
+import {
+  transformPath,
+  appendMethodHeader,
+  appendOperationDetails,
+  appendOperationSections,
+} from './path';
 
 describe('Path transformer (v3-3_1)', () => {
   it('should return null if path is empty', () => {
@@ -127,5 +133,110 @@ describe('Path transformer (v3-3_1)', () => {
     const res = (transformPath(fixture.path, fixture.data as any) as string).split('\n');
     expect(res.some((l) => l.includes('Responses'))).to.equal(true);
     expect(res.some((l) => l.includes('200'))).to.equal(true);
+  });
+});
+
+describe('appendMethodHeader', () => {
+  it('should render method and path as h3', () => {
+    const md = Markdown.md();
+    appendMethodHeader(md, 'get', '/pets', false);
+    const lines = md.export().split('\n');
+    expect(lines.some((l) => l === '### [GET] /pets')).to.equal(true);
+  });
+
+  it('should render strikethrough and DEPRECATED when deprecated', () => {
+    const md = Markdown.md();
+    appendMethodHeader(md, 'post', '/items', true);
+    const output = md.export();
+    expect(output).to.include('~~');
+    expect(output).to.include('DEPRECATED');
+  });
+
+  it('should not render DEPRECATED when not deprecated', () => {
+    const md = Markdown.md();
+    appendMethodHeader(md, 'get', '/', false);
+    const output = md.export();
+    expect(output).to.not.include('DEPRECATED');
+  });
+});
+
+describe('appendOperationDetails', () => {
+  it('should render summary when present', () => {
+    const md = Markdown.md();
+    appendOperationDetails(md, { summary: 'Get all pets', responses: {} });
+    const output = md.export();
+    expect(output).to.include('Get all pets');
+  });
+
+  it('should render description when different from summary', () => {
+    const md = Markdown.md();
+    appendOperationDetails(md, {
+      summary: 'Short',
+      description: 'Longer description here',
+      responses: {},
+    });
+    const output = md.export();
+    expect(output).to.include('Longer description here');
+  });
+
+  it('should not render description when same as summary', () => {
+    const md = Markdown.md();
+    appendOperationDetails(md, {
+      summary: 'Same text',
+      description: 'Same text',
+      responses: {},
+    });
+    const lines = md.export().split('\n').filter((l) => l.includes('Same text'));
+    expect(lines.length).to.equal(1);
+  });
+
+  it('should render externalDocs when present', () => {
+    const md = Markdown.md();
+    appendOperationDetails(md, {
+      externalDocs: { url: 'http://example.com', description: 'Docs' },
+      responses: {},
+    });
+    const output = md.export();
+    expect(output).to.include('Documentation:');
+    expect(output).to.include('http://example.com');
+  });
+});
+
+describe('appendOperationSections', () => {
+  it('should render parameters section', () => {
+    const md = Markdown.md();
+    appendOperationSections(md, {
+      parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }],
+      responses: {},
+    } as any, []);
+    const output = md.export();
+    expect(output).to.include('Parameters');
+    expect(output).to.include('id');
+  });
+
+  it('should render responses section', () => {
+    const md = Markdown.md();
+    appendOperationSections(md, {
+      responses: { 200: { description: 'Success' } },
+    } as any, []);
+    const output = md.export();
+    expect(output).to.include('Responses');
+    expect(output).to.include('200');
+  });
+
+  it('should render request body section', () => {
+    const md = Markdown.md();
+    appendOperationSections(md, {
+      requestBody: {
+        content: {
+          'application/json': {
+            schema: { type: 'object' },
+          },
+        },
+      },
+      responses: {},
+    } as any, []);
+    const output = md.export();
+    expect(output).to.include('Request Body');
   });
 });
