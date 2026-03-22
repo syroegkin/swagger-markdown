@@ -20,11 +20,12 @@ export class Markdown {
     return MDtable.table();
   }
 
-  public line(...strings: Array<MDstring | MDtable | string>): Markdown {
-    if (strings && strings.length > 0) {
+  public line(...strings: Array<MDstring | MDtable | string | null | undefined>): Markdown {
+    const filtered = strings.filter((d): d is MDstring | MDtable | string => d != null);
+    if (filtered.length > 0) {
       this.doc.push(
-        strings.map(
-          (d: MDstring | string) => (typeof d === 'string' ? d : d.get()),
+        filtered.map(
+          (d: MDstring | MDtable | string) => (typeof d === 'string' ? d : d.get()),
         ).join(''),
       );
     } else {
