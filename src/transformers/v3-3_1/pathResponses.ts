@@ -2,7 +2,7 @@ import { OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { Markdown } from '../../lib/markdown';
 import { transformHeaders } from '../common/headers';
 import { processLink } from './link';
-import { dataTypeResolver } from './dataTypes';
+import { dataTypeResolver } from '../common/dataTypes';
 import { Schema } from './models/Schema';
 import { Dereferenced } from '../../types';
 

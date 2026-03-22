@@ -1,6 +1,21 @@
 import { anchor } from '../../lib/anchor';
 import { Markdown } from '../../lib/markdown';
-import { SchemaInterface } from './models/Schema';
+
+export interface SchemaInterface {
+  type?: string | string[];
+  format?: string;
+  ref?: string;
+  allOf?: SchemaInterface[];
+  items?: SchemaInterface;
+  properties?: { [name: string]: SchemaInterface };
+  getType?(): string | string[] | undefined;
+  getFormat?(): string | undefined;
+  getItems?(): SchemaInterface;
+  getReference(): string | undefined;
+  getAllOf?(): SchemaInterface[];
+  getDefault?(): unknown;
+  getEnum?(): unknown[];
+}
 
 const resolver = {
   integer: {
@@ -20,7 +35,7 @@ const resolver = {
   },
 };
 
-export function resolveType(type: string, format: string): string | undefined {
+function resolveKnownType(type: string, format: string): string | undefined {
   if (type in resolver) {
     if (format) {
       return format in resolver[type]
@@ -32,11 +47,6 @@ export function resolveType(type: string, format: string): string | undefined {
   return undefined;
 }
 
-/**
- * Transform data types into common names
- * @param {Schema} schema
- * @return {String}
- */
 export const dataTypeResolver = (schema: SchemaInterface): string => {
   const md = Markdown.md();
 
@@ -60,13 +70,9 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
   const format = schema.getFormat();
 
   const resolveResults = types.map((type: string) => {
-    if (type in resolver) {
-      if (format) {
-        return format in resolver[type]
-          ? resolver[type][format]
-          : `${type} (${format})`;
-      }
-      return type;
+    const known = resolveKnownType(type, format);
+    if (known !== undefined) {
+      return known;
     }
 
     if (format) {
@@ -102,8 +108,9 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
     return md.string('').get();
   }).filter((s) => s.length > 0); // and filter out empty strings
 
-  if (schema.getEnum() && schema.getEnum().length > 0) {
-    const enumValues = schema.getEnum().map((value) => {
+  const schemaEnum = schema.getEnum?.();
+  if (schemaEnum && schemaEnum.length > 0) {
+    const enumValues = schemaEnum.map((value) => {
       if (typeof value === 'string') {
         return md.string(`"${value}"`).get();
       }
@@ -116,10 +123,11 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
     );
   }
 
-  if (schema.getDefault()) {
+  const schemaDefault = schema.getDefault?.();
+  if (schemaDefault) {
     resolveResults.push(
       md.string().br(true).concat(
-        md.string('Default:').bold().concat(` ${schema.getDefault()}`),
+        md.string('Default:').bold().concat(` ${schemaDefault}`),
       ).get(),
     );
   }

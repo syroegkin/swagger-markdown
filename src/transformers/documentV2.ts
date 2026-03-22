@@ -5,11 +5,13 @@ import { transformPath } from './v2/path';
 import { transformSecurityDefinitions } from './v2/securityDefinitions';
 import { transformExternalDocs } from './common/externalDocs';
 import { transformDefinition } from './v2/definitions';
-import { TagsCollection } from './common/Tags';
 import { Markdown } from '../lib/markdown';
 import { groupPathsByTags } from './common/groupPathsByTags';
-import { transformTag } from './common/tag';
 import { transformSchemes } from './v2/schemes';
+import {
+  collectTags,
+  renderPathsByTags,
+} from './common/pipeline';
 
 export function transformSwaggerV2(
   inputDoc: OpenAPIV2.Document,
@@ -29,12 +31,8 @@ export function transformSwaggerV2(
   }
 
   // Collect tags
-  const tagsCollection = new TagsCollection();
-  if ('tags' in inputDoc) {
-    inputDoc.tags.forEach((tag) => {
-      tagsCollection.tag(tag);
-    });
-  }
+  const tagsCollection = 'tags' in inputDoc
+    ? collectTags(inputDoc.tags) : collectTags([]);
 
   if ('externalDocs' in inputDoc) {
     md.line(transformExternalDocs(inputDoc.externalDocs));
@@ -43,8 +41,6 @@ export function transformSwaggerV2(
   // Security definitions
   if ('securityDefinitions' in inputDoc) {
     md.line(transformSecurityDefinitions(inputDoc.securityDefinitions));
-  // } else if (inputDoc.components && inputDoc.components.securitySchemas) {
-  //   document.push(transformSecurityDefinitions(inputDoc.components.securityDefinitions));
   }
 
   // Schemes
@@ -57,34 +53,22 @@ export function transformSwaggerV2(
 
   // Process Paths
   if ('paths' in inputDoc) {
-    // Group paths by tag name
     const tagged = groupPathsByTags<OpenAPIV2.PathsObject>(
       inputDoc.paths,
       ALLOWED_METHODS_V2,
     );
 
-    Object.keys(tagged).forEach((tagName) => {
-      md.line(md.string().horizontalRule());
-      if (tagsCollection.length) {
-        // Display Tag
-        const tagObject = tagsCollection.getTag(tagName) || '';
-        md.line(transformTag(tagObject));
-      }
-      const pathsUnderTag = tagged[tagName];
-      Object.keys(pathsUnderTag).forEach((path: string) => md.line(transformPath(
-        path,
-        inputDoc.paths[path],
-        parameters,
-      )));
-    });
+    renderPathsByTags(md, tagged, tagsCollection, (path) => transformPath(
+      path,
+      inputDoc.paths[path],
+      parameters,
+    ));
   }
 
   // Models (definitions)
   if ('definitions' in inputDoc) {
     md.line(md.string().horizontalRule());
     md.line(transformDefinition(inputDoc.definitions));
-  // } else if (inputDoc.components && inputDoc.components.schemas) {
-  //   document.push(transformDefinition(inputDoc.components.schemas));
   }
 
   // Glue all pieces down

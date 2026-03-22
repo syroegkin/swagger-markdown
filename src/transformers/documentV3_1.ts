@@ -3,12 +3,14 @@ import { ALLOWED_METHODS_V3, Options } from '../types';
 import { transformInfo } from './common/info';
 import { transformPath } from './v3-3_1/path';
 import { Markdown } from '../lib/markdown';
-import { TagsCollection } from './common/Tags';
 import { transformExternalDocs } from './common/externalDocs';
-import { transformTag } from './common/tag';
 import { groupPathsByTags } from './common/groupPathsByTags';
 import { transformComponents } from './v3-3_1/components/components';
 import { transformSecuritySchemes } from './v3-3_1/securitySchemes/securitySchemes';
+import {
+  collectTags,
+  renderPathsByTags,
+} from './common/pipeline';
 
 export function transformSwaggerV3_1(
   inputDoc: OpenAPIV3_1.Document,
@@ -20,12 +22,8 @@ export function transformSwaggerV3_1(
     md.line(transformInfo(inputDoc.info));
   }
 
-  const tagsCollection = new TagsCollection();
-  if ('tags' in inputDoc) {
-    inputDoc.tags.forEach((tag) => {
-      tagsCollection.tag(tag);
-    });
-  }
+  const tagsCollection = 'tags' in inputDoc
+    ? collectTags(inputDoc.tags) : collectTags([]);
 
   if ('externalDocs' in inputDoc) {
     md.line(transformExternalDocs(inputDoc.externalDocs));
@@ -41,17 +39,9 @@ export function transformSwaggerV3_1(
   if ('paths' in inputDoc && inputDoc.paths) {
     const tagged = groupPathsByTags(inputDoc.paths, ALLOWED_METHODS_V3);
 
-    Object.keys(tagged).forEach((tagName) => {
-      md.line(md.string().horizontalRule());
-      if (tagsCollection.length) {
-        const tagObject = tagsCollection.getTag(tagName) || '';
-        md.line(transformTag(tagObject));
-      }
-      const pathsUnderTag = tagged[tagName];
-      Object.keys(pathsUnderTag).forEach((path: string) => md.line(
-        transformPath(path, inputDoc.paths[path]),
-      ));
-    });
+    renderPathsByTags(md, tagged, tagsCollection, (path) => (
+      transformPath(path, inputDoc.paths[path])
+    ));
   }
 
   if ('webhooks' in inputDoc && inputDoc.webhooks && Object.keys(inputDoc.webhooks).length > 0) {

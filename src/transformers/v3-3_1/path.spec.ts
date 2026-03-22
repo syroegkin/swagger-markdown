@@ -206,7 +206,12 @@ describe('appendOperationSections', () => {
   it('should render parameters section', () => {
     const md = Markdown.md();
     appendOperationSections(md, {
-      parameters: [{ name: 'id', in: 'path', required: true, schema: { type: 'string' } }],
+      parameters: [{
+        name: 'id',
+        in: 'path',
+        required: true,
+        schema: { type: 'string' },
+      }],
       responses: {},
     } as any, []);
     const output = md.export();

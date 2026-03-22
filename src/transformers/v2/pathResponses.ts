@@ -1,6 +1,6 @@
 import { OpenAPIV2 } from 'openapi-types';
 import { Schema } from './models/Schema';
-import { dataTypeResolver } from './dataTypes';
+import { dataTypeResolver } from '../common/dataTypes';
 import { Markdown } from '../../lib/markdown';
 import { transformHeaders } from '../common/headers';
 
