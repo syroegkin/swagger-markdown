@@ -585,12 +585,12 @@ This can only be done by the logged in user.
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long |  | No |
+| id | long | **Read-only** | No |
 | username | string |  | No |
 | firstName | string |  | No |
 | lastName | string |  | No |
 | email | string |  | No |
-| password | string |  | No |
+| password | string | **Write-only** | No |
 | phone | string |  | No |
 | userStatus | integer | User Status | No |
 

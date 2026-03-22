@@ -47,4 +47,31 @@ describe('processSchemas', () => {
       expect(result).to.include('id');
     });
   });
+
+  describe('readOnly and writeOnly properties', () => {
+    it('should render readOnly badge', () => {
+      const result = processSchemas({
+        User: {
+          type: 'object',
+          properties: {
+            id: { type: 'integer', readOnly: true },
+            name: { type: 'string' },
+          },
+        },
+      } as any);
+      expect(result).to.include('**Read-only**');
+    });
+
+    it('should render writeOnly badge', () => {
+      const result = processSchemas({
+        User: {
+          type: 'object',
+          properties: {
+            password: { type: 'string', writeOnly: true },
+          },
+        },
+      } as any);
+      expect(result).to.include('**Write-only**');
+    });
+  });
 });

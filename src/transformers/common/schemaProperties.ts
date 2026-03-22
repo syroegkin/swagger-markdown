@@ -72,6 +72,12 @@ export function parseProperties(
         md.string('Example:').italic().concat(` \`${JSON.stringify(prop.example)}\``).get(),
       );
     }
+    if ('readOnly' in prop && prop.readOnly) {
+      descriptionParts.push(md.string('Read-only').bold().get());
+    }
+    if ('writeOnly' in prop && prop.writeOnly) {
+      descriptionParts.push(md.string('Write-only').bold().get());
+    }
     const descriptionCell = descriptionParts.join('<br>');
     const requiredCell = required.includes(propName) ? 'Yes' : 'No';
     tr.td(propName).td(typeCell).td(descriptionCell).td(requiredCell);

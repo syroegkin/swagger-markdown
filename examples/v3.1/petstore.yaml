@@ -868,6 +868,7 @@ components:
           type: integer
           format: int64
           examples: [10]
+          readOnly: true
         username:
           type: string
           examples: [theUser]
@@ -883,6 +884,7 @@ components:
         password:
           type: string
           examples: ['12345']
+          writeOnly: true
         phone:
           type: string
           examples: ['12345']

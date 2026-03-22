@@ -733,6 +733,7 @@ components:
           type: integer
           format: int64
           example: 10
+          readOnly: true
         username:
           type: string
           example: theUser
@@ -748,6 +749,7 @@ components:
         password:
           type: string
           example: '12345'
+          writeOnly: true
         phone:
           type: string
           example: '12345'

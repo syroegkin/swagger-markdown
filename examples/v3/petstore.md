@@ -550,12 +550,12 @@ This can only be done by the logged in user.
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| id | long | *Example:* `10` | No |
+| id | long | *Example:* `10`<br>**Read-only** | No |
 | username | string | *Example:* `"theUser"` | No |
 | firstName | string | *Example:* `"John"` | No |
 | lastName | string | *Example:* `"James"` | No |
 | email | string | *Example:* `"john@email.com"` | No |
-| password | string | *Example:* `"12345"` | No |
+| password | string | *Example:* `"12345"`<br>**Write-only** | No |
 | phone | string | *Example:* `"12345"` | No |
 | userStatus | integer | User Status<br>*Example:* `1` | No |
 
