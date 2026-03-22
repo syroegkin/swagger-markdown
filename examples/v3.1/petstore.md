@@ -254,6 +254,49 @@ Upload an image of pet.
 | --------------- | ------ | --- |
 | petstore_auth | write:pets | read:pets |
 
+### [GET] /pet/typed
+**Get pet by type**
+
+Returns a pet that can be either a Cat or a Dog (oneOf example)
+
+#### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | **application/json**: [Cat](#cat-schema) or [Dog](#dog-schema)<br> |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
+
+##### Security
+
+| Security Schema | Scopes |
+| --------------- | ------ |
+| petstore_auth | read:pets |
+
+### [GET] /pet/any
+**Get pet by any identifier**
+
+Returns a pet matched by full object, name, or ID (anyOf example)
+
+#### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| identifier | query | Pet identifier (object, name, or ID) | Yes | [Pet](#pet-schema) or string or integer |
+
+#### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | **application/json**: [Pet](#pet-schema)<br> |
+| 404 | Pet not found |  |
+| default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
+
+##### Security
+
+| Security Schema | Scopes |
+| --------------- | ------ |
+| petstore_auth | read:pets |
+
 ---
 ## store
 Access to Petstore orders
@@ -543,6 +586,32 @@ This can only be done by the logged in user.
 | photoUrls | [ string ] |  | Yes |
 | tags | [ [Tag](#tag-schema) ] |  | No |
 | status | string, <br>**Available values:** "available", "pending", "sold" | pet status in the store<br>*Enum:* `"available"`, `"pending"`, `"sold"` | No |
+
+#### Cat Schema
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| hunts | boolean |  | No |
+| age | integer |  | No |
+
+#### Dog Schema
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| bark | boolean |  | No |
+| breed | string, <br>**Available values:** "Dingo", "Husky", "Retriever", "Shepherd" | *Enum:* `"Dingo"`, `"Husky"`, `"Retriever"`, `"Shepherd"` | No |
+
+#### PetByType Schema
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| PetByType |  |  |  |
+
+#### PetOrId Schema
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| PetOrId |  |  |  |
 
 #### ApiResponse Schema
 

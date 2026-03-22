@@ -96,4 +96,42 @@ describe('Data Types', () => {
     expect(result).to.include('Default:');
     expect(result).to.include('hello');
   });
+
+  it('should resolve oneOf with primitive types', () => {
+    const schema = new V3Schema({
+      oneOf: [{ type: 'string' }, { type: 'integer' }],
+    } as any);
+    expect(dataTypeResolver(schema)).to.equal('string or integer');
+  });
+
+  it('should resolve oneOf with references', () => {
+    const schema = new V3Schema({
+      oneOf: [
+        { $ref: '#/components/schemas/Cat' },
+        { $ref: '#/components/schemas/Dog' },
+      ],
+    } as any);
+    const result = dataTypeResolver(schema);
+    expect(result).to.equal(
+      `[Cat](#${anchor('Cat schema')}) or [Dog](#${anchor('Dog schema')})`,
+    );
+  });
+
+  it('should resolve anyOf with primitive types', () => {
+    const schema = new V3Schema({
+      anyOf: [{ type: 'string' }, { type: 'boolean' }],
+    } as any);
+    expect(dataTypeResolver(schema)).to.equal('string or boolean');
+  });
+
+  it('should resolve anyOf with mixed refs and primitives', () => {
+    const schema = new V3Schema({
+      anyOf: [
+        { $ref: '#/components/schemas/Pet' },
+        { type: 'string' },
+      ],
+    } as any);
+    const result = dataTypeResolver(schema);
+    expect(result).to.equal(`[Pet](#${anchor('Pet schema')}) or string`);
+  });
 });

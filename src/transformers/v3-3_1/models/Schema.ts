@@ -10,6 +10,10 @@ export class Schema implements SchemaInterface {
 
   public allOf?: SchemaInterface[];
 
+  public oneOf?: SchemaInterface[];
+
+  public anyOf?: SchemaInterface[];
+
   public items?: SchemaInterface;
 
   public properties?: { [name: string]: SchemaInterface } = {};
@@ -44,6 +48,12 @@ export class Schema implements SchemaInterface {
         }
         if ('allOf' in schema && schema.allOf) {
           this.setAllOf(schema.allOf);
+        }
+        if ('oneOf' in schema && schema.oneOf) {
+          this.setOneOf(schema.oneOf);
+        }
+        if ('anyOf' in schema && schema.anyOf) {
+          this.setAnyOf(schema.anyOf);
         }
         if ('properties' in schema && schema.properties) {
           // At this point the document is dereferenced
@@ -172,6 +182,26 @@ export class Schema implements SchemaInterface {
    */
   public getAllOf(): SchemaInterface[] {
     return this.allOf;
+  }
+
+  public setOneOf(oneOf: (OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject
+  | OpenAPIV3_1.SchemaObject | OpenAPIV3_1.ReferenceObject)[]): Schema {
+    this.oneOf = oneOf.map((s) => new Schema(s));
+    return this;
+  }
+
+  public getOneOf(): SchemaInterface[] {
+    return this.oneOf;
+  }
+
+  public setAnyOf(anyOf: (OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject
+  | OpenAPIV3_1.SchemaObject | OpenAPIV3_1.ReferenceObject)[]): Schema {
+    this.anyOf = anyOf.map((s) => new Schema(s));
+    return this;
+  }
+
+  public getAnyOf(): SchemaInterface[] {
+    return this.anyOf;
   }
 
   public getProperties() {

@@ -11,6 +11,8 @@ export interface SchemaInterface {
   format?: string;
   ref?: string;
   allOf?: SchemaInterface[];
+  oneOf?: SchemaInterface[];
+  anyOf?: SchemaInterface[];
   items?: SchemaInterface;
   properties?: { [name: string]: SchemaInterface };
   getType?(): string | string[] | undefined;
@@ -18,6 +20,8 @@ export interface SchemaInterface {
   getItems?(): SchemaInterface;
   getReference(): string | undefined;
   getAllOf?(): SchemaInterface[];
+  getOneOf?(): SchemaInterface[];
+  getAnyOf?(): SchemaInterface[];
   getDefault?(): unknown;
   getEnum?(): unknown[];
 }
@@ -53,14 +57,23 @@ function resolveKnownType(type: string, format: string): string | undefined {
 }
 
 export const dataTypeResolver = (schema: SchemaInterface): string => {
-  const md = Markdown.md();
-
-  const all = schema.getAllOf();
-  if (all) {
-    return all.map((subSchema: SchemaInterface) => dataTypeResolver(subSchema))
+  const resolveComposition = (
+    schemas: SchemaInterface[] | undefined,
+    separator: string,
+  ): string | null => {
+    if (!schemas) return null;
+    const result = schemas.map((subSchema) => dataTypeResolver(subSchema))
       .filter((type) => type !== '')
-      .join(' & ');
-  }
+      .join(separator);
+    return result || null;
+  };
+
+  const composition = resolveComposition(schema.getAllOf?.(), ' & ')
+    ?? resolveComposition(schema.getOneOf?.(), ' or ')
+    ?? resolveComposition(schema.getAnyOf?.(), ' or ');
+  if (composition) return composition;
+
+  const md = Markdown.md();
 
   const reference = schema.getReference();
   if (reference) {

@@ -373,6 +373,66 @@ paths:
         - petstore_auth:
             - write:pets
             - read:pets
+  /pet/typed:
+    get:
+      tags:
+        - pet
+      summary: Get pet by type
+      description: Returns a pet that can be either a Cat or a Dog (oneOf example)
+      operationId: getPetByType
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Cat'
+                  - $ref: '#/components/schemas/Dog'
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+      security:
+        - petstore_auth:
+            - read:pets
+  /pet/any:
+    get:
+      tags:
+        - pet
+      summary: Get pet by any identifier
+      description: Returns a pet matched by full object, name, or ID (anyOf example)
+      operationId: getPetByAny
+      parameters:
+        - name: identifier
+          in: query
+          description: Pet identifier (object, name, or ID)
+          required: true
+          schema:
+            anyOf:
+              - $ref: '#/components/schemas/Pet'
+              - type: string
+              - type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '404':
+          description: Pet not found
+        default:
+          description: Unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+      security:
+        - petstore_auth:
+            - read:pets
   /store/inventory:
     get:
       tags:
@@ -876,6 +936,34 @@ components:
             - sold
       xml:
         name: pet
+    Cat:
+      type: object
+      properties:
+        hunts:
+          type: boolean
+        age:
+          type: integer
+    Dog:
+      type: object
+      properties:
+        bark:
+          type: boolean
+        breed:
+          type: string
+          enum:
+            - Dingo
+            - Husky
+            - Retriever
+            - Shepherd
+    PetByType:
+      oneOf:
+        - $ref: '#/components/schemas/Cat'
+        - $ref: '#/components/schemas/Dog'
+    PetOrId:
+      anyOf:
+        - $ref: '#/components/schemas/Pet'
+        - type: string
+        - type: integer
     ApiResponse:
       type: object
       properties:
