@@ -19,6 +19,10 @@ export function transformInfo(
       md.line(md.string(info.title).h1());
     }
 
+    if ('summary' in info && info.summary) {
+      md.line(md.string(info.summary).escape()).line();
+    }
+
     if ('description' in info && info.description) {
       const descriptionLines = info.description.split('\n');
       let prevIsList = false;

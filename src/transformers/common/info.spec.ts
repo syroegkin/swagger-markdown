@@ -86,6 +86,27 @@ describe('Info transformer', () => {
     );
   });
 
+  it('should render summary when present (v3.1)', () => {
+    const fixture = {
+      title: 'My API',
+      summary: 'A short summary of the API',
+    };
+    const res = transformInfo(fixture as any);
+    expect(res).to.include('A short summary of the API');
+  });
+
+  it('should render summary before description', () => {
+    const fixture = {
+      title: 'My API',
+      summary: 'Short summary',
+      description: 'Longer description',
+    };
+    const res = transformInfo(fixture as any);
+    const summaryIdx = res.indexOf('Short summary');
+    const descIdx = res.indexOf('Longer description');
+    expect(summaryIdx).to.be.lessThan(descIdx);
+  });
+
   it('should create term of service block', () => {
     const fixture = {
       termsOfService: 'Terms of service',
