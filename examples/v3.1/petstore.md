@@ -45,6 +45,20 @@ Scopes:
 Client certificate authentication for secure endpoints  
 
 ---
+## default
+
+### [GET] /health
+**Health check endpoint**
+
+Returns the health status of the service
+
+#### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | Service is healthy | **application/json**: { **"status"**: string, <br>**Available values:** "healthy", "degraded", **"uptime"**: long }<br> |
+
+---
 ## pet
 Everything about your Pets
 [Find out more](http://swagger.io)

@@ -38,6 +38,8 @@ tags:
   - name: user
     description: Operations about user
 paths:
+  /health:
+    $ref: '#/components/pathItems/HealthCheck'
   /pet:
     put:
       tags:
@@ -1007,6 +1009,27 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/User'
+  pathItems:
+    HealthCheck:
+      get:
+        summary: Health check endpoint
+        description: Returns the health status of the service
+        responses:
+          '200':
+            description: Service is healthy
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    status:
+                      type: string
+                      enum:
+                        - healthy
+                        - degraded
+                    uptime:
+                      type: integer
+                      format: int64
   securitySchemes:
     petstore_auth:
       type: oauth2
