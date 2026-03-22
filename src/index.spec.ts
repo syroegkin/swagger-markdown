@@ -77,4 +77,111 @@ describe('Partial dereference', () => {
     };
     expect(partiallyDereference(input, mockRefs)).to.eql(expected);
   });
+
+  it('preserves $ref to #/components/schemas (rendered separately)', () => {
+    const input = {
+      schema: { $ref: '#/components/schemas/Pet' },
+    } as unknown as AllSwaggerDocumentVersions;
+    expect(partiallyDereference(input, mockRefs)).to.eql(input);
+  });
+
+  it('dereferences $ref to #/components/responses (inlined)', () => {
+    const refs = {
+      get: () => ({ description: 'Not Found' }),
+    } as unknown as $Refs;
+    const input = {
+      response: { $ref: '#/components/responses/NotFound' },
+    } as unknown as AllSwaggerDocumentVersions;
+    expect(partiallyDereference(input, refs)).to.eql({
+      response: { description: 'Not Found' },
+    });
+  });
+
+  it('dereferences $ref to #/components/parameters (inlined)', () => {
+    const refs = {
+      get: () => ({
+        name: 'limit', in: 'query', schema: { type: 'integer' },
+      }),
+    } as unknown as $Refs;
+    const input = {
+      param: { $ref: '#/components/parameters/Limit' },
+    } as unknown as AllSwaggerDocumentVersions;
+    expect(partiallyDereference(input, refs)).to.eql({
+      param: {
+        name: 'limit', in: 'query', schema: { type: 'integer' },
+      },
+    });
+  });
+
+  it('dereferences $ref to #/components/requestBodies (inlined)', () => {
+    const refs = {
+      get: () => ({
+        content: { 'application/json': { schema: { type: 'object' } } },
+      }),
+    } as unknown as $Refs;
+    const input = {
+      body: { $ref: '#/components/requestBodies/PetBody' },
+    } as unknown as AllSwaggerDocumentVersions;
+    expect(partiallyDereference(input, refs)).to.eql({
+      body: {
+        content: { 'application/json': { schema: { type: 'object' } } },
+      },
+    });
+  });
+
+  it('dereferences $ref to #/components/headers (inlined)', () => {
+    const refs = {
+      get: () => ({ description: 'Rate limit', schema: { type: 'integer' } }),
+    } as unknown as $Refs;
+    const input = {
+      header: { $ref: '#/components/headers/RateLimit' },
+    } as unknown as AllSwaggerDocumentVersions;
+    expect(partiallyDereference(input, refs)).to.eql({
+      header: { description: 'Rate limit', schema: { type: 'integer' } },
+    });
+  });
+
+  it('dereferences $ref to #/components/examples (inlined)', () => {
+    const refs = {
+      get: () => ({ summary: 'A pet', value: { name: 'doggie' } }),
+    } as unknown as $Refs;
+    const input = {
+      example: { $ref: '#/components/examples/PetExample' },
+    } as unknown as AllSwaggerDocumentVersions;
+    expect(partiallyDereference(input, refs)).to.eql({
+      example: { summary: 'A pet', value: { name: 'doggie' } },
+    });
+  });
+
+  it('dereferences $ref to #/components/links (inlined)', () => {
+    const refs = {
+      get: () => ({ description: 'Get user by ID' }),
+    } as unknown as $Refs;
+    const input = {
+      link: { $ref: '#/components/links/GetUser' },
+    } as unknown as AllSwaggerDocumentVersions;
+    expect(partiallyDereference(input, refs)).to.eql({
+      link: { description: 'Get user by ID' },
+    });
+  });
+
+  it('dereferences $ref to #/components/callbacks (inlined)', () => {
+    const refs = {
+      get: () => ({
+        '{$request.body#/url}': {
+          post: { responses: { 200: { description: 'OK' } } },
+        },
+      }),
+    } as unknown as $Refs;
+    const input = {
+      callback: { $ref: '#/components/callbacks/OnEvent' },
+    } as unknown as AllSwaggerDocumentVersions;
+    expect(partiallyDereference(input, refs)).to.eql({
+      callback: {
+        '{$request.body#/url}': {
+          post: { responses: { 200: { description: 'OK' } } },
+        },
+      },
+    });
+  });
 });
