@@ -257,3 +257,31 @@ describe('Style and Explode columns', () => {
     expect(result).to.not.include('Explode');
   });
 });
+
+describe('Deprecated parameters', () => {
+  it('Should render deprecated parameter with strikethrough and badge', () => {
+    const params: OpenAPIV3.ParameterObject[] = [
+      {
+        name: 'oldParam',
+        in: 'query',
+        deprecated: true,
+        description: 'Use newParam instead',
+        schema: { type: 'string' },
+      },
+    ];
+    const result = transformParameters(params);
+    expect(result).to.include('~~oldParam~~');
+    expect(result).to.include('**Deprecated**');
+  });
+
+  it('Should not render deprecated badge when not deprecated', () => {
+    const params: OpenAPIV3.ParameterObject[] = [
+      {
+        name: 'normalParam', in: 'query', schema: { type: 'string' },
+      },
+    ];
+    const result = transformParameters(params);
+    expect(result).to.not.include('~~');
+    expect(result).to.not.include('Deprecated');
+  });
+});

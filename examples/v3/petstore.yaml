@@ -264,8 +264,9 @@ paths:
       parameters:
         - name: api_key
           in: header
-          description: ''
+          description: Use OAuth2 instead
           required: false
+          deprecated: true
           schema:
             type: string
         - name: petId

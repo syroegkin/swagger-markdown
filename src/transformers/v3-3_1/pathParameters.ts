@@ -53,9 +53,15 @@ export const transformParameters = (
   allParameters.forEach((parameterObject: ParameterObject) => {
     if (parameterObject) {
       const tr = table.tr();
-      tr.td(parameterObject.name || '');
+      const isDeprecated = 'deprecated' in parameterObject && parameterObject.deprecated;
+      const name = parameterObject.name || '';
+      tr.td(isDeprecated ? md.string(name).strikethrough().get() : name);
       tr.td(parameterObject.in || '');
-      tr.td(getDescription(md, parameterObject));
+      const descParts = [getDescription(md, parameterObject)];
+      if (isDeprecated) {
+        descParts.push(md.string('Deprecated').bold().get());
+      }
+      tr.td(descParts.filter((p) => p !== '').join('<br>'));
       tr.td(parameterObject.required ? 'Yes' : 'No');
       tr.td(dataTypeResolver(resolveParameterSchema(parameterObject)));
       if (hasStyle) {

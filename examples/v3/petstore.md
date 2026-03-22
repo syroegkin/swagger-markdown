@@ -222,7 +222,7 @@ delete a pet
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
-| api_key | header |  | No | string |
+| ~~api_key~~ | header | Use OAuth2 instead<br>**Deprecated** | No | string |
 | petId | path | Pet id to delete | Yes | long |
 
 #### Responses
