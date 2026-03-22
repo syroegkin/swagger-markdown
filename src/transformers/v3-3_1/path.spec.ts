@@ -245,3 +245,26 @@ describe('appendOperationSections', () => {
     expect(output).to.include('Request Body');
   });
 });
+
+describe('Callbacks', () => {
+  it('should render callbacks section', () => {
+    const result = transformPath('/payments', {
+      post: {
+        responses: { 200: { description: 'OK' } },
+        callbacks: {
+          onPayment: {
+            '{$request.body#/callbackUrl}': {
+              post: {
+                summary: 'Payment notification',
+                responses: { 200: { description: 'OK' } },
+              },
+            },
+          },
+        },
+      },
+    } as any);
+    expect(result).to.include('Callback: onPayment');
+    expect(result).to.include('Payment notification');
+    expect(result).to.include('{$request.body#/callbackUrl}');
+  });
+});

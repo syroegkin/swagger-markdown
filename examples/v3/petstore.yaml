@@ -415,6 +415,30 @@ paths:
                 $ref: '#/components/schemas/Order'
         '405':
           description: Invalid input
+      callbacks:
+        orderStatusUpdate:
+          '{$request.body#/callbackUrl}':
+            post:
+              summary: Order status update
+              description: Notification sent when the order status changes
+              requestBody:
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        orderId:
+                          type: integer
+                          format: int64
+                        status:
+                          type: string
+                          enum:
+                            - placed
+                            - approved
+                            - delivered
+              responses:
+                '200':
+                  description: Callback received successfully
   /store/order/{orderId}:
     get:
       tags:

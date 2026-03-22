@@ -346,6 +346,25 @@ Place a new order in the store
 | 200 | successful operation | **application/json**: [Order](#order-schema)<br> |
 | 405 | Invalid input |  |
 
+#### Callback: orderStatusUpdate
+
+##### [POST] `{$request.body#/callbackUrl}`
+**Order status update**
+
+Notification sent when the order status changes
+
+#### Request Body
+
+| Required | Schema |
+| -------- | ------ |
+|  No | **application/json**: { **"orderId"**: long, **"status"**: string, <br>**Available values:** "placed", "approved", "delivered" }<br> |
+
+#### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | Callback received successfully |
+
 ### [GET] /store/order/{orderId}
 **Find purchase order by ID**
 

@@ -365,6 +365,25 @@ Place a new order in the store.
 | 422 | Validation exception |  |
 | default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
+#### Callback: orderStatusUpdate
+
+##### [POST] `{$request.body#/callbackUrl}`
+**Order status update**
+
+Notification sent when the order status changes
+
+#### Request Body
+
+| Required | Schema |
+| -------- | ------ |
+|  No | **application/json**: { **"orderId"**: long, **"status"**: string, <br>**Available values:** "placed", "approved", "delivered" }<br> |
+
+#### Responses
+
+| Code | Description |
+| ---- | ----------- |
+| 200 | Callback received successfully |
+
 ### [GET] /store/order/{orderId}
 **Find purchase order by identifier.**
 

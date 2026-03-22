@@ -125,6 +125,25 @@ export function transformPath(
       appendMethodHeader(md, method, path, deprecated);
       appendOperationDetails(md, pathInfo);
       appendOperationSections(md, pathInfo, pathParameters);
+
+      if ('callbacks' in pathInfo && pathInfo.callbacks) {
+        const callbacks = pathInfo.callbacks as Record<string, Record<string, unknown>>;
+        Object.entries(callbacks).forEach(([callbackName, callbackPaths]) => {
+          md.line(md.string(`Callback: ${callbackName}`).h4()).line();
+          Object.entries(callbackPaths).forEach(([expression, callbackPathItem]) => {
+            const cbPathItem = callbackPathItem as
+              OpenAPIV3.PathItemObject | OpenAPIV3_1.PathItemObject;
+            Object.keys(cbPathItem).forEach((cbMethod) => {
+              if (ALLOWED_METHODS_V3.includes(cbMethod)) {
+                const cbInfo: OperationObject = cbPathItem[cbMethod];
+                md.line(md.string(`[${cbMethod.toUpperCase()}] \`${expression}\``).h5());
+                appendOperationDetails(md, cbInfo);
+                appendOperationSections(md, cbInfo, []);
+              }
+            });
+          });
+        });
+      }
     }
   });
 
