@@ -36,10 +36,19 @@ export const transformParameters = (
   }
   const md = Markdown.md();
 
+  const hasStyle = allParameters.some((p) => p && 'style' in p);
+  const hasExplode = allParameters.some((p) => p && 'explode' in p);
+
   md.line(md.string('Parameters').h4()).line();
   const table = md.table();
   table.th('Name').th('Located in').th('Description').th('Required')
     .th('Schema');
+  if (hasStyle) {
+    table.th('Style');
+  }
+  if (hasExplode) {
+    table.th('Explode');
+  }
 
   allParameters.forEach((parameterObject: ParameterObject) => {
     if (parameterObject) {
@@ -49,6 +58,16 @@ export const transformParameters = (
       tr.td(getDescription(md, parameterObject));
       tr.td(parameterObject.required ? 'Yes' : 'No');
       tr.td(dataTypeResolver(resolveParameterSchema(parameterObject)));
+      if (hasStyle) {
+        tr.td(parameterObject.style || '');
+      }
+      if (hasExplode) {
+        let explodeValue = '';
+        if ('explode' in parameterObject) {
+          explodeValue = parameterObject.explode ? 'Yes' : 'No';
+        }
+        tr.td(explodeValue);
+      }
     }
   });
 

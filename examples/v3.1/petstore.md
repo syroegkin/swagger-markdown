@@ -106,9 +106,9 @@ Multiple status values can be provided with comma separated strings.
 
 #### Parameters
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| status | query | Status values that need to be considered for filter | No | string, <br>**Available values:** "available", "pending", "sold", <br>**Default:** available |
+| Name | Located in | Description | Required | Schema | Explode |
+| ---- | ---------- | ----------- | -------- | ------ | ------- |
+| status | query | Status values that need to be considered for filter | No | string, <br>**Available values:** "available", "pending", "sold", <br>**Default:** available | Yes |
 
 #### Responses
 
@@ -131,9 +131,9 @@ Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3
 
 #### Parameters
 
-| Name | Located in | Description | Required | Schema |
-| ---- | ---------- | ----------- | -------- | ------ |
-| tags | query | Tags to filter by | No | [ string ] |
+| Name | Located in | Description | Required | Schema | Explode |
+| ---- | ---------- | ----------- | -------- | ------ | ------- |
+| tags | query | Tags to filter by | No | [ string ] | Yes |
 
 #### Responses
 

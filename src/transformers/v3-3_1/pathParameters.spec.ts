@@ -217,3 +217,43 @@ describe('getDescription', () => {
     expect(result).to.equal('');
   });
 });
+
+describe('Style and Explode columns', () => {
+  it('Should show Explode column when any parameter has explode', () => {
+    const params: OpenAPIV3.ParameterObject[] = [
+      {
+        name: 'status', in: 'query', explode: true, schema: { type: 'string' },
+      },
+      {
+        name: 'id', in: 'path', required: true, schema: { type: 'integer' },
+      },
+    ];
+    const result = transformParameters(params);
+    expect(result).to.include('Explode');
+    expect(result).to.include('Yes');
+  });
+
+  it('Should show Style column when any parameter has style', () => {
+    const params: OpenAPIV3.ParameterObject[] = [
+      {
+        name: 'color', in: 'query', style: 'form', explode: false, schema: { type: 'string' },
+      },
+    ];
+    const result = transformParameters(params);
+    expect(result).to.include('Style');
+    expect(result).to.include('form');
+    expect(result).to.include('Explode');
+    expect(result).to.include('No');
+  });
+
+  it('Should not show Style or Explode columns when not used', () => {
+    const params: OpenAPIV3.ParameterObject[] = [
+      {
+        name: 'id', in: 'path', required: true, schema: { type: 'integer' },
+      },
+    ];
+    const result = transformParameters(params);
+    expect(result).to.not.include('Style');
+    expect(result).to.not.include('Explode');
+  });
+});
