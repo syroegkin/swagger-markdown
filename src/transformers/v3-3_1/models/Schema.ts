@@ -22,6 +22,9 @@ export class Schema implements SchemaInterface {
 
   public enum?: unknown[] = [];
 
+  // Nullable only in V3 but not in V3.1, but we can keep it here for simplicity
+  public nullable?: boolean;
+
   /**
    * constructor
    *
@@ -65,6 +68,9 @@ export class Schema implements SchemaInterface {
         }
         if ('enum' in schema && schema.enum) {
           this.enum = schema.enum;
+        }
+        if ('nullable' in schema && schema.nullable) {
+          this.nullable = true;
         }
       }
     }
@@ -202,6 +208,10 @@ export class Schema implements SchemaInterface {
 
   public getAnyOf(): SchemaInterface[] {
     return this.anyOf;
+  }
+
+  public getNullable(): boolean {
+    return this.nullable;
   }
 
   public getProperties() {

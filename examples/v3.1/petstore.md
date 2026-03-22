@@ -528,7 +528,7 @@ This can only be done by the logged in user.
 | id | long |  | No |
 | petId | long |  | No |
 | quantity | integer |  | No |
-| shipDate | dateTime |  | No |
+| shipDate | dateTime, null (date-time) |  | No |
 | status | string, <br>**Available values:** "placed", "approved", "delivered" | Order Status<br>*Enum:* `"placed"`, `"approved"`, `"delivered"` | No |
 | complete | boolean |  | No |
 

@@ -665,6 +665,7 @@ components:
         shipDate:
           type: string
           format: date-time
+          nullable: true
         status:
           type: string
           description: Order Status
@@ -781,7 +782,9 @@ components:
           type: string
           example: doggie
         category:
-          $ref: '#/components/schemas/Category'
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/Category'
         photoUrls:
           type: array
           xml:

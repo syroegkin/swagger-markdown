@@ -134,4 +134,26 @@ describe('Data Types', () => {
     const result = dataTypeResolver(schema);
     expect(result).to.equal(`[Pet](#${anchor('Pet schema')}) or string`);
   });
+
+  it('should append "or null" for nullable string', () => {
+    const schema = new V3Schema({ type: 'string', nullable: true } as any);
+    expect(dataTypeResolver(schema)).to.equal('string or null');
+  });
+
+  it('should append "or null" for nullable integer', () => {
+    const schema = new V3Schema({ type: 'integer', format: 'int32', nullable: true } as any);
+    expect(dataTypeResolver(schema)).to.equal('integer or null');
+  });
+
+  it('should append "or null" for nullable ref', () => {
+    const schema = new V3Schema({ $ref: '#/components/schemas/Pet' } as any);
+    schema.nullable = true;
+    const result = dataTypeResolver(schema);
+    expect(result).to.equal(`[Pet](#${anchor('Pet schema')}) or null`);
+  });
+
+  it('should not append "or null" when nullable is false', () => {
+    const schema = new V3Schema({ type: 'string' });
+    expect(dataTypeResolver(schema)).to.equal('string');
+  });
 });

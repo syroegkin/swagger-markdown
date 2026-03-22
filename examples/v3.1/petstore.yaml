@@ -794,7 +794,9 @@ components:
           format: int32
           examples: [7]
         shipDate:
-          type: string
+          type:
+            - string
+            - 'null'
           format: date-time
         status:
           type: string

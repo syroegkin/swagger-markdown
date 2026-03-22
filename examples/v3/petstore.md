@@ -512,7 +512,7 @@ This can only be done by the logged in user.
 | id | long | *Example:* `10` | No |
 | petId | long | *Example:* `198772` | No |
 | quantity | integer | *Example:* `7` | No |
-| shipDate | dateTime |  | No |
+| shipDate | dateTime or null |  | No |
 | status | string, <br>**Available values:** "placed", "approved", "delivered" | Order Status<br>*Enum:* `"placed"`, `"approved"`, `"delivered"`<br>*Example:* `"approved"` | No |
 | complete | boolean |  | No |
 
@@ -566,7 +566,7 @@ This can only be done by the logged in user.
 | ---- | ---- | ----------- | -------- |
 | id | long | *Example:* `10` | No |
 | name | string | *Example:* `"doggie"` | Yes |
-| category | [Category](#category-schema) |  | No |
+| category | [Category](#category-schema) or null |  | No |
 | photoUrls | [ string ] |  | Yes |
 | tags | [ [Tag](#tag-schema) ] |  | No |
 | status | string, <br>**Available values:** "available", "pending", "sold" | pet status in the store<br>*Enum:* `"available"`, `"pending"`, `"sold"` | No |

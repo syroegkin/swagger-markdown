@@ -22,6 +22,8 @@ export interface SchemaInterface {
   getAllOf?(): SchemaInterface[];
   getOneOf?(): SchemaInterface[];
   getAnyOf?(): SchemaInterface[];
+  nullable?: boolean;
+  getNullable?(): boolean;
   getDefault?(): unknown;
   getEnum?(): unknown[];
 }
@@ -56,22 +58,28 @@ function resolveKnownType(type: string, format: string): string | undefined {
   return undefined;
 }
 
-export const dataTypeResolver = (schema: SchemaInterface): string => {
-  const resolveComposition = (
-    schemas: SchemaInterface[] | undefined,
-    separator: string,
-  ): string | null => {
-    if (!schemas) return null;
-    const result = schemas.map((subSchema) => dataTypeResolver(subSchema))
-      .filter((type) => type !== '')
-      .join(separator);
-    return result || null;
-  };
+// eslint-disable-next-line no-use-before-define
+type Resolver = (schema: SchemaInterface) => string;
 
-  const composition = resolveComposition(schema.getAllOf?.(), ' & ')
-    ?? resolveComposition(schema.getOneOf?.(), ' or ')
-    ?? resolveComposition(schema.getAnyOf?.(), ' or ');
-  if (composition) return composition;
+function resolveComposition(
+  schemas: SchemaInterface[] | undefined,
+  separator: string,
+  resolve: Resolver,
+): string | null {
+  if (!schemas) return null;
+  const result = schemas.map((subSchema) => resolve(subSchema))
+    .filter((type) => type !== '')
+    .join(separator);
+  return result || null;
+}
+
+export const dataTypeResolver = (schema: SchemaInterface): string => {
+  const composition = resolveComposition(schema.getAllOf?.(), ' & ', dataTypeResolver)
+    ?? resolveComposition(schema.getOneOf?.(), ' or ', dataTypeResolver)
+    ?? resolveComposition(schema.getAnyOf?.(), ' or ', dataTypeResolver);
+  if (composition) {
+    return schema.getNullable?.() ? `${composition} or null` : composition;
+  }
 
   const md = Markdown.md();
 
@@ -81,7 +89,8 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
     const suffix = reference.includes('/definitions/')
       ? V2_DEFINITION_SUFFIX : V3_SCHEMA_SUFFIX;
     const link = anchor(`${name} ${suffix}`);
-    return md.string().link(name, `#${link}`).get();
+    const resolved = md.string().link(name, `#${link}`).get();
+    return schema.getNullable?.() ? `${resolved} or null` : resolved;
   }
 
   // Cast it to the array
@@ -152,5 +161,6 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
     );
   }
 
-  return md.string(resolveResults.join(', ')).get();
+  const resolved = md.string(resolveResults.join(', ')).get();
+  return schema.getNullable?.() ? `${resolved} or null` : resolved;
 };
