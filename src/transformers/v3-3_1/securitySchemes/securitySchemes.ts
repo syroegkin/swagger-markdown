@@ -13,9 +13,10 @@ export type SecuritySchemesMap = {
   | OpenAPIV3_1.ReferenceObject;
 };
 
-export function transformSecuritySchemes(securitySchemas: SecuritySchemesMap) {
-  const md = Markdown.md();
-
+export function transformSecuritySchemesContent(
+  securitySchemas: SecuritySchemesMap,
+  md: Markdown,
+) {
   type SchemeObject = OpenAPIV3.SecuritySchemeObject | OpenAPIV3_1.SecuritySchemeObject;
 
   Object.keys(securitySchemas).forEach((type) => {
@@ -27,20 +28,19 @@ export function transformSecuritySchemes(securitySchemas: SecuritySchemesMap) {
 
     if (isHttpSecurityScheme(schema)) {
       md.line(transformHTTPSecurityScheme(type, schema));
-    }
-
-    if (isApiKeySecurityScheme(schema)) {
+    } else if (isApiKeySecurityScheme(schema)) {
       md.line(transformApiKeySecuritySchema(type, schema));
-    }
-
-    if (isOAuth2SecurityScheme(schema)) {
+    } else if (isOAuth2SecurityScheme(schema)) {
       md.line(transformOAuth2SecurityScheme(type, schema));
-    }
-
-    if (isOpenIdSecurityScheme(schema)) {
+    } else if (isOpenIdSecurityScheme(schema)) {
       md.line(transformOpenIdSecurityScheme(type, schema));
     }
   });
+}
+
+export function transformSecuritySchemes(securitySchemas: SecuritySchemesMap) {
+  const md = Markdown.md();
+  transformSecuritySchemesContent(securitySchemas, md);
 
   if (md.length > 0) {
     return Markdown.md()

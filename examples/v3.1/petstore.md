@@ -41,6 +41,9 @@ Scopes:
 **Name:** api_key  
 **In:** header  
 
+#### client_cert (Mutual TLS)
+Client certificate authentication for secure endpoints  
+
 ---
 ## pet
 Everything about your Pets

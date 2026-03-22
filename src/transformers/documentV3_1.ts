@@ -6,7 +6,7 @@ import { Markdown } from '../lib/markdown';
 import { transformExternalDocs } from './common/externalDocs';
 import { groupPathsByTags } from './common/groupPathsByTags';
 import { transformComponents } from './v3-3_1/components/components';
-import { transformSecuritySchemes } from './v3-3_1/securitySchemes/securitySchemes';
+import { transformSecuritySchemes } from './v3_1/securitySchemes/securitySchemes';
 import {
   collectTags,
   renderPathsByTags,
