@@ -23,14 +23,14 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | List all pets | [ [Pet](#pet) ] |
+| 200 | List all pets | [ [Pet](#pet-model) ] |
 
 #### POST
 ##### Parameters
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
-| pet | body | The pet JSON you want to post | Yes | [Pet](#pet) |
+| pet | body | The pet JSON you want to post | Yes | [Pet](#pet-model) |
 
 ##### Responses
 
@@ -43,7 +43,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
-| pet | body | The pet JSON you want to post | Yes | [Pet](#pet) |
+| pet | body | The pet JSON you want to post | Yes | [Pet](#pet-model) |
 
 ##### Responses
 
@@ -69,7 +69,7 @@ Find source code of this API [here](https://github.com/mohsen1/petstore-api)
 ---
 ### Models
 
-#### Pet
+#### Pet Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

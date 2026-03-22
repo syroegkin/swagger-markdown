@@ -47,7 +47,7 @@ describe('Path responses transformer', () => {
       '##### Responses',
       '| Code | Description | Schema |',
       '| ---- | ----------- | ------ |',
-      '| 200 | Echo GET | [Foo](#foo) |',
+      '| 200 | Echo GET | [Foo](#foo-model) |',
       '| 404 | Not Found |  |',
       '| 500 |  |  |',
     ];
@@ -80,7 +80,7 @@ describe('Path responses transformer', () => {
       '| Code | Description | Schema |',
       '| ---- | ----------- | ------ |',
       '| 200 |  |  |',
-      '| 404 |  | [Bar](#bar) |',
+      '| 404 |  | [Bar](#bar-model) |',
     ];
     const res = (transformResponses(fixture as any) as string).split('\n');
     it('should build the header', () => {

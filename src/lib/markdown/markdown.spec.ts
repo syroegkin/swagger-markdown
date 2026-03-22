@@ -22,6 +22,15 @@ describe('Markdown', () => {
     md.line(MDstring.string('123'), '234');
     expect(md.length).to.be.equal(2);
   });
+  it('should handle null values in line() without throwing', () => {
+    const md = Markdown.md();
+    md.line(null);
+    md.line(MDstring.string('hello'), null, 'world');
+    md.line(undefined);
+    md.line(null, undefined);
+    expect(md.length).to.be.equal(4);
+    expect(md.export()).to.be.equal('\nhelloworld\n\n\n');
+  });
   it('should create markdown', () => {
     const md = Markdown.md();
     const table = md.table().th('1').th('2');

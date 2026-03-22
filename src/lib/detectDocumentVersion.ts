@@ -1,4 +1,3 @@
-// eslint-disable-next-line camelcase
 import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { AllSwaggerDocumentVersions } from '../types';
 
@@ -20,7 +19,6 @@ export function isV3Document(document: AllSwaggerDocumentVersions): document is 
 
 export function isV31Document(
   document: AllSwaggerDocumentVersions,
-// eslint-disable-next-line camelcase
 ): document is OpenAPIV3_1.Document {
   if ('openapi' in document) {
     const [major, minor] = document.openapi.split(/\./);

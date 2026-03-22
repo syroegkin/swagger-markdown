@@ -264,8 +264,9 @@ paths:
       parameters:
         - name: api_key
           in: header
-          description: ''
+          description: Use OAuth2 instead
           required: false
+          deprecated: true
           schema:
             type: string
         - name: petId
@@ -320,6 +321,54 @@ paths:
         - petstore_auth:
             - write:pets
             - read:pets
+  /pet/typed:
+    get:
+      tags:
+        - pet
+      summary: Get pet by type
+      description: Returns a pet that can be either a Cat or a Dog (oneOf example)
+      operationId: getPetByType
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Cat'
+                  - $ref: '#/components/schemas/Dog'
+      security:
+        - petstore_auth:
+            - read:pets
+  /pet/any:
+    get:
+      tags:
+        - pet
+      summary: Get pet by any identifier
+      description: Returns a pet matched by full object, name, or ID (anyOf example)
+      operationId: getPetByAny
+      parameters:
+        - name: identifier
+          in: query
+          description: Pet identifier (object, name, or ID)
+          required: true
+          schema:
+            anyOf:
+              - $ref: '#/components/schemas/Pet'
+              - type: string
+              - type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '404':
+          description: Pet not found
+      security:
+        - petstore_auth:
+            - read:pets
   /store/inventory:
     get:
       tags:
@@ -366,6 +415,30 @@ paths:
                 $ref: '#/components/schemas/Order'
         '405':
           description: Invalid input
+      callbacks:
+        orderStatusUpdate:
+          '{$request.body#/callbackUrl}':
+            post:
+              summary: Order status update
+              description: Notification sent when the order status changes
+              requestBody:
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        orderId:
+                          type: integer
+                          format: int64
+                        status:
+                          type: string
+                          enum:
+                            - placed
+                            - approved
+                            - delivered
+              responses:
+                '200':
+                  description: Callback received successfully
   /store/order/{orderId}:
     get:
       tags:
@@ -617,6 +690,7 @@ components:
         shipDate:
           type: string
           format: date-time
+          nullable: true
         status:
           type: string
           description: Order Status
@@ -684,6 +758,7 @@ components:
           type: integer
           format: int64
           example: 10
+          readOnly: true
         username:
           type: string
           example: theUser
@@ -699,6 +774,7 @@ components:
         password:
           type: string
           example: '12345'
+          writeOnly: true
         phone:
           type: string
           example: '12345'
@@ -707,6 +783,7 @@ components:
           description: User Status
           format: int32
           example: 1
+          deprecated: true
       xml:
         name: user
     Tag:
@@ -733,7 +810,9 @@ components:
           type: string
           example: doggie
         category:
-          $ref: '#/components/schemas/Category'
+          nullable: true
+          allOf:
+            - $ref: '#/components/schemas/Category'
         photoUrls:
           type: array
           xml:
@@ -757,6 +836,34 @@ components:
             - sold
       xml:
         name: pet
+    Cat:
+      type: object
+      properties:
+        hunts:
+          type: boolean
+        age:
+          type: integer
+    Dog:
+      type: object
+      properties:
+        bark:
+          type: boolean
+        breed:
+          type: string
+          enum:
+            - Dingo
+            - Husky
+            - Retriever
+            - Shepherd
+    PetByType:
+      oneOf:
+        - $ref: '#/components/schemas/Cat'
+        - $ref: '#/components/schemas/Dog'
+    PetOrId:
+      anyOf:
+        - $ref: '#/components/schemas/Pet'
+        - type: string
+        - type: integer
     ApiResponse:
       type: object
       properties:

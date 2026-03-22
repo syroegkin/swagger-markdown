@@ -1,18 +1,5 @@
 import { OpenAPIV2 } from 'openapi-types';
-
-export interface SchemaInterface {
-  type?: OpenAPIV2.SchemaObject['type'];
-  format?: string;
-  ref?: string;
-  allOf?: SchemaInterface[];
-  items?: SchemaInterface;
-  properties?: { [name: string]: SchemaInterface };
-  getType(): OpenAPIV2.SchemaObject['type'] | undefined;
-  getFormat(): string | undefined;
-  getItems(): SchemaInterface | undefined;
-  getReference(): string | undefined;
-  getAllOf(): SchemaInterface[] | undefined;
-}
+import { SchemaInterface } from '../../common/dataTypes';
 
 export class Schema implements SchemaInterface {
   public type?: OpenAPIV2.SchemaObject['type'];
