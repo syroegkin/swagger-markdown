@@ -50,6 +50,9 @@ export function appendOperationDetails(
     md.line(md.string(pathInfo.description).escape()).line();
   }
 
+  // operationId is intentionally not rendered — it is tooling metadata (codegen, linking),
+  // not useful for documentation readers.
+
   if ('externalDocs' in pathInfo) {
     md.line(
       md.string('Documentation:').bold(),

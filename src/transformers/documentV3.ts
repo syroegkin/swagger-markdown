@@ -11,6 +11,7 @@ import {
   collectTags,
   renderPathsByTags,
 } from './common/pipeline';
+import { transformServers } from './v3-3_1/servers';
 
 export function transformSwaggerV3(
   inputDoc: OpenAPIV3.Document,
@@ -21,6 +22,10 @@ export function transformSwaggerV3(
   // Process info
   if (!options.skipInfo && 'info' in inputDoc) {
     md.line(transformInfo(inputDoc.info));
+  }
+
+  if ('servers' in inputDoc && inputDoc.servers) {
+    md.line(transformServers(inputDoc.servers));
   }
 
   // Collect tags

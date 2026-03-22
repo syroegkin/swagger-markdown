@@ -19,6 +19,12 @@ apiteam@swagger.io
 
 **License:** [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0.html)
 
+### Servers
+
+| URL |
+| --- |
+| https://petstore31.swagger.io/api/v3 |
+
 [Find out more about Swagger](https://swagger.io)
 
 ### Available authorizations
