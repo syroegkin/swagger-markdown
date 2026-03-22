@@ -1,6 +1,12 @@
 import { expect } from 'chai';
 import { OpenAPIV3 } from 'openapi-types';
-import { transformParameters } from './pathParameters';
+import {
+  transformParameters,
+  resolveParameterSchema,
+  getDescription,
+} from './pathParameters';
+import { Schema } from './models/Schema';
+import { Markdown } from '../../lib/markdown';
 
 const tableFixture: string[] = [
   '#### Parameters',
@@ -125,5 +131,89 @@ describe('Path parameters transformer', () => {
         expect(res[5]).to.be.equal(results[4]);
       });
     });
+  });
+});
+
+describe('resolveParameterSchema', () => {
+  it('Should resolve schema from schema property', () => {
+    const param: OpenAPIV3.ParameterObject = {
+      name: 'test',
+      in: 'query',
+      schema: { type: 'string' },
+    };
+    const result = resolveParameterSchema(param);
+    expect(result).to.be.instanceOf(Schema);
+    expect(result.type).to.equal('string');
+  });
+
+  it('Should resolve schema from content property', () => {
+    const param: OpenAPIV3.ParameterObject = {
+      name: 'test',
+      in: 'query',
+      content: {
+        'application/json': {
+          schema: { type: 'object' },
+        },
+      },
+    };
+    const result = resolveParameterSchema(param);
+    expect(result).to.be.instanceOf(Schema);
+    expect(result.type).to.equal('object');
+  });
+
+  it('Should return empty Schema when content has no schema', () => {
+    const param: OpenAPIV3.ParameterObject = {
+      name: 'test',
+      in: 'query',
+      content: {
+        'application/json': {},
+      },
+    };
+    const result = resolveParameterSchema(param);
+    expect(result).to.be.instanceOf(Schema);
+    expect(result.type).to.be.undefined;
+  });
+
+  it('Should return empty Schema when neither schema nor content is present', () => {
+    const param: OpenAPIV3.ParameterObject = {
+      name: 'test',
+      in: 'query',
+    };
+    const result = resolveParameterSchema(param);
+    expect(result).to.be.instanceOf(Schema);
+    expect(result.type).to.be.undefined;
+  });
+});
+
+describe('getDescription', () => {
+  const md = Markdown.md();
+
+  it('Should return escaped description when present', () => {
+    const param: OpenAPIV3.ParameterObject = {
+      name: 'test',
+      in: 'query',
+      description: 'A test parameter',
+    };
+    const result = getDescription(md, param);
+    expect(result.toString()).to.equal('A test parameter');
+  });
+
+  it('Should replace newlines with spaces', () => {
+    const param: OpenAPIV3.ParameterObject = {
+      name: 'test',
+      in: 'query',
+      description: 'line one\nline two\rline three',
+    };
+    const result = getDescription(md, param);
+    expect(result.toString()).to.equal('line one line two line three');
+  });
+
+  it('Should return empty string when no description', () => {
+    const param: OpenAPIV3.ParameterObject = {
+      name: 'test',
+      in: 'query',
+    };
+    const result = getDescription(md, param);
+    expect(result).to.equal('');
   });
 });

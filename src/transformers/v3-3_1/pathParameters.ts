@@ -3,9 +3,32 @@ import { dataTypeResolver } from './dataTypes';
 import { Schema } from './models/Schema';
 import { Markdown } from '../../lib/markdown';
 
+type ParameterObject = OpenAPIV3.ParameterObject | OpenAPIV3_1.ParameterObject;
+
+export const resolveParameterSchema = (parameterObject: ParameterObject): Schema => {
+  if ('schema' in parameterObject && parameterObject.schema) {
+    return new Schema(parameterObject.schema);
+  }
+  if ('content' in parameterObject && parameterObject.content) {
+    const mediaType = Object.keys(parameterObject.content)[0];
+    const contentSchema = mediaType && parameterObject.content[mediaType]?.schema;
+    if (contentSchema) {
+      return new Schema(contentSchema);
+    }
+  }
+  return new Schema({});
+};
+
+export const getDescription = (md: Markdown, parameterObject: ParameterObject) => {
+  if ('description' in parameterObject && parameterObject.description) {
+    return md.string(parameterObject.description.replace(/[\r\n]/g, ' ')).escape();
+  }
+  return '';
+};
+
 export const transformParameters = (
-  parameters: (OpenAPIV3.ParameterObject | OpenAPIV3_1.ParameterObject)[] = [],
-  pathParameters: (OpenAPIV3.ParameterObject | OpenAPIV3_1.ParameterObject)[] = [],
+  parameters: ParameterObject[] = [],
+  pathParameters: ParameterObject[] = [],
 ) => {
   const allParameters = [...parameters, ...pathParameters];
   if (allParameters.length === 0) {
@@ -18,45 +41,14 @@ export const transformParameters = (
   table.th('Name').th('Located in').th('Description').th('Required')
     .th('Schema');
 
-  // Combine path and operation parameters, ensuring they are V3 objects
-  allParameters.forEach((
-    parameterObject: OpenAPIV3.ParameterObject | OpenAPIV3_1.ParameterObject,
-  ) => {
+  allParameters.forEach((parameterObject: ParameterObject) => {
     if (parameterObject) {
       const tr = table.tr();
-      // Name first
       tr.td(parameterObject.name || '');
-      // Scope (in)
       tr.td(parameterObject.in || '');
-      // description
-      if ('description' in parameterObject && parameterObject.description) {
-        tr.td(md.string(parameterObject.description.replace(/[\r\n]/g, ' ')).escape());
-      } else {
-        tr.td('');
-      }
+      tr.td(getDescription(md, parameterObject));
       tr.td(parameterObject.required ? 'Yes' : 'No');
-
-      // Prepare schema to be transformed - V3 parameters have schema property
-      let schema: Schema | null = null;
-      if ('schema' in parameterObject && parameterObject.schema) {
-        // Constructor now handles ReferenceObject | SchemaObject
-        schema = new Schema(parameterObject.schema);
-      } else if ('content' in parameterObject && parameterObject.content) {
-        // Handle parameters with 'content' instead of 'schema' (e.g., requestBody)
-        // For simplicity, we might just indicate the media type or take the first one
-        const mediaType = Object.keys(parameterObject.content)[0];
-        if (mediaType && parameterObject.content[mediaType]?.schema) {
-          // Constructor now handles ReferenceObject | SchemaObject
-          schema = new Schema(parameterObject.content[mediaType].schema);
-        } else {
-          schema = new Schema({}); // Fallback for content without schema
-        }
-      } else {
-        // Fallback if neither schema nor content is present
-        schema = new Schema({});
-      }
-
-      tr.td(dataTypeResolver(schema)); // dataTypeResolver expects a Schema object
+      tr.td(dataTypeResolver(resolveParameterSchema(parameterObject)));
     }
   });
 
