@@ -78,9 +78,14 @@ export function parseProperties(
     if ('writeOnly' in prop && prop.writeOnly) {
       descriptionParts.push(md.string('Write-only').bold().get());
     }
+    const isDeprecated = 'deprecated' in prop && prop.deprecated;
+    if (isDeprecated) {
+      descriptionParts.push(md.string('Deprecated').bold().get());
+    }
     const descriptionCell = descriptionParts.join('<br>');
     const requiredCell = required.includes(propName) ? 'Yes' : 'No';
-    tr.td(propName).td(typeCell).td(descriptionCell).td(requiredCell);
+    const nameCell = isDeprecated ? md.string(propName).strikethrough().get() : propName;
+    tr.td(nameCell).td(typeCell).td(descriptionCell).td(requiredCell);
     rows.push(tr);
   });
   return rows;

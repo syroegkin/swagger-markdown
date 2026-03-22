@@ -894,6 +894,7 @@ components:
           description: User Status
           format: int32
           examples: [1]
+          deprecated: true
       xml:
         name: user
     Tag:

@@ -73,5 +73,20 @@ describe('processSchemas', () => {
       } as any);
       expect(result).to.include('**Write-only**');
     });
+
+    it('should render deprecated property with strikethrough and badge', () => {
+      const result = processSchemas({
+        User: {
+          type: 'object',
+          properties: {
+            oldField: { type: 'string', deprecated: true },
+            newField: { type: 'string' },
+          },
+        },
+      } as any);
+      expect(result).to.include('~~oldField~~');
+      expect(result).to.include('**Deprecated**');
+      expect(result).to.not.include('~~newField~~');
+    });
   });
 });

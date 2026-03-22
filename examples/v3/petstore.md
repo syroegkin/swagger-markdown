@@ -557,7 +557,7 @@ This can only be done by the logged in user.
 | email | string | *Example:* `"john@email.com"` | No |
 | password | string | *Example:* `"12345"`<br>**Write-only** | No |
 | phone | string | *Example:* `"12345"` | No |
-| userStatus | integer | User Status<br>*Example:* `1` | No |
+| ~~userStatus~~ | integer | User Status<br>*Example:* `1`<br>**Deprecated** | No |
 
 #### Tag Schema
 

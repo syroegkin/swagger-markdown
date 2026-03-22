@@ -592,7 +592,7 @@ This can only be done by the logged in user.
 | email | string |  | No |
 | password | string | **Write-only** | No |
 | phone | string |  | No |
-| userStatus | integer | User Status | No |
+| ~~userStatus~~ | integer | User Status<br>**Deprecated** | No |
 
 #### Tag Schema
 
