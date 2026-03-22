@@ -49,7 +49,7 @@ Add a new pet to the store
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
-| body | body | Pet object that needs to be added to the store | No | [Pet](#pet) |
+| body | body | Pet object that needs to be added to the store | No | [Pet](#pet-model) |
 
 ##### Responses
 
@@ -74,7 +74,7 @@ Update an existing pet
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
-| body | body | Pet object that needs to be added to the store | No | [Pet](#pet) |
+| body | body | Pet object that needs to be added to the store | No | [Pet](#pet-model) |
 
 ##### Responses
 
@@ -111,7 +111,7 @@ Multiple status values can be provided with comma seperated strings
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | [ [Pet](#pet) ] |
+| 200 | successful operation | [ [Pet](#pet-model) ] |
 | 400 | Invalid status value |  |
 
 ##### Security
@@ -141,7 +141,7 @@ Muliple tags can be provided with comma seperated strings. Use tag1, tag2, tag3 
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | [ [Pet](#pet) ] |
+| 200 | successful operation | [ [Pet](#pet-model) ] |
 | 400 | Invalid tag value |  |
 
 ##### Security
@@ -171,7 +171,7 @@ Returns a pet when ID < 10.  ID > 10 or nonintegers will simulate API error cond
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | [Pet](#pet) |
+| 200 | successful operation | [Pet](#pet-model) |
 | 400 | Invalid ID supplied |  |
 | 404 | Pet not found |  |
 
@@ -249,13 +249,13 @@ Place an order for a pet
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
-| body | body | order placed for purchasing the pet | No | [Order](#order) |
+| body | body | order placed for purchasing the pet | No | [Order](#order-model) |
 
 ##### Responses
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | [Order](#order) |
+| 200 | successful operation | [Order](#order-model) |
 | 400 | Invalid Order |  |
 
 ### /stores/order/{orderId}
@@ -279,7 +279,7 @@ For valid response try integer IDs with value <= 5 or > 10. Other values will ge
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | [Order](#order) |
+| 200 | successful operation | [Order](#order-model) |
 | 400 | Invalid ID supplied |  |
 | 404 | Order not found |  |
 
@@ -321,7 +321,7 @@ This can only be done by the logged in user.
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
-| body | body | Created user object | No | [User](#user) |
+| body | body | Created user object | No | [User](#user-model) |
 
 ##### Responses
 
@@ -342,7 +342,7 @@ Creates list of users with given input array
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
-| body | body | List of user object | No | [ [User](#user) ] |
+| body | body | List of user object | No | [ [User](#user-model) ] |
 
 ##### Responses
 
@@ -363,7 +363,7 @@ Creates list of users with given input array
 
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
-| body | body | List of user object | No | [ [User](#user) ] |
+| body | body | List of user object | No | [ [User](#user-model) ] |
 
 ##### Responses
 
@@ -428,7 +428,7 @@ Get user by user name
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | [User](#user) |
+| 200 | successful operation | [User](#user-model) |
 | 400 | Invalid username supplied |  |
 | 404 | User not found |  |
 
@@ -446,7 +446,7 @@ This can only be done by the logged in user.
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
 | username | path | name that need to be deleted | Yes | string |
-| body | body | Updated user object | No | [User](#user) |
+| body | body | Updated user object | No | [User](#user-model) |
 
 ##### Responses
 
@@ -480,7 +480,7 @@ This can only be done by the logged in user.
 ---
 ### Models
 
-#### User
+#### User Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
@@ -493,32 +493,32 @@ This can only be done by the logged in user.
 | phone | string |  | No |
 | userStatus | integer | User Status | No |
 
-#### Category
+#### Category Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
 | name | string |  | No |
 
-#### Pet
+#### Pet Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
-| category | [Category](#category) |  | No |
+| category | [Category](#category-model) |  | No |
 | name | string | *Example:* `"doggie"` | Yes |
 | photoUrls | [ string ] |  | Yes |
-| tags | [ [Tag](#tag) ] |  | No |
+| tags | [ [Tag](#tag-model) ] |  | No |
 | status | string | pet status in the store | No |
 
-#### Tag
+#### Tag Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | id | long |  | No |
 | name | string |  | No |
 
-#### Order
+#### Order Model
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |

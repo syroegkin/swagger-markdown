@@ -10,6 +10,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from the @typescript-eslint/eslint-plugin
   ],
   rules: {
+    camelcase: 0,
     'no-plusplus': 0,
     'class-methods-use-this': 0,
     'no-underscore-dangle': 0,

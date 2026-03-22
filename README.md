@@ -3,7 +3,7 @@
 [![npm][npm-image]][npm-url] [![circle ci][circleci-image]][circleci-url]
 
 CLI script to turn Swagger/OpenAPI specifications into Markdown files.
-Supports Swagger 2.0 and OpenAPI 3.0.* formats. OpenAPI 3.1.* is not yet supported.
+Supports Swagger 2.0, OpenAPI 3.0.x, and OpenAPI 3.1.x. For 3.1, webhooks are included in the generated documentation.
 
 The version 2.0 is a breaking change. The project was rewritten in typescript.
 Along with addressing multiple issues, it is more strict now with the openapi version. 
