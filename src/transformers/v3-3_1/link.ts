@@ -14,6 +14,9 @@ export function processLink(
 
   const linkString = md.string(linkName).bold();
 
+  // operationId and operationRef are intentionally not rendered — they are
+  // machine-readable references that don't improve human-readable documentation.
+
   if ('description' in link) {
     linkString.br(true).concat(link.description);
   }
