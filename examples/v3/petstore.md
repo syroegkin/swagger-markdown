@@ -306,6 +306,54 @@ Returns a pet matched by full object, name, or ID (anyOf example)
 | --------------- | ------ |
 | petstore_auth | read:pets |
 
+### [GET] /pet/typed/{petTypeId}
+**Get typed pet by ID**
+
+Returns a pet matched by type schema (PetByType reference example)
+
+#### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| petTypeId | path | ID of the typed pet to return | Yes | long |
+
+#### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | **application/json**: [PetByType](#petbytype-schema)<br> |
+| 404 | Pet not found |  |
+
+##### Security
+
+| Security Schema | Scopes |
+| --------------- | ------ |
+| petstore_auth | read:pets |
+
+### [GET] /pet/search
+**Search for a pet by mixed identifier**
+
+Search for a pet using a mixed identifier that can be an object, string, or integer (PetOrId reference example)
+
+#### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| identifier | query | Pet identifier (object, name, or ID) | Yes | [PetOrId](#petorid-schema) |
+
+#### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | **application/json**: [Pet](#pet-schema)<br> |
+| 404 | Pet not found |  |
+
+##### Security
+
+| Security Schema | Scopes |
+| --------------- | ------ |
+| petstore_auth | read:pets |
+
 ---
 ## store
 Access to Petstore orders
@@ -401,6 +449,32 @@ For valid response try integer IDs with value < 1000. Anything above 1000 or non
 | ---- | ----------- |
 | 400 | Invalid ID supplied |
 | 404 | Order not found |
+
+### [GET] /store/order/{orderId}/customer
+**Get customer for an order**
+
+Returns the customer associated with a specific order
+
+#### Parameters
+
+| Name | Located in | Description | Required | Schema |
+| ---- | ---------- | ----------- | -------- | ------ |
+| orderId | path | ID of the order | Yes | long |
+
+#### Responses
+
+| Code | Description | Schema |
+| ---- | ----------- | ------ |
+| 200 | successful operation | **application/json**: [Customer](#customer-schema)<br> |
+| 400 | Invalid ID supplied |  |
+| 404 | Order not found |  |
+
+##### Security
+
+| Security Schema | Scopes |
+| --------------- | ------ |
+| basic_auth |  |
+| openid_connect |  |
 
 ---
 ## user

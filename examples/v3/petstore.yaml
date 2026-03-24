@@ -369,6 +369,59 @@ paths:
       security:
         - petstore_auth:
             - read:pets
+  /pet/typed/{petTypeId}:
+    get:
+      tags:
+        - pet
+      summary: Get typed pet by ID
+      description: Returns a pet matched by type schema (PetByType reference example)
+      operationId: getTypedPetById
+      parameters:
+        - name: petTypeId
+          in: path
+          description: ID of the typed pet to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetByType'
+        '404':
+          description: Pet not found
+      security:
+        - petstore_auth:
+            - read:pets
+  /pet/search:
+    get:
+      tags:
+        - pet
+      summary: Search for a pet by mixed identifier
+      description: Search for a pet using a mixed identifier that can be an object, string, or integer (PetOrId reference example)
+      operationId: searchPet
+      parameters:
+        - name: identifier
+          in: query
+          description: Pet identifier (object, name, or ID)
+          required: true
+          schema:
+            $ref: '#/components/schemas/PetOrId'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+        '404':
+          description: Pet not found
+      security:
+        - petstore_auth:
+            - read:pets
   /store/inventory:
     get:
       tags:
@@ -487,6 +540,35 @@ paths:
           description: Invalid ID supplied
         '404':
           description: Order not found
+  /store/order/{orderId}/customer:
+    get:
+      tags:
+        - store
+      summary: Get customer for an order
+      description: Returns the customer associated with a specific order
+      operationId: getOrderCustomer
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of the order
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: Order not found
+      security:
+        - basic_auth: []
+        - openid_connect: []
   /user:
     post:
       tags:
