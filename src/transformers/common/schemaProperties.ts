@@ -8,15 +8,20 @@ import { SchemaInterface, dataTypeResolver } from './dataTypes';
 export function parsePrimitive(
   name: string,
   definition: Record<string, unknown> | null | undefined,
+  SchemaClass?: new (prop: unknown) => SchemaInterface,
 ): MDtableRow {
   const tr = MDtableRow.tr();
   if (definition == null || typeof definition !== 'object') {
     definition = {};
   }
-  const typeCell = 'type' in definition ? definition.type : '';
   let safeType = '';
-  if (typeCell !== undefined) {
-    safeType = Array.isArray(typeCell) ? typeCell.join(', ') : String(typeCell);
+  if (SchemaClass) {
+    safeType = dataTypeResolver(new SchemaClass(definition));
+  } else {
+    const typeCell = 'type' in definition ? definition.type : '';
+    if (typeCell !== undefined) {
+      safeType = Array.isArray(typeCell) ? typeCell.join(', ') : String(typeCell);
+    }
   }
   const descriptionCell = ('description' in definition
     ? (definition.description as string) : '').replace(/[\r\n]/g, ' ');

@@ -48,7 +48,7 @@ export function processSchemas(
       parsedProperties.forEach((row) => table.insertRow(row));
     } else {
       const schemaRecord = schema as unknown as Record<string, unknown>;
-      table.insertRow(parsePrimitive(schemaName, schemaRecord));
+      table.insertRow(parsePrimitive(schemaName, schemaRecord, Schema));
     }
     md.line(table);
 

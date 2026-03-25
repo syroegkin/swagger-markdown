@@ -48,6 +48,53 @@ describe('processSchemas', () => {
     });
   });
 
+  describe('Top-level array schema', () => {
+    it('should render array with inline object items', () => {
+      const result = processSchemas({
+        PetList: {
+          type: 'array',
+          items: {
+            type: 'object',
+            properties: {
+              id: { type: 'integer', format: 'int64' },
+              name: { type: 'string' },
+            },
+          },
+        },
+      } as any);
+      expect(result).to.include('PetList');
+      expect(result).to.include('[ { **"id"**: long, **"name"**: string } ]');
+    });
+
+    it('should render array with $ref items', () => {
+      const result = processSchemas({
+        TagList: {
+          type: 'array',
+          items: {
+            $ref: '#/components/schemas/Tag',
+          },
+          description: 'A list of tags',
+        },
+      } as any);
+      expect(result).to.include('TagList');
+      expect(result).to.include('[ [Tag](#tag-schema) ]');
+      expect(result).to.include('A list of tags');
+    });
+
+    it('should render array of primitives', () => {
+      const result = processSchemas({
+        StringList: {
+          type: 'array',
+          items: {
+            type: 'string',
+          },
+        },
+      } as any);
+      expect(result).to.include('StringList');
+      expect(result).to.include('[ string ]');
+    });
+  });
+
   describe('readOnly and writeOnly properties', () => {
     it('should render readOnly badge', () => {
       const result = processSchemas({

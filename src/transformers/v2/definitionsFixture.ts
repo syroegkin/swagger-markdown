@@ -82,9 +82,50 @@ export const fixture = {
   result4: [
     '| Pet | string | This is a very long description |  |',
   ],
+  data5: {
+    PetList: {
+      type: 'array',
+      items: {
+        type: 'object',
+        required: ['id', 'name'],
+        properties: {
+          id: {
+            type: 'integer',
+            format: 'int64',
+          },
+          name: {
+            type: 'string',
+          },
+          species: {
+            type: 'string',
+          },
+          age: {
+            type: 'integer',
+          },
+        },
+      },
+    },
+  },
+  result5: [
+    '| PetList | [ { **"id"**: long, **"name"**: string, **"species"**: string, **"age"**: integer } ] |  |  |',
+  ],
+  data6: {
+    TagList: {
+      type: 'array',
+      items: {
+        $ref: '#/definitions/Tag',
+      },
+      description: 'A list of tags',
+    },
+  },
+  result6: [
+    '| TagList | [ [Tag](#tag-model) ] | A list of tags |  |',
+  ],
   defHeader1: '#### Tag Model',
   defHeader2: '#### Pet Model',
   defHeader3: '#### deviceid Model',
+  defHeader5: '#### PetList Model',
+  defHeader6: '#### TagList Model',
 };
 // fixture.defHeader1 = '#### Tag';
 // fixture.defHeader2 = '#### Pet';

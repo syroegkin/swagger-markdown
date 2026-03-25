@@ -48,9 +48,7 @@ paths:
         '200':
           description: pet response
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/pet'
+            $ref: '#/definitions/petList'
         default:
           description: unexpected error
           schema:
@@ -151,6 +149,22 @@ definitions:
         example: doggie dog
       tag:
         type: string
+  petList:
+    type: array
+    description: A list of pets
+    items:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        tag:
+          type: string
   errorModel:
     type: object
     required:
