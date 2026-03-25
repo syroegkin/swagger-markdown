@@ -23,7 +23,7 @@ export function processDefinition(name: string, definition: OpenAPIV2.SchemaObje
     const parsedProperties = parseProperties(definition, Schema);
     parsedProperties.forEach((row) => table.insertRow(row));
   } else {
-    table.insertRow(parsePrimitive(name, definition));
+    table.insertRow(parsePrimitive(name, definition, Schema));
   }
   md.line(table);
 

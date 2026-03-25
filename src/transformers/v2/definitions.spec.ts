@@ -73,4 +73,24 @@ describe('Definitions', () => {
       expect(res13![3]).to.be.equal(fixture.result3[0]);
     });
   });
+
+  describe('Top-level array schema', () => {
+    const res5 = transformDefinition(fixture.data5)?.split('\n');
+    const res6 = transformDefinition(fixture.data6)?.split('\n');
+
+    it('should render array with inline object items', () => {
+      const dataRows = res5?.filter((line) => line.startsWith('| PetList'));
+      expect(dataRows![0]).to.be.equal(fixture.result5[0]);
+    });
+
+    it('should render array with $ref items and description', () => {
+      const dataRows = res6?.filter((line) => line.startsWith('| TagList'));
+      expect(dataRows![0]).to.be.equal(fixture.result6[0]);
+    });
+
+    it('should create proper header for array schema', () => {
+      expect(res5).to.include(fixture.defHeader5);
+      expect(res6).to.include(fixture.defHeader6);
+    });
+  });
 });

@@ -133,7 +133,7 @@ Multiple status values can be provided with comma separated strings.
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | successful operation | **application/json**: [ [Pet](#pet-schema) ]<br>**application/xml**: [ [Pet](#pet-schema) ]<br> |
+| 200 | successful operation | **application/json**: [PetList](#petlist-schema)<br>**application/xml**: [PetList](#petlist-schema)<br> |
 | 400 | Invalid status value |  |
 | default | Unexpected error | **application/json**: [Error](#error-schema)<br> |
 
@@ -725,13 +725,21 @@ This can only be done by the logged in user.
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| PetByType |  |  |  |
+| PetByType | [Cat](#cat-schema) or [Dog](#dog-schema) |  |  |
 
 #### PetOrId Schema
 
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
-| PetOrId |  |  |  |
+| PetOrId | [Pet](#pet-schema) or string or integer |  |  |
+
+#### PetList Schema
+
+A list of pets
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| PetList | [ { **"id"**: long, **"name"**: string, **"tag"**: string } ] | A list of pets |  |
 
 #### ApiResponse Schema
 

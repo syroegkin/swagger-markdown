@@ -34,7 +34,7 @@ Returns all pets from the system that the user has access to
 
 | Code | Description | Schema |
 | ---- | ----------- | ------ |
-| 200 | pet response | [ [pet](#pet-model) ] |
+| 200 | pet response | [petList](#petlist-model) |
 | default | unexpected error | [errorModel](#errormodel-model) |
 
 #### POST
@@ -111,6 +111,14 @@ deletes a single pet based on the ID supplied
 | id | long |  | No |
 | name | string | Pet name<br>*Example:* `"doggie dog"` | Yes |
 | tag | string |  | No |
+
+#### petList Model
+
+A list of pets
+
+| Name | Type | Description | Required |
+| ---- | ---- | ----------- | -------- |
+| petList | [ { **"id"**: long, **"name"**: string, **"tag"**: string } ] | A list of pets |  |
 
 #### errorModel Model
 
