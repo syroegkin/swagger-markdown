@@ -23,8 +23,12 @@ export function parsePrimitive(
       safeType = Array.isArray(typeCell) ? typeCell.join(', ') : String(typeCell);
     }
   }
-  const descriptionCell = ('description' in definition
-    ? (definition.description as string) : '').replace(/[\r\n]/g, ' ');
+  const md = Markdown.md();
+  const descriptionCell = md
+    .string(('description' in definition
+      ? (definition.description as string) : '').replace(/[\r\n]/g, ' '))
+    .escape()
+    .get();
   const requiredCell = '';
   tr.td(name)
     .td(safeType)

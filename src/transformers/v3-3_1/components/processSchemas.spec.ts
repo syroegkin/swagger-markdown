@@ -136,4 +136,16 @@ describe('processSchemas', () => {
       expect(result).to.not.include('~~newField~~');
     });
   });
+
+  describe('primitive schema description escaping', () => {
+    it('escapes pipe characters in a primitive schema description so the table row keeps four cells', () => {
+      const result = processSchemas({
+        Delimiter: { type: 'string', description: 'separated | values' },
+      } as any);
+      const row = result
+        .split('\n')
+        .find((line) => line.startsWith('| Delimiter |'));
+      expect(row).to.equal('| Delimiter | string | separated \\| values |  |');
+    });
+  });
 });
