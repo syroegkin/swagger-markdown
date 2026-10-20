@@ -34,8 +34,8 @@
 		]
 	},
 	"lint-staged": {
-		"{src,test}/**/*.js": [
-			"eslint --fix --ignore-pattern 'src/**/*.js' --ignore-pattern 'tests/**/*.spec.js' --ignore-pattern 'scripts/**/*.js'"
+		"src/**/*.ts": [
+			"eslint --fix"
 		]
 	},
 	"release": {
