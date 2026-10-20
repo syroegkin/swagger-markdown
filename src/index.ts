@@ -81,7 +81,7 @@ export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: 
   } else if (isV3Document(inputDoc) || options.forceVersion === '3') {
     plainDocument = transformSwaggerV3(inputDoc as OpenAPIV3.Document, options);
   } else {
-    throw new Error('Can not detect version ot this version in not supported');
+    throw new Error('Can not detect version or this version is not supported');
   }
 
   return tidyMarkdown(plainDocument);
