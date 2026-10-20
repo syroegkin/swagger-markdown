@@ -1,3 +1,24 @@
+# [3.2.0](https://github.com/syroegkin/swagger-markdown/compare/v3.1.2...v3.2.0) (2026-10-20)
+
+
+### Bug Fixes
+
+* render flasy and object default values ([476bfb5](https://github.com/syroegkin/swagger-markdown/commit/476bfb592e996f0153483a2faab14b47a9bb7b3e))
+
+
+### Features
+
+* render enums consistently, address duplicated enums display ([d73a08e](https://github.com/syroegkin/swagger-markdown/commit/d73a08eebb03b3fc79867d1b5ba912b195e92d7d))
+
+## [3.1.2](https://github.com/syroegkin/swagger-markdown/compare/v3.1.1...v3.1.2) (2026-10-20)
+
+
+### Bug Fixes
+
+* exception typo ([8cd6d68](https://github.com/syroegkin/swagger-markdown/commit/8cd6d68a53d5816f2e2dad52b6ab584aff68f51d))
+* support arrays with no items ([8e6ded6](https://github.com/syroegkin/swagger-markdown/commit/8e6ded67212a5fa393e1bff618d4683c3a090548))
+* support null values in the document ([5c2f2f7](https://github.com/syroegkin/swagger-markdown/commit/5c2f2f784cfd9f4a90f9d43b6be7847a3b59836a)), closes [#64](https://github.com/syroegkin/swagger-markdown/issues/64) [#213](https://github.com/syroegkin/swagger-markdown/issues/213)
+
 ## [3.1.1](https://github.com/syroegkin/swagger-markdown/compare/v3.1.0...v3.1.1) (2026-03-25)
 
 
