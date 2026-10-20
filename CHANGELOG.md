@@ -1,3 +1,11 @@
+## [3.1.1](https://github.com/syroegkin/swagger-markdown/compare/v3.1.0...v3.1.1) (2026-03-25)
+
+
+### Bug Fixes
+
+* fix array of objects presentation ([9d5eab2](https://github.com/syroegkin/swagger-markdown/commit/9d5eab27715003a81cbc8a8c7ab4a772142ab704)), closes [#220](https://github.com/syroegkin/swagger-markdown/issues/220)
+* make openapi documents valid, fix warnings ([363d824](https://github.com/syroegkin/swagger-markdown/commit/363d824371aa9b0344d9c50c4574804ced537ef9))
+
 # [3.1.0](https://github.com/syroegkin/swagger-markdown/compare/v3.0.0...v3.1.0) (2026-03-22)
 
 
