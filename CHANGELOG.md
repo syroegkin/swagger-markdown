@@ -1,3 +1,12 @@
+## [3.1.2](https://github.com/syroegkin/swagger-markdown/compare/v3.1.1...v3.1.2) (2026-10-20)
+
+
+### Bug Fixes
+
+* exception typo ([8cd6d68](https://github.com/syroegkin/swagger-markdown/commit/8cd6d68a53d5816f2e2dad52b6ab584aff68f51d))
+* support arrays with no items ([8e6ded6](https://github.com/syroegkin/swagger-markdown/commit/8e6ded67212a5fa393e1bff618d4683c3a090548))
+* support null values in the document ([5c2f2f7](https://github.com/syroegkin/swagger-markdown/commit/5c2f2f784cfd9f4a90f9d43b6be7847a3b59836a)), closes [#64](https://github.com/syroegkin/swagger-markdown/issues/64) [#213](https://github.com/syroegkin/swagger-markdown/issues/213)
+
 ## [3.1.1](https://github.com/syroegkin/swagger-markdown/compare/v3.1.0...v3.1.1) (2026-03-25)
 
 
