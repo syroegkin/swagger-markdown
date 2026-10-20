@@ -156,10 +156,12 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
   }
 
   const schemaDefault = schema.getDefault?.();
-  if (schemaDefault) {
+  if (schemaDefault !== undefined) {
+    const defaultValue = typeof schemaDefault === 'string'
+      ? schemaDefault : JSON.stringify(schemaDefault);
     resolveResults.push(
       md.string().br(true).concat(
-        md.string('Default:').bold().concat(` ${schemaDefault}`),
+        md.string('Default:').bold().concat(` ${defaultValue}`),
       ).get(),
     );
   }
