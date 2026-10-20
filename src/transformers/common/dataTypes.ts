@@ -109,6 +109,9 @@ export const dataTypeResolver = (schema: SchemaInterface): string => {
     }
 
     if (type === 'array') {
+      if (!schema.getItems()) {
+        return type;
+      }
       const subType = dataTypeResolver(schema.getItems());
       return `[ ${subType} ]`;
     }

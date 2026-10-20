@@ -37,6 +37,9 @@ const fixture = [
       type: 'array',
       items: { $ref: '#/definitions/ErrorModel' },
     }), `[ [ErrorModel](#${anchor('ErrorModel model')}) ]`],
+  // Array without items
+  [new V2Schema({ type: 'array' }), 'array'],
+  [new V3Schema({ type: 'array' } as any), 'array'],
   // Weird usecases
   [new V2Schema({ type: 'random', format: 'number' }), 'random (number)'],
   [new V2Schema({ type: 'integer', format: 'int128' }), 'integer (int128)'],

@@ -62,6 +62,14 @@ describe('Partial dereference', () => {
     expect(partiallyDereference(input)).to.eql(input);
   });
 
+  it('keeps null values', () => {
+    const input = {
+      one: null,
+      two: [null, { three: null }],
+    } as unknown as AllSwaggerDocumentVersions;
+    expect(partiallyDereference(input)).to.eql(input);
+  });
+
   it('dereferences $refs', () => {
     const input = {
       one: { two: [3, 'four', { $ref: '#/some/thing' }] },
