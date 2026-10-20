@@ -66,12 +66,6 @@ export function parseProperties(
         md.string((prop.description as string).replace(/[\r\n]/g, ' ')).escape().get(),
       );
     }
-    if ('enum' in prop) {
-      const enumValues = (prop.enum as unknown[]).map((val) => `\`${JSON.stringify(val)}\``).join(', ');
-      descriptionParts.push(
-        md.string('Enum:').italic().concat(` ${enumValues}`).get(),
-      );
-    }
     if ('example' in prop) {
       descriptionParts.push(
         md.string('Example:').italic().concat(` \`${JSON.stringify(prop.example)}\``).get(),

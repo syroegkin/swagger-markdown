@@ -14,6 +14,8 @@ export class Schema implements SchemaInterface {
 
   public properties?: { [name: string]: SchemaInterface } = {};
 
+  public enum?: unknown[] = [];
+
   /**
    * constructor
    *
@@ -39,6 +41,9 @@ export class Schema implements SchemaInterface {
       }
       if ('properties' in schema) {
         this.setProperties(schema.properties);
+      }
+      if ('enum' in schema) {
+        this.setEnum(schema.enum);
       }
     }
   }
@@ -90,6 +95,14 @@ export class Schema implements SchemaInterface {
   }
 
   /**
+   * @param {Array<any>} enumValues
+   */
+  public setEnum(enumValues: unknown[]): this {
+    this.enum = enumValues;
+    return this;
+  }
+
+  /**
    * @param {String} ref
    */
   public setReference(ref: string): this {
@@ -134,5 +147,12 @@ export class Schema implements SchemaInterface {
 
   public getProperties() {
     return this.properties;
+  }
+
+  /**
+   * @return {Array<any>}
+   */
+  public getEnum(): unknown[] {
+    return this.enum;
   }
 }
