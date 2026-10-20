@@ -612,7 +612,7 @@ This can only be done by the logged in user.
 | petId | long | *Example:* `198772` | No |
 | quantity | integer | *Example:* `7` | No |
 | shipDate | dateTime or null |  | No |
-| status | string, <br>**Available values:** "placed", "approved", "delivered" | Order Status<br>*Enum:* `"placed"`, `"approved"`, `"delivered"`<br>*Example:* `"approved"` | No |
+| status | string, <br>**Available values:** "placed", "approved", "delivered" | Order Status<br>*Example:* `"approved"` | No |
 | complete | boolean |  | No |
 
 #### Customer Schema
@@ -668,7 +668,7 @@ This can only be done by the logged in user.
 | category | [Category](#category-schema) or null |  | No |
 | photoUrls | [ string ] |  | Yes |
 | tags | [ [Tag](#tag-schema) ] |  | No |
-| status | string, <br>**Available values:** "available", "pending", "sold" | pet status in the store<br>*Enum:* `"available"`, `"pending"`, `"sold"` | No |
+| status | string, <br>**Available values:** "available", "pending", "sold" | pet status in the store | No |
 
 #### Cat Schema
 
@@ -682,7 +682,7 @@ This can only be done by the logged in user.
 | Name | Type | Description | Required |
 | ---- | ---- | ----------- | -------- |
 | bark | boolean |  | No |
-| breed | string, <br>**Available values:** "Dingo", "Husky", "Retriever", "Shepherd" | *Enum:* `"Dingo"`, `"Husky"`, `"Retriever"`, `"Shepherd"` | No |
+| breed | string, <br>**Available values:** "Dingo", "Husky", "Retriever", "Shepherd" |  | No |
 
 #### PetByType Schema
 

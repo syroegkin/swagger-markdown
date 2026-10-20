@@ -100,6 +100,16 @@ describe('Data Types', () => {
     expect(result).to.include('hello');
   });
 
+  it('should render falsy default values for V3 schemas', () => {
+    expect(dataTypeResolver(new V3Schema({ type: 'integer', default: 0 }))).to.include('**Default:** 0');
+    expect(dataTypeResolver(new V3Schema({ type: 'boolean', default: false }))).to.include('**Default:** false');
+  });
+
+  it('should render object and array default values for V3 schemas', () => {
+    expect(dataTypeResolver(new V3Schema({ type: 'object', default: { a: 1 } }))).to.include('**Default:** {"a":1}');
+    expect(dataTypeResolver(new V3Schema({ type: 'array', items: { type: 'string' }, default: ['a'] }))).to.include('**Default:** ["a"]');
+  });
+
   it('should resolve oneOf with primitive types', () => {
     const schema = new V3Schema({
       oneOf: [{ type: 'string' }, { type: 'integer' }],

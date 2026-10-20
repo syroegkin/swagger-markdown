@@ -335,7 +335,7 @@ Modify the relationship between the current user and thetarget user.
 | Name | Located in | Description | Required | Schema |
 | ---- | ---------- | ----------- | -------- | ------ |
 | user-id | path | The user identifier number | Yes | number |
-| action | body | One of follow/unfollow/block/unblock/approve/ignore. | No | string |
+| action | body | One of follow/unfollow/block/unblock/approve/ignore. | No | string, <br>**Available values:** "follow", "unfollow", "block", "unblock", "approve" |
 
 ##### Responses
 

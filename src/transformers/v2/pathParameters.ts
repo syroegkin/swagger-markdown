@@ -39,6 +39,7 @@ export const transformParameters = (
         schema.setFormat('format' in keys ? keys.format : null);
         schema.setReference('$ref' in keys ? keys.$ref : null);
         schema.setItems('items' in keys ? keys.items : null);
+        schema.setEnum('enum' in keys ? keys.enum : null);
       }
 
       tr.td(dataTypeResolver(schema));

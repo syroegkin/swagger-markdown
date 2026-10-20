@@ -61,7 +61,7 @@ export const fixture = {
     '| name | string | pet category in the store<br>*Example:* `"doggie"` | Yes |',
     '| photoUrls | [ string ] |  | Yes |',
     '| tags | [ [Category](#category-model) ] |  | No |',
-    '| gender | string | *Enum:* `"male"`, `"female"` | No |',
+    '| gender | string, <br>**Available values:** "male", "female" |  | No |',
   ],
   data3: {
     deviceid: {
