@@ -68,7 +68,9 @@ jobs:
           at: ~/app
       - run:
           name: Deploy to npm
-          command: npm run semantic-release
+          command: |
+            export NPM_ID_TOKEN=$(circleci run oidc get --claims '{"aud": "npm:registry.npmjs.org"}')
+            npm run semantic-release
 
 workflows:
   test_and_deploy:
