@@ -21,7 +21,7 @@ export function partiallyDereference(
   node: AllSwaggerDocumentVersions,
   $refs?: $Refs,
 ): AllSwaggerDocumentVersions {
-  if (typeof node !== 'object') return node;
+  if (node === null || typeof node !== 'object') return node;
   const obj = {} as AllSwaggerDocumentVersions;
   const entries = Object.entries(node);
   for (let i = 0; i < entries.length; i++) {
