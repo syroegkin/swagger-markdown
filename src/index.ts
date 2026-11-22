@@ -1,5 +1,5 @@
 import $RefParser, { type $Refs } from '@apidevtools/json-schema-ref-parser';
-import fs from 'fs';
+import fs from 'node:fs';
 import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { AllSwaggerDocumentVersions, Options } from './types';
 import { assertValidDocument } from './lib/assertValidDocument';

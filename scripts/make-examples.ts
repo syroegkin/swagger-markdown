@@ -1,6 +1,6 @@
-import path from 'path';
-import fs from 'fs';
-import { execFileSync } from 'child_process';
+import path from 'node:path';
+import fs from 'node:fs';
+import { execFileSync } from 'node:child_process';
 
 const examplesDirectory = path.join(__dirname, '..', 'examples');
 

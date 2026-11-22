@@ -1,3 +1,7 @@
+// The config is CommonJS, require is the way to load a module here
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { builtinModules } = require('node:module');
+
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -39,6 +43,12 @@ module.exports = {
         caughtErrorsIgnorePattern: '^_',
       },
     ],
+    // Node built-in modules are imported with the node: prefix
+    'no-restricted-imports': ['error', {
+      paths: builtinModules
+        .filter((name) => !name.startsWith('_'))
+        .map((name) => ({ name, message: `Import it as 'node:${name}'.` })),
+    }],
   },
   overrides: [
     {
