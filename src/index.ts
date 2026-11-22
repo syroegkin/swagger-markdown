@@ -1,8 +1,8 @@
-import SwaggerParser from '@apidevtools/swagger-parser';
-import type { $Refs } from '@apidevtools/json-schema-ref-parser';
+import $RefParser, { type $Refs } from '@apidevtools/json-schema-ref-parser';
 import fs from 'fs';
 import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { AllSwaggerDocumentVersions, Options } from './types';
+import { assertValidDocument } from './lib/assertValidDocument';
 import { isV2Document, isV31Document, isV3Document } from './lib/detectDocumentVersion';
 import { transformSwaggerV2 } from './transformers/documentV2';
 import { transformSwaggerV3 } from './transformers/documentV3';
@@ -88,15 +88,30 @@ export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: 
 }
 
 /**
+ * Read the document and bundle all the external $refs into it
+ *
+ * @param {string} input path to the document
+ */
+async function readDocument(
+  input: string,
+): Promise<{ document: AllSwaggerDocumentVersions, $refs: $Refs }> {
+  const parser = new $RefParser();
+  // Check the document before reading the files and URLs it refers to
+  const document = await parser.parse(input);
+  assertValidDocument(document, input);
+  const bundle = await parser.bundle(input, document, {});
+  const $refs = await parser.resolve(bundle);
+  return { document: parser.schema as AllSwaggerDocumentVersions, $refs };
+}
+
+/**
  * @export
  * @param {Options} options
  * @return {*}  {Promise<string>}
  */
 export async function transformFile(options: Options): Promise<string> {
-  const swaggerParser = new SwaggerParser();
-  const bundle = await swaggerParser.bundle(options.input);
-  const $refs: $Refs = await swaggerParser.resolve(bundle);
-  const dereferencedDocument = partiallyDereference(swaggerParser.api, $refs);
+  const { document, $refs } = await readDocument(options.input);
+  const dereferencedDocument = partiallyDereference(document, $refs);
   const markdown = transfromSwagger(dereferencedDocument, options);
 
   if (options.output) {

@@ -1,8 +1,27 @@
 import type { $Refs } from '@apidevtools/json-schema-ref-parser';
 import { expect } from 'chai';
 import fs from 'fs';
+import os from 'os';
+import path from 'path';
 import { transformFile, partiallyDereference, transfromSwagger } from './index';
 import { AllSwaggerDocumentVersions } from './types';
+
+// Temporary directories made by the tests, removed when these are done
+const directories: string[] = [];
+afterAll(() => directories.forEach((dir) => fs.rmSync(dir, { recursive: true, force: true })));
+
+const makeDirectory = (): string => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'swagger-markdown-'));
+  directories.push(dir);
+  return dir;
+};
+
+// Writes the lines to a file, in a new temporary directory by default, and returns the path
+const write = (lines: string[], name = 'api.yaml', dir = makeDirectory()): string => {
+  const file = path.join(dir, name);
+  fs.writeFileSync(file, lines.join('\n'));
+  return file;
+};
 
 describe('Integration test examples', () => {
   const examplesDir = `${__dirname}/../examples`;
@@ -18,6 +37,83 @@ describe('Integration test examples', () => {
           expect(generated).to.eql(expected);
         });
       });
+  });
+});
+
+describe('transformFile with invalid documents', () => {
+  let warn: jest.SpyInstance;
+  beforeEach(() => {
+    warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+  });
+  afterEach(() => warn.mockRestore());
+
+  const failure = async (lines: string[]): Promise<Error> => {
+    try {
+      await transformFile({ input: write(lines) });
+    } catch (e) {
+      return e;
+    }
+    throw new Error('transformFile was expected to fail');
+  };
+
+  it('rejects a version written as a number which is not supported', async () => {
+    const error = await failure(['openapi: 4', 'info: {title: t, version: "1"}', 'paths: {}']);
+    expect(error.message).to.include('Unsupported OpenAPI version: 4.0');
+  });
+
+  it('rejects an unsupported OpenAPI version', async () => {
+    const error = await failure(['openapi: 3.2.0', 'info: {title: t, version: "1"}', 'paths: {}']);
+    expect(error.message).to.include('Unsupported OpenAPI version: 3.2.0');
+  });
+
+  it('rejects a document which is not an object', async () => {
+    const error = await failure(['just a text']);
+    expect(error.message).to.include('is not a valid JSON Schema');
+  });
+
+  it('checks the version before reading the files it refers to', async () => {
+    const error = await failure([
+      'openapi: 3.2.0',
+      'info: {title: t, version: "1"}',
+      'paths: {/a: {$ref: "missing.yaml"}}',
+    ]);
+    expect(error.message).to.include('Unsupported OpenAPI version: 3.2.0');
+  });
+
+  it('rejects a document which is not a Swagger/OpenAPI definition', async () => {
+    const error = await failure(['name: package', 'version: 1.0.0']);
+    expect(error.message).to.include('is not a valid Swagger/OpenAPI definition');
+  });
+});
+
+describe('transformFile with versions written as numbers', () => {
+  it('reads these as strings, with a warning', async () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+    try {
+      const file = write(['openapi: 3.1', 'info: {title: Pets, version: 1.5}', 'paths: {}']);
+      const result = await transformFile({ input: file });
+      expect(result).to.include('# Pets');
+      expect(result).to.include('Version: 1.5');
+      expect(warn.mock.calls).to.have.length(2);
+    } finally {
+      warn.mockRestore();
+    }
+  });
+});
+
+describe('transformFile with external $refs', () => {
+  it('reads the $refs to other files', async () => {
+    const file = write([
+      'openapi: 3.0.0',
+      'info: {title: t, version: "1"}',
+      'paths:',
+      '  /pets:',
+      '    get:',
+      '      responses:',
+      '        "200": {$ref: "responses.yaml#/Ok"}',
+    ]);
+    write(['Ok: {description: Pets from the other file}'], 'responses.yaml', path.dirname(file));
+    expect(await transformFile({ input: file })).to.include('Pets from the other file');
   });
 });
 
