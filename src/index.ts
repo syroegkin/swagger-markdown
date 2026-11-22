@@ -3,7 +3,7 @@ import fs from 'fs';
 import { OpenAPIV2, OpenAPIV3, OpenAPIV3_1 } from 'openapi-types';
 import { AllSwaggerDocumentVersions, Options } from './types';
 import { assertValidDocument } from './lib/assertValidDocument';
-import { isV2Document, isV31Document, isV3Document } from './lib/detectDocumentVersion';
+import { isV2Document, isV30Document, isV3Document } from './lib/detectDocumentVersion';
 import { transformSwaggerV2 } from './transformers/documentV2';
 import { transformSwaggerV3 } from './transformers/documentV3';
 import { transformSwaggerV3_1 } from './transformers/documentV3_1';
@@ -76,15 +76,19 @@ export function transfromSwagger(inputDoc: AllSwaggerDocumentVersions, options: 
     // Quick hack to allow version 3 to be processed as it version 2
     // Will be removed as soon as support of version 3 will be in place`
     plainDocument = transformSwaggerV2(inputDoc as OpenAPIV2.Document, options);
-  } else if (isV31Document(inputDoc)) {
+  } else if (isV30Document(inputDoc)) {
+    plainDocument = transformSwaggerV3(inputDoc as OpenAPIV3.Document, options);
+  } else if (isV3Document(inputDoc)) {
+    // 3.1, and a newer 3.x is rendered as the newest version we know
     plainDocument = transformSwaggerV3_1(inputDoc as OpenAPIV3_1.Document, options);
-  } else if (isV3Document(inputDoc) || options.forceVersion === '3') {
+  } else if (options.forceVersion === '3') {
     plainDocument = transformSwaggerV3(inputDoc as OpenAPIV3.Document, options);
   } else {
     throw new Error('Can not detect version or this version is not supported');
   }
 
-  return tidyMarkdown(plainDocument);
+  // There can be nothing to render, e.g. a document with no info and no paths
+  return tidyMarkdown(plainDocument || '');
 }
 
 /**

@@ -1,5 +1,7 @@
 import { expect } from 'chai';
-import { isV2Document, isV31Document, isV3Document } from './detectDocumentVersion';
+import {
+  isV2Document, isV30Document, isV31Document, isV3Document,
+} from './detectDocumentVersion';
 import { AllSwaggerDocumentVersions } from '../types';
 
 function makeDocV2(version: string): AllSwaggerDocumentVersions {
@@ -44,5 +46,12 @@ describe('detectDocumentVersion', () => {
     expect(isV31Document(makeDocV3('3.0'))).to.be.equal(false);
     expect(isV31Document(makeDocV3('3'))).to.be.equal(false);
     expect(isV31Document(makeDocV3('3.1'))).to.be.equal(true);
+  });
+  it('detects version 3.0 of the document', () => {
+    expect(isV30Document(makeDocV3('3.0.0'))).to.be.equal(true);
+    expect(isV30Document(makeDocV3('3.0'))).to.be.equal(true);
+    expect(isV30Document(makeDocV3('3.1.0'))).to.be.equal(false);
+    expect(isV30Document(makeDocV3('3'))).to.be.equal(false);
+    expect(isV30Document(makeDocV2('3.0.0'))).to.be.equal(false);
   });
 });

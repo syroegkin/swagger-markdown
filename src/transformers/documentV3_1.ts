@@ -62,7 +62,7 @@ export function transformSwaggerV3_1(
     });
   }
 
-  if ('components' in inputDoc) {
+  if ('components' in inputDoc && inputDoc.components) {
     const componentsOutput = transformComponents(inputDoc.components);
     if (componentsOutput != null) {
       md.line(md.string().horizontalRule());

@@ -61,9 +61,9 @@ describe('transformFile with invalid documents', () => {
     expect(error.message).to.include('Unsupported OpenAPI version: 4.0');
   });
 
-  it('rejects an unsupported OpenAPI version', async () => {
-    const error = await failure(['openapi: 3.2.0', 'info: {title: t, version: "1"}', 'paths: {}']);
-    expect(error.message).to.include('Unsupported OpenAPI version: 3.2.0');
+  it('rejects an unrecognized OpenAPI version', async () => {
+    const error = await failure(['openapi: 4.0.0', 'info: {title: t, version: "1"}', 'paths: {}']);
+    expect(error.message).to.include('Unsupported OpenAPI version: 4.0.0');
   });
 
   it('rejects a document which is not an object', async () => {
@@ -73,16 +73,62 @@ describe('transformFile with invalid documents', () => {
 
   it('checks the version before reading the files it refers to', async () => {
     const error = await failure([
-      'openapi: 3.2.0',
+      'openapi: 4.0.0',
       'info: {title: t, version: "1"}',
       'paths: {/a: {$ref: "missing.yaml"}}',
     ]);
-    expect(error.message).to.include('Unsupported OpenAPI version: 3.2.0');
+    expect(error.message).to.include('Unsupported OpenAPI version: 4.0.0');
   });
 
   it('rejects a document which is not a Swagger/OpenAPI definition', async () => {
     const error = await failure(['name: package', 'version: 1.0.0']);
     expect(error.message).to.include('is not a valid Swagger/OpenAPI definition');
+  });
+});
+
+describe('transformFile with incomplete documents', () => {
+  let warn: jest.SpyInstance;
+  beforeEach(() => {
+    warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+  });
+  afterEach(() => warn.mockRestore());
+
+  const operation = ['paths:', '  /pets:', '    get:', '      responses: {"200": {description: OK}}'];
+
+  it('renders a newer OpenAPI 3.x as 3.1, with a warning', async () => {
+    const result = await transformFile({
+      input: write([
+        'openapi: 3.3.0',
+        'info: {title: Pets, version: "1"}',
+        ...operation,
+        // Webhooks are rendered since 3.1
+        'webhooks: {newPet: {post: {responses: {"200": {description: OK}}}}}',
+      ]),
+    });
+    expect(result).to.include('### [GET] /pets');
+    expect(result).to.include('### [POST] newPet');
+    expect(warn.mock.calls).to.have.length(1);
+  });
+
+  it('renders a document with components only', async () => {
+    const result = await transformFile({ input: write(['openapi: 3.0.0', 'info: {title: t, version: "1"}', 'components: {schemas: {Pet: {type: object}}}']) });
+    expect(result).to.include('#### Pet Schema');
+  });
+
+  it('renders a document with no info', async () => {
+    const result = await transformFile({ input: write(['swagger: "2.0"', ...operation]) });
+    expect(result).to.include('### /pets');
+  });
+
+  it('renders a document with nothing but the version', async () => {
+    expect(await transformFile({ input: write(['openapi: 3.0.0']) })).to.equal('\n');
+  });
+
+  it('renders a document with empty components', async () => {
+    const results = await Promise.all(['3.0.0', '3.1.0'].map((openapi) => transformFile({
+      input: write([`openapi: ${openapi}`, 'info: {title: Pets, version: "1"}', 'components:']),
+    })));
+    results.forEach((result) => expect(result).to.include('# Pets'));
   });
 });
 

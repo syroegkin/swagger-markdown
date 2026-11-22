@@ -53,7 +53,7 @@ export function transformSwaggerV3(
   }
 
   // Models (components)
-  if ('components' in inputDoc) {
+  if ('components' in inputDoc && inputDoc.components) {
     const componentsOutput = transformComponents(inputDoc.components);
     if (componentsOutput != null) {
       md.line(md.string().horizontalRule());

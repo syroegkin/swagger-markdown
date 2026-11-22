@@ -27,7 +27,8 @@ const specificationVersion = (version: number): string => (
 
 /**
  * Basic sanity check of the parsed document: it has to be a Swagger/OpenAPI definition
- * of a version we can transform. This is not a validation against the specification.
+ * of a version we can recognize. This is not a validation against the specification:
+ * whatever the document has is rendered.
  * Versions written as numbers are turned into strings in the document.
  *
  * @param document parsed document
@@ -46,9 +47,7 @@ export function assertValidDocument(
   if (fields.info !== null && typeof fields.info === 'object') {
     readNumericVersion(fields.info as Record<string, unknown>, 'version', String, source);
   }
-  const {
-    swagger, openapi, paths, webhooks,
-  } = fields;
+  const { swagger, openapi } = fields;
 
   if (swagger === undefined && openapi === undefined) {
     throw new SyntaxError(`${source} is not a valid Swagger/OpenAPI definition`);
@@ -62,16 +61,15 @@ export function assertValidDocument(
   }
 
   const [major, minor] = typeof openapi === 'string' ? openapi.split('.') : [];
-  if (!SUPPORTED_OPENAPI_VERSIONS.includes(`${major}.${minor}`)) {
+  // The minor part tells which 3.x it is, without it there is no way to know
+  if (major !== '3' || !/^\d+$/.test(minor ?? '')) {
     throw new SyntaxError(
       `Unsupported OpenAPI version: ${openapi}. `
       + `Supported versions are ${SUPPORTED_OPENAPI_VERSIONS.map((v) => `${v}.x`).join(', ')}`,
     );
   }
-
-  // Since 3.1 paths are optional, as long as there are webhooks
-  const hasContent = paths !== undefined || (minor !== '0' && webhooks !== undefined);
-  if (!hasContent) {
-    throw new SyntaxError(`${source} is not a valid OpenAPI definition`);
+  if (!SUPPORTED_OPENAPI_VERSIONS.includes(`${major}.${minor}`)) {
+    const newest = SUPPORTED_OPENAPI_VERSIONS[SUPPORTED_OPENAPI_VERSIONS.length - 1];
+    console.warn(`${source}: OpenAPI ${openapi} is not supported yet, rendered as ${newest}.`);
   }
 }

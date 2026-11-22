@@ -17,6 +17,16 @@ export function isV3Document(document: AllSwaggerDocumentVersions): document is 
   return false;
 }
 
+export function isV30Document(
+  document: AllSwaggerDocumentVersions,
+): document is OpenAPIV3.Document {
+  if ('openapi' in document) {
+    const [major, minor] = document.openapi.split(/\./);
+    return major === '3' && minor === '0';
+  }
+  return false;
+}
+
 export function isV31Document(
   document: AllSwaggerDocumentVersions,
 ): document is OpenAPIV3_1.Document {

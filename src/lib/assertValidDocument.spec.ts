@@ -4,6 +4,12 @@ import { assertValidDocument } from './assertValidDocument';
 const check = (document: unknown) => () => assertValidDocument(document, 'api.yaml');
 
 describe('assertValidDocument', () => {
+  let warn: jest.SpyInstance;
+  beforeEach(() => {
+    warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
+  });
+  afterEach(() => warn.mockRestore());
+
   it('accepts Swagger 2.0 documents', () => {
     expect(check({ swagger: '2.0', info: { title: 't', version: '1' }, paths: {} })).to.not.throw();
     expect(check({ swagger: '2.0' })).to.not.throw();
@@ -13,10 +19,15 @@ describe('assertValidDocument', () => {
     ['3.0.0', '3.0.4', '3.1.0', '3.1.2'].forEach((openapi) => {
       expect(check({ openapi, info: { title: 't', version: '1' }, paths: {} })).to.not.throw();
     });
+    expect(warn.mock.calls).to.have.length(0);
   });
 
-  it('accepts OpenAPI 3.1 documents with webhooks only', () => {
+  it('accepts documents with whatever there is to render', () => {
+    expect(check({ openapi: '3.0.0' })).to.not.throw();
+    expect(check({ openapi: '3.0.0', components: {} })).to.not.throw();
     expect(check({ openapi: '3.1.0', webhooks: {} })).to.not.throw();
+    expect(check({ openapi: '3.1.0', components: {} })).to.not.throw();
+    expect(warn.mock.calls).to.have.length(0);
   });
 
   it('rejects anything that is not a Swagger/OpenAPI definition', () => {
@@ -27,21 +38,25 @@ describe('assertValidDocument', () => {
     expect(check({ name: 'package', version: '1.0.0' })).to.throw(SyntaxError, message);
   });
 
-  it('rejects OpenAPI documents with nothing to render', () => {
-    const message = 'api.yaml is not a valid OpenAPI definition';
-    expect(check({ openapi: '3.0.0' })).to.throw(SyntaxError, message);
-    expect(check({ openapi: '3.0.0', webhooks: {} })).to.throw(SyntaxError, message);
-    expect(check({ openapi: '3.1.0' })).to.throw(SyntaxError, message);
-    expect(check({ openapi: '3.1.0', components: {} })).to.throw(SyntaxError, message);
+  it('rejects unrecognized versions', () => {
+    expect(check({ swagger: '1.2', paths: {} }))
+      .to.throw(SyntaxError, 'Unrecognized Swagger version: 1.2. Expected 2.0');
+    expect(check({ openapi: '4.0.0', paths: {} }))
+      .to.throw(SyntaxError, 'Unsupported OpenAPI version: 4.0.0. Supported versions are 3.0.x, 3.1.x');
+  });
+
+  it('accepts a newer OpenAPI 3.x, with a warning', () => {
+    expect(check({ openapi: '3.2.0', paths: {} })).to.not.throw();
+    expect(warn.mock.calls).to.eql([['api.yaml: OpenAPI 3.2.0 is not supported yet, rendered as 3.1.']]);
+  });
+
+  it('rejects an OpenAPI 3 version which does not say which 3.x it is', () => {
+    ['3', '3.', '3.x'].forEach((openapi) => {
+      expect(check({ openapi, paths: {} })).to.throw(SyntaxError, `Unsupported OpenAPI version: ${openapi}.`);
+    });
   });
 
   describe('with versions written as numbers', () => {
-    let warn: jest.SpyInstance;
-    beforeEach(() => {
-      warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
-    });
-    afterEach(() => warn.mockRestore());
-
     it('reads the specification version as a string, with a warning', () => {
       const v2 = { swagger: 2.0, paths: {} };
       const v30 = { openapi: 3.0, paths: {} };
@@ -59,19 +74,11 @@ describe('assertValidDocument', () => {
       expect(warn.mock.calls).to.deep.include(['api.yaml: version is a number, read as "1". Quote it to keep it exactly as written.']);
     });
 
-    it('rejects the version which is not supported', () => {
+    it('rejects the version which is not recognized', () => {
       expect(check({ swagger: 1.2, paths: {} }))
         .to.throw(SyntaxError, 'Unrecognized Swagger version: 1.2. Expected 2.0');
       expect(check({ openapi: 4, paths: {} }))
         .to.throw(SyntaxError, 'Unsupported OpenAPI version: 4.0. Supported versions are 3.0.x, 3.1.x');
     });
-  });
-
-  it('rejects unsupported versions', () => {
-    expect(check({ swagger: '1.2', paths: {} }))
-      .to.throw(SyntaxError, 'Unrecognized Swagger version: 1.2. Expected 2.0');
-    expect(check({ openapi: '4.0.0', paths: {} }))
-      .to.throw(SyntaxError, 'Unsupported OpenAPI version: 4.0.0. Supported versions are 3.0.x, 3.1.x');
-    expect(check({ openapi: '3.2.0', paths: {} })).to.throw(SyntaxError, 'Unsupported OpenAPI version: 3.2.0.');
   });
 });
